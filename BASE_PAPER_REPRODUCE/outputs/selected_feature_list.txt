@@ -1,0 +1,14 @@
+01. Age
+02. BusinessTravel
+03. Department
+04. Education
+05. EducationField
+06. EnvironmentSatisfaction
+07. JobSatisfaction
+08. MaritalStatus
+09. NumCompaniesWorked
+10. PerformanceRating
+11. TotalWorkingYears
+12. WorkLifeBalance
+13. YearsAtCompany
+14. YearsSinceLastPromotion

@@ -1,0 +1,54 @@
+{
+  "experiment_name": "research_gap_extension",
+  "base_paper": {
+    "title": "Developing a Hybrid Machine Learning Model for Employee Turnover Prediction: Integrating LightGBM and Genetic Algorithms",
+    "authors": "Talebi, H., Taghvaee, S., Zolfaghari, M., & Shokouhyar, S.",
+    "year": 2025,
+    "journal": "Journal of Open Innovation: Technology, Market, and Complexity",
+    "targeted_future_directions": [
+      "Advanced HR-domain feature engineering",
+      "Model-specific and complete-pipeline SHAP explainability",
+      "Reproducible, leakage-safe experimental evaluation"
+    ]
+  },
+  "dataset": {
+    "path": "dataset/merged_unique_profiles_2969.csv",
+    "total_rows": 2969,
+    "features_raw": 45,
+    "target": "Attrition",
+    "distribution": {
+      "No": 2489,
+      "Yes": 480
+    },
+    "sha256": "92027AF0EF8E882A19643479329252BC865B931346594893A520CFF2DBEA2C7C"
+  },
+  "experimental_setup": {
+    "random_seed": 42,
+    "outer_cv_folds": 5,
+    "inner_cv_folds": 5,
+    "stratified": true,
+    "feature_arms": {
+      "Arm_A_Baseline": 30,
+      "Arm_B_Enriched_All": 40,
+      "Arm_C_Selected_Screened": 35
+    },
+    "meta_learner": "LogisticRegression (C=0.85, L2 penalty)",
+    "base_models": {
+      "catboost_base": {
+        "iterations": 450,
+        "learning_rate": 0.04,
+        "depth": 5
+      },
+      "lightgbm_base": {
+        "n_estimators": 200,
+        "learning_rate": 0.04,
+        "max_depth": 5
+      },
+      "anchor_catboost": {
+        "iterations": 350,
+        "learning_rate": 0.05,
+        "depth": 4
+      }
+    }
+  }
+}

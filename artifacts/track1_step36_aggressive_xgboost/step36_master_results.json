@@ -1,0 +1,86 @@
+{
+  "mission": "Track 1 Step 36: Aggressive, Controlled Fine-Tuning of the Step35 XGBoost Replacement Framework",
+  "promotion_decision": "STEP 32 RETAINED AS OFFICIAL CHAMPION (STEP 36 HOLDOUT ERRORS: 25 VS STEP 32: 23)",
+  "promoted": false,
+  "rounds_completed": 60,
+  "step32_holdout_errors": 23,
+  "step36_holdout_errors": 25,
+  "step32_holdout_metrics": {
+    "ROC_AUC": 0.9264558232931726,
+    "PR_AUC": 0.793886230728336,
+    "Precision": 0.8842105263157894,
+    "Recall": 0.875,
+    "F1_Score": 0.8795811518324608,
+    "Accuracy": 0.9612794612794613,
+    "Errors": 23,
+    "Threshold": 0.5,
+    "TN": 487,
+    "FP": 11,
+    "FN": 12,
+    "TP": 84
+  },
+  "step36_holdout_metrics": {
+    "ROC_AUC": 0.9423318273092369,
+    "PR_AUC": 0.8846840826601662,
+    "Precision": 0.8817204301075269,
+    "Recall": 0.8541666666666666,
+    "F1_Score": 0.8677248677248677,
+    "Accuracy": 0.9579124579124579,
+    "Errors": 25,
+    "Threshold": 0.361,
+    "TN": 487,
+    "FP": 11,
+    "FN": 14,
+    "TP": 82
+  },
+  "winning_round": 14,
+  "winning_phase": "B",
+  "winning_name": "CatBoost_Asymmetric_Weights_45",
+  "winning_config": {
+    "round": 14,
+    "phase": "B",
+    "name": "CatBoost_Asymmetric_Weights_45",
+    "cb_key": "cb_d6_i600_w45",
+    "xgb": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta": {
+      "type": "logreg",
+      "C": 1.0
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.4
+  },
+  "bootstrap_95ci": {
+    "Accuracy_95CI": [
+      0.9473684210526315,
+      0.9789473684210527
+    ],
+    "Precision_95CI": [
+      0.8268581081081081,
+      0.9677547363031234
+    ],
+    "Recall_95CI": [
+      0.791036098576883,
+      0.9382716049382716
+    ],
+    "F1_95CI": [
+      0.8292372223085288,
+      0.9343302000735177
+    ],
+    "Errors_95CI": [
+      10.0,
+      25.0
+    ]
+  },
+  "timestamp": "2026-09-27 16:26:07"
+}

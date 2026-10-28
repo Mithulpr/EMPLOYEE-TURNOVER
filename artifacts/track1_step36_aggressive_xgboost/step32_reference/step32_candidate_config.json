@@ -1,0 +1,27 @@
+{
+  "candidate_id": "Step32_Candidate_G_CatBoost_Blend_t40",
+  "description": "Balanced Experience (ExpRatio > -0.20) + CatBoost Specialist >= 0.40",
+  "parent_benchmark": "Track 1 Step 31 Candidate v2 4th Champion (24 errors)",
+  "architecture": "Calibrated Precision Domain-Boundary FN Recovery Layer",
+  "decision_rule": {
+    "base_predicate": "Pred_Step30 == 0",
+    "boundary_band": [
+      0.15,
+      0.361
+    ],
+    "severe_dissatisfaction": "> 0.50",
+    "years_with_manager": "> -0.50",
+    "job_hopping_rate": "<= 1.00",
+    "total_exp_to_age_ratio": "> -0.20",
+    "cb_specialist_thresh": 0.4
+  },
+  "metrics": {
+    "pool_errors": 116,
+    "pool_f1": 0.8085808580858086,
+    "conf_errors": 20,
+    "conf_f1": 0.868421052631579,
+    "multiseed_conf_mean": 20.0,
+    "multiseed_pool_mean": 117.0
+  },
+  "timestamp": "2026-09-26 11:52:52"
+}

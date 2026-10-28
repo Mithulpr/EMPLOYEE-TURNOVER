@@ -1,0 +1,20 @@
+{
+  "count": 14,
+  "features": [
+    "Age",
+    "BusinessTravel",
+    "EnvironmentSatisfaction",
+    "JobRole",
+    "JobSatisfaction",
+    "MaritalStatus",
+    "NumCompaniesWorked",
+    "OverTime",
+    "TotalWorkingYears",
+    "TrainingTimesLastYear",
+    "WorkLifeBalance",
+    "YearsAtCompany",
+    "YearsInCurrentRole",
+    "YearsSinceLastPromotion"
+  ],
+  "best_fitness_f1": 0.5054079402793993
+}

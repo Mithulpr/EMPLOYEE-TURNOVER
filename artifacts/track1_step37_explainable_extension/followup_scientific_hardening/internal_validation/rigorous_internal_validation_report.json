@@ -1,0 +1,91 @@
+{
+  "cv_5fold_pool_summary": {
+    "Accuracy": {
+      "mean": 0.9837,
+      "std": 0.0043,
+      "min": 0.9789,
+      "max": 0.9895
+    },
+    "Precision": {
+      "mean": 0.924,
+      "std": 0.0254,
+      "min": 0.8841,
+      "max": 0.9531
+    },
+    "Recall": {
+      "mean": 0.9804,
+      "std": 0.0214,
+      "min": 0.9508,
+      "max": 1.0
+    },
+    "F1_Score": {
+      "mean": 0.951,
+      "std": 0.013,
+      "min": 0.9385,
+      "max": 0.9683
+    },
+    "ROC_AUC": {
+      "mean": 0.9966,
+      "std": 0.0013,
+      "min": 0.9949,
+      "max": 0.9982
+    },
+    "PR_AUC": {
+      "mean": 0.9815,
+      "std": 0.0074,
+      "min": 0.9713,
+      "max": 0.9899
+    },
+    "Specificity": {
+      "mean": 0.9843,
+      "std": 0.0059,
+      "min": 0.9749,
+      "max": 0.9906
+    },
+    "Balanced_Accuracy": {
+      "mean": 0.9823,
+      "std": 0.0095,
+      "min": 0.9691,
+      "max": 0.9921
+    },
+    "Errors": {
+      "mean": 6.2,
+      "std": 1.6432,
+      "min": 4.0,
+      "max": 8.0
+    }
+  },
+  "bootstrap_95_ci_holdout": {
+    "Accuracy": {
+      "mean": 0.9612,
+      "ci_95_lower": 0.9444,
+      "ci_95_upper": 0.9764,
+      "ci_string": "[94.44%, 97.64%]"
+    },
+    "Precision": {
+      "mean": 0.885,
+      "ci_95_lower": 0.8181,
+      "ci_95_upper": 0.9432,
+      "ci_string": "[81.81%, 94.32%]"
+    },
+    "Recall": {
+      "mean": 0.8751,
+      "ci_95_lower": 0.8105,
+      "ci_95_upper": 0.9394,
+      "ci_string": "[81.05%, 93.94%]"
+    },
+    "F1_Score": {
+      "mean": 0.8794,
+      "ci_95_lower": 0.8272,
+      "ci_95_upper": 0.924,
+      "ci_string": "[82.72%, 92.40%]"
+    },
+    "ROC_AUC": {
+      "mean": 0.9454,
+      "ci_95_lower": 0.9134,
+      "ci_95_upper": 0.974,
+      "ci_string": "[91.34%, 97.40%]"
+    }
+  },
+  "repeated_holdout_disclosure": "The 594-record holdout has been examined across multiple optimization iterations in prior steps. The 95% bootstrap confidence intervals illustrate statistical sampling uncertainty under the empirical distribution but do not substitute for an independent external cohort."
+}

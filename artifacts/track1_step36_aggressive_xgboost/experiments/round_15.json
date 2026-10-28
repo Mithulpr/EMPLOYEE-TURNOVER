@@ -1,0 +1,60 @@
+{
+  "round": 15,
+  "phase": "B",
+  "name": "CatBoost_Optimal_Synthesis_d6_l2_3",
+  "config": {
+    "round": 15,
+    "phase": "B",
+    "name": "CatBoost_Optimal_Synthesis_d6_l2_3",
+    "cb_key": "cb_d6_i650_lr005_l2_30_rsm85",
+    "xgb": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta": {
+      "type": "logreg",
+      "C": 1.0
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.4
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.9146878341931618,
+    "PR_AUC": 0.8165955667068192,
+    "Precision": 0.8116438356164384,
+    "Recall": 0.7719869706840391,
+    "F1_Score": 0.7913188647746243,
+    "Accuracy": 0.9342105263157895,
+    "Errors": 125,
+    "Threshold": 0.361,
+    "TN": 1538,
+    "FP": 55,
+    "FN": 70,
+    "TP": 237
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.9579064151928474,
+    "PR_AUC": 0.8969596914687948,
+    "Precision": 0.8461538461538461,
+    "Recall": 0.8571428571428571,
+    "F1_Score": 0.8516129032258064,
+    "Accuracy": 0.9515789473684211,
+    "Errors": 23,
+    "Threshold": 0.361,
+    "TN": 386,
+    "FP": 12,
+    "FN": 11,
+    "TP": 66
+  },
+  "multiseed_mean": 23.0,
+  "multiseed_std": 0.0,
+  "timestamp": "2026-09-27 16:15:46"
+}

@@ -1,0 +1,60 @@
+{
+  "round": 27,
+  "phase": "C",
+  "name": "XGB_Amplified_SPW_115",
+  "config": {
+    "round": 27,
+    "phase": "C",
+    "name": "XGB_Amplified_SPW_115",
+    "cb_key": "default_d6_i600_lr006_l2_15",
+    "xgb": {
+      "depth": 4,
+      "n_est": 250,
+      "lr": 0.035,
+      "sub": 0.85,
+      "col": 0.85,
+      "mcw": 4,
+      "reg_lambda": 5,
+      "gamma": 0.5,
+      "spw": 1.15
+    },
+    "meta": {
+      "type": "logreg",
+      "C": 1.0
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.4
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.9157654314171734,
+    "PR_AUC": 0.8244915309944515,
+    "Precision": 0.8304498269896193,
+    "Recall": 0.7817589576547231,
+    "F1_Score": 0.8053691275167785,
+    "Accuracy": 0.9389473684210526,
+    "Errors": 116,
+    "Threshold": 0.361,
+    "TN": 1544,
+    "FP": 49,
+    "FN": 67,
+    "TP": 240
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.9575474776479801,
+    "PR_AUC": 0.9024708618959889,
+    "Precision": 0.881578947368421,
+    "Recall": 0.8701298701298701,
+    "F1_Score": 0.8758169934640523,
+    "Accuracy": 0.96,
+    "Errors": 19,
+    "Threshold": 0.361,
+    "TN": 389,
+    "FP": 9,
+    "FN": 10,
+    "TP": 67
+  },
+  "multiseed_mean": 18.75,
+  "multiseed_std": 0.4330127018922193,
+  "timestamp": "2026-09-27 16:18:33"
+}

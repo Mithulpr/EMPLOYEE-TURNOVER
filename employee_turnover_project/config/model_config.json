@@ -1,0 +1,131 @@
+{
+  "project_title": "A Multi-stage Hybrid Approach for Employee Turnover Prediction using Conditional Error Correction",
+  "dataset_metadata": {
+    "total_unique_records": 2969,
+    "group_a_records": 1496,
+    "group_b_records": 1473,
+    "attrition_positive_count": 480,
+    "attrition_positive_pct": 16.17,
+    "attrition_negative_count": 2489,
+    "attrition_negative_pct": 83.83,
+    "class_imbalance_ratio": "5.19 : 1",
+    "development_cohort_records": 2375,
+    "retrospective_legacy_holdout_records": 594,
+    "cohort_designation": "Retrospective Legacy Holdout (used during multi-stage model iteration; not an untouched test set)"
+  },
+  "features_30": [
+    "Age",
+    "EnvironmentSatisfaction",
+    "JobSatisfaction",
+    "TotalWorkingYears",
+    "TrainingTimesLastYear",
+    "WorkLifeBalance",
+    "YearsSinceLastPromotion",
+    "YearsWithCurrManager",
+    "TotalExpToAgeRatio",
+    "CompanyLoyaltyRatio",
+    "PriorCompanyExperience",
+    "JobHoppingRate",
+    "PromotionStagnationRatio",
+    "PromotionLagScore",
+    "ManagerTenureMismatch",
+    "WorkLifeDeficit",
+    "SevereDissatisfactionFlag",
+    "EarlyCareerFlightRisk",
+    "PromotionVelocity",
+    "BusinessTravel_Non-Travel",
+    "BusinessTravel_Travel_Frequently",
+    "BusinessTravel_Travel_Rarely",
+    "EducationField_Life Sciences",
+    "EducationField_Marketing",
+    "EducationField_Other",
+    "Gender_Female",
+    "Gender_Male",
+    "JobRole_Human Resources",
+    "MaritalStatus_Single",
+    "PromotionPaceStrain"
+  ],
+  "meta_learner_inputs_6": [
+    "P_CatBoost",
+    "P_LightGBM",
+    "P_Anchor_Step27",
+    "Diff_CatBoost_Centered",
+    "Diff_LightGBM_Centered",
+    "Diff_CatBoost_LightGBM_Discrepancy"
+  ],
+  "operating_threshold": 0.361,
+  "threshold_decision_rule": {
+    "stayer_condition": "model_estimated_turnover_score < 0.361",
+    "leaver_condition": "model_estimated_turnover_score >= 0.361"
+  },
+  "operational_risk_tiers": {
+    "Low": {
+      "min_score": 0.0,
+      "max_score": 0.2,
+      "expected_count": 491,
+      "expected_pct": 82.66,
+      "description": "Standard retention protocol; minimal turnover indicators"
+    },
+    "Moderate": {
+      "min_score": 0.2,
+      "max_score": 0.361,
+      "expected_count": 11,
+      "expected_pct": 1.85,
+      "description": "Elevated flight factors below decision threshold; periodic pulse check"
+    },
+    "High": {
+      "min_score": 0.361,
+      "max_score": 0.6,
+      "expected_count": 14,
+      "expected_pct": 2.36,
+      "description": "Active flight risk above decision threshold; targeted managerial conversation"
+    },
+    "Critical": {
+      "min_score": 0.6,
+      "max_score": 1.0,
+      "expected_count": 78,
+      "expected_pct": 13.13,
+      "description": "Acute compounding risk; immediate stay interview & compensation review"
+    }
+  },
+  "target_verification_metrics": {
+    "evaluation_cohort_size": 594,
+    "accuracy_pct": 96.13,
+    "precision_pct": 88.42,
+    "recall_pct": 87.5,
+    "f1_score_pct": 87.96,
+    "roc_auc_pct": 94.55,
+    "pr_auc_pct": 86.89,
+    "total_correct": 571,
+    "total_errors": 23,
+    "confusion_matrix": {
+      "True_Negatives": 487,
+      "False_Positives": 11,
+      "False_Negatives": 12,
+      "True_Positives": 84
+    }
+  },
+  "conditional_correction_parameters": {
+    "stage_5_false_negative_recovery": {
+      "base_prediction": 0,
+      "meta_probability_upper_bound": 0.361,
+      "fn_specialist_threshold": 0.35,
+      "min_base_model_probability": 0.1
+    },
+    "stage_5_false_positive_suppression": {
+      "base_prediction": 1,
+      "fp_specialist_threshold": 0.65,
+      "max_catboost_probability": 0.25
+    },
+    "stage_6_domain_boundary_specialist": {
+      "base_prediction": 0,
+      "meta_probability_lower_bound": 0.15,
+      "meta_probability_upper_bound": 0.361,
+      "SevereDissatisfactionFlag_min": 0.5,
+      "YearsWithCurrManager_min": -0.5,
+      "JobHoppingRate_max": 1.0,
+      "TotalExpToAgeRatio_min": -0.2,
+      "specialist_catboost_threshold": 0.4
+    }
+  }
+}

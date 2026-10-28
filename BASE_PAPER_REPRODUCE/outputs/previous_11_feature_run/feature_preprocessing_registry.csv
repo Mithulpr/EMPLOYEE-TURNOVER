@@ -1,0 +1,31 @@
+Feature_Index,Feature_Name,Data_Type,Imputation,Encoding_Scaling,GA_Selected
+1,Age,Continuous,Mean,"MinMaxScaler [0, 1]",1
+2,BusinessTravel,Categorical,Mode,LabelEncoder (Integer),1
+3,DailyRate,Continuous,Mean,"MinMaxScaler [0, 1]",0
+4,Department,Categorical,Mode,LabelEncoder (Integer),0
+5,DistanceFromHome,Continuous,Mean,"MinMaxScaler [0, 1]",0
+6,Education,Continuous,Mean,"MinMaxScaler [0, 1]",0
+7,EducationField,Categorical,Mode,LabelEncoder (Integer),0
+8,EnvironmentSatisfaction,Continuous,Mean,"MinMaxScaler [0, 1]",1
+9,Gender,Categorical,Mode,LabelEncoder (Integer),0
+10,HourlyRate,Continuous,Mean,"MinMaxScaler [0, 1]",0
+11,JobInvolvement,Continuous,Mean,"MinMaxScaler [0, 1]",0
+12,JobLevel,Continuous,Mean,"MinMaxScaler [0, 1]",0
+13,JobRole,Categorical,Mode,LabelEncoder (Integer),0
+14,JobSatisfaction,Continuous,Mean,"MinMaxScaler [0, 1]",1
+15,MaritalStatus,Categorical,Mode,LabelEncoder (Integer),1
+16,MonthlyIncome,Continuous,Mean,"MinMaxScaler [0, 1]",0
+17,MonthlyRate,Continuous,Mean,"MinMaxScaler [0, 1]",0
+18,NumCompaniesWorked,Continuous,Mean,"MinMaxScaler [0, 1]",1
+19,OverTime,Categorical,Mode,LabelEncoder (Integer),0
+20,PercentSalaryHike,Continuous,Mean,"MinMaxScaler [0, 1]",0
+21,PerformanceRating,Continuous,Mean,"MinMaxScaler [0, 1]",0
+22,RelationshipSatisfaction,Continuous,Mean,"MinMaxScaler [0, 1]",0
+23,StockOptionLevel,Continuous,Mean,"MinMaxScaler [0, 1]",0
+24,TotalWorkingYears,Continuous,Mean,"MinMaxScaler [0, 1]",1
+25,TrainingTimesLastYear,Continuous,Mean,"MinMaxScaler [0, 1]",1
+26,WorkLifeBalance,Continuous,Mean,"MinMaxScaler [0, 1]",1
+27,YearsAtCompany,Continuous,Mean,"MinMaxScaler [0, 1]",0
+28,YearsInCurrentRole,Continuous,Mean,"MinMaxScaler [0, 1]",0
+29,YearsSinceLastPromotion,Continuous,Mean,"MinMaxScaler [0, 1]",1
+30,YearsWithCurrManager,Continuous,Mean,"MinMaxScaler [0, 1]",1

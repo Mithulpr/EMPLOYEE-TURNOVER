@@ -1,0 +1,17 @@
+{
+  "records": 594,
+  "tn": 487,
+  "fp": 11,
+  "fn": 12,
+  "tp": 84,
+  "total_errors": 23,
+  "error_rate": 3.87,
+  "accuracy": 96.13,
+  "precision": 88.42,
+  "recall": 87.5,
+  "f1_score": 87.96,
+  "roc_auc": 94.5469,
+  "pr_auc": 86.8893,
+  "threshold": 0.361,
+  "elapsed_time": 4.53
+}

@@ -1,0 +1,148 @@
+{
+  "disaggregated_subgroups": {
+    "Gender": {
+      "Male": {
+        "N": 361,
+        "Accuracy": 0.9501,
+        "Recall_TPR": 0.8226,
+        "Recall_Wilson_CI": [
+          0.7096,
+          0.8979
+        ],
+        "FPR": 0.0234,
+        "FPR_Wilson_CI": [
+          0.0114,
+          0.0475
+        ],
+        "Precision": 0.8793,
+        "Selection_Rate": 0.1607
+      },
+      "Female": {
+        "N": 233,
+        "Accuracy": 0.9785,
+        "Recall_TPR": 0.9706,
+        "Recall_Wilson_CI": [
+          0.8508,
+          0.9948
+        ],
+        "FPR": 0.0201,
+        "FPR_Wilson_CI": [
+          0.0078,
+          0.0505
+        ],
+        "Precision": 0.8919,
+        "Selection_Rate": 0.1588
+      }
+    },
+    "Age_Cohorts": {
+      "Younger (<30)": {
+        "N": 128,
+        "Accuracy": 0.9219,
+        "Recall_TPR": 1,
+        "Recall_Wilson_CI": [
+          0.8139,
+          0.9842
+        ],
+        "FPR": 0,
+        "FPR_Wilson_CI": [
+          0.0442,
+          0.1607
+        ],
+        "Precision": 0.8049,
+        "Selection_Rate": 0.3203
+      },
+      "Mid-Career (30-45)": {
+        "N": 338,
+        "Accuracy": 0.9734,
+        "Recall_TPR": 1,
+        "Recall_Wilson_CI": [
+          0.7274,
+          0.9344
+        ],
+        "FPR": 0,
+        "FPR_Wilson_CI": [
+          0.0035,
+          0.0295
+        ],
+        "Precision": 0.925,
+        "Selection_Rate": 0.1183
+      },
+      "Senior (>45)": {
+        "N": 128,
+        "Accuracy": 0.9688,
+        "Recall_TPR": 1,
+        "Recall_Wilson_CI": [
+          0.5479,
+          0.91
+        ],
+        "FPR": 0,
+        "FPR_Wilson_CI": [
+          0.0,
+          0.0337
+        ],
+        "Precision": 1.0,
+        "Selection_Rate": 0.1094
+      }
+    },
+    "MaritalStatus": {
+      "Single": {
+        "N": 173,
+        "Accuracy": 0.9422,
+        "Recall_TPR": 1,
+        "Recall_Wilson_CI": [
+          0.8007,
+          0.9664
+        ],
+        "FPR": 0,
+        "FPR_Wilson_CI": [
+          0.022,
+          0.1
+        ],
+        "Precision": 0.8776,
+        "Selection_Rate": 0.2832
+      },
+      "Married": {
+        "N": 283,
+        "Accuracy": 0.9576,
+        "Recall_TPR": 1,
+        "Recall_Wilson_CI": [
+          0.6738,
+          0.9026
+        ],
+        "FPR": 0,
+        "FPR_Wilson_CI": [
+          0.0065,
+          0.0421
+        ],
+        "Precision": 0.8974,
+        "Selection_Rate": 0.1378
+      },
+      "Divorced": {
+        "N": 138,
+        "Accuracy": 0.9928,
+        "Recall_TPR": 1,
+        "Recall_Wilson_CI": [
+          0.6097,
+          1.0
+        ],
+        "FPR": 0,
+        "FPR_Wilson_CI": [
+          0.0013,
+          0.0417
+        ],
+        "Precision": 0.8571,
+        "Selection_Rate": 0.0507
+      }
+    }
+  },
+  "fairness_summary_metrics": {
+    "gender_demographic_parity_difference": 0.0019,
+    "gender_equalized_odds_difference": 0.148,
+    "gender_disparate_impact_ratio": 0.9882
+  },
+  "responsible_hr_policy_framework": {
+    "human_in_the_loop_mandate": "Attrition risk scores MUST serve solely as decision support for voluntary employee retention dialogues. Under no circumstances may predictions automate adverse employment decisions (termination, denial of promotion, or salary reduction).",
+    "ethical_survey_response_framing": "Survey divergence flags represent adjustment friction, onboarding stress, or survey fatigue. They MUST NOT be used to label employees as dishonest or disloyal.",
+    "privacy_pii_minimization": "All individual record identifiers must be anonymized before reporting. Demographic attributes (Gender, Age, MaritalStatus) are strictly barred from decision override logic."
+  }
+}

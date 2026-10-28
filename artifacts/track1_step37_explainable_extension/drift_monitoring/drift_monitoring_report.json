@@ -1,0 +1,247 @@
+{
+  "reference_partition": "Training Pool (N=1,900)",
+  "confirmation_evaluation": {
+    "overall_status": "STABLE",
+    "incoming_records": 475,
+    "reference_records": 1900,
+    "sample_warnings": [],
+    "significant_drift_features_count": 0,
+    "moderate_drift_features_count": 0,
+    "feature_drift_summary": [
+      {
+        "feature": "TotalExpToAgeRatio",
+        "psi": 0.0448,
+        "ks_statistic": 0.0584,
+        "ks_pvalue": 0.1459,
+        "ref_mean": 0.004,
+        "curr_mean": -0.016,
+        "ref_std": 0.986,
+        "curr_std": 1.056,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "TotalWorkingYears",
+        "psi": 0.0426,
+        "ks_statistic": 0.0453,
+        "ks_pvalue": 0.4105,
+        "ref_mean": -0.009,
+        "curr_mean": 0.035,
+        "ref_std": 0.981,
+        "curr_std": 1.071,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "PriorCompanyExperience",
+        "psi": 0.034,
+        "ks_statistic": 0.0379,
+        "ks_pvalue": 0.6379,
+        "ref_mean": -0.012,
+        "curr_mean": 0.047,
+        "ref_std": 0.978,
+        "curr_std": 1.083,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "Age",
+        "psi": 0.0262,
+        "ks_statistic": 0.0368,
+        "ks_pvalue": 0.6725,
+        "ref_mean": -0.01,
+        "curr_mean": 0.042,
+        "ref_std": 0.995,
+        "curr_std": 1.018,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "JobHoppingRate",
+        "psi": 0.0238,
+        "ks_statistic": 0.0442,
+        "ks_pvalue": 0.4402,
+        "ref_mean": -0.011,
+        "curr_mean": 0.045,
+        "ref_std": 0.961,
+        "curr_std": 1.14,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "CompanyLoyaltyRatio",
+        "psi": 0.0188,
+        "ks_statistic": 0.0479,
+        "ks_pvalue": 0.3416,
+        "ref_mean": 0.012,
+        "curr_mean": -0.048,
+        "ref_std": 0.998,
+        "curr_std": 1.008,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "WorkLifeDeficit",
+        "psi": 0.0163,
+        "ks_statistic": 0.0337,
+        "ks_pvalue": 0.7739,
+        "ref_mean": -0.004,
+        "curr_mean": 0.017,
+        "ref_std": 1.01,
+        "curr_std": 0.959,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "EnvironmentSatisfaction",
+        "psi": 0.0124,
+        "ks_statistic": 0.0458,
+        "ks_pvalue": 0.3961,
+        "ref_mean": -0.021,
+        "curr_mean": 0.085,
+        "ref_std": 1.002,
+        "curr_std": 0.989,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "PromotionStagnationRatio",
+        "psi": 0.0116,
+        "ks_statistic": 0.0258,
+        "ks_pvalue": 0.9589,
+        "ref_mean": -0.005,
+        "curr_mean": 0.02,
+        "ref_std": 0.995,
+        "curr_std": 1.019,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "PromotionVelocity",
+        "psi": 0.0116,
+        "ks_statistic": 0.0258,
+        "ks_pvalue": 0.9589,
+        "ref_mean": -0.005,
+        "curr_mean": 0.02,
+        "ref_std": 0.995,
+        "curr_std": 1.019,
+        "drift_status": "STABLE"
+      }
+    ],
+    "prediction_drift": null,
+    "governance_note": "Feature drift and prediction drift measure covariate shift between populations without requiring ground-truth labels. A drift alert indicates changes in employee characteristics or prediction distributions, but CANNOT determine whether model accuracy has declined without verified attrition outcomes. Do not retrain automatically on unverified drift."
+  },
+  "holdout_evaluation": {
+    "overall_status": "STABLE",
+    "incoming_records": 594,
+    "reference_records": 1900,
+    "sample_warnings": [],
+    "significant_drift_features_count": 0,
+    "moderate_drift_features_count": 0,
+    "feature_drift_summary": [
+      {
+        "feature": "WorkLifeDeficit",
+        "psi": 0.0339,
+        "ks_statistic": 0.049,
+        "ks_pvalue": 0.2191,
+        "ref_mean": -0.004,
+        "curr_mean": 0.078,
+        "ref_std": 1.01,
+        "curr_std": 1.005,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "TotalExpToAgeRatio",
+        "psi": 0.028,
+        "ks_statistic": 0.0237,
+        "ks_pvalue": 0.954,
+        "ref_mean": 0.004,
+        "curr_mean": -0.005,
+        "ref_std": 0.986,
+        "curr_std": 1.023,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "CompanyLoyaltyRatio",
+        "psi": 0.0238,
+        "ks_statistic": 0.0296,
+        "ks_pvalue": 0.8081,
+        "ref_mean": 0.012,
+        "curr_mean": 0.041,
+        "ref_std": 0.998,
+        "curr_std": 1.007,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "Age",
+        "psi": 0.0235,
+        "ks_statistic": 0.05,
+        "ks_pvalue": 0.1989,
+        "ref_mean": -0.01,
+        "curr_mean": 0.068,
+        "ref_std": 0.995,
+        "curr_std": 1.067,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "TotalWorkingYears",
+        "psi": 0.0151,
+        "ks_statistic": 0.0329,
+        "ks_pvalue": 0.6961,
+        "ref_mean": -0.009,
+        "curr_mean": 0.06,
+        "ref_std": 0.981,
+        "curr_std": 1.086,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "PromotionPaceStrain",
+        "psi": 0.0151,
+        "ks_statistic": 0.0316,
+        "ks_pvalue": 0.7401,
+        "ref_mean": 0.006,
+        "curr_mean": -0.039,
+        "ref_std": 1.029,
+        "curr_std": 1.038,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "PromotionStagnationRatio",
+        "psi": 0.0137,
+        "ks_statistic": 0.0362,
+        "ks_pvalue": 0.579,
+        "ref_mean": -0.005,
+        "curr_mean": 0.038,
+        "ref_std": 0.995,
+        "curr_std": 1.0,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "PromotionVelocity",
+        "psi": 0.0137,
+        "ks_statistic": 0.0362,
+        "ks_pvalue": 0.579,
+        "ref_mean": -0.005,
+        "curr_mean": 0.038,
+        "ref_std": 0.995,
+        "curr_std": 1.0,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "JobHoppingRate",
+        "psi": 0.0115,
+        "ks_statistic": 0.0329,
+        "ks_pvalue": 0.6949,
+        "ref_mean": -0.011,
+        "curr_mean": -0.002,
+        "ref_std": 0.961,
+        "curr_std": 1.099,
+        "drift_status": "STABLE"
+      },
+      {
+        "feature": "YearsWithCurrManager",
+        "psi": 0.0113,
+        "ks_statistic": 0.043,
+        "ks_pvalue": 0.3615,
+        "ref_mean": 0.008,
+        "curr_mean": 0.088,
+        "ref_std": 0.997,
+        "curr_std": 1.084,
+        "drift_status": "STABLE"
+      }
+    ],
+    "prediction_drift": null,
+    "governance_note": "Feature drift and prediction drift measure covariate shift between populations without requiring ground-truth labels. A drift alert indicates changes in employee characteristics or prediction distributions, but CANNOT determine whether model accuracy has declined without verified attrition outcomes. Do not retrain automatically on unverified drift."
+  }
+}

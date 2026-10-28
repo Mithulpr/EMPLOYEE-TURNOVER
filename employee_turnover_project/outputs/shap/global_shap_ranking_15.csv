@@ -1,0 +1,16 @@
+Rank,Feature_Name,Mean_Absolute_SHAP
+1,MaritalStatus_Single,0.5698
+2,Age,0.5279
+3,JobHoppingRate,0.4597
+4,YearsWithCurrManager,0.3769
+5,PromotionLagScore,0.3727
+6,PromotionPaceStrain,0.3494
+7,WorkLifeDeficit,0.3268
+8,CompanyLoyaltyRatio,0.2715
+9,SevereDissatisfactionFlag,0.2453
+10,TotalExpToAgeRatio,0.2279
+11,BusinessTravel_Travel_Frequently,0.2218
+12,PriorCompanyExperience,0.2078
+13,TotalWorkingYears,0.1892
+14,EnvironmentSatisfaction,0.1849
+15,JobSatisfaction,0.1647

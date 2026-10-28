@@ -1,0 +1,7 @@
+Turnover_Probability,Predicted_Class,Turnover_Risk_Tier,Decision_Policy,Rule_Override_Trace,P_CatBoost,P_LightGBM,P_Anchor,P_Specialist,Decision_Threshold,Record_ID
+0.7884,1,Critical,High Risk - Retention Action Recommended,Standard Tier 1 Meta-Learner Decision,0.9713,0.9492,0.4662,0.3473,0.361,karkuarasan.a
+0.1853,0,Low,Low Risk - Standard Retention,Standard Tier 1 Meta-Learner Decision,0.1644,0.661,0.3701,0.3803,0.361,karthik2041999ca
+0.8855,1,Critical,High Risk - Retention Action Recommended,Standard Tier 1 Meta-Learner Decision,0.6678,0.8994,0.9806,0.3358,0.361,tndev.nirmal
+0.0341,0,Low,Low Risk - Standard Retention,Standard Tier 1 Meta-Learner Decision,0.0015,0.0151,0.0053,0.442,0.361,manojmacintosh
+0.0342,0,Low,Low Risk - Standard Retention,Standard Tier 1 Meta-Learner Decision,0.0029,0.0291,0.0038,0.3872,0.361,mythili.r.2001
+0.4654,1,High,High Risk - Retention Action Recommended,Standard Tier 1 Meta-Learner Decision,0.1862,0.1601,0.7643,0.3328,0.361,rajesh14bph122

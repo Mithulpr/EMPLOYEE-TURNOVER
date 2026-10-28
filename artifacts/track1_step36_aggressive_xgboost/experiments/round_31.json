@@ -1,0 +1,60 @@
+{
+  "round": 31,
+  "phase": "D",
+  "name": "Convex_Probability_Blend_60_40",
+  "config": {
+    "round": 31,
+    "phase": "D",
+    "name": "Convex_Probability_Blend_60_40",
+    "cb_key": "default_d6_i600_lr006_l2_15",
+    "xgb": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta": {
+      "type": "blend",
+      "w": 0.6
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.4
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.8806586634113824,
+    "PR_AUC": 0.7398486731209909,
+    "Precision": 0.6581920903954802,
+    "Recall": 0.758957654723127,
+    "F1_Score": 0.7049924357034796,
+    "Accuracy": 0.8973684210526316,
+    "Errors": 195,
+    "Threshold": 0.361,
+    "TN": 1472,
+    "FP": 121,
+    "FN": 74,
+    "TP": 233
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.9030542321999608,
+    "PR_AUC": 0.7662661032553392,
+    "Precision": 0.7228915662650602,
+    "Recall": 0.7792207792207793,
+    "F1_Score": 0.75,
+    "Accuracy": 0.9157894736842105,
+    "Errors": 40,
+    "Threshold": 0.361,
+    "TN": 375,
+    "FP": 23,
+    "FN": 17,
+    "TP": 60
+  },
+  "multiseed_mean": 40.0,
+  "multiseed_std": 0.0,
+  "timestamp": "2026-09-27 16:19:30"
+}

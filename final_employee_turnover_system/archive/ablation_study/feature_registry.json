@@ -1,0 +1,120 @@
+{
+  "registry_version": "1.0.0",
+  "description": "HR-Domain Feature Engineering Registry for Research Gap Extension (Talebi et al. 2025)",
+  "baseline_feature_count": 30,
+  "candidate_feature_count": 10,
+  "total_enriched_feature_count": 40,
+  "features": {
+    "ExperienceToAgeRatio": {
+      "formula": "TotalWorkingYears / max(Age - 17.0, 1.0)",
+      "domain_rationale": "Quantifies career acceleration and early workforce entry versus late start or career gaps.",
+      "input_columns": [
+        "TotalWorkingYears",
+        "Age"
+      ],
+      "zero_guard": "max(Age - 17.0, 1.0)",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Career Progression"
+    },
+    "PromotionCadence": {
+      "formula": "YearsSinceLastPromotion / (YearsAtCompany + 1.0)",
+      "domain_rationale": "Measures promotion latency proportional to organizational tenure.",
+      "input_columns": [
+        "YearsSinceLastPromotion",
+        "YearsAtCompany"
+      ],
+      "zero_guard": "YearsAtCompany + 1.0",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Career Progression"
+    },
+    "Overtime_JobSatisfaction_Interaction": {
+      "formula": "OverTime_binary * (5.0 - JobSatisfaction)",
+      "domain_rationale": "Compounding burnout risk: evaluates severe dissatisfaction under extended overtime load.",
+      "input_columns": [
+        "OverTime",
+        "JobSatisfaction"
+      ],
+      "zero_guard": "Direct scalar multiplication",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Burnout & Satisfaction"
+    },
+    "WorkLifeBalance_OverTime_Interaction": {
+      "formula": "OverTime_binary * (5.0 - WorkLifeBalance)",
+      "domain_rationale": "Captures personal life strain when mandatory overtime clashes with poor work-life balance.",
+      "input_columns": [
+        "OverTime",
+        "WorkLifeBalance"
+      ],
+      "zero_guard": "Direct scalar multiplication",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Burnout & Satisfaction"
+    },
+    "CompensationCareerParity": {
+      "formula": "MonthlyIncome / ((TotalWorkingYears + 1.0) * (JobLevel + 0.5))",
+      "domain_rationale": "Normalizes income against cumulative career investment and organizational hierarchy.",
+      "input_columns": [
+        "MonthlyIncome",
+        "TotalWorkingYears",
+        "JobLevel"
+      ],
+      "zero_guard": "(TotalWorkingYears + 1.0) * (JobLevel + 0.5)",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Compensation Equity"
+    },
+    "MeritHikeCadence": {
+      "formula": "PercentSalaryHike / (YearsSinceLastPromotion + 1.0)",
+      "domain_rationale": "Assesses whether merit salary increases offset promotional stagnation.",
+      "input_columns": [
+        "PercentSalaryHike",
+        "YearsSinceLastPromotion"
+      ],
+      "zero_guard": "YearsSinceLastPromotion + 1.0",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Compensation Equity"
+    },
+    "DualDissatisfactionRisk": {
+      "formula": "(5.0 - JobSatisfaction) * (5.0 - EnvironmentSatisfaction)",
+      "domain_rationale": "Quantifies compounding organizational dissatisfaction across work duties and physical culture.",
+      "input_columns": [
+        "JobSatisfaction",
+        "EnvironmentSatisfaction"
+      ],
+      "zero_guard": "Direct scalar multiplication",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Burnout & Satisfaction"
+    },
+    "CompensationPerTenureYear": {
+      "formula": "MonthlyIncome / (YearsAtCompany + 1.0)",
+      "domain_rationale": "Measures compensation accrual rate relative to tenure with current employer.",
+      "input_columns": [
+        "MonthlyIncome",
+        "YearsAtCompany"
+      ],
+      "zero_guard": "YearsAtCompany + 1.0",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Compensation Equity"
+    },
+    "ManagerTenureRatio": {
+      "formula": "YearsWithCurrManager / (YearsAtCompany + 1.0)",
+      "domain_rationale": "Supervisory stability index: measures continuity of reporting relationship relative to tenure.",
+      "input_columns": [
+        "YearsWithCurrManager",
+        "YearsAtCompany"
+      ],
+      "zero_guard": "YearsAtCompany + 1.0",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Supervisory Stability"
+    },
+    "StockStabilityIndex": {
+      "formula": "StockOptionLevel / (JobLevel + 0.5)",
+      "domain_rationale": "Equity retention anchor: evaluates stock ownership relative to job hierarchy level.",
+      "input_columns": [
+        "StockOptionLevel",
+        "JobLevel"
+      ],
+      "zero_guard": "JobLevel + 0.5",
+      "leakage_status": "PASSED (Zero target dependence)",
+      "category": "Retention & Compensation"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+feature,friendly_name,category,mean_abs_shap,relative_importance_pct
+MaritalStatus_Single,Marital Status: Single,Demographic,0.5698328238386456,100.0
+Age,Employee Age,Demographic,0.5279263652385283,92.65
+JobHoppingRate,Job Hopping Velocity (Companies Worked / Total Experience),Career Progression Ratios,0.45968802197631153,80.67
+YearsWithCurrManager,Years Under Current Manager,Managerial Dynamics,0.3769111326278987,66.14
+PromotionLagScore,Promotion Lag Score (Tenure Lag Beyond Last Promotion),Promotion Dynamics,0.3726622641745045,65.4
+PromotionPaceStrain,Promotion Pacing Burnout Strain,Promotion Dynamics,0.3494119924266229,61.32
+WorkLifeDeficit,Work-Life Strain Deficit Index,Satisfaction & Well-being,0.3268292359779917,57.36
+CompanyLoyaltyRatio,Company Loyalty Ratio (Tenure / Total Experience),Career Progression Ratios,0.2714969705542126,47.65
+SevereDissatisfactionFlag,Severe Dissatisfaction Flag (Satisfaction Rating = 1),Satisfaction & Well-being,0.2453007020895042,43.05
+TotalExpToAgeRatio,Career Maturity Ratio (Total Experience / Age),Career Progression Ratios,0.2279160600142409,40.0
+BusinessTravel_Travel_Frequently,Travel Requirement: Frequent Business Travel,Work Pattern & Travel,0.22183567444773042,38.93
+PriorCompanyExperience,Prior Companies Experience (Years Outside Company),Career Progression Ratios,0.20783315720735668,36.47
+TotalWorkingYears,Total Career Experience (Years),Career Experience & Tenure,0.1891871914870187,33.2
+EnvironmentSatisfaction,Workplace Environment Satisfaction Rating,Satisfaction & Well-being,0.18489106392298987,32.45
+JobSatisfaction,Job Satisfaction Rating,Satisfaction & Well-being,0.16468859459511412,28.9
+TrainingTimesLastYear,Training Sessions Attended Last Year,Professional Development,0.14850315255302837,26.06
+ManagerTenureMismatch,Manager Tenure Disparity Gap (|Tenure - Manager Tenure|),Managerial Dynamics,0.14340741157877354,25.17
+BusinessTravel_Non-Travel,Travel Requirement: Non-Travel Role,Work Pattern & Travel,0.13507603329429477,23.7
+WorkLifeBalance,Work-Life Balance Rating,Satisfaction & Well-being,0.13396624314565272,23.51
+PromotionStagnationRatio,Promotion Stagnation Ratio (Years Since Promotion / Tenure),Promotion Dynamics,0.08388772073551454,14.72
+Gender_Female,Gender: Female,Demographic,0.053007537202132186,9.3
+PromotionVelocity,Promotion Velocity Index (Promotion Frequency / Tenure),Promotion Dynamics,0.0470839638473554,8.26
+YearsSinceLastPromotion,Years Since Last Promotion,Career Experience & Tenure,0.04673019378773333,8.2
+EducationField_Life Sciences,Education Field: Life Sciences,Education & Background,0.040697931069340186,7.14
+Gender_Male,Gender: Male,Demographic,0.032662847148494004,5.73
+EducationField_Marketing,Education Field: Marketing,Education & Background,0.02768214481085007,4.86
+EducationField_Other,Education Field: Other,Education & Background,0.022543984823756767,3.96
+BusinessTravel_Travel_Rarely,Travel Requirement: Rare Business Travel,Work Pattern & Travel,0.015074338149865448,2.65
+EarlyCareerFlightRisk,"Early-Career Mobility Hazard (Age < 30, Tenure <= 2, Level <= 2)",Organizational Flight Hazard,0.01014803632818358,1.78
+JobRole_Human Resources,Job Role: Human Resources,Role & Department,0.007610569975856539,1.34

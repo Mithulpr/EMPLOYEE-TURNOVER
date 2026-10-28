@@ -1,0 +1,31 @@
+feature,friendly_name,mean_abs_shap
+MaritalStatus_Single,Marital Status: Single,0.5803120935505016
+Age,Employee Age,0.5281082273232702
+JobHoppingRate,Job Hopping Velocity (Companies / Experience),0.47583516623221206
+PromotionLagScore,Tenure-to-Promotion Lag Score,0.36404019357066814
+PromotionPaceStrain,Promotion Pacing Burnout Strain,0.35620664767707716
+YearsWithCurrManager,Years Under Current Manager,0.35064937614847125
+WorkLifeDeficit,Work-Life Strain Deficit Index,0.3384437652787065
+CompanyLoyaltyRatio,Company Loyalty Ratio (Tenure / Experience),0.2646702555715724
+SevereDissatisfactionFlag,Severe Dissatisfaction Flag,0.24488378011299844
+TotalExpToAgeRatio,Career Maturity Ratio (Experience / Age),0.2384828742319738
+BusinessTravel_Travel_Frequently,Frequent Business Travel Indicator,0.22728850894618616
+PriorCompanyExperience,Prior Companies Experience,0.2021257305076295
+TotalWorkingYears,Total Career Experience (Years),0.18873865461921158
+EnvironmentSatisfaction,Workplace Environment Satisfaction,0.1874641338505834
+JobSatisfaction,Job Satisfaction Level,0.17407150116160583
+TrainingTimesLastYear,Training Sessions Completed,0.15498432375286506
+ManagerTenureMismatch,Manager Tenure Disparity Gap,0.14863378722222614
+WorkLifeBalance,Work-Life Balance Rating,0.1363946518978367
+BusinessTravel_Non-Travel,Non-Traveling Role Indicator,0.12609133859835547
+PromotionStagnationRatio,Promotion Stagnation Ratio,0.08308330482086826
+Gender_Female,Gender: Female,0.0539353821561237
+YearsSinceLastPromotion,Years Since Last Promotion,0.050527547929227624
+PromotionVelocity,Promotion Velocity (Promotions / Tenure),0.046021026301368
+EducationField_Life Sciences,Education: Life Sciences,0.03922439253424586
+Gender_Male,Gender: Male,0.034549763668664746
+EducationField_Marketing,Education: Marketing,0.024601478368355117
+EducationField_Other,Education: Other,0.02334565285213099
+BusinessTravel_Travel_Rarely,Rare Business Travel Indicator,0.014605339526658125
+EarlyCareerFlightRisk,Early-Career Mobility Hazard,0.010341041092818692
+JobRole_Human Resources,Role: Human Resources,0.0084973840451227

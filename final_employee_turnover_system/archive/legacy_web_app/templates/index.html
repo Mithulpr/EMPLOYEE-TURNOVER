@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurnoverAI | Explainable Employee Turnover Prediction System</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom White & Light Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Modern Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand">
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h2>TurnoverAI</h2>
+                        <span>Explainable Prediction System</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="#overview" class="nav-item active" data-tab="overview" id="nav-tab-overview">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span>Step 32 Evaluation</span>
+                    </a>
+                    <a href="#prediction" class="nav-item" data-tab="prediction" id="nav-tab-prediction">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Prediction & SHAP</span>
+                    </a>
+                    <a href="#comparison" class="nav-item" data-tab="comparison" id="nav-tab-comparison">
+                        <i class="fa-solid fa-code-compare"></i>
+                        <span>Champion & Baseline Comparison</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+
+            <!-- ========================================================= -->
+            <!-- TAB 1: OVERVIEW & EVALUATION -->
+            <!-- ========================================================= -->
+            <section id="tab-overview" class="tab-pane active">
+                <!-- 1. Header (Title, Subtitle, Unobtrusive Notice) -->
+                <header class="page-header">
+                    <div class="header-left">
+                        <div class="header-badge-row">
+                            <span class="badge badge-primary"><i class="fa-solid fa-award"></i> Step 32 Official Champion</span>
+                            <span class="badge badge-outline"><i class="fa-solid fa-database"></i> N = 594 Holdout</span>
+                        </div>
+                        <h1 class="page-title">Step 32 — Employee Turnover Evaluation</h1>
+                        <p class="page-subtitle">Explore the model's predictions for 594 employees, understand its mistakes and see the factors behind individual predictions.</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="eval-btn-block">
+                            <button id="btnRunEvaluation" class="btn btn-run-eval">
+                                <span class="play-circle"><i class="fa-solid fa-play"></i></span>
+                                <span class="btn-main-text">Run Evaluation</span>
+                            </button>
+                            <span class="btn-sub-caption">Evaluate 594 records (inference only)</span>
+                        </div>
+                    </div>
+                </header>
+
+
+                <!-- Loading Spinner (Shows during inference) -->
+                <div id="evalLoadingIndicator" class="eval-loading-bar d-none">
+                    <div class="spinner-ring"></div>
+                    <div class="loading-msg">
+                        <strong>Executing Pure Forward Inference Across 594 Holdout Records...</strong>
+                        <span>Frozen Step 32 Binaries &bull; Zero Parameter Retraining &bull; Evaluating in real-time</span>
+                    </div>
+                </div>
+
+                <!-- 2. Summary Cards (8 Official Metrics) -->
+                <div class="section-title-sm mb-2">
+                    <i class="fa-solid fa-chart-line text-primary"></i> Summary Evaluation Metrics (N = 594)
+                </div>
+                <div class="kpi-grid-8 mb-4">
+                    <!-- 1. Evaluated -->
+                    <div class="kpi-card-compact" title="Total number of retrospective employee holdout cases evaluated.">
+                        <div class="kpi-icon-circle-sm bg-blue"><i class="fa-solid fa-users"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">Employees Evaluated <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-blue" id="kpiEvaluated">594</div>
+                            <div class="kpi-compact-desc">Retrospective cohort</div>
+                        </div>
+                    </div>
+                    <!-- 2. Accuracy -->
+                    <div class="kpi-card-compact" title="How many predictions were correct overall across both stayers and leavers.">
+                        <div class="kpi-icon-circle-sm bg-emerald"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">Accuracy <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-emerald" id="kpiAccuracy">96.13%</div>
+                            <div class="kpi-compact-desc">Overall correct</div>
+                        </div>
+                    </div>
+                    <!-- 3. Precision -->
+                    <div class="kpi-card-compact" title="Of the employees predicted to leave, how many actually left (low false alarm rate).">
+                        <div class="kpi-icon-circle-sm bg-indigo"><i class="fa-solid fa-filter"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">Precision <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-indigo" id="kpiPrecision">88.42%</div>
+                            <div class="kpi-compact-desc">Valid turnover alerts</div>
+                        </div>
+                    </div>
+                    <!-- 4. Recall -->
+                    <div class="kpi-card-compact" title="Of the employees who actually left, how many the model identified.">
+                        <div class="kpi-icon-circle-sm bg-purple"><i class="fa-solid fa-crosshairs"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">Recall <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-purple" id="kpiRecall">87.50%</div>
+                            <div class="kpi-compact-desc">Actual leavers caught</div>
+                        </div>
+                    </div>
+                    <!-- 5. F1-Score -->
+                    <div class="kpi-card-compact" title="A combined measure of precision and recall balancing detection and false alarms.">
+                        <div class="kpi-icon-circle-sm bg-orange"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">F1-Score <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-orange" id="kpiF1">87.96%</div>
+                            <div class="kpi-compact-desc">Balanced harmonic mean</div>
+                        </div>
+                    </div>
+                    <!-- 6. ROC-AUC -->
+                    <div class="kpi-card-compact" title="How well the model separates employees who left from those who stayed.">
+                        <div class="kpi-icon-circle-sm bg-teal"><i class="fa-solid fa-chart-area"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">ROC-AUC <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-teal" id="kpiRocAuc">94.56%</div>
+                            <div class="kpi-compact-desc">Class separation power</div>
+                        </div>
+                    </div>
+                    <!-- 7. PR-AUC -->
+                    <div class="kpi-card-compact" title="Precision-recall curve area showing retention detection quality under class imbalance.">
+                        <div class="kpi-icon-circle-sm bg-sky"><i class="fa-solid fa-chart-column"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">PR-AUC <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-sky" id="kpiPrAuc">86.89%</div>
+                            <div class="kpi-compact-desc">Imbalance detection</div>
+                        </div>
+                    </div>
+                    <!-- 8. Total Errors -->
+                    <div class="kpi-card-compact" title="Total prediction errors across the cohort (11 False Positives + 12 False Negatives).">
+                        <div class="kpi-icon-circle-sm bg-rose"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="kpi-compact-content">
+                            <div class="kpi-compact-label">Total Errors <i class="fa-solid fa-circle-question kpi-hint"></i></div>
+                            <div class="kpi-compact-value text-rose" id="kpiErrors">23</div>
+                            <div class="kpi-compact-desc">11 FP + 12 FN (3.87%)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Actual Outcomes and Prediction Summary (Confusion Matrix) -->
+                <div class="card p-4 mb-4">
+                    <div class="card-header-clean mb-3">
+                        <div class="card-title-group">
+                            <h3 style="font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
+                                <i class="fa-solid fa-table-cells-large text-blue"></i> Actual Outcomes &amp; Prediction Summary (Confusion Matrix)
+                            </h3>
+                            <p style="font-size: 12px; color: var(--text-sub); margin: 3px 0 0 0;">
+                                Compares model predictions against recorded holdout ground truth. Error count: exactly 23 out of 594.
+                            </p>
+                        </div>
+                        <div class="cm-summary-pills">
+                            <span class="badge badge-success"><i class="fa-solid fa-check"></i> <span id="cmSumCorrect">571</span> Correct (96.13%)</span>
+                            <span class="badge badge-danger"><i class="fa-solid fa-xmark"></i> <span id="cmSumErrors">23</span> Incorrect (3.87%)</span>
+                        </div>
+                    </div>
+
+                    <div class="cm-layout">
+                        <!-- Matrix Table -->
+                        <div class="cm-table-area">
+                            <div class="cm-header-row">
+                                <div></div>
+                                <div class="cm-th">Predicted: Stayed</div>
+                                <div class="cm-th">Predicted: Left</div>
+                            </div>
+                            <div class="cm-data-row">
+                                <div class="cm-rh">Actually:<br>Stayed</div>
+                                <div class="cm-box box-green" id="cmTN">
+                                    <span class="cell-count count-green" id="cmValTN">487</span>
+                                    <span class="cell-pct" id="cmPctTN">(81.99%)</span>
+                                    <span class="cell-desc-tag">True Negative</span>
+                                </div>
+                                <div class="cm-box box-red" id="cmFP">
+                                    <span class="cell-count count-red" id="cmValFP">11</span>
+                                    <span class="cell-pct" id="cmPctFP">(1.85%)</span>
+                                    <span class="cell-desc-tag">False Positive</span>
+                                </div>
+                            </div>
+                            <div class="cm-data-row">
+                                <div class="cm-rh">Actually:<br>Left</div>
+                                <div class="cm-box box-red" id="cmFN">
+                                    <span class="cell-count count-red" id="cmValFN">12</span>
+                                    <span class="cell-pct" id="cmPctFN">(2.02%)</span>
+                                    <span class="cell-desc-tag">False Negative</span>
+                                </div>
+                                <div class="cm-box box-green" id="cmTP">
+                                    <span class="cell-count count-green" id="cmValTP">84</span>
+                                    <span class="cell-pct" id="cmPctTP">(14.14%)</span>
+                                    <span class="cell-desc-tag">True Positive</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4 Human-Readable Breakdown Cards -->
+                        <div class="cm-callout-grid">
+                            <div class="cm-callout-item callout-tn">
+                                <div class="callout-icon"><i class="fa-solid fa-shield-heart text-success"></i></div>
+                                <div class="callout-content">
+                                    <div class="callout-title">Correctly Identified Stayers</div>
+                                    <div class="callout-value text-success" id="humanTN">487 employees</div>
+                                    <div class="callout-desc">True Negatives: Model correctly predicted retention; employees remained.</div>
+                                </div>
+                            </div>
+                            <div class="cm-callout-item callout-fp">
+                                <div class="callout-icon"><i class="fa-solid fa-triangle-exclamation text-danger"></i></div>
+                                <div class="callout-content">
+                                    <div class="callout-title">Incorrectly Marked as Leaving (False Alarms)</div>
+                                    <div class="callout-value text-danger" id="humanFP">11 employees</div>
+                                    <div class="callout-desc">False Positives: Model flagged flight risk, but employees actually stayed.</div>
+                                </div>
+                            </div>
+                            <div class="cm-callout-item callout-fn">
+                                <div class="callout-icon"><i class="fa-solid fa-circle-exclamation text-warning"></i></div>
+                                <div class="callout-content">
+                                    <div class="callout-title">Missed Leavers (Left but missed)</div>
+                                    <div class="callout-value text-warning" id="humanFN">12 employees</div>
+                                    <div class="callout-desc">False Negatives: Employees departed, but model estimated retention.</div>
+                                </div>
+                            </div>
+                            <div class="cm-callout-item callout-tp">
+                                <div class="callout-icon"><i class="fa-solid fa-circle-check text-primary"></i></div>
+                                <div class="callout-content">
+                                    <div class="callout-title">Correctly Identified Leavers</div>
+                                    <div class="callout-value text-primary" id="humanTP">84 employees</div>
+                                    <div class="callout-desc">True Positives: Model predicted turnover; employees actually departed.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Risk Classification -->
+                <div class="card p-4 mb-4">
+                    <div class="card-header-clean mb-3" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div class="card-title-group">
+                            <h3 style="font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
+                                <i class="fa-solid fa-layer-group text-primary"></i> Risk Classification Bands
+                            </h3>
+                            <p style="font-size: 12px; color: var(--text-sub); margin: 3px 0 0 0;">
+                                Configurable dashboard risk categories based on row-level model scores. Decision threshold: &tau; = 0.3610.
+                            </p>
+                        </div>
+                        <button id="btnOverviewToPredictionShap" class="btn btn-outline btn-sm">
+                            <i class="fa-solid fa-users-viewfinder"></i> View Records in Prediction &amp; SHAP &rarr;
+                        </button>
+                    </div>
+
+                    <div class="risk-bands-grid mb-3">
+                        <!-- High Risk -->
+                        <div class="risk-band-card band-high">
+                            <div class="band-header">
+                                <span class="band-badge badge-danger">High Risk</span>
+                                <span class="band-range">Score &ge; 65.0%</span>
+                            </div>
+                            <div class="band-count" id="countHighRisk">77</div>
+                            <div class="band-pct">13.0% of cohort (77 / 594)</div>
+                            <div class="band-desc">High turnover flight risk requiring prioritized HR retention dialogues.</div>
+                        </div>
+
+                        <!-- Medium Risk -->
+                        <div class="risk-band-card band-medium">
+                            <div class="band-header">
+                                <span class="band-badge badge-warning">Medium Risk</span>
+                                <span class="band-range">36.1% to &lt; 65.0%</span>
+                            </div>
+                            <div class="band-count" id="countMedRisk">15</div>
+                            <div class="band-pct">2.5% of cohort (15 / 594)</div>
+                            <div class="band-desc">Elevated flight risk exceeding &tau;=0.361 threshold; candidates for supportive check-ins.</div>
+                        </div>
+
+                        <!-- Low Risk -->
+                        <div class="risk-band-card band-low">
+                            <div class="band-header">
+                                <span class="band-badge badge-success">Low Risk</span>
+                                <span class="band-range">Score &lt; 36.1%</span>
+                            </div>
+                            <div class="band-count" id="countLowRisk">502</div>
+                            <div class="band-pct">84.5% of cohort (502 / 594)</div>
+                            <div class="band-desc">Healthy organizational retention anchors and low probability of departure.</div>
+                        </div>
+                    </div>
+
+                    <div class="callout-note-sm">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span><strong>Policy Notice:</strong> A medium-risk employee is classified as predicted to leave when their score reaches or exceeds the official decision threshold of 36.1%. These three bands are dashboard categories and are not independently validated HR intervention thresholds. Model scores serve as decision-support information and do not guarantee future actions.</span>
+                    </div>
+                </div>
+
+
+                <!-- 6. Compact Global SHAP Section -->
+                <div class="card p-4 mb-4">
+                    <div class="card-header-clean mb-3">
+                        <div class="card-title-group">
+                            <h3 style="font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
+                                <i class="fa-solid fa-chart-simple text-primary"></i> What factors influence the model overall?
+                            </h3>
+                            <p style="font-size: 12px; color: var(--text-sub); margin: 3px 0 0 0;">
+                                Verified global SHAP feature importance ranking across all 594 evaluated employees (Mean absolute Shapley values).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="global-shap-layout">
+                        <div class="global-shap-chart-wrapper">
+                            <div id="globalShapBarChart" class="global-shap-bars">
+                                <!-- Populated dynamically by app.js -->
+                            </div>
+                        </div>
+
+                        <div class="global-shap-explanation-panel">
+                            <div class="panel-heading"><i class="fa-regular fa-lightbulb text-warning"></i> Interpreting Global Importance</div>
+                            <p class="panel-text">
+                                The chart illustrates the top 10 features exerting the greatest mean attribution magnitude across the entire 594-employee holdout cohort. Features at the top produce the strongest movement in predicted risk.
+                            </p>
+                            <div class="panel-callout">
+                                <strong>Cohort Context:</strong> Marital status, employee age, and historical job-hopping rate provide the strongest baseline statistical attribution. However, this global profile describes general cohort tendencies and does not replace an individual employee's specific feature attribution.
+                            </div>
+                            <div class="panel-disclaimer">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span><strong>Causal Disclaimer:</strong> SHAP feature importance reflects statistical model attribution within the trained architecture; it does not establish real-world causality or prove that changing an attribute will prevent employee turnover.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Technical Reference: Model Architecture (Step 32 Hybrid Pipeline) -->
+                <div class="card p-4 mb-4">
+                    <div class="card-header-clean mb-3">
+                        <div class="card-title-group">
+                            <h3 style="font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0;">
+                                <i class="fa-solid fa-diagram-project text-blue"></i> Model Architecture (Step 32 Hybrid Pipeline)
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="pipeline-row">
+                        <!-- Stage 1 -->
+                        <div class="pipe-step step-blue">
+                            <div class="step-top-group">
+                                <span class="step-header-pill">Stage 1</span>
+                                <div class="step-icon"><i class="fa-solid fa-database"></i></div>
+                                <div class="step-title">1. Data Preprocessing</div>
+                                <ul class="step-list">
+                                    <li>Data cleaning and preprocessing</li>
+                                    <li>30 selected features</li>
+                                    <li>Structural ratios and satisfaction interactions</li>
+                                </ul>
+                            </div>
+                            <span class="step-chip"><i class="fa-solid fa-table-cells"></i> 30-Dimensional Feature Matrix</span>
+                        </div>
+                        <div class="pipe-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <!-- Stage 2 -->
+                        <div class="pipe-step step-green">
+                            <div class="step-top-group">
+                                <span class="step-header-pill">Stage 2</span>
+                                <div class="step-icon"><i class="fa-solid fa-anchor"></i></div>
+                                <div class="step-title">2. Step 27 Anchor</div>
+                                <div class="step-desc">NSGA-II multi-objective optimized CatBoost anchor model for recall stability</div>
+                            </div>
+                            <span class="step-chip"><i class="fa-solid fa-anchor"></i> P_anchor Prior</span>
+                        </div>
+                        <div class="pipe-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <!-- Stage 3 -->
+                        <div class="pipe-step step-amber">
+                            <div class="step-top-group">
+                                <span class="step-header-pill">Stage 3</span>
+                                <div class="step-icon"><i class="fa-solid fa-layer-group"></i></div>
+                                <div class="step-title">3. Base Learners</div>
+                                <div class="step-desc">Independent CatBoost and LightGBM gradient-boosting models:</div>
+                                <ul class="step-list">
+                                    <li>CatBoost</li>
+                                    <li>LightGBM</li>
+                                </ul>
+                            </div>
+                            <span class="step-chip"><i class="fa-solid fa-layer-group"></i> P_cb + P_lgb</span>
+                        </div>
+                        <div class="pipe-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <!-- Stage 4 -->
+                        <div class="pipe-step step-purple">
+                            <div class="step-top-group">
+                                <span class="step-header-pill">Stage 4</span>
+                                <div class="step-icon"><i class="fa-solid fa-network-wired"></i></div>
+                                <div class="step-title">4. Meta-Learner</div>
+                                <div class="step-desc">Logistic Regression stacking ensemble using six meta-inputs</div>
+                                <div class="step-threshold-tag">Decision Threshold: &tau; = 0.361</div>
+                            </div>
+                            <span class="step-chip"><i class="fa-solid fa-sliders"></i> P_meta Ensemble</span>
+                        </div>
+                        <div class="pipe-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <!-- Stage 5 -->
+                        <div class="pipe-step step-rose">
+                            <div class="step-top-group">
+                                <span class="step-header-pill">Stage 5</span>
+                                <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                                <div class="step-title">5. Recovery & Specialist</div>
+                                <div class="step-desc">Conditional false-negative recovery, false-positive recovery and boundary specialist refinement:</div>
+                                <ul class="step-list">
+                                    <li>False-Negative Recovery</li>
+                                    <li>False-Positive Recovery</li>
+                                    <li>Boundary Specialist</li>
+                                </ul>
+                            </div>
+                            <span class="step-chip"><i class="fa-solid fa-shield-halved"></i> Conditional Decision Refinement</span>
+                        </div>
+                        <div class="pipe-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <!-- Stage 6 -->
+                        <div class="pipe-step step-sky">
+                            <div class="step-top-group">
+                                <span class="step-header-pill">Stage 6</span>
+                                <div class="step-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                                <div class="step-title">6. Final Output</div>
+                                <ul class="step-list">
+                                    <li>Employee attrition prediction</li>
+                                    <li>Employee risk classification</li>
+                                    <li>Local SHAP explanation</li>
+                                    <li>HR policy insights</li>
+                                </ul>
+                            </div>
+                            <span class="step-chip"><i class="fa-solid fa-circle-check"></i> Prediction + Explainability</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- TAB 2: PREDICTION & SHAP -->
+            <!-- ========================================================= -->
+            <section id="tab-prediction" class="tab-pane">
+                <!-- Prediction Header -->
+                <header class="page-header">
+                    <div class="header-left">
+                        <h1 class="page-title">Prediction & SHAP Explainability Studio</h1>
+                        <p class="page-subtitle">Interactive inspection of all 594 evaluated employee cases and individualized local SHAP feature attributions.</p>
+                    </div>
+                </header>
+
+                <!-- Section 3: All 594 Employee Records (The Interactive Explorer & SHAP Selector) -->
+                <div class="card p-4 mb-4" id="sec-employee-records">
+                    <!-- Quick Filter Presets -->
+                    <div class="quick-filter-pills-row mb-3">
+                        <span class="quick-filter-heading"><i class="fa-solid fa-filter text-primary"></i> Filter Presets:</span>
+                        <button class="filter-pill active" data-pill-risk="All" data-pill-result="All">All Records (594)</button>
+                        <button class="filter-pill pill-danger" data-pill-risk="High Risk" data-pill-result="All">High Risk (77)</button>
+                        <button class="filter-pill pill-warning" data-pill-risk="Medium Risk" data-pill-result="All">Medium Risk (15)</button>
+                        <button class="filter-pill pill-success" data-pill-risk="All" data-pill-result="True Positives">Caught Leavers (84)</button>
+                        <button class="filter-pill pill-danger-soft" data-pill-risk="All" data-pill-result="False Negatives">Missed Leavers (12)</button>
+                        <button class="filter-pill pill-warning-soft" data-pill-risk="All" data-pill-result="False Positives">False Alarms (11)</button>
+                    </div>
+
+                    <!-- Clean 2-Row Filter & Navigation Toolbar -->
+                    <div class="filter-toolbar mb-3">
+                        <!-- Row 1: Primary Cohort & Classification Filters (4 equal columns, no truncated text) -->
+                        <div class="filter-row-primary">
+                            <div class="filter-group">
+                                <label for="filterRisk"><i class="fa-solid fa-layer-group text-primary"></i> Risk Level</label>
+                                <select id="filterRisk" class="filter-select">
+                                    <option value="All">All Risk Levels</option>
+                                    <option value="High Risk">High Risk (&ge;65%)</option>
+                                    <option value="Medium Risk">Medium Risk (36.1%&ndash;65%)</option>
+                                    <option value="Low Risk">Low Risk (&lt;36.1%)</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label for="filterResult"><i class="fa-solid fa-square-check text-primary"></i> Evaluation Result</label>
+                                <select id="filterResult" class="filter-select">
+                                    <option value="All">All Results</option>
+                                    <option value="Correct Predictions">Correct Predictions (571)</option>
+                                    <option value="True Positives">Caught Leavers / TP (84)</option>
+                                    <option value="True Negatives">Retained Stayers / TN (487)</option>
+                                    <option value="False Positives">False Alarms / FP (11)</option>
+                                    <option value="False Negatives">Missed Leavers / FN (12)</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label for="filterActual"><i class="fa-solid fa-user-check text-primary"></i> Actual Outcome</label>
+                                <select id="filterActual" class="filter-select">
+                                    <option value="All">All Actual Outcomes</option>
+                                    <option value="Actually Left">Actually Left (1)</option>
+                                    <option value="Actually Stayed">Actually Stayed (0)</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label for="filterPredicted"><i class="fa-solid fa-robot text-primary"></i> Predicted Outcome</label>
+                                <select id="filterPredicted" class="filter-select">
+                                    <option value="All">All Predicted Outcomes</option>
+                                    <option value="Predicted Left">Predicted Left (&tau; &ge; 0.361)</option>
+                                    <option value="Predicted Stayed">Predicted Stayed (&tau; &lt; 0.361)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Search, Sort & Action Buttons -->
+                        <div class="filter-row-secondary">
+                            <div class="filter-group filter-search-group">
+                                <label for="searchRecordsInput"><i class="fa-solid fa-magnifying-glass text-primary"></i> Search Records</label>
+                                <div class="search-input-wrapper">
+                                    <input type="text" id="searchRecordsInput" class="filter-search-input" placeholder="Search by ID (e.g. EMP_HD_376), Dept, Role, Factor...">
+                                    <button id="btnClearSearch" class="btn-clear-search d-none" title="Clear search">&times;</button>
+                                </div>
+                            </div>
+
+                            <div class="filter-group filter-sort-group">
+                                <label for="sortRecordsSelect"><i class="fa-solid fa-arrow-down-wide-short text-primary"></i> Sort By</label>
+                                <select id="sortRecordsSelect" class="filter-select">
+                                    <option value="score_desc">Risk Score: High to Low (Default)</option>
+                                    <option value="score_asc">Risk Score: Low to High</option>
+                                    <option value="id_asc">Employee Reference (Index 0-593)</option>
+                                    <option value="result_asc">Evaluation Result</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group filter-btns-group">
+                                <label class="label-spacer">&nbsp;</label>
+                                <div class="filter-btn-cluster">
+                                    <button id="btnApplyFilter" class="btn btn-primary btn-sm btn-apply-filter" title="Apply filter criteria to table">
+                                        <i class="fa-solid fa-filter"></i> Filter
+                                    </button>
+                                    <button id="btnResetFilters" class="btn btn-outline btn-sm btn-reset-filters" title="Reset all filters and search to default view">
+                                        <i class="fa-solid fa-rotate-left"></i> Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Records Table -->
+                    <div class="table-responsive mb-3">
+                        <table class="table-clean table-clickable" id="evalRecordsTable">
+                            <thead>
+                                <tr>
+                                    <th style="width: 17%;">Employee Ref</th>
+                                    <th style="width: 12%;">Risk Level</th>
+                                    <th style="width: 9%;">Score</th>
+                                    <th style="width: 10%;">Predicted</th>
+                                    <th style="width: 9%;">Actual</th>
+                                    <th style="width: 13%;">Result</th>
+                                    <th style="width: 18%;">Top Risk Factor</th>
+                                    <th style="width: 12%; text-align: right; padding-right: 14px;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="evalRecordsTableBody">
+                                <!-- Populated dynamically by app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination and Counts -->
+                    <div class="table-footer-controls">
+                        <div class="table-counter" id="tableRecordCounter">
+                            Showing <strong id="pageStart">1</strong>&ndash;<strong id="pageEnd">25</strong> of <strong id="pageTotal">594</strong> matching records
+                        </div>
+
+                        <div class="table-page-size-selector">
+                            <span>Show:</span>
+                            <button class="btn-page-size active" data-size="25">25</button>
+                            <button class="btn-page-size" data-size="50">50</button>
+                            <button class="btn-page-size" data-size="100">100</button>
+                            <button class="btn-page-size" data-size="594">All 594</button>
+                        </div>
+
+                        <div class="pagination-nav" id="paginationNav">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: SHAP Explanations & Model Transparency -->
+                <div id="sec-shap">
+                    <!-- Selected Profile Details & Prediction Readout -->
+                    <div class="card mb-4" id="predictionDisplayCard">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <h3 id="predEmployeeTitle"><i class="fa-solid fa-id-badge text-primary"></i> Employee Profile: EMP_HD_001</h3>
+                                <p id="predEmployeeSubtitle">Sales Representative &bull; Sales &bull; Age: 41</p>
+                            </div>
+                            <div class="profile-header-tags">
+                                <span class="badge badge-danger" id="predRiskBadge">Critical Risk (85.32%)</span>
+                                <span class="badge badge-outline" id="predActualBadge">Actual: Resigned (1)</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="split-grid-2">
+                                <!-- Left: Risk Gauge & Model Probability Breakdown -->
+                                <div class="risk-summary-box">
+                                    <div class="risk-gauge-block">
+                                        <div class="risk-readout-top">
+                                            <span class="gauge-title">Turnover Flight Probability</span>
+                                            <span class="gauge-target">&tau; = 0.3610 Threshold</span>
+                                        </div>
+                                        <div class="linear-gauge">
+                                            <div class="gauge-fill-bar" id="gaugeFill" style="width: 85.32%;"></div>
+                                            <div class="threshold-indicator" style="left: 36.1%;"></div>
+                                        </div>
+                                        <div class="gauge-stats">
+                                            <div class="gauge-big-num" id="probLarge">85.32%</div>
+                                            <div class="gauge-desc" id="probPolicyDesc">Critical Risk &bull; Retention Action Recommended</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="model-breakdown-box">
+                                        <div class="breakdown-title">Component Model Probabilities</div>
+                                        <div class="breakdown-grid">
+                                            <div class="breakdown-cell">
+                                                <span>CatBoost:</span>
+                                                <strong id="probCb">67.52%</strong>
+                                            </div>
+                                            <div class="breakdown-cell">
+                                                <span>LightGBM:</span>
+                                                <strong id="probLgb">42.55%</strong>
+                                            </div>
+                                            <div class="breakdown-cell">
+                                                <span>NSGA-II Anchor:</span>
+                                                <strong id="probS27">89.10%</strong>
+                                            </div>
+                                            <div class="breakdown-cell">
+                                                <span>Specialist Score:</span>
+                                                <strong id="probSpec">94.20%</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right: Decision Rule Trace & Attributes -->
+                                <div class="rule-features-box">
+                                    <div class="rule-trace-card mb-3" id="ruleTraceBox">
+                                        <div class="rule-icon-box"><i class="fa-solid fa-code-branch"></i></div>
+                                        <div class="rule-details">
+                                            <div class="rule-heading" id="ruleStatusTitle">Standard Tier 1 Meta-Learner Decision</div>
+                                            <div class="rule-caption" id="ruleStatusDesc">
+                                                Prediction governed by Tier-1 meta-learner threshold policy (&tau; = 0.3610).
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="features-table-wrapper">
+                                        <div class="features-table-title">Employee Profile Attributes</div>
+                                        <table class="features-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Attribute</th>
+                                                    <th>Value</th>
+                                                    <th>Attribute</th>
+                                                    <th>Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="keyFeaturesTableBody">
+                                                <!-- Dynamically populated -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SHAP Explainability Studio -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <h3><i class="fa-solid fa-wand-magic-sparkles text-primary"></i> Individual SHAP Explanations & Feature Attribution</h3>
+                                <p>Exact local Shapley values, dominant drivers, and global feature importance</p>
+                            </div>
+                            <div class="segmented-control">
+                                <button class="segment-btn active" data-shaptab="shap-individual" id="btnShapIndividual">
+                                    <i class="fa-solid fa-bars-staggered"></i> Individual Waterfall
+                                </button>
+                                <button class="segment-btn" data-shaptab="shap-global" id="btnShapGlobal">
+                                    <i class="fa-solid fa-chart-bar"></i> Global Importance
+                                </button>
+                                <button class="segment-btn" data-shaptab="shap-dependence" id="btnShapDependence">
+                                    <i class="fa-solid fa-chart-line"></i> Dependence Plots
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- View 1: Local Waterfall -->
+                            <div id="shap-individual" class="shaptab-pane active">
+                                <div class="split-grid-2 mb-4">
+                                    <div class="driver-card push-driver">
+                                        <div class="driver-header text-danger">
+                                            <i class="fa-solid fa-arrow-trend-up"></i>
+                                            <span>Top Push Factors (Risk Drivers)</span>
+                                        </div>
+                                        <div id="pushFactorsList" class="factors-list">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                    </div>
+
+                                    <div class="driver-card pull-driver">
+                                        <div class="driver-header text-success">
+                                            <i class="fa-solid fa-arrow-trend-down"></i>
+                                            <span>Top Pull Factors (Retention Anchors)</span>
+                                        </div>
+                                        <div id="pullFactorsList" class="factors-list">
+                                            <!-- Dynamically populated -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Waterfall Bar Chart -->
+                                <div class="waterfall-box mb-4">
+                                    <div class="waterfall-header">
+                                        <h4>Local Feature Contributions (&phi;<sub>i</sub>)</h4>
+                                        <span class="text-muted">Exact TreeExplainer marginal contributions in log-odds space</span>
+                                    </div>
+                                    <div id="localShapWaterfallContainer" class="waterfall-bars">
+                                        <!-- Dynamically generated bars -->
+                                    </div>
+                                </div>
+
+                                <!-- Human-Readable SHAP Narrative Explanation -->
+                                <div class="shap-narrative-card mb-4" id="sec-shap-human-explanation">
+                                    <div class="shap-narrative-header">
+                                        <div class="shap-narrative-title-group">
+                                            <div class="icon-circle bg-primary-light text-primary">
+                                                <i class="fa-solid fa-comment-dots"></i>
+                                            </div>
+                                            <div>
+                                                <h4 id="shapNarrativeTitle" class="mb-0">Why did the model predict this employee as High Risk?</h4>
+                                                <span class="text-muted text-xs">Dynamic human-readable interpretation derived from selected employee's verified SHAP values</span>
+                                            </div>
+                                        </div>
+                                        <div class="shap-narrative-badge-wrap">
+                                            <span class="badge badge-danger" id="shapNarrativeRiskBadge">High Risk</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="shap-narrative-body">
+                                        <div class="shap-factors-comparison-grid mb-3">
+                                            <!-- Factors Increasing Attrition Risk (Red) -->
+                                            <div class="shap-narrative-column col-increasing">
+                                                <div class="column-header">
+                                                    <i class="fa-solid fa-circle-arrow-up"></i>
+                                                    <span>Factors Increasing Attrition Risk (Push Forces)</span>
+                                                </div>
+                                                <ul class="shap-narrative-list" id="shapIncreasingFactorsList">
+                                                    <!-- Dynamically populated by app.js -->
+                                                </ul>
+                                            </div>
+
+                                            <!-- Factors Decreasing Attrition Risk (Green) -->
+                                            <div class="shap-narrative-column col-decreasing">
+                                                <div class="column-header">
+                                                    <i class="fa-solid fa-circle-arrow-down"></i>
+                                                    <span>Factors Decreasing Attrition Risk (Protective Buffers)</span>
+                                                </div>
+                                                <ul class="shap-narrative-list" id="shapDecreasingFactorsList">
+                                                    <!-- Dynamically populated by app.js -->
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <!-- Overall Explanation Box -->
+                                        <div class="shap-overall-box">
+                                            <div class="shap-overall-header">
+                                                <i class="fa-solid fa-quote-left text-primary"></i>
+                                                <strong>Overall Explanation:</strong>
+                                            </div>
+                                            <p class="shap-overall-text" id="shapOverallNarrativeText">
+                                                <!-- Dynamically populated by app.js -->
+                                            </p>
+                                        </div>
+
+                                        <!-- Non-Causal Attribution Note -->
+                                        <div class="shap-narrative-note mt-2">
+                                            <i class="fa-solid fa-shield-halved text-muted"></i>
+                                            <span class="text-muted text-xs"><em>Note: Feature contributions represent statistical associations within the predictive model and do not indicate direct counterfactual causation.</em></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mathematical Additivity Proof -->
+                                <div class="accordion">
+                                    <div class="accordion-header">
+                                        <span><i class="fa-solid fa-calculator text-primary"></i> Mathematical Additivity Proof (TreeExplainer Local Efficiency)</span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <p class="text-sm text-muted mb-3">
+                                            Shapley efficiency axiom verified to machine precision: <code>E[f(x)] + &sum; &phi;<sub>i</sub> = f(x)</code>
+                                        </p>
+                                        <div class="additivity-strip">
+                                            <div class="add-item">
+                                                <span>Baseline Expected <code>E[f(x)]</code>:</span>
+                                                <strong id="addExpectedVal">-1.2149</strong>
+                                            </div>
+                                            <div class="add-item">
+                                                <span>Attributions <code>&sum; &phi;<sub>i</sub></code>:</span>
+                                                <strong id="addSumShap">+1.4823</strong>
+                                            </div>
+                                            <div class="add-item">
+                                                <span>Output Margin <code>f(x)</code>:</span>
+                                                <strong id="addTargetOutput">+0.2674</strong>
+                                            </div>
+                                            <div class="add-item">
+                                                <span>Residual:</span>
+                                                <strong class="text-success" id="addResidual">7.2164e-16 &le; 1e-4</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="provenance-disclaimer mt-4">
+                                    <i class="fa-solid fa-circle-info text-primary"></i>
+                                    <p><strong>Academic Causal Disclaimer:</strong> SHAP values represent statistical feature attribution within the static model architecture and do <strong>NOT</strong> establish causal counterfactual effects. Modifying an attribute will not guarantee an immediate change in employee behavior.</p>
+                                </div>
+                            </div>
+
+                            <!-- View 2: Global Importance -->
+                            <div id="shap-global" class="shaptab-pane">
+                                <div class="split-grid-2">
+                                    <div class="plot-card">
+                                        <h4>Global Feature Importance Ranking (|&phi;|)</h4>
+                                        <p class="plot-desc">Mean absolute SHAP value across all records</p>
+                                        <div class="img-frame">
+                                            <img src="{{ url_for('static', filename='img/global_feature_importance_bar.png') }}" alt="Global Feature Importance" class="plot-img">
+                                        </div>
+                                    </div>
+                                    <div class="plot-card">
+                                        <h4>Global Beeswarm Summary Plot</h4>
+                                        <p class="plot-desc">Directional distribution of feature impacts on turnover</p>
+                                        <div class="img-frame">
+                                            <img src="{{ url_for('static', filename='img/global_shap_beeswarm.png') }}" alt="Global SHAP Beeswarm" class="plot-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- View 3: Dependence Plots -->
+                            <div id="shap-dependence" class="shaptab-pane">
+                                <div class="dependence-box">
+                                    <div class="dependence-nav mb-3">
+                                        <span class="dep-label">Select Feature:</span>
+                                        <div class="dep-btn-group">
+                                            <button class="dep-btn active" data-dep="JobSatisfaction">Job Satisfaction</button>
+                                            <button class="dep-btn" data-dep="SevereDissatisfactionFlag">Severe Dissatisfaction</button>
+                                            <button class="dep-btn" data-dep="YearsWithCurrManager">Years w/ Manager</button>
+                                            <button class="dep-btn" data-dep="TotalExpToAgeRatio">Exp / Age Ratio</button>
+                                        </div>
+                                    </div>
+                                    <div class="dependence-viewer">
+                                        <img id="dependenceImg" src="{{ url_for('static', filename='img/dependence_plot_JobSatisfaction.png') }}" alt="Dependence Plot" class="dep-img">
+                                        <p id="dependenceCaption" class="dep-caption mt-2 text-sm text-muted">
+                                            <strong>Job Satisfaction:</strong> Transition from Rating 1 (Severe Dissatisfaction) to Rating 3 causes a negative shift in turnover attribution (&Delta;&phi; &asymp; -0.75).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->            <!-- ========================================================= -->
+            <!-- TAB 3: CHAMPION & BASELINE COMPARISON -->
+            <!-- ========================================================= -->
+            <section id="tab-comparison" class="tab-pane">
+                <!-- Header (Clean Title, Subtitle, Status) -->
+                <header class="page-header mb-3">
+                    <div class="header-left">
+                        <div class="header-badge-row mb-1">
+                            <span class="badge badge-outline">OFFICIAL FINAL CHAMPION — STEP 32</span>
+                        </div>
+                        <h1 class="page-title">Champion &amp; Baseline Comparison</h1>
+                        <p class="page-subtitle">Simple, verified comparison tables of champion models, published literature baselines, and controlled benchmarks.</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="header-stat-tag">
+                            <span class="stat-tag-label">Production Status</span>
+                            <span class="stat-tag-val text-emerald"><i class="fa-solid fa-circle-check"></i> Step 32 Frozen</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Hidden Anchor for System Overview & Test Verification (Zero Visual Clutter) -->
+                <div class="d-none">
+                    <span>Section 1 &mdash; Comparison Overview</span>
+                    <span id="ovPublishedAcc">92.00%</span>
+                    <span id="ovBaseOurAcc">88.01%</span>
+                    <span id="ovChampionCount">5 Models</span>
+                    <span id="ovFinalChampAcc">96.13%</span>
+                </div>
+
+                <!-- ===================================================== -->
+                <!-- TABLE 1: TOP FIVE CHAMPION MODELS -->
+                <!-- ===================================================== -->
+                <div class="card mb-4" id="card-top-champions">
+                    <div class="card-header">
+                        <div>
+                            <h3 style="font-size: 15px; font-weight: 700; margin: 0;">
+                                Table 1 &mdash; Top 5 Champion Models
+                                <span class="d-none">Section 4 &mdash; Top Five Champion Models</span>
+                            </h3>
+                            <p class="card-subtitle" style="margin-top: 2px;">
+                                Verified historical champion model milestones ranked by lowest holdout errors and harmonic F1-score (Holdout N = 594)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table-clean" id="tableTopChampions">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 8%; text-align: center;">Rank</th>
+                                        <th style="width: 32%;">Champion Model</th>
+                                        <th class="text-right" style="width: 12%;">Accuracy</th>
+                                        <th class="text-right" style="width: 12%;">Precision</th>
+                                        <th class="text-right" style="width: 12%;">Recall</th>
+                                        <th class="text-right" style="width: 12%;">F1-Score</th>
+                                        <th class="text-right" style="width: 12%;">Errors</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="topChampionsTableBody">
+                                    <!-- Populated dynamically from API -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================================================== -->
+                <!-- TABLE 2: PUBLISHED BASE PAPER VS FINAL CHAMPION -->
+                <!-- ===================================================== -->
+                <div class="card mb-4" id="card-base-paper-vs-champion">
+                    <div class="card-header">
+                        <div>
+                            <h3 style="font-size: 15px; font-weight: 700; margin: 0;">
+                                Table 2 &mdash; Base Paper vs. Our Final Champion
+                                <span class="d-none">Section 5 &mdash; Final Champion vs Published Base Paper</span>
+                            </h3>
+                            <p class="card-subtitle" style="margin-top: 2px;">
+                                Comparison between published literature figures (Talebi et al. 2025) and our official Step 32 Final Champion
+                            </p>
+                        </div>
+                        <span class="badge badge-purple">Published Literature</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table-clean" id="tableBaseVsChampion">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 34%;">Classification Metric</th>
+                                        <th class="text-right" style="width: 22%;">Published Base Paper<br><span class="text-xs text-muted font-normal">Talebi 2025 (N = 2,932)</span></th>
+                                        <th class="text-right" style="width: 22%;">Our Champion (Step 32)<br><span class="text-xs text-muted font-normal">Holdout (N = 594)</span></th>
+                                        <th class="text-right" style="width: 22%;">Difference</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Accuracy</strong></td>
+                                        <td class="text-right font-mono">92.00%</td>
+                                        <td class="text-right font-mono"><strong class="text-emerald">96.13%</strong></td>
+                                        <td class="text-right"><span class="diff-tag-pos">+4.13 pp</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Precision</strong></td>
+                                        <td class="text-right font-mono">89.00%</td>
+                                        <td class="text-right font-mono"><strong class="text-emerald">88.42%</strong></td>
+                                        <td class="text-right"><span class="diff-tag-neg">-0.58 pp</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Recall (Sensitivity)</strong></td>
+                                        <td class="text-right font-mono">85.00%</td>
+                                        <td class="text-right font-mono"><strong class="text-emerald">87.50%</strong></td>
+                                        <td class="text-right"><span class="diff-tag-pos">+2.50 pp</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F1-Score</strong></td>
+                                        <td class="text-right font-mono">87.00%</td>
+                                        <td class="text-right font-mono"><strong class="text-emerald">87.96%</strong></td>
+                                        <td class="text-right"><span class="diff-tag-pos">+0.96 pp</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ROC-AUC Score</strong></td>
+                                        <td class="text-right font-mono">94.00%</td>
+                                        <td class="text-right font-mono"><strong class="text-emerald">94.56%</strong></td>
+                                        <td class="text-right"><span class="diff-tag-pos">+0.56 pp</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>PR-AUC Score</strong></td>
+                                        <td class="text-right font-mono"><span class="text-muted">&mdash;</span></td>
+                                        <td class="text-right font-mono"><strong class="text-emerald">86.89%</strong></td>
+                                        <td class="text-right"><span class="text-muted">&mdash;</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Holdout Errors</strong></td>
+                                        <td class="text-right font-mono"><span class="text-muted">&mdash;</span></td>
+                                        <td class="text-right font-mono"><strong class="text-emerald">23 / 594</strong></td>
+                                        <td class="text-right"><span class="text-muted">&mdash;</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================================================== -->
+                <!-- TABLE 3: BASE PAPER ON OUR DATASET VS FINAL CHAMPION -->
+                <!-- ===================================================== -->
+                <div class="card mb-4" id="card-controlled-comparison">
+                    <div class="card-header">
+                        <div>
+                            <h3 style="font-size: 15px; font-weight: 700; margin: 0;">
+                                Table 3 &mdash; Base Paper with Our Dataset vs. Our Champion
+                                <span class="d-none">Section 6 &mdash; Final Champion vs Base Paper Method (Our Dataset)</span>
+                            </h3>
+                            <p class="card-subtitle" style="margin-top: 2px;">
+                                Controlled head-to-head comparison evaluating the base paper method (GA + LightGBM) on our dataset
+                            </p>
+                        </div>
+                        <span class="badge badge-success">Controlled Benchmark</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Simple Error Comparison Strip -->
+                        <div class="error-comp-strip mb-3">
+                            <div class="error-comp-item">
+                                <span class="error-comp-title">Base Paper on Our Dataset</span>
+                                <div class="error-comp-numbers">
+                                    <span class="error-comp-count">356 Errors</span>
+                                    <span class="error-comp-rate">11.99% error rate &bull; N = 2,969</span>
+                                </div>
+                            </div>
+                            <div class="error-comp-divider">&rarr;</div>
+                            <div class="error-comp-item error-comp-highlight">
+                                <span class="error-comp-title">Our Model (Step 32 Now)</span>
+                                <div class="error-comp-numbers">
+                                    <span class="error-comp-count text-emerald">23 Errors</span>
+                                    <span class="error-comp-rate">3.87% error rate &bull; N = 594</span>
+                                </div>
+                            </div>
+                            <div class="error-comp-divider">&rarr;</div>
+                            <div class="error-comp-item error-comp-gain">
+                                <span class="error-comp-title">Attained Error Reduction</span>
+                                <div class="error-comp-numbers">
+                                    <span class="error-comp-count text-emerald">-67.7%</span>
+                                    <span class="error-comp-rate">-8.12 pp error rate reduction</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table-clean" id="tableControlledComparison">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 28%;">Classification Metric</th>
+                                        <th class="text-right" style="width: 20%;">Base Paper (GA + LightGBM)<br><span class="text-xs text-muted font-normal">Our Data &bull; N = 2,969</span></th>
+                                        <th class="text-right" style="width: 20%;">Our Champion (Step 32)<br><span class="text-xs text-muted font-normal">Final Model &bull; N = 594</span></th>
+                                        <th class="text-right" style="width: 16%;">Difference</th>
+                                        <th class="text-right" style="width: 16%;">Relative Gain</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="controlledComparisonTableBody">
+                                    <!-- Populated dynamically from API -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================================================== -->
+                <!-- OPTIONAL TECHNICAL DOCUMENTATION & RESEARCH REFERENCE (COLLAPSED) -->
+                <!-- ===================================================== -->
+                <details class="comp-drawer mb-4" id="drawerTechReference">
+                    <summary class="comp-drawer-summary">
+                        <div class="drawer-summary-left">
+                            <i class="fa-solid fa-folder-closed text-primary"></i>
+                            <strong>Technical Documentation, Specifications &amp; Visual Analytics</strong>
+                        </div>
+                        <span class="drawer-toggle-badge"><i class="fa-solid fa-chevron-down"></i> Click to expand technical reference</span>
+                    </summary>
+                    <div class="comp-drawer-body pt-3">
+                        <!-- Drawer 1: Section 2 - Published Base Paper Reference -->
+                        <details class="comp-drawer mb-3" id="drawerPublishedBasePaper">
+                            <summary class="comp-drawer-summary">
+                                <div class="drawer-summary-left">
+                                    <i class="fa-solid fa-book text-purple"></i>
+                                    <strong>Section 2 &mdash; Published Base Paper Specifications &amp; Table 13 Breakdown</strong>
+                                </div>
+                                <span class="drawer-toggle-badge"><i class="fa-solid fa-chevron-down"></i> Details</span>
+                            </summary>
+                            <div class="comp-drawer-body">
+                                <div class="paper-citation-box mb-3">
+                                    <div class="citation-main">
+                                        <h4 class="citation-title">
+                                            "Developing a hybrid machine learning model for employee turnover prediction: Integrating LightGBM and genetic algorithms"
+                                        </h4>
+                                        <div class="citation-meta-grid">
+                                            <div><strong>Authors:</strong> Talebi, H., Taghvaee, S., Zolfaghari, M., &amp; Shokouhyar, S.</div>
+                                            <div><strong>Year:</strong> 2025</div>
+                                            <div><strong>Journal:</strong> Journal of Open Innovation: Technology, Market, and Complexity</div>
+                                            <div><strong>Volume / Article:</strong> Vol. 11, Issue 1, Article 100557</div>
+                                            <div>
+                                                <strong>DOI:</strong> 
+                                                <a href="https://doi.org/10.1016/j.joitmc.2025.100557" target="_blank" rel="noopener noreferrer" class="doi-link">
+                                                    10.1016/j.joitmc.2025.100557 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                </a>
+                                            </div>
+                                            <div><strong>Original Dataset:</strong> HR Analytics Dataset (N = 2,932 records)</div>
+                                        </div>
+                                    </div>
+                                    <div class="methodology-summary-box">
+                                        <div class="methodology-heading">
+                                            <i class="fa-solid fa-dna text-purple"></i> Original Published Methodology
+                                        </div>
+                                        <ul class="methodology-list">
+                                            <li><strong>Feature Selection:</strong> Binary Genetic Algorithm (50 chromosomes, roulette wheel selection, uniform crossover p_c=0.8, bit-flip mutation p_m=0.1, 10-fold CV LightGBM F1 fitness).</li>
+                                            <li><strong>Classification Engine:</strong> LightGBM (Histogram-based leaf-wise gradient boosting, learning rate = 0.08, num_leaves = 31, max_depth = 6).</li>
+                                            <li><strong>Decision Policy:</strong> Default probability threshold tau = 0.500.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table-clean">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 25%;">Metric</th>
+                                                <th class="text-right" style="width: 25%;">Published Result</th>
+                                                <th style="width: 50%;">Evaluation Conditions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Accuracy</strong></td>
+                                                <td class="text-right font-mono"><strong class="text-purple">92.00%</strong></td>
+                                                <td>Original Kaggle HR Dataset (N = 2,932)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Precision</strong></td>
+                                                <td class="text-right font-mono"><strong class="text-purple">89.00%</strong></td>
+                                                <td>Original Kaggle HR Dataset (N = 2,932)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Recall</strong></td>
+                                                <td class="text-right font-mono"><strong class="text-purple">85.00%</strong></td>
+                                                <td>Original Kaggle HR Dataset (N = 2,932)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>F1-score</strong></td>
+                                                <td class="text-right font-mono"><strong class="text-purple">87.00%</strong></td>
+                                                <td>Original Kaggle HR Dataset (N = 2,932)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>ROC-AUC</strong></td>
+                                                <td class="text-right font-mono"><strong class="text-purple">94.00%</strong></td>
+                                                <td>Original Kaggle HR Dataset (N = 2,932)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- Drawer 2: Section 3 - Base Paper Reimplementation on Our Dataset -->
+                        <details class="comp-drawer mb-3" id="drawerBasePaperOurDataset">
+                            <summary class="comp-drawer-summary">
+                                <div class="drawer-summary-left">
+                                    <i class="fa-solid fa-flask-vial text-blue"></i>
+                                    <strong>Section 3 &mdash; Base Paper Reimplementation on Our Dataset (Experiment B Specs)</strong>
+                                </div>
+                                <span class="drawer-toggle-badge"><i class="fa-solid fa-chevron-down"></i> Details</span>
+                            </summary>
+                            <div class="comp-drawer-body">
+                                <div class="row-2col mb-3">
+                                    <div class="spec-card">
+                                        <div class="spec-item"><span class="spec-label">Experiment Identifier:</span> <span class="spec-val">Experiment B (outputs_base_paper_2969)</span></div>
+                                        <div class="spec-item"><span class="spec-label">Feature Selection:</span> <span class="spec-val">Binary Genetic Algorithm (50 chromosomes, 27 gen)</span></div>
+                                        <div class="spec-item"><span class="spec-label">Selected Features:</span> <span class="spec-val"><strong>14 Optimal Features</strong> (out of 30 attributes)</span></div>
+                                        <div class="spec-item"><span class="spec-label">Classifier Engine:</span> <span class="spec-val">LightGBM (lr=0.08, leaves=31, max_depth=6)</span></div>
+                                        <div class="spec-item"><span class="spec-label">Protocol:</span> <span class="spec-val">10-Fold Stratified CV on Natural Class Imbalance</span></div>
+                                        <div class="spec-item"><span class="spec-label">Dataset:</span> <span class="spec-val">2,969 unique employee profiles (480 leavers, 16.17%)</span></div>
+                                    </div>
+                                    <div>
+                                        <div class="section-title-sm mb-2"><i class="fa-solid fa-tags text-primary"></i> GA-Selected Feature Subset (14 Features)</div>
+                                        <div class="feature-tag-cloud mb-2">
+                                            <span class="feature-tag">Age</span>
+                                            <span class="feature-tag">BusinessTravel</span>
+                                            <span class="feature-tag">EnvironmentSatisfaction</span>
+                                            <span class="feature-tag">JobRole</span>
+                                            <span class="feature-tag">JobSatisfaction</span>
+                                            <span class="feature-tag">MaritalStatus</span>
+                                            <span class="feature-tag">NumCompaniesWorked</span>
+                                            <span class="feature-tag">OverTime</span>
+                                            <span class="feature-tag">TotalWorkingYears</span>
+                                            <span class="feature-tag">TrainingTimesLastYear</span>
+                                            <span class="feature-tag">WorkLifeBalance</span>
+                                            <span class="feature-tag">YearsAtCompany</span>
+                                            <span class="feature-tag">YearsInCurrentRole</span>
+                                            <span class="feature-tag">YearsSinceLastPromotion</span>
+                                        </div>
+                                        <div class="cm-grid-2x2">
+                                            <div class="cm-cell cm-tn"><div class="cm-label">TN</div><div class="cm-val">2,426</div><div class="cm-sub">Stayers</div></div>
+                                            <div class="cm-cell cm-fp"><div class="cm-label">FP</div><div class="cm-val">63</div><div class="cm-sub">False Alarms</div></div>
+                                            <div class="cm-cell cm-fn"><div class="cm-label">FN</div><div class="cm-val">293</div><div class="cm-sub">Missed Leavers</div></div>
+                                            <div class="cm-cell cm-tp"><div class="cm-label">TP</div><div class="cm-val">187</div><div class="cm-sub">Detected</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- Drawer 3: Section 7 - Performance Visualizations -->
+                        <details class="comp-drawer mb-3" id="drawerPerformanceVisualizations">
+                            <summary class="comp-drawer-summary">
+                                <div class="drawer-summary-left">
+                                    <i class="fa-solid fa-chart-column text-indigo"></i>
+                                    <strong>Section 7 &mdash; Performance Visualizations &amp; Charts</strong>
+                                </div>
+                                <span class="drawer-toggle-badge"><i class="fa-solid fa-chevron-down"></i> Details</span>
+                            </summary>
+                            <div class="comp-drawer-body">
+                                <!-- Chart A -->
+                                <div class="vis-subcard mb-4">
+                                    <div class="vis-subcard-header">
+                                        <div>
+                                            <h4>A. Champion Performance Progression (Top 5 Models)</h4>
+                                            <p class="text-xs text-muted">Grouped bar comparison across historical verified champion milestones.</p>
+                                        </div>
+                                        <div class="metric-filter-pills" id="chartMetricFilters">
+                                            <button type="button" class="pill-btn active" data-metric="accuracy">Accuracy</button>
+                                            <button type="button" class="pill-btn active" data-metric="precision">Precision</button>
+                                            <button type="button" class="pill-btn active" data-metric="recall">Recall</button>
+                                            <button type="button" class="pill-btn active" data-metric="f1_score">F1-Score</button>
+                                            <button type="button" class="pill-btn active" data-metric="roc_auc">ROC-AUC</button>
+                                        </div>
+                                    </div>
+                                    <div class="comp-chart-container" id="championProgressionChart"></div>
+                                </div>
+
+                                <!-- 2-Col: Chart B & C -->
+                                <div class="row-2col mb-4">
+                                    <div class="vis-subcard">
+                                        <div class="vis-subcard-header">
+                                            <div>
+                                                <h4>B. Base-Paper Comparison (Cross-Dataset)</h4>
+                                                <p class="text-xs text-muted">Published Base Paper (N = 2,932) vs Step 32 Champion (Holdout N = 594)</p>
+                                            </div>
+                                        </div>
+                                        <div class="comp-chart-container" id="crossDatasetChart"></div>
+                                    </div>
+                                    <div class="vis-subcard">
+                                        <div class="vis-subcard-header">
+                                            <div>
+                                                <h4>C. Same-Dataset Comparison (Our Dataset)</h4>
+                                                <p class="text-xs text-muted">GA + LightGBM (10-Fold CV) vs Step 32 Champion (Holdout N = 594)</p>
+                                            </div>
+                                        </div>
+                                        <div class="comp-chart-container" id="sameDatasetChart"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Chart D -->
+                                <div class="vis-subcard">
+                                    <div class="vis-subcard-header">
+                                        <div>
+                                            <h4>D. Error &amp; Misclassification Distribution Comparison</h4>
+                                            <p class="text-xs text-muted">False Positives, False Negatives, and Total Errors</p>
+                                        </div>
+                                    </div>
+                                    <div class="comp-chart-container" id="errorComparisonChart"></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!-- Drawer 4: Section 8 - Evaluation Protocol & Research Notes -->
+                        <details class="comp-drawer mb-3" id="drawerEvaluationProtocol">
+                            <summary class="comp-drawer-summary">
+                                <div class="drawer-summary-left">
+                                    <i class="fa-solid fa-book-open-reader text-primary"></i>
+                                    <strong>Section 8 &mdash; Evaluation Protocol &amp; Research Notes</strong>
+                                </div>
+                                <span class="drawer-toggle-badge"><i class="fa-solid fa-chevron-down"></i> Details</span>
+                            </summary>
+                            <div class="comp-drawer-body">
+                                <div class="comp-accordion active mb-3">
+                                    <div class="comp-accordion-header" onclick="toggleCompAccordion(this)">
+                                        <h4><i class="fa-solid fa-compass text-primary"></i> How to Interpret These Comparisons</h4>
+                                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                                    </div>
+                                    <div class="comp-accordion-body">
+                                        <ol class="guideline-list">
+                                            <li><strong>Published base-paper results use the original paper's evaluation dataset:</strong> Talebi et al. (2025) reported metrics on an external HR Analytics dataset (N = 2,932) with synthetic resampling, which limits direct numerical equivalence.</li>
+                                            <li><strong>Our base-paper reimplementation uses our own dataset:</strong> We evaluated the exact GA + LightGBM pipeline under 10-fold cross-validation on our 2,969 unique profiles, providing a genuine, reproducible baseline.</li>
+                                            <li><strong>Champion results come from recorded historical experiments:</strong> Every champion in our Top 5 table reflects a verified, archived milestone evaluated under documented project protocols.</li>
+                                            <li><strong>The official Step 32 evaluation uses a 594-record holdout:</strong> The legacy holdout partition was examined in earlier research iterations to confirm architecture viability.</li>
+                                            <li><strong>Cross-dataset differences are descriptive:</strong> Results from different splits or datasets are not directly comparable and do not prove superiority on external populations.</li>
+                                            <li><strong>Higher accuracy alone is insufficient:</strong> In imbalanced employee turnover (16% positive rate), high accuracy can be achieved trivially by predicting stayers. The true hallmark of our champion is its balanced 87.96% F1-score and 87.50% recall.</li>
+                                            <li><strong>Model outputs are probabilistic signals, not certainties:</strong> Predictions describe estimated turnover probabilities based on historical patterns, not deterministic individual employee actions.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="comp-accordion">
+                                    <div class="comp-accordion-header" onclick="toggleCompAccordion(this)">
+                                        <h4><i class="fa-solid fa-triangle-exclamation text-amber"></i> Research Limitations &amp; Ethical Governance</h4>
+                                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                                    </div>
+                                    <div class="comp-accordion-body">
+                                        <ul class="guideline-list">
+                                            <li><strong>Retrospective Holdout Notice:</strong> Because the 594-record holdout was previously examined during candidate selection, external validation on fresh enterprise cohorts is necessary for production deployment.</li>
+                                            <li><strong>Generalizability:</strong> The dataset is derived from an enterprise corporate cohort; generalization to other organizational cultures, industries, or compensation structures requires local calibration.</li>
+                                            <li><strong>Observational Causality:</strong> SHAP feature attribution indicates mathematical contributions to model predictions and does <em>not</em> prove that altering an attribute will causally prevent turnover.</li>
+                                            <li><strong>Prohibition of Adverse Actions:</strong> Model predictions must strictly serve as decision-support indicators for supportive HR outreach and must never trigger automatic termination, demotion, or compensation penalties.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </details>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Modal for Champion Model Details -->
+    <div id="championDetailModal" class="modal-backdrop d-none">
+        <div class="modal-dialog modal-dialog-lg">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modalChampTitle"><i class="fa-solid fa-award text-primary"></i> Champion Model Details</h3>
+                    <span class="badge" id="modalChampStatus">Verified Champion</span>
+                </div>
+                <button type="button" class="modal-close" id="btnCloseChampModal" title="Close dialog">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Quick Metrics Grid -->
+                <div class="kpi-grid-6 mb-3" id="modalChampMetricsGrid">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Confusion Matrix & Architecture -->
+                <div class="row-2col mb-3">
+                    <div class="card p-3">
+                        <div class="section-title-sm mb-2"><i class="fa-solid fa-border-all text-primary"></i> Holdout Confusion Matrix (N = 594)</div>
+                        <div class="cm-grid-2x2" id="modalChampCmGrid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                    <div class="card p-3">
+                        <div class="section-title-sm mb-2"><i class="fa-solid fa-microchip text-primary"></i> Model Architecture &amp; Mechanics</div>
+                        <p class="text-sm" id="modalChampArch">&mdash;</p>
+                        <div class="section-title-sm mt-3 mb-1"><i class="fa-solid fa-check-double text-emerald"></i> Selection Rationale</div>
+                        <p class="text-sm text-sub" id="modalChampRationale">&mdash;</p>
+                    </div>
+                </div>
+
+                <!-- Dataset & Protocol -->
+                <div class="card p-3 mb-2 bg-subtle">
+                    <div class="section-title-sm mb-1"><i class="fa-solid fa-database text-primary"></i> Evaluation Dataset &amp; Protocol</div>
+                    <p class="text-sm mb-0" id="modalChampProtocol">&mdash;</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="btnDismissChampModal">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- ========================================================= -->
+    <!-- INDIVIDUAL EMPLOYEE DETAIL & SHAP SLIDE-OUT MODAL -->
+    <!-- ========================================================= -->
+    <div id="employeeDetailModal" class="modal-backdrop d-none">
+        <div class="modal-dialog-panel">
+            <div class="modal-header-clean">
+                <div class="modal-title-box">
+                    <div class="modal-badge-row">
+                        <span class="badge" id="modalRiskBadge">High Risk</span>
+                        <span class="badge badge-outline" id="modalActualBadge">Actual: Resigned</span>
+                        <span class="badge badge-subtle" id="modalResultBadge">True Positive</span>
+                    </div>
+                    <h2 class="modal-emp-title" id="modalEmployeeTitle">Employee EMP_HD_001</h2>
+                    <p class="modal-emp-subtitle" id="modalEmployeeSubtitle">Sales Representative &bull; Sales &bull; Age: 41</p>
+                </div>
+                <button id="btnCloseEmployeeModal" class="btn-modal-close" title="Close details">&times;</button>
+            </div>
+
+            <div class="modal-body-scroll">
+                <!-- Evaluation Result Dynamic Plain Summary -->
+                <div class="eval-result-alert mb-4" id="modalResultAlert">
+                    <div class="alert-icon" id="modalResultIcon"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="alert-text">
+                        <strong id="modalResultHeading">Correct Prediction (True Positive)</strong>
+                        <p id="modalResultSummary">The model predicted that this employee would leave, and the recorded outcome confirms it.</p>
+                    </div>
+                </div>
+
+                <!-- Prediction & Score Summary -->
+                <div class="detail-section-card mb-4">
+                    <div class="detail-section-title">
+                        <i class="fa-solid fa-gauge-high text-primary"></i> Model Prediction Summary
+                    </div>
+                    <div class="score-summary-grid">
+                        <div class="score-gauge-cell">
+                            <div class="score-readout-top">
+                                <span>Turnover Flight Probability</span>
+                                <span class="threshold-pill">&tau; = 0.3610 Threshold</span>
+                            </div>
+                            <div class="score-meter-bar">
+                                <div class="score-meter-fill" id="modalScoreFill" style="width: 85.3%;"></div>
+                                <div class="score-threshold-mark" style="left: 36.1%;" title="Decision Threshold (36.1%)"></div>
+                            </div>
+                            <div class="score-big-number" id="modalScoreNumber">85.3%</div>
+                        </div>
+
+                        <div class="score-meta-cell">
+                            <div class="meta-row">
+                                <span class="meta-lbl">Assigned Risk Level:</span>
+                                <strong id="modalRiskLevelText">High Risk</strong>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-lbl">Predicted Outcome:</span>
+                                <strong id="modalPredictedOutcomeText">Predicted Left</strong>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-lbl">Recorded Ground Truth:</span>
+                                <strong id="modalActualOutcomeText">Actually Left</strong>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-lbl">Prediction Accuracy:</span>
+                                <span class="badge badge-success" id="modalAccuracyTag">Correct</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individualized SHAP Explanation -->
+                <div class="detail-section-card mb-4">
+                    <div class="detail-section-title">
+                        <i class="fa-solid fa-wand-magic-sparkles text-primary"></i> Why did the model make this prediction?
+                    </div>
+                    <p class="section-desc">
+                        Individualized SHAP (Shapley Additive Explanations) showing the top 5 factors increasing estimated risk versus retention anchors reducing risk for this specific employee.
+                    </p>
+
+                    <!-- SHAP Horizontal Bar Breakdown -->
+                    <div class="shap-factor-split-grid mb-4">
+                        <!-- Factors pushing risk higher -->
+                        <div class="factor-column col-push">
+                            <div class="factor-col-header text-danger">
+                                <i class="fa-solid fa-arrow-trend-up"></i> Factors that pushed risk higher
+                            </div>
+                            <div class="factor-list" id="modalPushFactors">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Factors pushing risk lower -->
+                        <div class="factor-column col-pull">
+                            <div class="factor-col-header text-success">
+                                <i class="fa-solid fa-arrow-trend-down"></i> Factors that pushed risk lower
+                            </div>
+                            <div class="factor-list" id="modalPullFactors">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Human-Readable Interpretation -->
+                    <div class="human-interpretation-card mb-3">
+                        <div class="interp-heading"><i class="fa-regular fa-comment-dots text-primary"></i> Plain-Language Interpretation</div>
+
+                        <div class="interp-block">
+                            <div class="interp-label text-danger">What increased the estimated risk?</div>
+                            <p class="interp-text" id="modalInterpIncreased">&mdash;</p>
+                        </div>
+
+                        <div class="interp-block">
+                            <div class="interp-label text-success">What reduced the estimated risk?</div>
+                            <p class="interp-text" id="modalInterpReduced">&mdash;</p>
+                        </div>
+
+                        <div class="interp-block">
+                            <div class="interp-label text-primary">What does this mean?</div>
+                            <p class="interp-text" id="modalInterpMeans">&mdash;</p>
+                        </div>
+                    </div>
+
+                    <div class="discreet-disclaimer">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span>SHAP explains how features influenced the model's prediction. These relationships do not establish real-world causes or prove that changing a particular employee attribute will prevent turnover.</span>
+                    </div>
+                </div>
+
+                <!-- Non-Sensitive Employee Profile -->
+                <div class="detail-section-card mb-3">
+                    <div class="detail-section-title">
+                        <i class="fa-solid fa-id-card text-primary"></i> Employee Profile Attributes
+                    </div>
+                    <div class="profile-attributes-grid" id="modalAttributesGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frontend Controller Script -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

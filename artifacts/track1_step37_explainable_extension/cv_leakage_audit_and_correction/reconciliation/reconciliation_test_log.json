@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-09-27 18:38:22",
+  "total_tests": 9,
+  "passed_tests": 9,
+  "failed_tests": 0,
+  "overall_status": "ALL_TESTS_PASSED",
+  "test_suite": [
+    {
+      "test_id": "TEST-01-RECORD-IDENTITY-PARITY",
+      "name": "Pool ID & Record Sequence Exact Parity",
+      "status": "PASSED",
+      "details": "All 1,900 records in candidate OOF match idx_pool sequence 100% bit-exact."
+    },
+    {
+      "test_id": "TEST-02-STEP32-OOF-RECONSTRUCTION",
+      "name": "Step 32 Candidate OOF Bit-Exact Reconstruction",
+      "status": "PASSED",
+      "details": "Reconstructing Step 32 Candidate G from source models produces 0 differences against step32_candidate_oof.csv (116 errors, F1=80.86%)."
+    },
+    {
+      "test_id": "TEST-03-METRIC-CALCULATION-MATH",
+      "name": "Classification Metric Arithmetic Integrity",
+      "status": "PASSED",
+      "details": "Confusion matrix counts match formula outputs exactly (Acc=0.9332, Prec=0.8147, Rec=0.7590, F1=0.7858)."
+    },
+    {
+      "test_id": "TEST-04-POSITIVE-CLASS-INTEGRITY",
+      "name": "Positive Class Encoding Integrity (1 = Attrition Yes)",
+      "status": "PASSED",
+      "details": "Verified positive class count is 307 / 1,900 (16.16%), accurately oriented as Attrition='Yes' = 1."
+    },
+    {
+      "test_id": "TEST-05-STEP27-ANCHOR-IMPACT-PROOF",
+      "name": "Step 27 Anchor Architectural Significance Proof",
+      "status": "PASSED",
+      "details": "Confirmed Step 27 anchor provides +7.69% F1 gain and eliminates 40 errors on the 1,900 Pool samples."
+    },
+    {
+      "test_id": "TEST-06-TRAIN-VAL-DISJOINTNESS",
+      "name": "Strict Cross-Validation Fold Disjointness",
+      "status": "PASSED",
+      "details": "All 5 folds strictly disjoint (intersection count = 0)."
+    },
+    {
+      "test_id": "TEST-07-THRESHOLD-PARITY",
+      "name": "Decision Threshold Exact Parity (tau=0.3610)",
+      "status": "PASSED",
+      "details": "Threshold tau=0.3610 verified across all evaluation pipelines."
+    },
+    {
+      "test_id": "TEST-08-HOLDOUT-CONFIRMATION-FREEZE",
+      "name": "Step 32 Holdout & Confirmation Benchmark Immutability",
+      "status": "PASSED",
+      "details": "Holdout errors = 23/594 (F1=87.96%), Confirmation errors = 20/475 (F1=86.84%) verified bit-exact."
+    },
+    {
+      "test_id": "TEST-09-BASELINE-IMMUTABILITY",
+      "name": "Protected Baseline Files Cryptographic Immutability",
+      "status": "PASSED",
+      "details": "All 76 protected baseline files cryptographically verified unchanged (100% hash match)."
+    }
+  ]
+}

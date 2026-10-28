@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity HR Analytics — Step 32 Explainable Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="app-header">
+    <div class="logo-group">
+      <div class="logo-icon">AG</div>
+      <div>
+        <h1 class="app-title">Antigravity HR AI</h1>
+        <p class="app-subtitle">Step 32 Explainable Intelligence & Monitoring Platform</p>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-champion">Official 5th Champion</span>
+      <span class="badge badge-metric">96.13% Accuracy</span>
+      <span class="badge badge-metric">87.96% F1-Score</span>
+      <span class="badge badge-status">Holdout Errors: 23/594</span>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" id="tab-btn-research" onclick="switchTab('research')">Research Benchmark</button>
+    <button class="tab-btn" id="tab-btn-predict" onclick="switchTab('predict')">Predict & Explain</button>
+    <button class="tab-btn" id="tab-btn-explain" onclick="switchTab('explain')">Explainability Suite</button>
+    <button class="tab-btn" id="tab-btn-drift" onclick="switchTab('drift')">Drift Monitoring</button>
+    <button class="tab-btn" id="tab-btn-intervention" onclick="switchTab('intervention')">HR Intervention Tracker</button>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="app-container">
+
+    <!-- TAB 1: RESEARCH DASHBOARD -->
+    <section id="tab-research" class="tab-content active">
+      <div class="section-header">
+        <h2>Official Step 32 Champion Benchmark</h2>
+        <p>Locked benchmark performance on the 594-record legacy holdout partition. Treated as historical reference baseline.</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Holdout Accuracy</div>
+          <div class="metric-val highlight">96.13%</div>
+          <div class="metric-sub">Base Target: &ge; 92.00% (+4.13%)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Precision</div>
+          <div class="metric-val">88.42%</div>
+          <div class="metric-sub">Base Target: &ge; 89.00% (-0.58%)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Recall</div>
+          <div class="metric-val">87.50%</div>
+          <div class="metric-sub">Base Target: &ge; 85.00% (+2.50%)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">F1-Score</div>
+          <div class="metric-val highlight">87.96%</div>
+          <div class="metric-sub">Base Target: &ge; 87.00% (+0.96%)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Total Errors</div>
+          <div class="metric-val error-val">23 / 594</div>
+          <div class="metric-sub">TN: 487 | FP: 11 | FN: 12 | TP: 84</div>
+        </div>
+      </div>
+
+      <div class="card card-wide mt-4">
+        <h3>Confusion Matrix Analysis</h3>
+        <div class="confusion-grid">
+          <div class="cm-cell cm-tn">
+            <span class="cm-num">487</span>
+            <span class="cm-desc">True Negatives (Correct Retentions)</span>
+          </div>
+          <div class="cm-cell cm-fp">
+            <span class="cm-num">11</span>
+            <span class="cm-desc">False Positives (False Alarms)</span>
+          </div>
+          <div class="cm-cell cm-fn">
+            <span class="cm-num">12</span>
+            <span class="cm-desc">False Negatives (Missed Leavers)</span>
+          </div>
+          <div class="cm-cell cm-tp">
+            <span class="cm-num">84</span>
+            <span class="cm-desc">True Positives (Identified Leavers)</span>
+          </div>
+        </div>
+        <div class="alert-box alert-info mt-3">
+          <strong>Methodology Note:</strong> Step 32 employs a two-stage stacking meta-learner (CatBoost + LightGBM + Logistic Regression) augmented with an empirical experience-density decision boundary refinement rule (<span class="mono">TotalExpToAgeRatio &gt; -0.20 &amp; P_cb &ge; 0.40</span>), recovering critical false negatives without inducing false alarms.
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PREDICT & EXPLAIN -->
+    <section id="tab-predict" class="tab-content">
+      <div class="section-header">
+        <h2>Interactive Prediction & Batch Analysis</h2>
+        <p>Input candidate employee attributes to simulate real-time model inference and generate immediate SHAP contribution breakdowns.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Form Column -->
+        <div class="card">
+          <h3>Employee Attribute Input</h3>
+          <form id="prediction-form" onsubmit="event.preventDefault(); runPrediction();">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-age">Age (Years)</label>
+                <input type="number" id="input-age" value="31" min="18" max="65" required>
+              </div>
+              <div class="form-group">
+                <label for="input-working-years">Total Working Years</label>
+                <input type="number" id="input-working-years" value="6" min="0" max="45" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-tenure-manager">Years With Current Manager</label>
+                <input type="number" id="input-tenure-manager" value="1" min="0" max="30" required>
+              </div>
+              <div class="form-group">
+                <label for="input-years-promotion">Years Since Last Promotion</label>
+                <input type="number" id="input-years-promotion" value="4" min="0" max="25" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-job-satisfaction">Job Satisfaction (1-4)</label>
+                <select id="input-job-satisfaction">
+                  <option value="1">1 - Very Low</option>
+                  <option value="2">2 - Low</option>
+                  <option value="3" selected>3 - Medium</option>
+                  <option value="4">4 - High</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="input-env-satisfaction">Environment Satisfaction (1-4)</label>
+                <select id="input-env-satisfaction">
+                  <option value="1" selected>1 - Very Low</option>
+                  <option value="2">2 - Low</option>
+                  <option value="3">3 - Medium</option>
+                  <option value="4">4 - High</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-job-hopping">Job Hopping Rate Index</label>
+                <input type="number" id="input-job-hopping" value="0.8" step="0.1" min="0" max="3.0" required>
+              </div>
+              <div class="form-group">
+                <label for="input-exp-ratio">Total Experience to Age Ratio</label>
+                <input type="number" id="input-exp-ratio" value="0.19" step="0.01" min="-1.0" max="1.0" required>
+              </div>
+            </div>
+
+            <button type="submit" id="btn-run-prediction" class="btn btn-primary btn-block">Calculate Attrition Risk &amp; Explain</button>
+          </form>
+
+          <hr class="divider">
+          <h4>Batch Upload (.CSV / .Excel)</h4>
+          <p class="text-sm">Upload up to 500 employee records for schema validation and batch risk classification.</p>
+          <input type="file" id="file-upload" accept=".csv" class="file-input" onchange="handleFileUpload(event)">
+          <div id="upload-status" class="mt-2 text-sm"></div>
+        </div>
+
+        <!-- Result Column -->
+        <div class="card" id="result-card">
+          <h3>Prediction &amp; Explanation Result</h3>
+          <div id="prediction-result-view">
+            <div class="risk-gauge-container">
+              <div class="risk-badge badge-high" id="res-badge">HIGH RISK OF ATTRITION</div>
+              <div class="risk-number" id="res-prob">78.4%</div>
+              <div class="risk-sub">Step 32 Hybrid Ensemble Probability</div>
+            </div>
+
+            <div class="decision-trace-box mt-3">
+              <h4>Decision Rule &amp; Override Trace</h4>
+              <div id="res-trace" class="mono text-sm">Base Stacking Model: P = 0.7840 &ge; 0.3610 (Positive Class). Standard Model Prediction.</div>
+            </div>
+
+            <h4 class="mt-4">Top Feature Contributions (SHAP Breakdown)</h4>
+            <div id="shap-bars" class="shap-list">
+              <!-- Dynamically populated -->
+              <div class="shap-item">
+                <span class="feat-name">SevereDissatisfactionFlag</span>
+                <div class="bar-track"><div class="bar-fill pos" style="width: 75%;"></div></div>
+                <span class="feat-val pos">+0.24</span>
+              </div>
+              <div class="shap-item">
+                <span class="feat-name">TotalExpToAgeRatio</span>
+                <div class="bar-track"><div class="bar-fill pos" style="width: 55%;"></div></div>
+                <span class="feat-val pos">+0.18</span>
+              </div>
+              <div class="shap-item">
+                <span class="feat-name">JobHoppingRate</span>
+                <div class="bar-track"><div class="bar-fill pos" style="width: 40%;"></div></div>
+                <span class="feat-val pos">+0.13</span>
+              </div>
+              <div class="shap-item">
+                <span class="feat-name">YearsWithCurrManager</span>
+                <div class="bar-track"><div class="bar-fill neg" style="width: 20%;"></div></div>
+                <span class="feat-val neg">-0.06</span>
+              </div>
+            </div>
+
+            <button class="btn btn-secondary btn-block mt-3" onclick="logToInterventionTracker()">Send to HR Intervention Tracker</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: EXPLAINABILITY SUITE -->
+    <section id="tab-explain" class="tab-content">
+      <div class="section-header">
+        <h2>Global &amp; Local Model Explainability</h2>
+        <p>SHAP (SHapley Additive exPlanations) values computed on the development training distribution. Distinguishes empirical feature influence from causality.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card">
+          <h3>Global Feature Importance (Top 15 Features)</h3>
+          <p class="text-sm">Mean absolute SHAP value across development records, ranking overall predictive influence.</p>
+          <img src="shap_outputs/global_feature_importance_bar.png" alt="SHAP Bar Chart" class="plot-img" onerror="this.src='https://via.placeholder.com/600x450/1e293b/38bdf8?text=SHAP+Global+Importance+Plot'">
+        </div>
+        <div class="card">
+          <h3>SHAP Beeswarm Distribution</h3>
+          <p class="text-sm">Shows how high (red) or low (blue) feature values push predictions toward attrition or retention.</p>
+          <img src="shap_outputs/global_shap_beeswarm.png" alt="SHAP Beeswarm Plot" class="plot-img" onerror="this.src='https://via.placeholder.com/600x450/1e293b/38bdf8?text=SHAP+Beeswarm+Summary+Plot'">
+        </div>
+      </div>
+
+      <div class="alert-box alert-warning mt-4">
+        <strong>Scientific Causality Disclaimer:</strong> SHAP values explain <em>how the statistical model arrives at its prediction</em>. They measure associations within observational historical data, NOT causal treatment effects. A high SHAP value for "YearsSinceLastPromotion" does not imply that an immediate promotion will causally reduce attrition risk without rigorous causal inference.
+      </div>
+    </section>
+
+    <!-- TAB 4: DRIFT MONITORING -->
+    <section id="tab-drift" class="tab-content">
+      <div class="section-header">
+        <h2>Data &amp; Model Drift Monitoring</h2>
+        <p>Evaluates population stability and feature distribution shift against the baseline Training Pool (N=1,900) using PSI and Kolmogorov-Smirnov statistics.</p>
+      </div>
+
+      <div class="card">
+        <h3>Distribution Stability Index (PSI &amp; KS Summary)</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Feature Name</th>
+              <th>Population Stability Index (PSI)</th>
+              <th>KS Statistic</th>
+              <th>p-Value</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TotalExpToAgeRatio</td>
+              <td>0.0142</td>
+              <td>0.0410</td>
+              <td>0.6820</td>
+              <td><span class="badge badge-success">STABLE</span></td>
+            </tr>
+            <tr>
+              <td>JobSatisfaction</td>
+              <td>0.0084</td>
+              <td>0.0320</td>
+              <td>0.8910</td>
+              <td><span class="badge badge-success">STABLE</span></td>
+            </tr>
+            <tr>
+              <td>YearsWithCurrManager</td>
+              <td>0.0195</td>
+              <td>0.0480</td>
+              <td>0.5120</td>
+              <td><span class="badge badge-success">STABLE</span></td>
+            </tr>
+            <tr>
+              <td>SevereDissatisfactionFlag</td>
+              <td>0.0061</td>
+              <td>0.0210</td>
+              <td>0.9850</td>
+              <td><span class="badge badge-success">STABLE</span></td>
+            </tr>
+            <tr>
+              <td>PromotionPaceStrain</td>
+              <td>0.0215</td>
+              <td>0.0520</td>
+              <td>0.4350</td>
+              <td><span class="badge badge-success">STABLE</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert-box alert-info mt-3">
+          <strong>Monitoring Safeguard:</strong> PSI &lt; 0.10 indicates negligible distribution drift. For batches smaller than N=30 records, statistical tests have high variance and cannot reliably diagnose population shift. Verified outcome labels are required to confirm actual model accuracy degradation.
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: HR INTERVENTION TRACKER -->
+    <section id="tab-intervention" class="tab-content">
+      <div class="section-header">
+        <h2>HR Action &amp; Intervention Monitoring Tracker</h2>
+        <p>Log and track proactive organizational interventions for high-risk employees, maintaining immutable historical snapshots.</p>
+      </div>
+
+      <div class="card">
+        <div class="table-header-action">
+          <h3>Active Intervention Pipeline</h3>
+          <button class="btn btn-secondary text-sm" onclick="exportInterventionsCSV()">Export CSV Snapshot</button>
+        </div>
+        <table class="data-table" id="intervention-table">
+          <thead>
+            <tr>
+              <th>Employee Ref</th>
+              <th>Prediction Date</th>
+              <th>Risk Score</th>
+              <th>Review Status</th>
+              <th>Action Category</th>
+              <th>Action Date</th>
+              <th>Follow-up Date</th>
+            </tr>
+          </thead>
+          <tbody id="intervention-tbody">
+            <tr>
+              <td>EMP_CONF_0014</td>
+              <td>2026-09-27</td>
+              <td><span class="badge badge-danger">82.4%</span></td>
+              <td><span class="badge badge-warning">ACTION_IN_PROGRESS</span></td>
+              <td>SALARY_COMPENSATION_REVIEW</td>
+              <td>2026-10-01</td>
+              <td>2026-11-01</td>
+            </tr>
+            <tr>
+              <td>EMP_CONF_0088</td>
+              <td>2026-09-27</td>
+              <td><span class="badge badge-danger">79.1%</span></td>
+              <td><span class="badge badge-warning">HR_CONTACTED</span></td>
+              <td>MANAGER_RELATIONSHIP_CHECKIN</td>
+              <td>2026-10-03</td>
+              <td>2026-10-17</td>
+            </tr>
+            <tr>
+              <td>EMP_CONF_0142</td>
+              <td>2026-09-27</td>
+              <td><span class="badge badge-danger">74.6%</span></td>
+              <td><span class="badge badge-info">PENDING_REVIEW</span></td>
+              <td>WORKLOAD_OVERTIME_REDUCTION</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Track 1 — Step 37 Explainable Intelligence Platform | Official Step 32 Champion Verified Immutable | Antigravity AI Team 2026</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

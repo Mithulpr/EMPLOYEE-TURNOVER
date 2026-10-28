@@ -1,0 +1,103 @@
+{
+  "uncalibrated_step32_metrics": {
+    "holdout_brier_score": 0.04292229075003707,
+    "holdout_ece": 0.038341551604339205,
+    "holdout_mce": 0.5589545923675256,
+    "confirmation_brier_score": 0.03992648236405187,
+    "confirmation_ece": 0.035152107200664286,
+    "confirmation_mce": 0.7854896754932443,
+    "bin_level_details_holdout": [
+      {
+        "bin": 0,
+        "range": "[0.00, 0.10]",
+        "count": 478,
+        "mean_confidence": 0.0415,
+        "observed_accuracy": 0.0188,
+        "absolute_gap": 0.0227
+      },
+      {
+        "bin": 1,
+        "range": "[0.10, 0.20]",
+        "count": 13,
+        "mean_confidence": 0.124,
+        "observed_accuracy": 0.1538,
+        "absolute_gap": 0.0298
+      },
+      {
+        "bin": 2,
+        "range": "[0.20, 0.30]",
+        "count": 8,
+        "mean_confidence": 0.2452,
+        "observed_accuracy": 0.375,
+        "absolute_gap": 0.1298
+      },
+      {
+        "bin": 3,
+        "range": "[0.30, 0.40]",
+        "count": 4,
+        "mean_confidence": 0.3336,
+        "observed_accuracy": 0.5,
+        "absolute_gap": 0.1664
+      },
+      {
+        "bin": 4,
+        "range": "[0.40, 0.50]",
+        "count": 3,
+        "mean_confidence": 0.441,
+        "observed_accuracy": 1.0,
+        "absolute_gap": 0.559
+      },
+      {
+        "bin": 5,
+        "range": "[0.50, 0.60]",
+        "count": 10,
+        "mean_confidence": 0.5315,
+        "observed_accuracy": 0.8,
+        "absolute_gap": 0.2685
+      },
+      {
+        "bin": 6,
+        "range": "[0.60, 0.70]",
+        "count": 6,
+        "mean_confidence": 0.6739,
+        "observed_accuracy": 0.8333,
+        "absolute_gap": 0.1594
+      },
+      {
+        "bin": 7,
+        "range": "[0.70, 0.80]",
+        "count": 3,
+        "mean_confidence": 0.7576,
+        "observed_accuracy": 1.0,
+        "absolute_gap": 0.2424
+      },
+      {
+        "bin": 8,
+        "range": "[0.80, 0.90]",
+        "count": 7,
+        "mean_confidence": 0.8664,
+        "observed_accuracy": 0.5714,
+        "absolute_gap": 0.295
+      },
+      {
+        "bin": 9,
+        "range": "[0.90, 1.00]",
+        "count": 62,
+        "mean_confidence": 0.9472,
+        "observed_accuracy": 0.9194,
+        "absolute_gap": 0.0278
+      }
+    ]
+  },
+  "experimental_calibration_comparison": {
+    "platt_scaling": {
+      "holdout_brier_score": 0.045387504021643515,
+      "holdout_ece": 0.04684512886606566
+    },
+    "isotonic_regression": {
+      "holdout_brier_score": 0.041458195110378016,
+      "holdout_ece": 0.019542514713061763
+    }
+  },
+  "governance_decision": "The official Step 32 Champion remains uncalibrated to preserve the frozen decision threshold (tau=0.361) and exact benchmark parity. Platt scaling is recommended as a candidate for future prospective cohorts."
+}

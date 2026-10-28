@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-09-27 18:22:27",
+  "total_tests": 8,
+  "passed_tests": 8,
+  "failed_tests": 0,
+  "overall_status": "ALL_TESTS_PASSED",
+  "test_suite": [
+    {
+      "test_id": "TEST-01-FOLD-SEPARATION",
+      "name": "Strict Fold Disjointness & Partition Completeness",
+      "status": "PASSED",
+      "details": "All 5 folds strictly disjoint (intersection=0). Total val count=1900/1900."
+    },
+    {
+      "test_id": "TEST-02-PREPROCESSOR-ISOLATION",
+      "name": "Feature Engineering & Preprocessor Isolation",
+      "status": "PASSED",
+      "details": "HRFeatureEngineer fitted strictly on train fold; learned aggregations differ from global dataset."
+    },
+    {
+      "test_id": "TEST-03-STACKING-LEAKAGE-ABSENCE",
+      "name": "Stacking Meta-Learner Inner OOF Isolation",
+      "status": "PASSED",
+      "details": "Meta-features constructed exclusively using nested 5-fold inner cross-validation on training fold."
+    },
+    {
+      "test_id": "TEST-04-THRESHOLD-CONSISTENCY",
+      "name": "Decision Threshold Exact Parity (tau=0.3610)",
+      "status": "PASSED",
+      "details": "Decision threshold verified at tau=0.3610 across all folds."
+    },
+    {
+      "test_id": "TEST-05-POSITIVE-CLASS-ORIENTATION",
+      "name": "Positive Class Correctness (1 = Attrition Yes)",
+      "status": "PASSED",
+      "details": "Verified raw dataset Attrition='Yes' total is 480, correctly encoded as 1. Pool positives: 307/1900 (16.16%)."
+    },
+    {
+      "test_id": "TEST-06-METRIC-CALCULATION-MATH",
+      "name": "Classification Metric Mathematical Integrity",
+      "status": "PASSED",
+      "details": "Confusion matrix matches formula output exactly (Acc=0.9147, Prec=0.7656, Rec=0.6808, F1=0.7207)."
+    },
+    {
+      "test_id": "TEST-07-FLAW-SIMULATION-CONFIRMATION",
+      "name": "Exact Reproduction of Flawed 95.10% CV Metric",
+      "status": "PASSED",
+      "details": "Simulating in-sample resubstitution on globally fitted models recovers reported metric exactly (95.10% vs 95.10%)."
+    },
+    {
+      "test_id": "TEST-08-REPRODUCIBILITY-INTEGRITY",
+      "name": "Full Deterministic Reproducibility",
+      "status": "PASSED",
+      "details": "All random seeds fixed (outer=42, inner=43-47); pipeline deterministic across independent invocations."
+    }
+  ]
+}

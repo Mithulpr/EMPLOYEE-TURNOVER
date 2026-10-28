@@ -1,0 +1,11 @@
+Age
+BusinessTravel
+EnvironmentSatisfaction
+JobSatisfaction
+MaritalStatus
+NumCompaniesWorked
+TotalWorkingYears
+TrainingTimesLastYear
+WorkLifeBalance
+YearsSinceLastPromotion
+YearsWithCurrManager

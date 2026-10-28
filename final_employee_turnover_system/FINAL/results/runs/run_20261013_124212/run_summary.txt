@@ -1,0 +1,12 @@
+Employee Turnover Prediction Run Summary
+Model: Final Hybrid Model
+Timestamp: 20261013_124212
+Dataset: holdout_594.csv
+Records: 594
+Elapsed: 12.72s
+Accuracy: 96.13%
+Precision: 88.42%
+Recall: 87.5%
+F1-Score: 87.96%
+ROC-AUC: 94.5469%
+Confusion Matrix: TN=487, FP=11, FN=12, TP=84

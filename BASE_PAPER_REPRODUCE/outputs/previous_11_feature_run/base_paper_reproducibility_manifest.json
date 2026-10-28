@@ -1,0 +1,130 @@
+{
+  "audit_metadata": {
+    "timestamp": "2026-10-06T09:15:00+05:30",
+    "auditor": "Antigravity DeepMind Advanced Agentic Coding Pair Programmer",
+    "reference_publication": {
+      "title": "Developing a hybrid machine learning model for employee turnover prediction: Integrating LightGBM and genetic algorithms",
+      "authors": [
+        "Hojat Talebi",
+        "Amid Khatibi Bardsiri",
+        "Vahid Khatibi Bardsiri"
+      ],
+      "journal": "Journal of Open Innovation: Technology, Market, and Complexity",
+      "volume": "11",
+      "issue": "1",
+      "year": 2025,
+      "article_number": "100557",
+      "issn": "2199-8531",
+      "doi": "10.1016/j.joitmc.2025.100557",
+      "pdf_relative_path": "base_paper/1-s2.0-S2199853125000927-main.pdf"
+    }
+  },
+  "dataset_specification": {
+    "dataset_relative_path": "data/merged_unique_profiles_2969.csv",
+    "row_count": 2969,
+    "column_count": 30,
+    "target_column": "Attrition",
+    "target_distribution": {
+      "Retained (0)": 2489,
+      "Turnover (1)": 480
+    },
+    "target_prevalence_pct": "16.17%",
+    "paper_page_reference": "User objective: only dataset is replaced; paper uses 1470 (IBM) and 1200 (Org) on Pages 3, 5"
+  },
+  "feature_selection_results": {
+    "candidate_features_count": 30,
+    "selected_features_count": 11,
+    "selected_feature_list": [
+      "Age",
+      "BusinessTravel",
+      "EnvironmentSatisfaction",
+      "JobSatisfaction",
+      "MaritalStatus",
+      "NumCompaniesWorked",
+      "TotalWorkingYears",
+      "TrainingTimesLastYear",
+      "WorkLifeBalance",
+      "YearsSinceLastPromotion",
+      "YearsWithCurrManager"
+    ],
+    "best_ga_fitness_f1": 0.729908,
+    "convergence_generation": 35,
+    "paper_page_reference": "Page 8 (Section 3.3 notes 14 features for HR, 11 features for Organization dataset)"
+  },
+  "genetic_algorithm_configuration": {
+    "population_size": 50,
+    "selection_operator": "Roulette Wheel Selection (fitness proportional)",
+    "crossover_operator": "Uniform Crossover (probability = 0.80)",
+    "mutation_operator": "Bit-flip Mutation (probability = 0.10 per gene)",
+    "elitism_count": 5,
+    "elitism_percentage": "10%",
+    "fitness_function": "10-Fold Stratified Cross-Validation LightGBM F1-Score",
+    "max_generations": 50,
+    "early_stopping_patience": 10,
+    "paper_page_references": {
+      "population_size": "Page 6, Section 3.2.1",
+      "selection": "Pages 6, 7, 9, 10",
+      "crossover": "Pages 6, 7",
+      "mutation": "Pages 6, 7",
+      "elitism": "Page 7",
+      "fitness_function": "Pages 6, 10",
+      "stopping_rule": "Page 7"
+    }
+  },
+  "lightgbm_classifier_configuration": {
+    "algorithm": "LightGBM (gbdt, leaf-wise growth)",
+    "learning_rate": 0.1,
+    "max_depth": 10,
+    "num_leaves": 31,
+    "subsample": 0.8,
+    "n_estimators": 100,
+    "decision_threshold": 0.5,
+    "paper_page_references": {
+      "grid_search_hyperparameters": "Page 8, Section 3.3",
+      "decision_threshold": "Page 11, Table 6"
+    }
+  },
+  "evaluation_protocol": {
+    "validation_method": "10-Fold Stratified Cross-Validation on Full Dataset",
+    "holdout_test_split": "None (matches paper full-sample 10-fold CV protocol)",
+    "paper_page_references": "Pages 8, 10, 13"
+  },
+  "random_seed_specification": {
+    "paper_specified_seed": "Not specified in the original paper",
+    "reproduction_seed_used": 42
+  },
+  "final_reproduced_metrics": {
+    "Accuracy": 0.925901,
+    "Precision": 0.884615,
+    "Recall": 0.622917,
+    "F1_Score": 0.731051,
+    "ROC_AUC": 0.939548,
+    "PR_AUC": 0.833999,
+    "Balanced_Accuracy": 0.803624,
+    "Specificity": 0.984331,
+    "Brier_Score": 0.058215,
+    "True_Positives": 299,
+    "False_Positives": 39,
+    "True_Negatives": 2450,
+    "False_Negatives": 181,
+    "Total_Errors": 220,
+    "Total_Correct": 2749,
+    "Accuracy_Pct": "92.59%",
+    "Precision_Pct": "88.46%",
+    "Recall_Pct": "62.29%",
+    "F1_Score_Pct": "73.11%",
+    "ROC_AUC_Pct": "93.95%"
+  },
+  "output_file_hashes_sha256": {
+    "predictions.csv": "2f3de87c032963810c7730cba87ad6dd149cf4f0722afceb501f9bd1043867f6",
+    "metrics.json": "aa12ecb5ba8fe4cdd219ce4db2f5695ed4ae15ceed578ff7e853217f0f369214",
+    "selected_features.json": "1df42d6315dda27b78609e8d7a6918312b57b502f444e38c82c0ffcd83238713",
+    "ga_generation_history.csv": "9f059d40a9a55cd8a053974b4c36b2f824adc98f0713f0fd3b3dc4e255e11b33",
+    "confusion_matrix.csv": "f47d00d6457c62d40db0e9d300a3d36f2f2f8bf49b3d4873488c0a0d69a5f5a5",
+    "base_paper_method_on_2969_results.csv": "f3f0ee06cfee68c1255f0b57b3ea4c696aee0443277197683870f7d8eec735ec",
+    "feature_preprocessing_registry.csv": "fca892ecf42e42c437184116a192f77f79fe15b715ad639e84c7ad6cf3a53711",
+    "resampling_registry.csv": "8f736941cdbe0c3e306b6b97ec7b2cbfbde131a13e5d22983a7ee0576eeafac1",
+    "base_paper_methodology_registry.json": "6e7f3135a96661e7c49df5a29a7cb06b5fc80ccc38211b2d45fa762bef8d5272",
+    "reproducibility_config.json": "e4c538ccc1266dabdc6f70115d444060d82ef7c82bf2d3ff16e5e228e3783e93"
+  }
+}

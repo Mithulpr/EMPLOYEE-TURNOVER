@@ -1,0 +1,2 @@
+Record_ID,Turnover_Probability,Predicted_Class,Risk_Tier,Push_1_Feature,Push_1_SHAP,Push_2_Feature,Push_2_SHAP,Push_3_Feature,Push_3_SHAP,Pull_1_Feature,Pull_1_SHAP,Pull_2_Feature,Pull_2_SHAP,Pull_3_Feature,Pull_3_SHAP
+EMP_HD_002,0.0398,0,Low,MaritalStatus_Single,0.6465,JobSatisfaction,0.5221,PromotionLagScore,0.3495,Age,-0.8534,EnvironmentSatisfaction,-0.541,PriorCompanyExperience,-0.415

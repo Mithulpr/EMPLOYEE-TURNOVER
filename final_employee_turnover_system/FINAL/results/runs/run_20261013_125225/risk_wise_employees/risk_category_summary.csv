@@ -1,0 +1,6 @@
+Risk Category,Probability Boundaries,Employee Count,Percentage of Total Dataset (%),Average Turnover Probability,Minimum Turnover Probability,Maximum Turnover Probability,Predicted to Leave Count,Predicted to Remain Count,Actual Attrition Count,Correctly Predicted Count,Incorrectly Predicted Count
+Critical Risk,Probability >= 60.00%,2,33.33,0.8369,0.7884,0.8855,2,0,Unavailable,Unavailable,Unavailable
+High Risk,36.10% <= Probability < 60.00%,1,16.67,0.4654,0.4654,0.4654,1,0,Unavailable,Unavailable,Unavailable
+Moderate Risk,20.00% <= Probability < 36.10%,0,0.0,0.0,0.0,0.0,0,0,Unavailable,Unavailable,Unavailable
+Low Risk,Probability < 20.00%,3,50.0,0.0845,0.0341,0.1853,0,3,Unavailable,Unavailable,Unavailable
+Total / Overall,Overall Population (0.0000 - 1.0000),6,100.0,0.3988,0.0341,0.8855,3,3,Unavailable,Unavailable,Unavailable

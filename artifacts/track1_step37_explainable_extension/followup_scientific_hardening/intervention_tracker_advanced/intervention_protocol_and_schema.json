@@ -1,0 +1,105 @@
+{
+  "intervention_schema_specification": {
+    "fields": [
+      {
+        "name": "employee_id",
+        "type": "string",
+        "anonymized": true,
+        "description": "Hashed identifier"
+      },
+      {
+        "name": "prediction_timestamp",
+        "type": "ISO-8601",
+        "description": "Timestamp of original prediction"
+      },
+      {
+        "name": "pre_intervention_attrition_risk",
+        "type": "float",
+        "description": "Original model probability"
+      },
+      {
+        "name": "pre_intervention_predicted_class",
+        "type": "int",
+        "description": "Original predicted binary class"
+      },
+      {
+        "name": "hr_review_date",
+        "type": "ISO-8601",
+        "description": "Date of human HR consultation"
+      },
+      {
+        "name": "intervention_category",
+        "type": "enum",
+        "options": [
+          "COMPENSATION_REVIEW",
+          "MENTORSHIP_PAIRING",
+          "WORKLOAD_REBALANCING",
+          "CAREER_PATHING",
+          "ROLE_TRANSFER",
+          "WELLBEING_SUPPORT"
+        ]
+      },
+      {
+        "name": "action_status",
+        "type": "enum",
+        "options": [
+          "PLANNED",
+          "IN_PROGRESS",
+          "COMPLETED",
+          "DECLINED_BY_EMPLOYEE"
+        ]
+      },
+      {
+        "name": "follow_up_horizons_days",
+        "type": "list",
+        "options": [
+          90,
+          180,
+          365
+        ]
+      },
+      {
+        "name": "follow_up_satisfaction_score",
+        "type": "int",
+        "range": [
+          1,
+          4
+        ],
+        "nullable": true
+      },
+      {
+        "name": "actual_outcome",
+        "type": "enum",
+        "options": [
+          "RETAINED",
+          "VOLUNTARY_DEPARTURE",
+          "INVOLUNTARY_DEPARTURE",
+          "UNKNOWN"
+        ],
+        "nullable": true
+      },
+      {
+        "name": "outcome_verification_date",
+        "type": "ISO-8601",
+        "nullable": true
+      }
+    ]
+  },
+  "prospective_causal_evaluation_protocol": {
+    "methodological_hazard_disclaimer": "Observational HR tracking data is prone to 'confounding by indication' \u2014 highest risk employees systematically receive the most aggressive interventions. Direct correlation between intervention and outcome will biasedly underestimate intervention efficacy.",
+    "recommended_causal_designs": [
+      {
+        "design_name": "Propensity Score Matching (PSM)",
+        "description": "Pair intervened employees with non-intervened controls sharing identical pre-intervention predicted risk scores and covariate vectors."
+      },
+      {
+        "design_name": "Interrupted Time Series / Survival Analysis",
+        "description": "Fit Cox Proportional Hazards models treating interventions as time-varying covariates to estimate instantaneous hazard ratio reductions."
+      },
+      {
+        "design_name": "Randomized Encouragement Trial (Gold Standard)",
+        "description": "Randomize managers to receive proactive retention nudges for borderline employees, using random assignment as an instrumental variable."
+      }
+    ]
+  }
+}

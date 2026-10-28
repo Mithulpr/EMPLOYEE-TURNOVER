@@ -1,0 +1,60 @@
+{
+  "round": 32,
+  "phase": "D",
+  "name": "Logit_Space_Logistic_Stacking",
+  "config": {
+    "round": 32,
+    "phase": "D",
+    "name": "Logit_Space_Logistic_Stacking",
+    "cb_key": "default_d6_i600_lr006_l2_15",
+    "xgb": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta": {
+      "type": "logit_stacking",
+      "C": 1.0
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.4
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.9082242956256096,
+    "PR_AUC": 0.8068586739621024,
+    "Precision": 0.7946127946127947,
+    "Recall": 0.7687296416938111,
+    "F1_Score": 0.7814569536423841,
+    "Accuracy": 0.9305263157894736,
+    "Errors": 132,
+    "Threshold": 0.361,
+    "TN": 1532,
+    "FP": 61,
+    "FN": 71,
+    "TP": 236
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.9454414931801866,
+    "PR_AUC": 0.8527717735258709,
+    "Precision": 0.8666666666666667,
+    "Recall": 0.8441558441558441,
+    "F1_Score": 0.8552631578947368,
+    "Accuracy": 0.9536842105263158,
+    "Errors": 22,
+    "Threshold": 0.361,
+    "TN": 388,
+    "FP": 10,
+    "FN": 12,
+    "TP": 65
+  },
+  "multiseed_mean": 22.0,
+  "multiseed_std": 0.0,
+  "timestamp": "2026-09-27 16:19:44"
+}

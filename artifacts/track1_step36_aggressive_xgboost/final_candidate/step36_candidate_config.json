@@ -1,0 +1,57 @@
+{
+  "step": "Track 1 Step 36: Aggressive XGBoost Replacement Optimization",
+  "round": 14,
+  "phase": "B",
+  "name": "CatBoost_Asymmetric_Weights_45",
+  "architecture": "CatBoost + XGBoost + Logistic Meta-Learner + Dual Consensus Severe FN Recovery + Experience Density Refinement",
+  "hyperparameters": {
+    "catboost": {
+      "depth": 6,
+      "iterations": 600,
+      "learning_rate": 0.06,
+      "l2_leaf_reg": 2.0,
+      "class_weights": [
+        1.0,
+        4.5
+      ],
+      "random_seed": 42
+    },
+    "xgboost": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta_learner": {
+      "type": "logreg",
+      "C": 1.0
+    },
+    "threshold": 0.361,
+    "decision_refinements": {
+      "base_predicate": "Pred_Step30 == 0",
+      "boundary_band": [
+        0.15,
+        0.361
+      ],
+      "total_exp_to_age_ratio": "> -0.20",
+      "cb_specialist_thresh": 0.4
+    }
+  },
+  "development_metrics": {
+    "pool_errors": 122,
+    "pool_f1": 0.7966666666666666,
+    "conf_errors": 17,
+    "conf_accuracy": 0.9642105263157895,
+    "conf_precision": 0.9054054054054054,
+    "conf_recall": 0.8701298701298701,
+    "conf_f1": 0.8874172185430463,
+    "multiseed_conf_mean": 17.0,
+    "multiseed_conf_std": 0.0
+  },
+  "timestamp": "2026-09-27 16:26:00"
+}

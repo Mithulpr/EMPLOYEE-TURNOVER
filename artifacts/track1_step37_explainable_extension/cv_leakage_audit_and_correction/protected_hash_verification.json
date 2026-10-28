@@ -1,0 +1,387 @@
+{
+  "timestamp": "2026-09-27 18:22:27",
+  "status": "PASSED_100_PERCENT",
+  "total_files_audited": 76,
+  "files": {
+    "e:\\R & D anitgravity\\dataset\\merged_unique_profiles_2969.csv": {
+      "pre_execution_sha256": "92027AF0EF8E882A19643479329252BC865B931346594893A520CFF2DBEA2C7C",
+      "post_execution_sha256": "92027AF0EF8E882A19643479329252BC865B931346594893A520CFF2DBEA2C7C",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step32_aggressive\\final_candidate\\step32_candidate_config.json": {
+      "pre_execution_sha256": "07E37DA213F6B6F6D918A8624459425880BCB3380BE723C0FAA1BCD64C31F526",
+      "post_execution_sha256": "07E37DA213F6B6F6D918A8624459425880BCB3380BE723C0FAA1BCD64C31F526",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step32_aggressive\\final_candidate\\step32_candidate_confirmation.csv": {
+      "pre_execution_sha256": "B355A44D9BB1E3C6CAA366B8DE2DB7B447D58810B8EC703D5AF148B90DF0B36A",
+      "post_execution_sha256": "B355A44D9BB1E3C6CAA366B8DE2DB7B447D58810B8EC703D5AF148B90DF0B36A",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step32_aggressive\\final_candidate\\step32_candidate_hash_manifest.json": {
+      "pre_execution_sha256": "20B13CE5AC68E048F4B3C865B449C7C6BD3300C82E3048F768BC3D03F240EB89",
+      "post_execution_sha256": "20B13CE5AC68E048F4B3C865B449C7C6BD3300C82E3048F768BC3D03F240EB89",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step32_aggressive\\final_candidate\\step32_candidate_holdout.csv": {
+      "pre_execution_sha256": "944F380F17BA79910FD61473641FD1FD936B24120B428DEBFC63DBADD789B9EB",
+      "post_execution_sha256": "944F380F17BA79910FD61473641FD1FD936B24120B428DEBFC63DBADD789B9EB",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step32_aggressive\\final_candidate\\step32_candidate_multiseed.csv": {
+      "pre_execution_sha256": "7E2ACB8A6434E37EF378BA787072C40F810A9FC400A5BD84F1BB6D22D045F7BC",
+      "post_execution_sha256": "7E2ACB8A6434E37EF378BA787072C40F810A9FC400A5BD84F1BB6D22D045F7BC",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step32_aggressive\\final_candidate\\step32_candidate_oof.csv": {
+      "pre_execution_sha256": "415753A0024876D3453D19292691CA1C796E65970A583AF3C9A834E635E6C550",
+      "post_execution_sha256": "415753A0024876D3453D19292691CA1C796E65970A583AF3C9A834E635E6C550",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\final_candidate\\step36_ablation_results.json": {
+      "pre_execution_sha256": "1776AB8221D1F72B12D912E0CF5ACFA09C6CA86BEE0B4638E3EF00BA6EBAFE00",
+      "post_execution_sha256": "1776AB8221D1F72B12D912E0CF5ACFA09C6CA86BEE0B4638E3EF00BA6EBAFE00",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\final_candidate\\step36_candidate_config.json": {
+      "pre_execution_sha256": "1C64E68FA32DAD578D9BBEACECBF8DDD10B72F85A6A66E7B53ACA41ED923D62B",
+      "post_execution_sha256": "1C64E68FA32DAD578D9BBEACECBF8DDD10B72F85A6A66E7B53ACA41ED923D62B",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\final_candidate\\step36_candidate_confirmation.csv": {
+      "pre_execution_sha256": "5BBE65B81303EFB74D1E8DE12B6DAF39BF5294764DA0855C808FC7C2A3F107F2",
+      "post_execution_sha256": "5BBE65B81303EFB74D1E8DE12B6DAF39BF5294764DA0855C808FC7C2A3F107F2",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\final_candidate\\step36_candidate_holdout.csv": {
+      "pre_execution_sha256": "9E5A4B7A4196083B4B9DA6B4AC28C775D2F801858934D9BE64EF0BFAC5C5D955",
+      "post_execution_sha256": "9E5A4B7A4196083B4B9DA6B4AC28C775D2F801858934D9BE64EF0BFAC5C5D955",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\final_candidate\\step36_candidate_multiseed.csv": {
+      "pre_execution_sha256": "8C887FD87328A34810DF869CFD85487695D4F2FAA01AF857C69AA4A474CD6EBB",
+      "post_execution_sha256": "8C887FD87328A34810DF869CFD85487695D4F2FAA01AF857C69AA4A474CD6EBB",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\final_candidate\\step36_candidate_oof.csv": {
+      "pre_execution_sha256": "3D3F19850378EADEBDCC1A6546966B2BA54A7B17269B4A499352A231331D56FC",
+      "post_execution_sha256": "3D3F19850378EADEBDCC1A6546966B2BA54A7B17269B4A499352A231331D56FC",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\STEP36_FINAL_REPORT.md": {
+      "pre_execution_sha256": "64838F0435B4AEA0BE6CDC39A6464392AFF1CE7833387FDA3C5002847F6C7095",
+      "post_execution_sha256": "64838F0435B4AEA0BE6CDC39A6464392AFF1CE7833387FDA3C5002847F6C7095",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\step36_hash_manifest.json": {
+      "pre_execution_sha256": "8F77BC926B8ECA8EE2E7E33D1C38AD4AA6D76326AC4AADAA6F94F7ECB117AA48",
+      "post_execution_sha256": "8F77BC926B8ECA8EE2E7E33D1C38AD4AA6D76326AC4AADAA6F94F7ECB117AA48",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step36_aggressive_xgboost\\step36_master_results.json": {
+      "pre_execution_sha256": "7566B3C85DE8806CE8B437F2B6EA3A29BF495DB10397C2082E6F95DCA3D05516",
+      "post_execution_sha256": "7566B3C85DE8806CE8B437F2B6EA3A29BF495DB10397C2082E6F95DCA3D05516",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\STEP37_FINAL_REPORT.md": {
+      "pre_execution_sha256": "F42F0C95A8367AA13E094E90B30140F9A80EDE00B92A9942514D7EBB6C7524C8",
+      "post_execution_sha256": "F42F0C95A8367AA13E094E90B30140F9A80EDE00B92A9942514D7EBB6C7524C8",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\step37_master_results.json": {
+      "pre_execution_sha256": "266D92F2E16CCA8AD3FAC2D04A1110520B7DE119FDE297297FA5E46381728894",
+      "post_execution_sha256": "266D92F2E16CCA8AD3FAC2D04A1110520B7DE119FDE297297FA5E46381728894",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\ablations/step37_ablation_results.json": {
+      "pre_execution_sha256": "6FB722A99FAAE07E36E7AAAAC8009A7830995741BC4F46AA2F8E87F5A69C993A",
+      "post_execution_sha256": "6FB722A99FAAE07E36E7AAAAC8009A7830995741BC4F46AA2F8E87F5A69C993A",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\drift_monitoring/drift_detector.py": {
+      "pre_execution_sha256": "AE070AC55B2BF45194187AFA0E76291E936503D4B76C8BDD0CF5DC5BF3044885",
+      "post_execution_sha256": "AE070AC55B2BF45194187AFA0E76291E936503D4B76C8BDD0CF5DC5BF3044885",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\drift_monitoring/drift_monitoring_report.json": {
+      "pre_execution_sha256": "935BF1490451D16B480B45806D5D3BE2F821EC1146B9864A9C0CAB1754A7D58F",
+      "post_execution_sha256": "935BF1490451D16B480B45806D5D3BE2F821EC1146B9864A9C0CAB1754A7D58F",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\drift_monitoring/__pycache__/drift_detector.cpython-311.pyc": {
+      "pre_execution_sha256": "DF68ABD03E5BEA7CB558A7052654B65B70E04BAFD907A386C71DC9887CCD0419",
+      "post_execution_sha256": "DF68ABD03E5BEA7CB558A7052654B65B70E04BAFD907A386C71DC9887CCD0419",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\intervention_module/hr_intervention_records.json": {
+      "pre_execution_sha256": "1FCC3304957066D3BF86DDFF48D7F74CC5FE4EB65AECD70C6BEA408B367D5EEB",
+      "post_execution_sha256": "1FCC3304957066D3BF86DDFF48D7F74CC5FE4EB65AECD70C6BEA408B367D5EEB",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\intervention_module/hr_intervention_snapshot.csv": {
+      "pre_execution_sha256": "E9B371DE3D7C62A7C43AD945405C7D58006BA39707915554B312D7D3E44F5DD1",
+      "post_execution_sha256": "E9B371DE3D7C62A7C43AD945405C7D58006BA39707915554B312D7D3E44F5DD1",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\intervention_module/intervention_tracker.py": {
+      "pre_execution_sha256": "A66E439E39DE6CC64E5924F250B14E8F138C49B84AF9EA60346AE50EDCFC9BB5",
+      "post_execution_sha256": "A66E439E39DE6CC64E5924F250B14E8F138C49B84AF9EA60346AE50EDCFC9BB5",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\intervention_module/__pycache__/intervention_tracker.cpython-311.pyc": {
+      "pre_execution_sha256": "5A6BB6C521975A530976DFE9B156007CC213BE12F56E8524865B2FE5FA8CEB76",
+      "post_execution_sha256": "5A6BB6C521975A530976DFE9B156007CC213BE12F56E8524865B2FE5FA8CEB76",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\models/step37_catboost_base.joblib": {
+      "pre_execution_sha256": "409FCB1ADEF0F6F84340744FF88F2A03DADE0A7EC078B3AEAE530706C3F40315",
+      "post_execution_sha256": "409FCB1ADEF0F6F84340744FF88F2A03DADE0A7EC078B3AEAE530706C3F40315",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\models/step37_catboost_specialist_refinement.joblib": {
+      "pre_execution_sha256": "C9FEAD0570607C6D4BD39639F3AA607985652009C7BE180EAC9385A85A277544",
+      "post_execution_sha256": "C9FEAD0570607C6D4BD39639F3AA607985652009C7BE180EAC9385A85A277544",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\models/step37_feature_engineer.joblib": {
+      "pre_execution_sha256": "0772868EB01575415AD8AB2EE1A40D6A2CF6EA6775DB03B11D4DDECAE5B23FE9",
+      "post_execution_sha256": "0772868EB01575415AD8AB2EE1A40D6A2CF6EA6775DB03B11D4DDECAE5B23FE9",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\models/step37_lightgbm_base.joblib": {
+      "pre_execution_sha256": "0AB6411A44C90D27A580FDAC4314FF17A6257831ADDF74302FD2108E6ED5ABC9",
+      "post_execution_sha256": "0AB6411A44C90D27A580FDAC4314FF17A6257831ADDF74302FD2108E6ED5ABC9",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\models/step37_meta_logistic_regression.joblib": {
+      "pre_execution_sha256": "F3F615B3C925633745C8CFEE7F273E8974CDE891CC44192CCD0E34461137084B",
+      "post_execution_sha256": "F3F615B3C925633745C8CFEE7F273E8974CDE891CC44192CCD0E34461137084B",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\models/step37_pipeline_schema.json": {
+      "pre_execution_sha256": "424302FA567BCC63142B3A61B2E560B2259BEA336C107F12F806B1FE598B37DD",
+      "post_execution_sha256": "424302FA567BCC63142B3A61B2E560B2259BEA336C107F12F806B1FE598B37DD",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\models/step37_preprocessor.joblib": {
+      "pre_execution_sha256": "25175DC3FF8B18FD02A101153A87E1676EC5BD7F2ECC89BCD72AEB44DC8EC34F",
+      "post_execution_sha256": "25175DC3FF8B18FD02A101153A87E1676EC5BD7F2ECC89BCD72AEB44DC8EC34F",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/dependence_plot_JobSatisfaction.png": {
+      "pre_execution_sha256": "B4091D558337D9E85E433471B022ABB7E390A47A684AF2C902FE156DDCD68A2A",
+      "post_execution_sha256": "B4091D558337D9E85E433471B022ABB7E390A47A684AF2C902FE156DDCD68A2A",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/dependence_plot_SevereDissatisfactionFlag.png": {
+      "pre_execution_sha256": "9757B4ED686EDDABCBB98CC6A5EE4C7991ED2B04E7F778D5B646431563F9AC4D",
+      "post_execution_sha256": "9757B4ED686EDDABCBB98CC6A5EE4C7991ED2B04E7F778D5B646431563F9AC4D",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/dependence_plot_TotalExpToAgeRatio.png": {
+      "pre_execution_sha256": "3657B41C9FC332AF85DDAB247029D8E201E9F18CF2930256CE1E120CF2F8C3F3",
+      "post_execution_sha256": "3657B41C9FC332AF85DDAB247029D8E201E9F18CF2930256CE1E120CF2F8C3F3",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/dependence_plot_YearsWithCurrManager.png": {
+      "pre_execution_sha256": "EE2E3450A354AF1DF9F5FB71D3DF2BFF6E872FD99D2A0AE85EDECDD6A906E856",
+      "post_execution_sha256": "EE2E3450A354AF1DF9F5FB71D3DF2BFF6E872FD99D2A0AE85EDECDD6A906E856",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/global_feature_importance_bar.png": {
+      "pre_execution_sha256": "14ED2CEFA8B1AF63DB8C623D4048AA889A71A2FAAEA3854764193030DCDA02D6",
+      "post_execution_sha256": "14ED2CEFA8B1AF63DB8C623D4048AA889A71A2FAAEA3854764193030DCDA02D6",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/global_shap_beeswarm.png": {
+      "pre_execution_sha256": "8021745EB62525C585BAF8C42E77C40CDCA902078FBB0B868D38C68D8B4121B0",
+      "post_execution_sha256": "8021745EB62525C585BAF8C42E77C40CDCA902078FBB0B868D38C68D8B4121B0",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/local_explanation_high_risk_attrition.png": {
+      "pre_execution_sha256": "9C5C5AEEB62248C4E977C6F8496D77097AC31C141AB3F5AF66FC9BE0833AB041",
+      "post_execution_sha256": "9C5C5AEEB62248C4E977C6F8496D77097AC31C141AB3F5AF66FC9BE0833AB041",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/local_explanation_low_risk_retention.png": {
+      "pre_execution_sha256": "A65507B6229A70073CB82690FBA25EFB48838FE7A6A8472D2FD41398425CB76B",
+      "post_execution_sha256": "A65507B6229A70073CB82690FBA25EFB48838FE7A6A8472D2FD41398425CB76B",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/shap_global_feature_importance.csv": {
+      "pre_execution_sha256": "5577E55E6ECFF6EBF9B2CC0E384825DBFF8C1EBAF91732596E137F4BF68ED231",
+      "post_execution_sha256": "5577E55E6ECFF6EBF9B2CC0E384825DBFF8C1EBAF91732596E137F4BF68ED231",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\shap_outputs/step37_individual_explanations.json": {
+      "pre_execution_sha256": "E95BF27115A503B7BC5A26685DC91E8E345956D438ACD133F575310DA4C0CCE6",
+      "post_execution_sha256": "E95BF27115A503B7BC5A26685DC91E8E345956D438ACD133F575310DA4C0CCE6",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\step32_reference/step32_candidate_config.json": {
+      "pre_execution_sha256": "07E37DA213F6B6F6D918A8624459425880BCB3380BE723C0FAA1BCD64C31F526",
+      "post_execution_sha256": "07E37DA213F6B6F6D918A8624459425880BCB3380BE723C0FAA1BCD64C31F526",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\step32_reference/step32_candidate_confirmation.csv": {
+      "pre_execution_sha256": "B355A44D9BB1E3C6CAA366B8DE2DB7B447D58810B8EC703D5AF148B90DF0B36A",
+      "post_execution_sha256": "B355A44D9BB1E3C6CAA366B8DE2DB7B447D58810B8EC703D5AF148B90DF0B36A",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\step32_reference/step32_candidate_hash_manifest.json": {
+      "pre_execution_sha256": "20B13CE5AC68E048F4B3C865B449C7C6BD3300C82E3048F768BC3D03F240EB89",
+      "post_execution_sha256": "20B13CE5AC68E048F4B3C865B449C7C6BD3300C82E3048F768BC3D03F240EB89",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\step32_reference/step32_candidate_holdout.csv": {
+      "pre_execution_sha256": "944F380F17BA79910FD61473641FD1FD936B24120B428DEBFC63DBADD789B9EB",
+      "post_execution_sha256": "944F380F17BA79910FD61473641FD1FD936B24120B428DEBFC63DBADD789B9EB",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\step32_reference/step32_candidate_multiseed.csv": {
+      "pre_execution_sha256": "7E2ACB8A6434E37EF378BA787072C40F810A9FC400A5BD84F1BB6D22D045F7BC",
+      "post_execution_sha256": "7E2ACB8A6434E37EF378BA787072C40F810A9FC400A5BD84F1BB6D22D045F7BC",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\step32_reference/step32_candidate_oof.csv": {
+      "pre_execution_sha256": "415753A0024876D3453D19292691CA1C796E65970A583AF3C9A834E635E6C550",
+      "post_execution_sha256": "415753A0024876D3453D19292691CA1C796E65970A583AF3C9A834E635E6C550",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\validation_module/data_quality_and_bias_report.json": {
+      "pre_execution_sha256": "C975AB4806A45BD5D1CA69047B29D72A86D9B7277B7B89ACA8C24CDF5CF3E298",
+      "post_execution_sha256": "C975AB4806A45BD5D1CA69047B29D72A86D9B7277B7B89ACA8C24CDF5CF3E298",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\validation_module/fairness_subgroup_analysis.json": {
+      "pre_execution_sha256": "E6937CD044E195D584A7982A3728EE84E75B942A67608A99CF5A6A8C5BF89933",
+      "post_execution_sha256": "E6937CD044E195D584A7982A3728EE84E75B942A67608A99CF5A6A8C5BF89933",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\validation_module/input_validator.py": {
+      "pre_execution_sha256": "8348411BEA264380B2036250429AC2F2D2A68B08486B65EEBE0013E0FE5156DE",
+      "post_execution_sha256": "8348411BEA264380B2036250429AC2F2D2A68B08486B65EEBE0013E0FE5156DE",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\validation_module/__pycache__/input_validator.cpython-311.pyc": {
+      "pre_execution_sha256": "47035F8F7AF2A8B72971D7C26B4847FC13A9D4E6CBF47432034E49F395ADD675",
+      "post_execution_sha256": "47035F8F7AF2A8B72971D7C26B4847FC13A9D4E6CBF47432034E49F395ADD675",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\web_dashboard/app.js": {
+      "pre_execution_sha256": "5996DB7C892DC4AEC68A0D12EE68D96681F9346B42F0412A93D433C57DA84696",
+      "post_execution_sha256": "5996DB7C892DC4AEC68A0D12EE68D96681F9346B42F0412A93D433C57DA84696",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\web_dashboard/index.html": {
+      "pre_execution_sha256": "AFCEF8E6135C92F74B74E78B1A20D804AA62FC8F878238EB607E9EA72DF999E4",
+      "post_execution_sha256": "AFCEF8E6135C92F74B74E78B1A20D804AA62FC8F878238EB607E9EA72DF999E4",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\web_dashboard/style.css": {
+      "pre_execution_sha256": "7B3A8DC2F503ACC77F0AB5956F049E549F97AA673FF6F2C1C7229501D59377B2",
+      "post_execution_sha256": "7B3A8DC2F503ACC77F0AB5956F049E549F97AA673FF6F2C1C7229501D59377B2",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\protected_files_pre_audit.json": {
+      "pre_execution_sha256": "2F21396385AA05DFCE554F54FA199E75529AD6442DAE13A6D324B6F192710963",
+      "post_execution_sha256": "2F21396385AA05DFCE554F54FA199E75529AD6442DAE13A6D324B6F192710963",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\RESEARCH_PAPER_DRAFT.md": {
+      "pre_execution_sha256": "8D3B78D0F7ED84C4BA0907EE689A46F3A04C37292A514924F1216F06CF62DCA8",
+      "post_execution_sha256": "8D3B78D0F7ED84C4BA0907EE689A46F3A04C37292A514924F1216F06CF62DCA8",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\STEP37_SCIENTIFIC_ADDENDUM.md": {
+      "pre_execution_sha256": "07618F1848F427E51B63C9AAFD25955255A63B26B63FFE36619298FED109B87C",
+      "post_execution_sha256": "07618F1848F427E51B63C9AAFD25955255A63B26B63FFE36619298FED109B87C",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\data_quality_advanced/enhanced_data_quality_report.json": {
+      "pre_execution_sha256": "7BA9D7D9CBFC234F900C8C143ABF7DC5A1E86F7F4AB4772AE6684EEADFEE88EB",
+      "post_execution_sha256": "7BA9D7D9CBFC234F900C8C143ABF7DC5A1E86F7F4AB4772AE6684EEADFEE88EB",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\drift_monitoring_advanced/drift_monitoring_validation_report.json": {
+      "pre_execution_sha256": "CA972A9CB874729CC2EC47EE6D5609A4D769007536BCDCEF029029BF3A93F3E9",
+      "post_execution_sha256": "CA972A9CB874729CC2EC47EE6D5609A4D769007536BCDCEF029029BF3A93F3E9",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\external_validation/external_validation_audit_and_protocol.json": {
+      "pre_execution_sha256": "41EAF25FBEE38E032A1F4E8D74A2456D8E4C786B25E70B9ADA50040A1A156307",
+      "post_execution_sha256": "41EAF25FBEE38E032A1F4E8D74A2456D8E4C786B25E70B9ADA50040A1A156307",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\fairness_audit_advanced/fairness_and_responsible_use_report.json": {
+      "pre_execution_sha256": "A7A54445AE4678B6FF7E365FCE9820664FC97B25688AAC5159350C5FFA14CF7C",
+      "post_execution_sha256": "A7A54445AE4678B6FF7E365FCE9820664FC97B25688AAC5159350C5FFA14CF7C",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\internal_validation/cross_validation_metrics_boxplot.png": {
+      "pre_execution_sha256": "5416A4FF014B7857678464F65F154DF167709130B21A024F375BCB1D8422F998",
+      "post_execution_sha256": "5416A4FF014B7857678464F65F154DF167709130B21A024F375BCB1D8422F998",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\internal_validation/precision_recall_curve_with_baseline.png": {
+      "pre_execution_sha256": "C082152D5769D2A2E15711CFC3CB8A74B6F829FC9C266D28F2BB9EA09B84608D",
+      "post_execution_sha256": "C082152D5769D2A2E15711CFC3CB8A74B6F829FC9C266D28F2BB9EA09B84608D",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\internal_validation/rigorous_internal_validation_report.json": {
+      "pre_execution_sha256": "56465336586A8A9DDA38A277D35E9855CF8718FD6F01068B33BF0F4259458469",
+      "post_execution_sha256": "56465336586A8A9DDA38A277D35E9855CF8718FD6F01068B33BF0F4259458469",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\intervention_tracker_advanced/intervention_protocol_and_schema.json": {
+      "pre_execution_sha256": "0505E23A09CF88D96D6B6AE788E0AB3573AC43678FFDAC27B01A5AD572642AE3",
+      "post_execution_sha256": "0505E23A09CF88D96D6B6AE788E0AB3573AC43678FFDAC27B01A5AD572642AE3",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\probability_calibration/probability_calibration_report.json": {
+      "pre_execution_sha256": "1E99C5549B1A02ACD793A51BD91B3792DD278A028C18D0EC311B0E37489CE2AF",
+      "post_execution_sha256": "1E99C5549B1A02ACD793A51BD91B3792DD278A028C18D0EC311B0E37489CE2AF",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\probability_calibration/step32_reliability_curve.png": {
+      "pre_execution_sha256": "133BE8F3B9F8A45EB4BB19CDB65D7D0059D624E05C96423DE170D1CAF4DD1A74",
+      "post_execution_sha256": "133BE8F3B9F8A45EB4BB19CDB65D7D0059D624E05C96423DE170D1CAF4DD1A74",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\shap_validation/hybrid_kernel_vs_tree_feature_ranking.png": {
+      "pre_execution_sha256": "0B46FCD6BA2B091B666077A2B6001C1D1F817F27BE750E5631E7BD325DAA03A8",
+      "post_execution_sha256": "0B46FCD6BA2B091B666077A2B6001C1D1F817F27BE750E5631E7BD325DAA03A8",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\shap_validation/shap_additivity_error_distribution.png": {
+      "pre_execution_sha256": "60BC8D9C993DE9CFE83FE377E10902EFD922DC1C6AABDB5F51CD55AC8336309D",
+      "post_execution_sha256": "60BC8D9C993DE9CFE83FE377E10902EFD922DC1C6AABDB5F51CD55AC8336309D",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\shap_validation/shap_mathematical_validation_report.json": {
+      "pre_execution_sha256": "B4B752E0F75D82F53699301BDE44E065FAD416921FA460571C73C314337E066C",
+      "post_execution_sha256": "B4B752E0F75D82F53699301BDE44E065FAD416921FA460571C73C314337E066C",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\artifacts\\track1_step37_explainable_extension\\followup_scientific_hardening\\test_suite/test_execution_log.json": {
+      "pre_execution_sha256": "1499B11C45510D488B44836D6E5E97B57D3890807B0A0EF3BB8700DF78CACB47",
+      "post_execution_sha256": "1499B11C45510D488B44836D6E5E97B57D3890807B0A0EF3BB8700DF78CACB47",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\scripts\\run_track1_step37_explainable_extension.py": {
+      "pre_execution_sha256": "A25E91F25AC6A6144208BAFF34515D85F81B28C8FE3B04F627CFC4A3E5B19511",
+      "post_execution_sha256": "A25E91F25AC6A6144208BAFF34515D85F81B28C8FE3B04F627CFC4A3E5B19511",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\scripts\\run_track1_step37_followup_hardening.py": {
+      "pre_execution_sha256": "FBC8B4EA5BBABEF38ED53B5C75EC4A334C98F6677DB07BF3F1A0B6FA7A3CB415",
+      "post_execution_sha256": "FBC8B4EA5BBABEF38ED53B5C75EC4A334C98F6677DB07BF3F1A0B6FA7A3CB415",
+      "match": true
+    },
+    "e:\\R & D anitgravity\\scripts\\test_step37_scientific_hardening.py": {
+      "pre_execution_sha256": "05A187E266730EF6EF24159567C4620B37D98DB948848E8A5F03C483FF1943FA",
+      "post_execution_sha256": "05A187E266730EF6EF24159567C4620B37D98DB948848E8A5F03C483FF1943FA",
+      "match": true
+    }
+  }
+}

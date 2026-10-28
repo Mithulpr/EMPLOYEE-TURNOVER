@@ -1,0 +1,72 @@
+{
+  "Gender": {
+    "Male": {
+      "N": 361,
+      "Accuracy": 0.9501,
+      "Recall": 0.8226,
+      "Precision": 0.8793,
+      "FPR": 0.0234,
+      "Errors": 18
+    },
+    "Female": {
+      "N": 233,
+      "Accuracy": 0.9785,
+      "Recall": 0.9706,
+      "Precision": 0.8919,
+      "FPR": 0.0201,
+      "Errors": 5
+    }
+  },
+  "Age_Cohorts": {
+    "Younger (<30)": {
+      "N": 128,
+      "Accuracy": 0.9219,
+      "Recall": 0.9429,
+      "Precision": 0.8049,
+      "FPR": 0.086,
+      "Errors": 10
+    },
+    "Mid-Career (30-45)": {
+      "N": 338,
+      "Accuracy": 0.9734,
+      "Recall": 0.8605,
+      "Precision": 0.925,
+      "FPR": 0.0102,
+      "Errors": 9
+    },
+    "Senior (>45)": {
+      "N": 128,
+      "Accuracy": 0.9688,
+      "Recall": 0.7778,
+      "Precision": 1.0,
+      "FPR": 0.0,
+      "Errors": 4
+    }
+  },
+  "MaritalStatus": {
+    "Single": {
+      "N": 173,
+      "Accuracy": 0.9422,
+      "Recall": 0.9149,
+      "Precision": 0.8776,
+      "FPR": 0.0476,
+      "Errors": 10
+    },
+    "Married": {
+      "N": 283,
+      "Accuracy": 0.9576,
+      "Recall": 0.814,
+      "Precision": 0.8974,
+      "FPR": 0.0167,
+      "Errors": 12
+    },
+    "Divorced": {
+      "N": 138,
+      "Accuracy": 0.9928,
+      "Recall": 1.0,
+      "Precision": 0.8571,
+      "FPR": 0.0076,
+      "Errors": 1
+    }
+  }
+}

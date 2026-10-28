@@ -1,0 +1,53 @@
+{
+  "methodology": "Two-Tier Explanation System (Model-Agnostic Continuous KernelExplainer + Discrete Rule Trace)",
+  "background_samples": 50,
+  "evaluated_samples": 25,
+  "expected_value_baseline": 0.11909483377737529,
+  "additivity_metrics": {
+    "mean_reconstruction_error": 1.9081958235744878e-17,
+    "median_reconstruction_error": 6.938893903907228e-18,
+    "max_reconstruction_error": 1.1102230246251565e-16,
+    "additivity_condition_satisfied": true
+  },
+  "ranking_concordance": {
+    "spearman_rank_correlation": 0.8598442714126807,
+    "pearson_linear_correlation": 0.8783986576414857,
+    "concordance_status": "HIGH"
+  },
+  "runtime_seconds": 8.33,
+  "tier2_override_traces": [
+    {
+      "anonymized_id": "EMP_HOLD_0036",
+      "tier1_continuous_p_meta": 0.2031,
+      "tier1_base_class": 0,
+      "tier2_override_applied": true,
+      "tier2_final_class": 1,
+      "activation_zone": "0.15 <= 0.2031 < 0.3610",
+      "specialist_confidence": 0.4144,
+      "rule_predicates": {
+        "SevereDissatisfactionFlag": 1.263181861530851,
+        "YearsWithCurrManager": 0.5676248294163291,
+        "JobHoppingRate": 0.27880196493731557,
+        "TotalExpToAgeRatio": 1.2866180776503735
+      },
+      "explanation": "Decision upgraded from Retention (0) to Attrition Risk (1) via CatBoost Boundary Specialist Rule. Continuous SHAP explains the base P_meta score, while this discrete trace explains the rule intervention."
+    },
+    {
+      "anonymized_id": "EMP_HOLD_0591",
+      "tier1_continuous_p_meta": 0.3416,
+      "tier1_base_class": 0,
+      "tier2_override_applied": true,
+      "tier2_final_class": 1,
+      "activation_zone": "0.15 <= 0.3416 < 0.3610",
+      "specialist_confidence": 0.4435,
+      "rule_predicates": {
+        "SevereDissatisfactionFlag": 1.263181861530851,
+        "YearsWithCurrManager": -0.29821265925662,
+        "JobHoppingRate": -0.47149513146854916,
+        "TotalExpToAgeRatio": 0.25169474251639723
+      },
+      "explanation": "Decision upgraded from Retention (0) to Attrition Risk (1) via CatBoost Boundary Specialist Rule. Continuous SHAP explains the base P_meta score, while this discrete trace explains the rule intervention."
+    }
+  ],
+  "causality_disclaimer": "All SHAP values represent observational feature attributions reflecting conditional expectations in the training distribution. They do NOT reflect causal effects or interventional counterfactuals."
+}

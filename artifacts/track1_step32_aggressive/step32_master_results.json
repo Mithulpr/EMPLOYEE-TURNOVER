@@ -1,0 +1,25 @@
+{
+  "experiment": "Track 1 Step 32: Advanced Fine-Tuning of the 4th Champion",
+  "decision": "STEP 32 CANDIDATE PROMOTED AS 5TH CHAMPION (23 ERRORS)",
+  "promoted_5th_champion": true,
+  "4th_champion_baseline_errors": 24,
+  "step32_holdout_errors": 23,
+  "step32_holdout_metrics": {
+    "ROC_AUC": 0.9454693775100401,
+    "PR_AUC": 0.8688930037030765,
+    "Precision": 0.8842105263157894,
+    "Recall": 0.875,
+    "F1_Score": 0.8795811518324608,
+    "Accuracy": 0.9612794612794613,
+    "Errors": 23,
+    "Threshold": 0.361,
+    "TN": 487,
+    "FP": 11,
+    "FN": 12,
+    "TP": 84
+  },
+  "step32_pool_errors": 116,
+  "step32_conf_errors": 20,
+  "winner_details": "Balanced Experience (ExpRatio > -0.20) + CatBoost Specialist >= 0.40",
+  "timestamp": "2026-09-26 11:52:52"
+}

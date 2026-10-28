@@ -1,0 +1,49 @@
+{
+  "round": 52,
+  "phase": "F",
+  "name": "Ablation_XGBoost_Removed",
+  "config": {
+    "round": 52,
+    "phase": "F",
+    "name": "Ablation_XGBoost_Removed",
+    "cb_key": "default_d6_i600_lr006_l2_15",
+    "xgb": null,
+    "meta": {
+      "type": "passthrough_cb"
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.0
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.880963335112289,
+    "PR_AUC": 0.7465186467761575,
+    "Precision": 0.6738461538461539,
+    "Recall": 0.7133550488599348,
+    "F1_Score": 0.6930379746835443,
+    "Accuracy": 0.8978947368421053,
+    "Errors": 194,
+    "Threshold": 0.361,
+    "TN": 1487,
+    "FP": 106,
+    "FN": 88,
+    "TP": 219
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.8968217711936305,
+    "PR_AUC": 0.7804689166787149,
+    "Precision": 0.7638888888888888,
+    "Recall": 0.7142857142857143,
+    "F1_Score": 0.738255033557047,
+    "Accuracy": 0.9178947368421052,
+    "Errors": 39,
+    "Threshold": 0.361,
+    "TN": 381,
+    "FP": 17,
+    "FN": 22,
+    "TP": 55
+  },
+  "multiseed_mean": 39.0,
+  "multiseed_std": 0.0,
+  "timestamp": "2026-09-27 16:24:15"
+}

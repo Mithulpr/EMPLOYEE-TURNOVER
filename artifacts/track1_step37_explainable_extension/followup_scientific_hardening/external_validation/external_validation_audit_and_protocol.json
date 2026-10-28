@@ -1,0 +1,19 @@
+{
+  "repository_dataset_audit": {
+    "primary_dataset": "dataset/merged_unique_profiles_2969.csv",
+    "external_datasets_in_workspace": 0,
+    "provenance_investigation": "Forensic audit in artifacts/dataset_forensic_audit/ confirms that merged_unique_profiles_2969.csv was formed from two IBM HR Analytics synthetic datasets (HR_Analytics.csv and HR_Analytics_Cleaned_Master.csv). No independent real-world enterprise dataset is present in the workspace."
+  },
+  "scientific_status": "EXTERNAL_VALIDATION_UNRESOLVED (Due to absence of unlinked external enterprise datasets)",
+  "minimum_requirements_for_valid_external_evaluation": [
+    "Genuinely independent organizational cohort (different industry, firm, or time epoch)",
+    "Documented target compatibility (voluntary employee turnover within 12 months)",
+    "Full schema harmonization (mapping job roles, satisfaction scales, and tenure variables without label-based tuning)",
+    "Strict zero-shot inference (no refitting, reweighting, or threshold recalibration on external outcomes)"
+  ],
+  "prospective_external_testing_protocol": {
+    "stage1_schema_mapping": "Define standardized JSON schema mapping raw HRIS export to 30 model features.",
+    "stage2_blind_inference": "Run frozen Step 32 pipeline; freeze predictions before observing actual turnover outcomes.",
+    "stage3_performance_scoring": "Evaluate generalization degradation relative to internal benchmark (96.13% Acc, 87.96% F1)."
+  }
+}

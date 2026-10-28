@@ -1,0 +1,22 @@
+{
+  "Accuracy": 0.925901,
+  "Precision": 0.884615,
+  "Recall": 0.622917,
+  "F1_Score": 0.731051,
+  "ROC_AUC": 0.939548,
+  "PR_AUC": 0.833999,
+  "Balanced_Accuracy": 0.803624,
+  "Specificity": 0.984331,
+  "Brier_Score": 0.058215,
+  "True_Positives": 299,
+  "False_Positives": 39,
+  "True_Negatives": 2450,
+  "False_Negatives": 181,
+  "Total_Errors": 220,
+  "Total_Correct": 2749,
+  "Accuracy_Pct": "92.59%",
+  "Precision_Pct": "88.46%",
+  "Recall_Pct": "62.29%",
+  "F1_Score_Pct": "73.11%",
+  "ROC_AUC_Pct": "93.95%"
+}

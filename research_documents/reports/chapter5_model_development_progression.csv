@@ -1,0 +1,6 @@
+Version,Precursor_ID,Architecture,Accuracy,Precision,Recall,F1-score,ROC-AUC,Errors,TN,FP,FN,TP,d_Accuracy_pp,d_F1_pp,d_Errors
+Experiment 1,CHAMPION 4 (Stage 6),Tuned Single CatBoost,94.95,87.5,80.21,83.7,92.32,30,487,11,19,77,0.0,0.0,0
+Experiment 2,CHAMPION 3 (Step 28),Dual Meta-Learner,95.62,88.04,84.38,86.17,94.55,26,487,11,15,81,0.67,2.47,-4
+Experiment 3,CHAMPION 2 (Step 30),Severe-FN Recovery,95.79,88.17,85.42,86.77,94.55,25,487,11,14,82,0.17,0.6,-1
+Experiment 4,CHAMPION 1 (Step 31),Transition Boundary Recovery,95.96,87.5,87.5,87.5,94.55,24,486,12,12,84,0.17,0.73,-1
+Final Hybrid Model,FINAL (Step 32),Two-Stage Stacking + Specialist,96.13,88.42,87.5,87.96,94.55,23,487,11,12,84,0.17,0.46,-1

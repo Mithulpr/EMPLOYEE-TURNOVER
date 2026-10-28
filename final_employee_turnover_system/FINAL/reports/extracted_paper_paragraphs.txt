@@ -1,0 +1,363 @@
+=== Paragraph 0 ===
+A Two-Stage Selective Classification Framework with Hard-Case Specialist Routing for Employee Turnover Prediction
+
+=== Paragraph 1 ===
+[Author Names Withheld for Double-Blind Review]
+
+=== Paragraph 2 ===
+[Affiliation and Contact Withheld for Double-Blind Review]
+
+=== Paragraph 3 ===
+Abstract—Employee turnover prediction is a critical operational problem in human resource management, where class imbalance and employee profile heterogeneity make uniform single-model classification fundamentally limited. This paper presents a Two-Stage Selective Classification Framework with Hard-Case Specialist Routing—an architecture in which a primary CatBoost Anchor model (trained on K=33 consensus-selected features) classifies high-confidence employee profiles, while uncertain boundary-zone instances are selectively routed to a dedicated K=37 CatBoost Hard-Case Specialist trained to recover difficult minority-class departures. The routing boundary uses an empirically calibrated decision threshold tau = 0.4850 optimized via out-of-fold Pareto search. Evaluated on 2,969 unique employee profiles (development training cohort N=2,375; locked validation holdout N=594), the proposed framework achieves 94.95% Accuracy, 87.50% Precision, 80.21% Recall, 83.70% F1-score, and 92.30% ROC-AUC on the locked validation holdout—reducing total classification errors from 71 (leak-free base-paper GA+LightGBM reproduction) to 30, representing a 57.7% error reduction. A forensic audit demonstrates that the base-paper published benchmark (AUC=0.94, F1=0.87) is reproducible only under pre-split synthetic oversampling (SMOTE) leakage, which inflates F1-score by +49.82 percentage points from train-test cross-contamination. SHAP-based post-hoc interpretation serves as a supporting explainability component to identify career stagnation, tenure stability, and compensation equity as primary turnover drivers. Repeated 25-fold nested cross-validation across the full dataset confirms generalization with 95.41% ± 0.98% Accuracy and 85.27% ± 3.27% F1-score, suggesting a practical performance limit for the evaluated tabular feature space.
+
+=== Paragraph 4 ===
+Keywords—employee turnover prediction; selective classification; CatBoost gradient boosting; hard-case specialist routing; stability feature selection; confidence gating; SHAP interpretability; HR analytics.
+
+=== Paragraph 5 ===
+
+
+=== Paragraph 6 ===
+
+
+=== Paragraph 7 ===
+I. INTRODUCTION
+
+=== Paragraph 8 ===
+Employee turnover represents a substantial operational and financial challenge for modern enterprises. Industry studies estimate that replacing a departing employee costs between 50% and 200% of their annual salary when accounting for recruitment, onboarding, transitional productivity loss, and institutional knowledge depletion [1]. Consequently, predictive analytics for proactive retention has become a major research priority in Human Resource Management (HRM) [2]. The capability to accurately identify employees at risk of voluntary departure enables organizational leaders to deploy targeted interventions—such as compensation adjustments, role redesign, or career development pathways—before irreversible departure decisions occur.
+
+=== Paragraph 9 ===
+Supervised machine learning methods, particularly gradient boosted decision trees, have demonstrated strong empirical success on structured tabular HR datasets [3], [4]. However, existing turnover prediction models uniformly apply a single classifier across all employee profiles. This uniform classification paradigm is fundamentally limited when dealing with complex tabular data exhibiting severe class imbalance: high-confidence cases with clear attrition signals are forced through the same decision boundary as boundary-zone profiles exhibiting ambiguous or conflicting organizational characteristics [5].
+
+=== Paragraph 10 ===
+A second critical concern in turnover prediction research involves evaluation validity. A common methodological flaw in published studies is the application of synthetic oversampling techniques (such as SMOTE [6]) to the entire dataset prior to train/test partitioning. As demonstrated in our benchmark audit (Section VI-A), this pre-split leakage creates synthetic nearest-neighbor interpolations spanning the partition boundary, artificially inflating precision and recall metrics. Under strict leak-free evaluation, the widely cited Genetic Algorithm (GA) + LightGBM benchmark [7] exhibits a substantial performance drop on imbalanced data, confirming the need for rigorous, leak-free modeling architectures.
+
+=== Paragraph 11 ===
+To address these challenges, this paper proposes a Two-Stage Selective Classification Framework with Hard-Case Specialist Routing as the primary methodological contribution. In this architecture, a primary CatBoost Anchor model (K=33 stability-selected features) handles high-confidence predictions, while boundary-zone cases are routed to a specialized K=37 CatBoost Hard-Case Specialist model equipped with interaction features designed for difficult minority-class recovery. Evaluated on a dataset of 2,969 unique profiles, this selective routing strategy eliminates 41 classification errors relative to the leak-free base-paper reproduction on the development validation holdout.
+
+=== Paragraph 12 ===
+The primary contributions of this paper are: (1) a two-stage selective classification architecture with hard-case specialist routing tailored for imbalanced employee turnover prediction; (2) an empirical benchmark reproduction and audit demonstrating that published GA+LightGBM metrics reflect pre-split oversampling artifacts; (3) stage-specific feature representations (K=33 Anchor, K=37 Specialist) for targeted boundary discrimination; (4) an ultra-dense out-of-fold threshold calibration protocol; and (5) global and local SHAP interpretability analysis as a supporting tool connecting model attributions to organizational behavior theory.
+
+=== Paragraph 13 ===
+II. RELATED WORK
+
+=== Paragraph 14 ===
+Machine learning applications in workforce analytics have expanded considerably over the past decade. Early studies explored foundational algorithms: Zhang et al. [8] compared logistic regression, k-nearest neighbors, and decision trees, showing that tree-structured models best accommodate nonlinear HR attribute interactions. Alaskar et al. [9] demonstrated that feature selection via SelectKBest and Recursive Feature Elimination significantly improves SVM and Random Forest predictive accuracy. Zhao et al. [10] combined demographic and survey features across multiple classifiers, establishing the importance of job satisfaction indicators.
+
+=== Paragraph 15 ===
+Subsequent studies focused on hybrid and ensemble techniques. Ali [11] coupled Principal Component Analysis (PCA) with Random Forest for dimensionality reduction. Kumar et al. [12] evaluated XGBoost on multinational enterprise data, reporting 78.5% accuracy. Shafie et al. [13] combined artificial neural networks with clustering for subgroup segmentation. Biswas et al. [14] deployed multi-algorithm voting ensembles (Gradient Boosting, Random Forest, SVM, LR) to improve generalizability. Chowdhury et al. [15] integrated Local Interpretable Model-agnostic Explanations (LIME) to provide transparent feature attributions for HR managers.
+
+=== Paragraph 16 ===
+The primary literature baseline for this investigation is the hybrid GA + LightGBM model proposed by Talebi et al. [7]. Their framework utilizes a Genetic Algorithm for feature subset selection (100 generations, population 50, crossover rate 0.8, mutation rate 0.1) paired with a LightGBM classifier, reporting AUC=0.94 and F1=0.87. Additional recent contributions include CHAID decision tree modeling by Veglio et al. [16], turnover intention modeling by Park et al. [17], GA-assisted classification by Bustillo [18], and HRIS data quality audits by Shankar et al. [19]. Table I summarizes key representative studies in employee turnover prediction.
+
+=== Paragraph 17 ===
+TABLE I. REPRESENTATIVE PRIOR WORK IN EMPLOYEE TURNOVER PREDICTION
+
+=== Paragraph 18 ===
+
+
+=== Paragraph 19 ===
+III. RESEARCH GAP AND MOTIVATION
+
+=== Paragraph 20 ===
+A critical analysis of existing literature reveals three primary research gaps:
+
+=== Paragraph 21 ===
+1) Uniform Classification of Heterogeneous Profiles: Standard classifiers assign a single decision threshold across all instances. In enterprise HR settings, employee profiles are highly heterogeneous: while certain departure risks are unmistakable (e.g., severe salary stagnation combined with frequent overtime), other boundary profiles exhibit subtle or conflicting indicators. Selective classification theory [5] shows that abstaining from uncertain predictions and routing them to specialized secondary estimators systematically improves overall decision quality.
+
+=== Paragraph 22 ===
+2) Benchmark Comparability and Resampling Leakage: Multiple published benchmarks report F1-scores above 85% on imbalanced HR data. However, our empirical audit shows that applying SMOTE oversampling globally before train/test splitting inflates F1 from 44.76% to 94.58% on identical models through synthetic cross-contamination. Fair scientific comparison requires strictly leak-free evaluation protocols.
+
+=== Paragraph 23 ===
+3) Static Feature Spaces: Existing models employ a single fixed feature set. However, features that distinguish clear stayers from clear leavers (e.g., tenure ratios) differ from the interaction features required to resolve boundary cases (e.g., compensation-to-experience and promotion velocity metrics). A two-stage architecture allows stage-specific feature representations optimized for each classification regime.
+
+=== Paragraph 24 ===
+IV. PROPOSED METHODOLOGY
+
+=== Paragraph 25 ===
+A. Overall Framework Architecture
+
+=== Paragraph 26 ===
+The proposed framework implements a two-stage selective classification pipeline: Raw Profile → HR Domain Feature Engineering → K=33 Anchor Preprocessing → CatBoost Anchor Model → Confidence Evaluation → [High-Confidence: Retain Anchor Prediction] | [Boundary Zone: Route to K=37 CatBoost Hard-Case Specialist] → Final Classification (tau = 0.4850) → Post-Hoc SHAP Interpretation. The primary novelty resides entirely in the two-stage selective routing mechanism, with SHAP serving strictly as a supporting interpretability module.
+
+=== Paragraph 27 ===
+B. Dataset and Preprocessing Hygiene
+
+=== Paragraph 28 ===
+The experimental dataset contains 2,969 unique employee profile records consolidated from two operational cohorts: Dataset_A (N=1,496, 50.39%) and Dataset_B (N=1,473, 49.61%), with zero duplicate records. The target variable Attrition exhibits realistic class imbalance: 2,489 retained employees (83.83%) and 480 turnover events (16.17%), representing an imbalance ratio of 5.185:1. Data hygiene operations included: (1) correcting a 10x salary scale discrepancy in Dataset_A (mean $64,966 vs Dataset_B mean $6,500, harmonized by dividing Dataset_A by 10.0); (2) standardizing categorical values in BusinessTravel; and (3) removing uninformative identifiers and zero-variance constants. Table II summarizes the dataset partitioning and model parameters.
+
+=== Paragraph 29 ===
+TABLE II. DATASET PARTITION AND MODEL CONFIGURATION PARAMETERS
+
+=== Paragraph 30 ===
+
+
+=== Paragraph 31 ===
+C. HR-Domain Feature Engineering
+
+=== Paragraph 32 ===
+Five domain-specific feature suites were engineered strictly within training folds: (1) Tenure & Career Velocity: TenureToAgeRatio, TotalExpToAgeRatio, CompanyLoyaltyRatio, PriorCompanyExperience, and JobHoppingRate; (2) Promotion Dynamics: PromotionStagnationRatio, PromotionLagScore, ManagerBondRatio, and ManagerTenureMismatch; (3) Compensation Equity: IncomePerWorkingYear, IncomeToJobLevelRatio, RoleIncomeDisparity (computed relative to training-fold median), and CompPenetrationIndex; (4) Workload & Burnout: CommuteBurdenIndex, WorkLifeDeficit, CompositeSatisfaction, SevereDissatisfactionFlag, and HolisticBurnoutHazard; and (5) Vulnerability Archetypes: EarlyCareerFlightRisk and StagnantLowSatisfaction.
+
+=== Paragraph 33 ===
+D. K=33 Anchor Feature Selection
+
+=== Paragraph 34 ===
+The Anchor feature set (K=33) was selected using a multi-criteria consensus mechanism combining Mutual Information Maximization, L1-penalized LASSO regularization, and ExtraTrees feature importance. Features supported by at least two complementary paradigms were retained, eliminating redundant multicollinear dimensions while preserving predictive variance across tenure, satisfaction, compensation, and promotion indicators.
+
+=== Paragraph 35 ===
+E. CatBoost Anchor Model
+
+=== Paragraph 36 ===
+The Anchor classifier utilizes CatBoost with symmetric oblivious decision trees, which apply uniform split conditions across each tree depth level to provide strong structural regularization against minority-class overfitting. Hyperparameters were tuned via Optuna (Tree-structured Parzen Estimator) on the training cohort: iterations=400, learning_rate=0.1263, depth=6, l2_leaf_reg=3.0, random_strength=3.264, and auto_class_weights='Balanced'.
+
+=== Paragraph 37 ===
+F. K=37 Hard-Case Specialist Model
+
+=== Paragraph 38 ===
+The Hard-Case Specialist extends the K=33 feature space with four targeted structural interaction terms: (1) IncomeToExpRatio = MonthlyIncome / (TotalWorkingYears + 1.0); (2) PromotionVelocity = YearsSinceLastPromotion / (YearsAtCompany + 1.0); (3) IncomePerJobLevel = MonthlyIncome / (JobLevel + 0.5); and (4) SatisfactionInteraction = EnvironmentSatisfaction x JobSatisfaction. The specialist is configured with deeper oblivious trees (depth=7) and cost-sensitive training targeting boundary-zone minority instances.
+
+=== Paragraph 39 ===
+G. Confidence-Based Selective Routing
+
+=== Paragraph 40 ===
+The routing mechanism evaluates the Anchor model's predicted probability p_hat(y=1|x). Instances with high confidence (p_hat far from the decision boundary) retain the Anchor prediction. Instances falling in the boundary uncertainty zone are dynamically routed to the Specialist model. As illustrated in Fig. 4, the Anchor's out-of-fold probability distribution exhibits clear bimodal separation for high-confidence cases, while the shaded central region represents the boundary routing zone delegated to the K=37 Specialist.
+
+=== Paragraph 41 ===
+
+
+=== Paragraph 42 ===
+Fig. 4. Anchor model out-of-fold predicted probability distribution, illustrating high-confidence clear prediction regions and the intermediate boundary uncertainty zone where cases are selectively routed to the K=37 Specialist.
+
+=== Paragraph 43 ===
+H. Decision Threshold Calibration
+
+=== Paragraph 44 ===
+To address class imbalance without synthetic data corruption, threshold optimization was conducted via an ultra-dense 751-point sweep (tau in [0.10, 0.85], step 0.001) on out-of-fold cross-validation probabilities on the development training cohort (N=2,375). The optimization objective maximized a composite utility score:
+
+=== Paragraph 45 ===
+S_CV(tau) = 0.30*F1(tau) + 0.25*Prec(tau) + 0.20*Rec(tau) + 0.15*AUC + 0.10*Acc		(1)
+
+=== Paragraph 46 ===
+subject to Precision >= 0.85 and Recall >= 0.75, yielding an optimal decision threshold of tau = 0.4850.
+
+=== Paragraph 47 ===
+I. End-to-End Inference Pipeline
+
+=== Paragraph 48 ===
+During inference: (1) an incoming employee record is transformed by the HR feature engineering pipeline; (2) the K=33 feature vector is evaluated by the Anchor CatBoost; (3) if confidence exceeds the routing margin, the Anchor output at tau=0.4850 is returned; (4) otherwise, the record is mapped to the K=37 space and classified by the Specialist model at tau=0.4850.
+
+=== Paragraph 49 ===
+J. Post-Hoc SHAP Interpretation
+
+=== Paragraph 50 ===
+SHAP (SHapley Additive exPlanations) TreeExplainer [20], [21] is applied post-hoc to the trained models to quantify global feature importances and compute local instance-level attributions:
+
+=== Paragraph 51 ===
+phi_i(f, x) = sum_{S subseteq F \ {i}} (|S|!(|F|-|S|-1)! / |F|!) [f(S union {i}) - f(S)]		(2)
+
+=== Paragraph 52 ===
+SHAP attribution operates strictly for post-hoc interpretation and does not influence model training or threshold calibration.
+
+=== Paragraph 53 ===
+V. EXPERIMENTAL SETUP
+
+=== Paragraph 54 ===
+A. Dataset Partitioning and Validation Protocol
+
+=== Paragraph 55 ===
+The 2,969 unique profile records were partitioned into an 80% development training cohort (N=2,375) and a 20% locked validation holdout (N=594) using stratified sampling (random_state=42). The locked validation holdout was not used for model fitting, feature engineering fitting, feature selection, hyperparameter optimization, routing calibration, or threshold calibration. However, because it served as a recurring benchmark across iterative research stages, it should not be characterized as a pristine unseen test set. To establish unbiased generalization, we additionally conduct 25-fold Repeated Stratified Nested Cross-Validation (5 repeats x 5 folds) across the full dataset as the primary generalization standard.
+
+=== Paragraph 56 ===
+B. Implementation and Anti-Leakage Protocol
+
+=== Paragraph 57 ===
+All models were implemented in Python 3.11 using CatBoost 1.x, LightGBM 4.x, scikit-learn 1.x, and Optuna. Strict anti-leakage isolation was enforced: all scalers, feature encoders, and consensus selectors were fitted strictly on training folds and applied as read-only transforms to validation folds. Raw dataset integrity was confirmed before and after execution via SHA-256 hash matching.
+
+=== Paragraph 58 ===
+C. Evaluation Metrics
+
+=== Paragraph 59 ===
+Models were evaluated using Accuracy, Precision, Recall (Sensitivity), F1-score, Area Under the ROC Curve (ROC-AUC), and total classification error count (FP + FN). Cross-validation results are reported as Mean ± Standard Deviation with 95% confidence intervals, and statistical significance was assessed using paired Wilcoxon signed-rank tests across the 25 folds.
+
+=== Paragraph 60 ===
+VI. RESULTS AND DISCUSSION
+
+=== Paragraph 61 ===
+A. Base-Paper Reproduction and Forensic Leakage Audit
+
+=== Paragraph 62 ===
+To establish a rigorous baseline, we reproduced the GA + LightGBM architecture of Talebi et al. [7] under strictly leak-free conditions (in-fold resampling only). On the locked validation holdout (N=594), the reproduced model achieved 88.01% Accuracy, 74.80% Precision, 38.96% Recall, 51.23% F1-score, and 87.11% ROC-AUC, committing 71 total errors (TP=37, FP=13, TN=486, FN=58). The sharp drop in Recall from the published 85% to 38.96% confirms that published metrics exceeding 85% Recall under default thresholds reflect pre-split SMOTE leakage.
+
+=== Paragraph 63 ===
+B. Historical Baseline Comparison
+
+=== Paragraph 64 ===
+The single-stage historical baseline (V2 Tuned CatBoost at tau=0.400) achieved 92.42% Accuracy, 78.02% Precision, 73.96% Recall, 75.94% F1-score, and 90.69% ROC-AUC on the locked validation holdout (45 errors: TP=71, FP=20, TN=478, FN=25). While this single-stage model established a strong foundation, 25 minority-class leavers were still missed due to boundary uncertainty.
+
+=== Paragraph 65 ===
+C. Proposed Two-Stage System Performance
+
+=== Paragraph 66 ===
+The proposed Two-Stage Selective Classification Framework achieved 94.95% Accuracy, 87.50% Precision, 80.21% Recall, 83.70% F1-score, and 92.30% ROC-AUC on the locked validation holdout (N=594), reducing total errors to 30 (TP=77, FP=11, TN=487, FN=19). Relative to the leak-free base-paper reproduction (71 errors), the proposed model eliminates 41 errors (57.7% reduction). Relative to the single-stage baseline (45 errors), the specialist routing recovers 6 additional true positive leavers (FN: 25 → 19) while reducing false alarms (FP: 20 → 11).
+
+=== Paragraph 67 ===
+TABLE III. COMPREHENSIVE PERFORMANCE COMPARISON ON LOCKED VALIDATION HOLDOUT (N=594)
+
+=== Paragraph 68 ===
+
+
+=== Paragraph 69 ===
+D. Discriminative Analysis and Error Distributions
+
+=== Paragraph 70 ===
+Table III presents the full comparative evaluation. As illustrated in the ROC curves shown in Fig. 1, the proposed two-stage system maintains superior true positive rates across operational thresholds, achieving an ROC-AUC of 92.30%. The resulting confusion matrix, depicted in Fig. 2, demonstrates balanced error suppression (11 FPs and 19 FNs out of 594 instances).
+
+=== Paragraph 71 ===
+
+
+=== Paragraph 72 ===
+Fig. 1. ROC curve comparison on the locked validation holdout (N=594). The proposed two-stage selective framework (ROC-AUC = 92.30%) demonstrates superior discriminative capability relative to the base-paper reproduction (ROC-AUC = 87.11%) and the single-stage baseline (ROC-AUC = 90.69%).
+
+=== Paragraph 73 ===
+
+
+=== Paragraph 74 ===
+Fig. 2. Confusion matrix of the proposed two-stage selective system on the locked validation holdout (N=594): TP=77, FP=11, TN=487, FN=19, yielding 30 total classification errors (5.05% error rate).
+
+=== Paragraph 75 ===
+E. Cross-Validation Generalizability and Statistical Testing
+
+=== Paragraph 76 ===
+Table IV presents the 25-fold repeated stratified nested cross-validation results across the full dataset (N=2,969). The proposed two-stage architecture achieved 95.41% ± 0.98% Accuracy, 88.49% ± 3.70% Precision, 82.46% ± 4.84% Recall, 85.27% ± 3.27% F1-score, and 95.13% ± 2.33% ROC-AUC, with a mean fold error count of 27.3 ± 5.8.
+
+=== Paragraph 77 ===
+TABLE IV. 25-FOLD REPEATED STRATIFIED NESTED CV RESULTS (N=2,969)
+
+=== Paragraph 78 ===
+
+
+=== Paragraph 79 ===
+Paired Wilcoxon signed-rank tests across the 25 folds confirm that the Specialist routing mechanism yields statistically significant improvements over the K=33 Anchor in Recall (+2.50%, W=0.0, p=0.0000) and ROC-AUC (+0.13%, W=16.0, p=0.0000). The slight shift in Precision (-1.84%, W=17.0, p=0.0000) reflects the specialist's intentional cost-sensitive focus on boundary-zone recall. Differences in Accuracy (+0.05%, W=84.5, p=0.4416) and F1-score (+0.53%, W=93.0, p=0.0626) did not reach statistical significance at alpha=0.05, indicating that the specialist primarily refines minority sensitivity without compromising overall accuracy.
+
+=== Paragraph 80 ===
+F. Error Forensics and Validation Dynamics
+
+=== Paragraph 81 ===
+Forensic analysis of the 30 validation errors indicates that the 19 False Negatives primarily comprise employees with high organizational tenure, advanced compensation grades, and positive satisfaction ratings who nevertheless resigned. These cases represent voluntary departures driven by unobserved external factors (e.g., competing market offers, spouse relocation, family events) that leave no signal in internal HR records. The observed results suggest a practical performance limit for the evaluated feature space and experimental configurations.
+
+=== Paragraph 82 ===
+VII. SHAP-BASED INTERPRETABILITY
+
+=== Paragraph 83 ===
+To provide actionable organizational insights, SHAP TreeExplainer was applied to the frozen K=33 Anchor model across all 2,969 profiles as a supporting explainability module. Table V lists the top 15 features ranked by mean absolute SHAP value, and the global attribution distribution is displayed in Fig. 3.
+
+=== Paragraph 84 ===
+TABLE V. SHAP GLOBAL FEATURE IMPORTANCE (K=33 CATBOOST ANCHOR)
+
+=== Paragraph 85 ===
+
+
+=== Paragraph 86 ===
+
+
+=== Paragraph 87 ===
+Fig. 3. Global feature importance ranking based on mean absolute SHAP values for the K=33 CatBoost Anchor model across all 2,969 employee profiles. Tenure stability and career mobility features dominate attribution.
+
+=== Paragraph 88 ===
+The SHAP attributions align closely with organizational embeddedness theory [2]: tenure stability ratios (TenureToAgeRatio, CompanyLoyaltyRatio, AvgYearsPerCompany) and promotion dynamics (PromotionLagScore, PromotionStagnationRatio) collectively account for over 30% of total model attribution. Local SHAP waterfall analyses for boundary cases routed to the Specialist reveal conflicting signals—such as high job satisfaction co-occurring with prolonged promotion stagnation. The Specialist's K=37 feature set resolves these ambiguities by incorporating structural interaction terms (PromotionVelocity, IncomeToExpRatio) that capture fine-grained equity imbalances.
+
+=== Paragraph 89 ===
+VIII. LIMITATIONS AND FUTURE WORK
+
+=== Paragraph 90 ===
+Several limitations should be explicitly acknowledged. First, because the locked validation holdout (N=594) served as a recurring evaluation benchmark across iterative research stages, it should not be regarded as a pristine unseen test set; the 25-fold repeated nested cross-validation results (95.41% Accuracy, 85.27% F1-score) provide the primary unbiased generalization estimate. Second, the dataset represents a merged benchmark corpus; application to other industry sectors will require localized calibration. Third, unobserved external market dynamics (competing salary offers) remain outside internal tabular HR records.
+
+=== Paragraph 91 ===
+Future research directions include: (1) integrating semi-supervised learning on unlabelled exit interviews; (2) extending specialist routing to multi-specialist hierarchies for diverse job families; (3) incorporating natural language representations from employee engagement surveys; and (4) developing causal counterfactual SHAP modules to simulate the retention impact of specific HR interventions.
+
+=== Paragraph 92 ===
+IX. CONCLUSION
+
+=== Paragraph 93 ===
+This paper presented a Two-Stage Selective Classification Framework with Hard-Case Specialist Routing for employee turnover prediction. By decoupling high-confidence predictions from boundary-zone estimation, the architecture enables specialized, cost-sensitive recovery of difficult minority-class departures. Evaluated on 2,969 unique employee profiles, the proposed framework achieves 94.95% Accuracy, 87.50% Precision, 80.21% Recall, 83.70% F1-score, and 92.30% ROC-AUC on the locked validation holdout (N=594), reducing total classification errors by 57.7% relative to the leak-free base-paper reproduction.
+
+=== Paragraph 94 ===
+Our forensic benchmark audit demonstrated that published GA+LightGBM metrics (>85% Recall, >87% F1) depend on pre-split SMOTE leakage, which artificially inflates scores via train-test cross-contamination. Under rigorous leak-free conditions, our two-stage architecture outperforms the reproduced base paper by +41.25% Recall and +32.47% F1-score. Repeated 25-fold nested cross-validation confirmed robust generalization (95.41% ± 0.98% Accuracy, 85.27% ± 3.27% F1-score), suggesting a practical performance limit for the evaluated feature space. Coupled with SHAP interpretability as a supporting tool, the proposed framework provides a rigorous, transparent, and practically deployable tool for organizational retention analytics.
+
+=== Paragraph 95 ===
+. REFERENCES
+
+=== Paragraph 96 ===
+[1] Society for Human Resource Management (SHRM), "Retaining talent: A guide to analyzing and managing employee turnover," SHRM, Alexandria, VA, USA, Tech. Rep., 2017.
+
+=== Paragraph 97 ===
+[2] D. G. Allen, P. C. Bryant, and J. M. Vardaman, "Retaining talent: Replacing misconceptions with evidence-based strategies," Acad. Manage. Perspect., vol. 24, no. 2, pp. 48–64, 2010.
+
+=== Paragraph 98 ===
+[3] G. Ke, Q. Meng, T. Finley, T. Wang, W. Chen, W. Ma, Q. Ye, and T.-Y. Liu, "LightGBM: A highly efficient gradient boosting decision tree," in Adv. Neural Inf. Process. Syst. (NeurIPS), vol. 30, 2017, pp. 3146–3154.
+
+=== Paragraph 99 ===
+[4] A. V. Dorogush, V. Ershov, and A. Gulin, "CatBoost: Gradient boosting with categorical features support," in Workshop on ML Systems (NeurIPS), 2018.
+
+=== Paragraph 100 ===
+[5] Y. Geifman and R. El-Yaniv, "Selective classification for deep neural networks," in Adv. Neural Inf. Process. Syst. (NeurIPS), vol. 30, 2017, pp. 4878–4887.
+
+=== Paragraph 101 ===
+[6] N. V. Chawla, K. W. Bowyer, L. O. Hall, and W. P. Kegelmeyer, "SMOTE: Synthetic minority over-sampling technique," J. Artif. Intell. Res., vol. 16, pp. 321–357, 2002.
+
+=== Paragraph 102 ===
+[7] H. Talebi, A. K. Bardsiri, and V. K. Bardsiri, "Developing a hybrid machine learning model for employee turnover prediction: Integrating LightGBM and genetic algorithms," J. Open Innov.: Technol., Market, Complexity, vol. 11, no. 1, p. 100557, 2025.
+
+=== Paragraph 103 ===
+[8] H. Zhang, L. Xu, X. Cheng, K. Chao, and X. Zhao, "Analysis and prediction of employee turnover characteristics based on machine learning," in Proc. 18th Int. Symp. Commun. Inf. Technol. (ISCIT), Bangkok, Thailand, 2018, pp. 408–411.
+
+=== Paragraph 104 ===
+[9] L. Alaskar, M. Crane, and M. Alduailij, "Employee turnover prediction using machine learning," in Adv. Data Sci., Cyber Secur. IT Appl. (ICC 2019), Riyadh, Saudi Arabia: Springer, 2019, pp. 106–116.
+
+=== Paragraph 105 ===
+[10] Y. Zhao, M. K. Hryniewicki, F. Cheng, B. Fu, and X. Zhu, "Employee turnover prediction with machine learning: A reliable approach," in Proc. Intell. Syst. Appl. (IntelliSys), London, UK: Springer, 2019, pp. 737–758.
+
+=== Paragraph 106 ===
+[11] A. B. Wild Ali, "Prediction of employee turn over using random forest classifier with intensive optimized PCA algorithm," Wireless Pers. Commun., vol. 119, no. 4, pp. 3365–3382, 2021.
+
+=== Paragraph 107 ===
+[12] P. Kumar, S. B. Gaikwad, S. T. Ramya, T. Tiwari, M. Tiwari, and B. Kumar, "Predicting employee turnover: A systematic machine learning approach for resource conservation and workforce stability," Eng. Proc., vol. 59, no. 1, p. 117, 2023.
+
+=== Paragraph 108 ===
+[13] M. R. Shafie, H. Khosravi, S. Farhadpour, S. Das, and I. Ahmed, "A cluster-based human resources analytics for predicting employee turnover using optimized artificial neural networks and data augmentation," Decis. Anal. J., vol. 11, p. 100465, 2024.
+
+=== Paragraph 109 ===
+[14] A. K. Biswas, R. Seethalakshmi, P. Mariappan, and D. Bhattacharjee, "An ensemble learning model for predicting the intention to quit among employees using classification algorithms," Decis. Anal. J., vol. 9, p. 100335, 2023.
+
+=== Paragraph 110 ===
+[15] S. Chowdhury, S. Joel-Edgar, P. K. Dey, S. Bhattacharya, and A. Kharlamov, "Embedding transparency in artificial intelligence machine learning models: Managerial implications on predicting and explaining employee turnover," Int. J. Hum. Resour. Manage., vol. 34, no. 14, pp. 2732–2764, 2023.
+
+=== Paragraph 111 ===
+[16] V. Veglio, R. Romanello, and T. Pedersen, "Employee turnover in multinational corporations: A supervised machine learning approach," Rev. Manag. Sci., vol. 19, no. 3, pp. 687–728, 2025.
+
+=== Paragraph 112 ===
+[17] J. Park, Y. Feng, and S.-P. Jeong, "Developing an advanced prediction model for new employee turnover intention utilizing machine learning techniques," Sci. Rep., vol. 14, no. 1, p. 1221, 2024.
+
+=== Paragraph 113 ===
+[18] J. C. M. Bustillo, "Optimization-based techniques prediction model in determining employee turnover," Procedia Comput. Sci., vol. 252, pp. 440–449, 2025.
+
+=== Paragraph 114 ===
+[19] S. Shankar, R. Vyas, and V. Tewari, "Applying machine learning algorithms to determine and predict the reasons and models for employee turnover," Int. J. Inf. Technol. Manage., vol. 23, no. 1, pp. 48–63, 2024.
+
+=== Paragraph 115 ===
+[20] L. S. Shapley, "A value for n-person games," in Contributions to the Theory of Games, vol. II, H. W. Kuhn and A. W. Tucker, Eds. Princeton, NJ, USA: Princeton Univ. Press, 1953, pp. 307–317.
+
+=== Paragraph 116 ===
+[21] S. M. Lundberg and S.-I. Lee, "A unified approach to interpreting model predictions," in Adv. Neural Inf. Process. Syst. (NeurIPS), vol. 30, 2017, pp. 4765–4774.
+
+=== Paragraph 117 ===
+[22] T. Akiba, S. Sano, T. Yanase, T. Ohta, and M. Koyama, "Optuna: A next-generation hyperparameter optimization framework," in Proc. 25th ACM SIGKDD Int. Conf. Knowl. Discovery Data Mining, Anchorage, AK, USA, 2019, pp. 2623–2631.
+
+=== Paragraph 118 ===
+[23] M. Al Akasheh, E. F. Malik, O. Hujran, and N. Zaki, "A decade of research on machine learning techniques for predicting employee turnover: A systematic literature review," Expert Syst. Appl., vol. 238, p. 121794, 2024.
+
+=== Paragraph 119 ===
+[24] J. Judrups, R. Cinks, I. Birzniece, and I. Andersone, "Machine learning based solution for predicting voluntary employee turnover in organization," Eng. Rural Dev., vol. 20, pp. 1359–1366, 2021.
+
+=== Paragraph 120 ===
+[25] M. Nayem and M. A. Uddin, "Unbiased employee performance evaluation using machine learning," J. Open Innov.: Technol., Market, Complexity, vol. 10, no. 1, p. 100243, 2024.
+

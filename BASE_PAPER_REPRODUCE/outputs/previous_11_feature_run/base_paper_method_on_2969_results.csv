@@ -1,0 +1,2 @@
+Methodology,Dataset,Features_Selected,Accuracy,Precision,Recall,F1_Score,ROC_AUC,PR_AUC,Balanced_Accuracy,Specificity,Brier_Score,Total_Errors,Total_Correct
+Talebi et al. (2025) GA + LightGBM Exact Reproduction,"2,969 Unified Profiles",11,92.59%,88.46%,62.29%,73.11%,93.95%,83.40%,80.36%,98.43%,0.0582,220,2749

@@ -1,0 +1,31 @@
+Feature,Mean_Absolute_SHAP
+MaritalStatus_Single,0.5776632787520373
+Age,0.5665678925455012
+JobHoppingRate,0.516610869532504
+YearsWithCurrManager,0.37899283803901
+PromotionLagScore,0.37122189881963863
+PromotionPaceStrain,0.3373397649083202
+CompanyLoyaltyRatio,0.313576853596407
+WorkLifeDeficit,0.2787399708147146
+SevereDissatisfactionFlag,0.25268915859002145
+BusinessTravel_Travel_Frequently,0.22657640655705275
+TotalExpToAgeRatio,0.19985913932155883
+TotalWorkingYears,0.1959154599198635
+EnvironmentSatisfaction,0.19065045894358096
+TrainingTimesLastYear,0.18932911859084697
+PriorCompanyExperience,0.17620727643662523
+JobSatisfaction,0.16095690337241725
+WorkLifeBalance,0.1374094378287796
+ManagerTenureMismatch,0.1302567772461796
+BusinessTravel_Non-Travel,0.09826551427480243
+PromotionStagnationRatio,0.07231730941193973
+PromotionVelocity,0.05448749798964668
+Gender_Female,0.05242073576622234
+YearsSinceLastPromotion,0.04862495426846671
+EducationField_Life Sciences,0.03717148886555231
+Gender_Male,0.03233524729584984
+EducationField_Marketing,0.022565009651040385
+EducationField_Other,0.018770721244479826
+JobRole_Human Resources,0.015501272656975333
+BusinessTravel_Travel_Rarely,0.015016310195564013
+EarlyCareerFlightRisk,0.009168113551208926

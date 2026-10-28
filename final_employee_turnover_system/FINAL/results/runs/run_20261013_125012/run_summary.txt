@@ -1,0 +1,6 @@
+Employee Turnover Prediction Run Summary
+Model: Final Hybrid Model
+Timestamp: 20261013_125012
+Dataset: survey_responses_standardized.csv
+Records: 6
+Elapsed: 1.79s

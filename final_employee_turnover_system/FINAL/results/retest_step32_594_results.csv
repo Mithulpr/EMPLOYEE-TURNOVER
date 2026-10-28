@@ -1,0 +1,595 @@
+Holdout_ID,Actual_Label,Predicted_Class,Is_Correct,Evaluation_Result,Error_Type,Unrounded_Probability,Turnover_Probability_Rounded,Turnover_Risk_Tier,P_CatBoost,P_LightGBM,P_Step27_Anchor,P_Specialist,Rule_Override_Trace,Decision_Policy
+EMP_HD_001,1,1,True,True Positive,None,0.8532468631185722,0.8532,Critical,0.6752,0.4255,0.9645,0.3554,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_002,0,0,True,True Negative,None,0.03979052678537143,0.0398,Low,0.0309,0.1456,0.0176,0.3805,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_003,0,0,True,True Negative,None,0.04731964314562209,0.0473,Low,0.073,0.28,0.0286,0.427,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_004,0,0,True,True Negative,None,0.038395302228318134,0.0384,Low,0.0131,0.1425,0.0167,0.4803,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_005,0,0,True,True Negative,None,0.03338647752710408,0.0334,Low,0.0007,0.0022,0.0017,0.4164,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_006,0,0,True,True Negative,None,0.03510343643397941,0.0351,Low,0.0018,0.0849,0.0045,0.4921,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_007,0,0,True,True Negative,None,0.03530075630077053,0.0353,Low,0.0037,0.0131,0.0143,0.4765,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_008,0,0,True,True Negative,None,0.03571437087873544,0.0357,Low,0.0025,0.0049,0.0192,0.481,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_009,0,0,True,True Negative,None,0.036678491521901675,0.0367,Low,0.0212,0.0411,0.013,0.3478,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_010,0,0,True,True Negative,None,0.03384938264210642,0.0338,Low,0.0081,0.0113,0.0008,0.3368,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_011,0,0,True,True Negative,None,0.07805852475188467,0.0781,Low,0.3119,0.5667,0.0301,0.327,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_012,1,1,True,True Positive,None,0.9331406925141632,0.9331,Critical,0.9,0.8926,0.8907,0.3462,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_013,0,0,True,True Negative,None,0.06883312781841074,0.0688,Low,0.1212,0.356,0.1021,0.3687,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_014,0,0,True,True Negative,None,0.284709355549977,0.2847,Moderate,0.2587,0.7334,0.477,0.3758,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_015,0,0,True,True Negative,None,0.033400044286561716,0.0334,Low,0.0026,0.0046,0.0006,0.4122,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_016,1,1,True,True Positive,None,0.9632868429211776,0.9633,Critical,0.9786,0.929,0.989,0.3455,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_017,1,0,False,False Negative,FN,0.03788181855347851,0.0379,Low,0.1303,0.0246,0.0022,0.4634,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_018,0,0,True,True Negative,None,0.043668475436053705,0.0437,Low,0.0776,0.1521,0.0202,0.3326,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_019,0,0,True,True Negative,None,0.033635159129460704,0.0336,Low,0.0068,0.0052,0.0009,0.5009,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_020,1,1,True,True Positive,None,0.42777129083599696,0.4278,High,0.8105,0.3466,0.3419,0.462,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_021,0,0,True,True Negative,None,0.04202395478428699,0.042,Low,0.0378,0.1763,0.0256,0.4316,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_022,0,0,True,True Negative,None,0.03570107463567128,0.0357,Low,0.0118,0.0593,0.0077,0.4158,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_023,0,0,True,True Negative,None,0.033659484243161675,0.0337,Low,0.0033,0.0058,0.0022,0.4106,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_024,0,0,True,True Negative,None,0.03508404755210087,0.0351,Low,0.0201,0.0179,0.0047,0.346,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_025,0,0,True,True Negative,None,0.03550952288665638,0.0355,Low,0.0048,0.0305,0.0133,0.341,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_026,0,0,True,True Negative,None,0.03327641001325828,0.0333,Low,0.0005,0.0044,0.0006,0.3479,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_027,0,0,True,True Negative,None,0.040031675218033344,0.04,Low,0.0153,0.0363,0.0408,0.4373,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_028,0,0,True,True Negative,None,0.03570245237402735,0.0357,Low,0.0245,0.05,0.0027,0.5077,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_029,0,0,True,True Negative,None,0.04457637059244711,0.0446,Low,0.0494,0.3161,0.0187,0.3401,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_030,0,0,True,True Negative,None,0.04213320781597998,0.0421,Low,0.0396,0.0424,0.0425,0.4805,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_031,0,0,True,True Negative,None,0.037399020234295956,0.0374,Low,0.0225,0.0603,0.0153,0.4079,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_032,0,0,True,True Negative,None,0.0382139246032176,0.0382,Low,0.031,0.0716,0.0157,0.4045,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_033,0,0,True,True Negative,None,0.06807803937384113,0.0681,Low,0.0694,0.7164,0.1136,0.3436,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_034,0,0,True,True Negative,None,0.03885839386311436,0.0389,Low,0.0422,0.1728,0.002,0.407,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_035,0,0,True,True Negative,None,0.07184024820888789,0.0718,Low,0.2933,0.6848,0.0194,0.3357,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_036,0,0,True,True Negative,None,0.034747067996371055,0.0347,Low,0.0171,0.0335,0.0009,0.505,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_037,1,1,True,True Positive,None,0.20309062385157878,0.2031,Moderate,0.0222,0.0312,0.5234,0.5081,Tier 2 Override: Boundary Domain Specialist (Severe Dissatisfaction + High Specialist Score),High Risk — Retention Action Recommended
+EMP_HD_038,0,0,True,True Negative,None,0.03497702992675381,0.035,Low,0.01,0.0075,0.0102,0.4671,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_039,0,0,True,True Negative,None,0.03589167110398813,0.0359,Low,0.0215,0.0314,0.008,0.3998,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_040,0,0,True,True Negative,None,0.034719262730813806,0.0347,Low,0.009,0.0159,0.0068,0.4253,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_041,1,1,True,True Positive,None,0.9612731853707842,0.9613,Critical,0.983,0.8762,0.9842,0.3412,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_042,1,1,True,True Positive,None,0.675809603023588,0.6758,Critical,0.1668,0.4859,0.9586,0.3464,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_043,0,0,True,True Negative,None,0.06317705607253721,0.0632,Low,0.1073,0.337,0.0867,0.3264,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_044,0,0,True,True Negative,None,0.04641525259850041,0.0464,Low,0.0638,0.3858,0.0141,0.4388,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_045,0,0,True,True Negative,None,0.03539189648428523,0.0354,Low,0.009,0.0499,0.0078,0.4269,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_046,1,0,False,False Negative,FN,0.04245789443428295,0.0425,Low,0.0819,0.1545,0.0099,0.3635,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_047,0,0,True,True Negative,None,0.033245909057489385,0.0332,Low,0.0007,0.0052,0.0002,0.4549,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_048,0,0,True,True Negative,None,0.03418577627920174,0.0342,Low,0.0034,0.0057,0.0065,0.4076,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_049,1,1,True,True Positive,None,0.5658559789174122,0.5659,High,0.0826,0.382,0.8869,0.3298,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_050,0,0,True,True Negative,None,0.03644277830025517,0.0364,Low,0.0201,0.0217,0.0142,0.4842,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_051,0,0,True,True Negative,None,0.033987554881520936,0.034,Low,0.0086,0.0198,0.0006,0.4725,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_052,0,0,True,True Negative,None,0.04472093227185509,0.0447,Low,0.0445,0.0605,0.0546,0.41,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_053,0,0,True,True Negative,None,0.034447402420475094,0.0344,Low,0.006,0.0478,0.002,0.3846,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_054,0,0,True,True Negative,None,0.03654690446753684,0.0365,Low,0.0067,0.1343,0.0071,0.3617,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_055,0,0,True,True Negative,None,0.03359682057244927,0.0336,Low,0.0065,0.0068,0.0001,0.4487,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_056,1,1,True,True Positive,None,0.9292264038031508,0.9292,Critical,0.8745,0.7454,0.9322,0.5059,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_057,0,0,True,True Negative,None,0.26246972725971845,0.2625,Moderate,0.0461,0.4048,0.5536,0.3561,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_058,0,0,True,True Negative,None,0.03993056593165987,0.0399,Low,0.0328,0.0669,0.0277,0.3653,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_059,0,0,True,True Negative,None,0.03333694125488997,0.0333,Low,0.0021,0.0028,0.0006,0.3606,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_060,0,0,True,True Negative,None,0.038430693005615434,0.0384,Low,0.0191,0.0837,0.0215,0.4382,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_061,1,1,True,True Positive,None,0.9342250465072851,0.9342,Critical,0.8443,0.8098,0.9603,0.3514,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_062,0,0,True,True Negative,None,0.05291128546091882,0.0529,Low,0.2224,0.0892,0.0512,0.3697,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_063,0,0,True,True Negative,None,0.039035723058980044,0.039,Low,0.0126,0.0507,0.0332,0.3846,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_064,0,0,True,True Negative,None,0.03799801084651379,0.038,Low,0.0143,0.0622,0.0234,0.4598,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_065,0,0,True,True Negative,None,0.03374874418295457,0.0337,Low,0.0039,0.012,0.0019,0.4787,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_066,0,0,True,True Negative,None,0.06802207042816077,0.068,Low,0.2043,0.3757,0.0559,0.3535,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_067,0,0,True,True Negative,None,0.038092001163952685,0.0381,Low,0.0229,0.0408,0.0227,0.4166,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_068,0,0,True,True Negative,None,0.07499799109852648,0.075,Low,0.0538,0.3446,0.161,0.3447,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_069,0,0,True,True Negative,None,0.04632497960744578,0.0463,Low,0.0122,0.0623,0.0799,0.4,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_070,1,1,True,True Positive,None,0.9429205774930375,0.9429,Critical,0.9416,0.9003,0.9013,0.5346,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_071,1,1,True,True Positive,None,0.5215654401906884,0.5216,High,0.6954,0.8128,0.4224,0.4224,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_072,1,1,True,True Positive,None,0.9631401956511825,0.9631,Critical,0.9674,0.9548,0.99,0.3716,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_073,0,0,True,True Negative,None,0.07698407988841283,0.077,Low,0.2227,0.5021,0.067,0.3329,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_074,0,0,True,True Negative,None,0.09723137490848825,0.0972,Low,0.1783,0.4742,0.1602,0.4513,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_075,0,0,True,True Negative,None,0.033643277639046745,0.0336,Low,0.0029,0.0097,0.0018,0.4341,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_076,0,0,True,True Negative,None,0.03983332561299819,0.0398,Low,0.0321,0.0563,0.0287,0.4936,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_077,0,0,True,True Negative,None,0.03696976911211993,0.037,Low,0.0186,0.147,0.0029,0.4189,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_078,0,0,True,True Negative,None,0.0374624677062676,0.0375,Low,0.0376,0.0294,0.0148,0.5077,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_079,0,0,True,True Negative,None,0.0337196798056411,0.0337,Low,0.0007,0.0349,0.0003,0.4967,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_080,0,1,False,False Positive,FP,0.5526548579731756,0.5527,High,0.6843,0.403,0.5516,0.391,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_081,0,0,True,True Negative,None,0.035243144355803065,0.0352,Low,0.0124,0.0534,0.0045,0.3986,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_082,1,1,True,True Positive,None,0.3629677399998043,0.363,High,0.4204,0.381,0.5129,0.3724,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_083,0,0,True,True Negative,None,0.03319110804957043,0.0332,Low,0.0008,0.0013,0.0002,0.3845,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_084,0,0,True,True Negative,None,0.03515976406017754,0.0352,Low,0.0089,0.0325,0.0082,0.4925,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_085,0,0,True,True Negative,None,0.03869885102619577,0.0387,Low,0.0554,0.0924,0.0047,0.3412,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_086,0,0,True,True Negative,None,0.04182461631583527,0.0418,Low,0.0142,0.0645,0.05,0.4777,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_087,0,0,True,True Negative,None,0.11087742103663982,0.1109,Low,0.0891,0.459,0.2447,0.3974,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_088,0,0,True,True Negative,None,0.04260512661324583,0.0426,Low,0.0381,0.1435,0.0335,0.3959,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_089,0,0,True,True Negative,None,0.0398420212639663,0.0398,Low,0.1588,0.0447,0.0024,0.445,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_090,0,0,True,True Negative,None,0.050283716643848134,0.0503,Low,0.0699,0.1321,0.0661,0.3515,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_091,0,0,True,True Negative,None,0.03431987722200013,0.0343,Low,0.0057,0.0035,0.0074,0.468,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_092,0,0,True,True Negative,None,0.036292644310732945,0.0363,Low,0.0077,0.1419,0.0037,0.391,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_093,0,0,True,True Negative,None,0.03401874947734043,0.034,Low,0.0036,0.0349,0.0014,0.525,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_094,0,0,True,True Negative,None,0.08446258570117363,0.0845,Low,0.1638,0.1269,0.1809,0.3957,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_095,0,0,True,True Negative,None,0.03648110534314787,0.0365,Low,0.0169,0.0653,0.0104,0.497,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_096,1,1,True,True Positive,None,0.9571976027225274,0.9572,Critical,0.938,0.9418,0.9758,0.4091,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_097,0,0,True,True Negative,None,0.06389456024560985,0.0639,Low,0.1072,0.1381,0.1153,0.3992,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_098,1,1,True,True Positive,None,0.6536477981725817,0.6536,Critical,0.1017,0.3129,0.9856,0.3687,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_099,1,1,True,True Positive,None,0.9607884437837889,0.9608,Critical,0.9845,0.953,0.9599,0.3376,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_100,0,0,True,True Negative,None,0.09732206794668588,0.0973,Low,0.2139,0.2096,0.1783,0.4575,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_101,0,0,True,True Negative,None,0.038782321264167814,0.0388,Low,0.0376,0.0596,0.0182,0.4311,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_102,0,0,True,True Negative,None,0.03318137099620661,0.0332,Low,0.0006,0.0018,0.0001,0.4669,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_103,0,0,True,True Negative,None,0.03577630486428007,0.0358,Low,0.0283,0.0332,0.0036,0.3368,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_104,0,0,True,True Negative,None,0.0362501079266424,0.0363,Low,0.0132,0.0104,0.0183,0.5164,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_105,0,0,True,True Negative,None,0.03325261828748143,0.0333,Low,0.0016,0.0016,0.0003,0.3373,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_106,0,0,True,True Negative,None,0.04179776784980639,0.0418,Low,0.0288,0.0981,0.0384,0.3468,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_107,1,1,True,True Positive,None,0.9675428631996996,0.9675,Critical,0.9941,0.9865,0.9963,0.3616,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_108,0,0,True,True Negative,None,0.03427674532286769,0.0343,Low,0.0084,0.0044,0.0062,0.377,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_109,0,0,True,True Negative,None,0.03564159912448974,0.0356,Low,0.011,0.0716,0.006,0.3991,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_110,0,0,True,True Negative,None,0.035575798117736944,0.0356,Low,0.0018,0.0043,0.0185,0.5189,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_111,0,0,True,True Negative,None,0.03498869630654498,0.035,Low,0.0119,0.0104,0.0087,0.4905,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_112,0,0,True,True Negative,None,0.04910322843383817,0.0491,Low,0.0465,0.1106,0.0735,0.4227,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_113,1,0,False,False Negative,FN,0.03787275428223136,0.0379,Low,0.0997,0.0408,0.0012,0.4634,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_114,0,0,True,True Negative,None,0.036038692359331125,0.036,Low,0.0133,0.0364,0.0125,0.3542,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_115,0,0,True,True Negative,None,0.033384006810551085,0.0334,Low,0.0006,0.0079,0.001,0.3645,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_116,1,1,True,True Positive,None,0.9589771389900148,0.959,Critical,0.9672,0.8811,0.9793,0.3468,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_117,0,0,True,True Negative,None,0.07269491541613715,0.0727,Low,0.2303,0.4041,0.0588,0.3302,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_118,0,1,False,False Positive,FP,0.897003340109132,0.897,Critical,0.9969,0.9852,0.6645,0.3638,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_119,0,0,True,True Negative,None,0.04285880406354495,0.0429,Low,0.0682,0.1033,0.0257,0.3362,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_120,0,0,True,True Negative,None,0.062156183486567776,0.0622,Low,0.1216,0.3614,0.072,0.3437,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_121,0,0,True,True Negative,None,0.10615555856535326,0.1062,Low,0.0889,0.3378,0.2472,0.3327,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_122,1,1,True,True Positive,None,0.9518639866523682,0.9519,Critical,0.9674,0.8155,0.9512,0.4215,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_123,0,0,True,True Negative,None,0.042004370397500455,0.042,Low,0.0269,0.2227,0.0248,0.3404,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_124,0,0,True,True Negative,None,0.052090428034763096,0.0521,Low,0.0953,0.1841,0.0571,0.346,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_125,0,0,True,True Negative,None,0.03443859417710843,0.0344,Low,0.0016,0.0121,0.0086,0.3706,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_126,0,0,True,True Negative,None,0.033502893407682935,0.0335,Low,0.0003,0.0041,0.0026,0.4196,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_127,0,0,True,True Negative,None,0.037475826835539135,0.0375,Low,0.0316,0.095,0.007,0.4215,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_128,0,0,True,True Negative,None,0.3272862821755423,0.3273,Moderate,0.7344,0.9513,0.1692,0.3991,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_129,1,1,True,True Positive,None,0.9111163526311137,0.9111,Critical,0.8794,0.7804,0.853,0.3707,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_130,0,0,True,True Negative,None,0.034156327224829586,0.0342,Low,0.0045,0.0358,0.0019,0.3846,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_131,0,0,True,True Negative,None,0.03837708373685193,0.0384,Low,0.032,0.0214,0.0259,0.4261,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_132,0,0,True,True Negative,None,0.034178595437684894,0.0342,Low,0.0039,0.0519,0.0003,0.3986,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_133,0,0,True,True Negative,None,0.03565568048932625,0.0357,Low,0.0373,0.0277,0.0018,0.4005,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_134,0,0,True,True Negative,None,0.0386188581858858,0.0386,Low,0.0066,0.1061,0.0261,0.3426,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_135,0,0,True,True Negative,None,0.03333688519862476,0.0333,Low,0.0012,0.0039,0.0008,0.3664,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_136,0,0,True,True Negative,None,0.036144692160002954,0.0361,Low,0.0251,0.0579,0.0048,0.4007,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_137,1,1,True,True Positive,None,0.9539201572045052,0.9539,Critical,0.9526,0.8893,0.956,0.4256,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_138,0,0,True,True Negative,None,0.04354836959591244,0.0435,Low,0.1532,0.0562,0.0235,0.4297,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_139,0,0,True,True Negative,None,0.048057712428218415,0.0481,Low,0.0226,0.1022,0.0801,0.4199,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_140,0,0,True,True Negative,None,0.03403105541932392,0.034,Low,0.0061,0.0128,0.0031,0.3822,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_141,1,1,True,True Positive,None,0.9576686369672556,0.9577,Critical,0.9468,0.9288,0.9742,0.4701,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_142,0,0,True,True Negative,None,0.04090904374782246,0.0409,Low,0.0057,0.0151,0.0542,0.5117,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_143,0,0,True,True Negative,None,0.03573097666819979,0.0357,Low,0.0106,0.0423,0.0106,0.4154,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_144,0,0,True,True Negative,None,0.034672571725130295,0.0347,Low,0.0101,0.0162,0.0059,0.5167,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_145,0,0,True,True Negative,None,0.03588795101587905,0.0359,Low,0.0352,0.0308,0.0027,0.4005,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_146,0,0,True,True Negative,None,0.16788567648108074,0.1679,Low,0.2374,0.1135,0.3823,0.3759,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_147,1,0,False,False Negative,FN,0.2362907682541557,0.2363,Moderate,0.6171,0.7399,0.1665,0.5131,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_148,0,1,False,False Positive,FP,0.9102326348523084,0.9102,Critical,0.8784,0.8585,0.8308,0.4958,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_149,0,0,True,True Negative,None,0.039687023882497695,0.0397,Low,0.0319,0.0972,0.0225,0.4032,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_150,0,0,True,True Negative,None,0.0392922270713228,0.0393,Low,0.0136,0.0291,0.0373,0.4202,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_151,0,0,True,True Negative,None,0.041035347602993176,0.041,Low,0.0904,0.0472,0.0226,0.484,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_152,0,0,True,True Negative,None,0.07821289698629416,0.0782,Low,0.0973,0.2225,0.1677,0.3445,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_153,0,0,True,True Negative,None,0.04751279349922167,0.0475,Low,0.1006,0.1449,0.0336,0.4213,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_154,0,0,True,True Negative,None,0.05377528657672593,0.0538,Low,0.033,0.0526,0.1131,0.4364,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_155,0,0,True,True Negative,None,0.04244785547610765,0.0424,Low,0.0378,0.1177,0.0359,0.3528,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_156,0,0,True,True Negative,None,0.03337437378957448,0.0334,Low,0.0016,0.0043,0.0009,0.4207,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_157,0,0,True,True Negative,None,0.037380695774764494,0.0374,Low,0.0267,0.024,0.0185,0.3373,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_158,0,0,True,True Negative,None,0.03846380557017126,0.0385,Low,0.0243,0.1766,0.0074,0.3554,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_159,1,1,True,True Positive,None,0.9618487153405002,0.9618,Critical,0.9874,0.952,0.9655,0.4084,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_160,0,0,True,True Negative,None,0.03464669081154501,0.0346,Low,0.0085,0.0106,0.0072,0.4309,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_161,0,0,True,True Negative,None,0.03525950263783234,0.0353,Low,0.009,0.0315,0.0091,0.3629,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_162,0,0,True,True Negative,None,0.03505299972337313,0.0351,Low,0.0129,0.0466,0.0037,0.45,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_163,0,1,False,False Positive,FP,0.6970617078525546,0.6971,Critical,0.8807,0.9346,0.4276,0.3358,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_164,1,1,True,True Positive,None,0.9569727579080877,0.957,Critical,0.9896,0.9575,0.9287,0.3389,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_165,0,0,True,True Negative,None,0.04312704611858755,0.0431,Low,0.0215,0.1103,0.0492,0.3909,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_166,0,0,True,True Negative,None,0.03568955352217383,0.0357,Low,0.0167,0.0325,0.0086,0.4447,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_167,0,0,True,True Negative,None,0.035353549168861305,0.0354,Low,0.0141,0.0151,0.0095,0.4905,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_168,0,0,True,True Negative,None,0.034681879843535865,0.0347,Low,0.0016,0.0466,0.0062,0.4088,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_169,0,0,True,True Negative,None,0.05826769969444771,0.0583,Low,0.0236,0.0795,0.137,0.4339,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_170,0,0,True,True Negative,None,0.033513971268622364,0.0335,Low,0.0011,0.0047,0.0022,0.3452,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_171,0,0,True,True Negative,None,0.034134461158252104,0.0341,Low,0.0092,0.0058,0.0043,0.4522,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_172,0,0,True,True Negative,None,0.03661887555387078,0.0366,Low,0.006,0.056,0.018,0.3625,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_173,0,0,True,True Negative,None,0.13963026255350766,0.1396,Low,0.4775,0.7291,0.1302,0.4055,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_174,0,0,True,True Negative,None,0.04548427793671438,0.0455,Low,0.0278,0.1283,0.0587,0.3444,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_175,0,0,True,True Negative,None,0.043616197938278214,0.0436,Low,0.0813,0.1447,0.0189,0.3492,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_176,0,0,True,True Negative,None,0.033395416405030735,0.0334,Low,0.0007,0.0062,0.0013,0.3655,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_177,0,0,True,True Negative,None,0.03482299899273283,0.0348,Low,0.0182,0.0296,0.0014,0.4033,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_178,0,0,True,True Negative,None,0.03514789412440029,0.0351,Low,0.0068,0.0194,0.0109,0.3738,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_179,0,0,True,True Negative,None,0.034968543490806116,0.035,Low,0.005,0.0715,0.0037,0.4046,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_180,0,0,True,True Negative,None,0.21300111258175805,0.213,Moderate,0.4055,0.4772,0.2967,0.4076,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_181,0,0,True,True Negative,None,0.034087525732454216,0.0341,Low,0.0072,0.0157,0.0026,0.4948,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_182,0,0,True,True Negative,None,0.034923790616604965,0.0349,Low,0.0097,0.041,0.0049,0.4084,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_183,0,0,True,True Negative,None,0.040562671855562504,0.0406,Low,0.0151,0.0334,0.045,0.4325,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_184,0,0,True,True Negative,None,0.03948109976108771,0.0395,Low,0.0401,0.1249,0.0136,0.4321,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_185,0,1,False,False Positive,FP,0.82063133475479,0.8206,Critical,0.8314,0.6817,0.6997,0.3418,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_186,1,1,True,True Positive,None,0.9509480565376918,0.9509,Critical,0.9363,0.8695,0.9563,0.5221,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_187,0,0,True,True Negative,None,0.0333962958890546,0.0334,Low,0.0013,0.0038,0.0013,0.4744,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_188,0,0,True,True Negative,None,0.034858934316324496,0.0349,Low,0.0059,0.0205,0.0088,0.5131,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_189,0,0,True,True Negative,None,0.03402834693576162,0.034,Low,0.0057,0.0043,0.0047,0.5002,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_190,0,0,True,True Negative,None,0.07732374312580517,0.0773,Low,0.1997,0.1777,0.1269,0.4153,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_191,0,0,True,True Negative,None,0.04965675176511564,0.0497,Low,0.0245,0.0424,0.096,0.4339,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_192,0,0,True,True Negative,None,0.03539955413616289,0.0354,Low,0.0042,0.0301,0.0127,0.4119,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_193,0,0,True,True Negative,None,0.03380699360882917,0.0338,Low,0.0024,0.0218,0.0019,0.3886,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_194,0,0,True,True Negative,None,0.038470045098345604,0.0385,Low,0.0616,0.0427,0.012,0.3989,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_195,0,0,True,True Negative,None,0.09106710769846423,0.0911,Low,0.1337,0.4633,0.1638,0.3394,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_196,0,0,True,True Negative,None,0.03328180922861797,0.0333,Low,0.0005,0.0031,0.0008,0.4544,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_197,0,0,True,True Negative,None,0.037640762768461934,0.0376,Low,0.0117,0.0757,0.0203,0.3398,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_198,0,0,True,True Negative,None,0.08804331860643383,0.088,Low,0.2712,0.6673,0.0887,0.369,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_199,0,0,True,True Negative,None,0.05097794434434385,0.051,Low,0.1488,0.0653,0.0648,0.3429,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_200,0,0,True,True Negative,None,0.07929042224152563,0.0793,Low,0.1287,0.3312,0.1426,0.349,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_201,0,0,True,True Negative,None,0.04450210391664081,0.0445,Low,0.0881,0.0941,0.0277,0.4748,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_202,0,0,True,True Negative,None,0.033510539138168295,0.0335,Low,0.0033,0.0107,0.0004,0.454,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_203,0,0,True,True Negative,None,0.036639758019173733,0.0366,Low,0.024,0.0544,0.0096,0.4079,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_204,1,1,True,True Positive,None,0.8938344226270224,0.8938,Critical,0.8802,0.6528,0.8325,0.3386,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_205,0,0,True,True Negative,None,0.05535605829245296,0.0554,Low,0.1668,0.3367,0.0202,0.3865,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_206,0,0,True,True Negative,None,0.03474183705530166,0.0347,Low,0.0062,0.0633,0.0023,0.3619,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_207,0,0,True,True Negative,None,0.038150670686116286,0.0382,Low,0.0517,0.0639,0.0062,0.4391,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_208,0,0,True,True Negative,None,0.06270174292932125,0.0627,Low,0.0924,0.1801,0.1118,0.3402,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_209,1,1,True,True Positive,None,0.9648795404392981,0.9649,Critical,0.9907,0.9789,0.979,0.3417,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_210,0,0,True,True Negative,None,0.034333211842216695,0.0343,Low,0.0115,0.022,0.0017,0.3678,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_211,1,1,True,True Positive,None,0.9225556678901504,0.9226,Critical,0.879,0.6582,0.925,0.3504,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_212,0,0,True,True Negative,None,0.034910279545159184,0.0349,Low,0.0023,0.0943,0.0016,0.4921,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_213,0,0,True,True Negative,None,0.03610781743766255,0.0361,Low,0.0155,0.0173,0.0144,0.3412,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_214,0,0,True,True Negative,None,0.03589070704042935,0.0359,Low,0.004,0.038,0.0156,0.3746,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_215,0,1,False,False Positive,FP,0.824773604189205,0.8248,Critical,0.8438,0.6914,0.6951,0.3418,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_216,0,0,True,True Negative,None,0.03355938438039409,0.0336,Low,0.0034,0.0049,0.0015,0.3976,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_217,1,1,True,True Positive,None,0.962336952041881,0.9623,Critical,0.9568,0.9465,0.9944,0.3474,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_218,0,0,True,True Negative,None,0.046166425323101265,0.0462,Low,0.0144,0.1051,0.0724,0.4896,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_219,0,0,True,True Negative,None,0.033968318657593435,0.034,Low,0.0037,0.0186,0.003,0.4948,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_220,1,1,True,True Positive,None,0.9592082343835932,0.9592,Critical,0.9651,0.9659,0.9609,0.4157,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_221,0,0,True,True Negative,None,0.033855837525469785,0.0339,Low,0.0016,0.0362,0.0008,0.4596,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_222,0,0,True,True Negative,None,0.036262000395196135,0.0363,Low,0.0147,0.0152,0.0162,0.4002,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_223,0,0,True,True Negative,None,0.03416969158531771,0.0342,Low,0.0014,0.0021,0.0078,0.3794,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_224,0,0,True,True Negative,None,0.3026551126078565,0.3027,Moderate,0.5186,0.5134,0.3565,0.3808,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_225,0,0,True,True Negative,None,0.040353115015750604,0.0404,Low,0.0341,0.2921,0.0013,0.3453,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_226,0,0,True,True Negative,None,0.06975878987388288,0.0698,Low,0.1181,0.4274,0.0983,0.3882,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_227,0,0,True,True Negative,None,0.11153184554085208,0.1115,Low,0.4115,0.2529,0.1631,0.3532,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_228,1,1,True,True Positive,None,0.9631833658629254,0.9632,Critical,0.984,0.9564,0.9769,0.4241,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_229,0,0,True,True Negative,None,0.04004933329684209,0.04,Low,0.048,0.1046,0.0164,0.4761,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_230,1,0,False,False Negative,FN,0.10352361254532022,0.1035,Low,0.0136,0.0545,0.3124,0.4287,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_231,1,0,False,False Negative,FN,0.03396682240503753,0.034,Low,0.0045,0.0083,0.0039,0.4629,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_232,0,0,True,True Negative,None,0.033503734779241505,0.0335,Low,0.0022,0.0166,0.0001,0.5101,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_233,0,0,True,True Negative,None,0.03380377243174331,0.0338,Low,0.0032,0.0162,0.0022,0.412,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_234,0,0,True,True Negative,None,0.03397170487769493,0.034,Low,0.008,0.0126,0.0017,0.4961,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_235,0,0,True,True Negative,None,0.04388448470709959,0.0439,Low,0.0793,0.1119,0.0258,0.3704,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_236,0,0,True,True Negative,None,0.03748245243242341,0.0375,Low,0.0274,0.1003,0.0084,0.4548,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_237,0,0,True,True Negative,None,0.04711166282068035,0.0471,Low,0.0406,0.1194,0.0636,0.3427,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_238,1,0,False,False Negative,FN,0.04788286835479435,0.0479,Low,0.1339,0.2563,0.0054,0.3734,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_239,0,0,True,True Negative,None,0.03603470624415329,0.036,Low,0.0097,0.0813,0.0085,0.4019,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_240,0,0,True,True Negative,None,0.07443191013678827,0.0744,Low,0.0602,0.1881,0.1757,0.3949,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_241,0,0,True,True Negative,None,0.04190490292167579,0.0419,Low,0.0347,0.0833,0.0382,0.3484,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_242,0,0,True,True Negative,None,0.03411438857653859,0.0341,Low,0.0089,0.0232,0.001,0.4504,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_243,0,0,True,True Negative,None,0.03617659796818177,0.0362,Low,0.0013,0.0048,0.0234,0.5189,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_244,0,0,True,True Negative,None,0.03447101311653362,0.0345,Low,0.0028,0.0126,0.0083,0.3706,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_245,0,0,True,True Negative,None,0.03313356484090793,0.0331,Low,0.0001,0.001,0.0001,0.4917,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_246,1,1,True,True Positive,None,0.4112116122666926,0.4112,High,0.0059,0.0192,0.8031,0.489,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_247,1,1,True,True Positive,None,0.9509699871047086,0.951,Critical,0.9694,0.9231,0.9167,0.4426,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_248,0,0,True,True Negative,None,0.033910301244209455,0.0339,Low,0.0011,0.0135,0.0044,0.375,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_249,0,0,True,True Negative,None,0.03525942753324087,0.0353,Low,0.0127,0.0212,0.0086,0.3805,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_250,0,0,True,True Negative,None,0.0338497251499769,0.0338,Low,0.0029,0.0186,0.0024,0.4635,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_251,0,0,True,True Negative,None,0.05244006265341486,0.0524,Low,0.0989,0.2968,0.0429,0.3336,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_252,0,0,True,True Negative,None,0.033271041275818244,0.0333,Low,0.0006,0.0067,0.0002,0.4951,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_253,0,0,True,True Negative,None,0.035376293440194266,0.0354,Low,0.0098,0.0346,0.0092,0.3368,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_254,0,0,True,True Negative,None,0.036812984877452146,0.0368,Low,0.0229,0.0148,0.0189,0.3491,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_255,0,0,True,True Negative,None,0.03652236070208293,0.0365,Low,0.0074,0.0256,0.0204,0.3601,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_256,0,0,True,True Negative,None,0.034533856928067465,0.0345,Low,0.0051,0.0107,0.0079,0.3823,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_257,0,0,True,True Negative,None,0.05067992524419788,0.0507,Low,0.0178,0.0788,0.1004,0.362,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_258,0,0,True,True Negative,None,0.0358425386245962,0.0358,Low,0.0049,0.0365,0.015,0.4955,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_259,0,0,True,True Negative,None,0.033247011520560525,0.0332,Low,0.0001,0.0036,0.0007,0.4586,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_260,1,1,True,True Positive,None,0.9621267180549723,0.9621,Critical,0.9861,0.9318,0.9737,0.529,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_261,0,0,True,True Negative,None,0.04712085120110302,0.0471,Low,0.0578,0.256,0.0379,0.3842,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_262,0,0,True,True Negative,None,0.03317197868565065,0.0332,Low,0.0003,0.0009,0.0003,0.4749,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_263,0,0,True,True Negative,None,0.033209112508047256,0.0332,Low,0.0002,0.0026,0.0004,0.421,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_264,0,0,True,True Negative,None,0.061130385760655034,0.0611,Low,0.1258,0.2499,0.0794,0.3652,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_265,0,0,True,True Negative,None,0.03496822649287325,0.035,Low,0.0047,0.0256,0.0097,0.3453,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_266,0,0,True,True Negative,None,0.05059745730440191,0.0506,Low,0.1469,0.1423,0.0306,0.3401,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_267,0,0,True,True Negative,None,0.037095343295549525,0.0371,Low,0.0866,0.0345,0.0006,0.3685,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_268,0,0,True,True Negative,None,0.03390279084199834,0.0339,Low,0.001,0.0014,0.0059,0.5189,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_269,0,0,True,True Negative,None,0.045027810606177186,0.045,Low,0.0361,0.2024,0.0425,0.3942,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_270,0,0,True,True Negative,None,0.03396501461356079,0.034,Low,0.0039,0.0405,0.0001,0.4955,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_271,0,0,True,True Negative,None,0.03549811682798576,0.0355,Low,0.0049,0.08,0.0068,0.4049,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_272,0,0,True,True Negative,None,0.04649793909689017,0.0465,Low,0.1187,0.0679,0.0435,0.3783,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_273,0,0,True,True Negative,None,0.0463856701455543,0.0464,Low,0.1084,0.0461,0.054,0.4537,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_274,0,0,True,True Negative,None,0.04921414988463964,0.0492,Low,0.0333,0.1121,0.0803,0.4349,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_275,1,1,True,True Positive,None,0.5016930379869992,0.5017,High,0.0048,0.0519,0.8975,0.415,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_276,1,1,True,True Positive,None,0.9549330606873683,0.9549,Critical,0.9551,0.9185,0.9528,0.3612,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_277,0,0,True,True Negative,None,0.034446406614165044,0.0344,Low,0.0022,0.0399,0.0049,0.3521,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_278,1,1,True,True Positive,None,0.525460150428852,0.5255,High,0.0051,0.0815,0.9191,0.4978,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_279,0,0,True,True Negative,None,0.033193213313341685,0.0332,Low,0.0002,0.0041,0.0001,0.4693,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_280,0,0,True,True Negative,None,0.036675198343626134,0.0367,Low,0.0209,0.0881,0.0071,0.3709,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_281,0,0,True,True Negative,None,0.06242860229210908,0.0624,Low,0.1211,0.1067,0.1102,0.4147,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_282,0,0,True,True Negative,None,0.03532842311857753,0.0353,Low,0.0162,0.0286,0.0066,0.3359,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_283,0,0,True,True Negative,None,0.04419366346787092,0.0442,Low,0.0354,0.0916,0.0517,0.362,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_284,0,0,True,True Negative,None,0.05001228619478668,0.05,Low,0.0459,0.1126,0.0787,0.3655,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_285,1,1,True,True Positive,None,0.9210578029354783,0.9211,Critical,0.9257,0.7913,0.8486,0.4556,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_286,0,0,True,True Negative,None,0.034516575199680335,0.0345,Low,0.0116,0.0363,0.0013,0.4012,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_287,0,0,True,True Negative,None,0.03559353805961742,0.0356,Low,0.0236,0.0137,0.0098,0.3478,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_288,0,0,True,True Negative,None,0.04022254252141969,0.0402,Low,0.015,0.1325,0.03,0.5026,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_289,0,0,True,True Negative,None,0.03377960910474397,0.0338,Low,0.0058,0.0179,0.0005,0.3543,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_290,0,0,True,True Negative,None,0.03726268769910829,0.0373,Low,0.0221,0.0449,0.0164,0.4469,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_291,0,0,True,True Negative,None,0.04029174654520003,0.0403,Low,0.0432,0.033,0.0325,0.3609,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_292,0,0,True,True Negative,None,0.04133635181855223,0.0413,Low,0.0208,0.0325,0.0476,0.3373,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_293,0,0,True,True Negative,None,0.03479106492948738,0.0348,Low,0.0051,0.0131,0.0096,0.5185,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_294,0,0,True,True Negative,None,0.12902032952130815,0.129,Low,0.2568,0.0674,0.3153,0.4057,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_295,0,0,True,True Negative,None,0.04667310463179963,0.0467,Low,0.0965,0.2031,0.0232,0.4473,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_296,0,0,True,True Negative,None,0.03426487962458589,0.0343,Low,0.0071,0.0279,0.0025,0.4897,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_297,0,0,True,True Negative,None,0.03381505710522038,0.0338,Low,0.0021,0.0198,0.0023,0.3462,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_298,0,0,True,True Negative,None,0.03361302608310663,0.0336,Low,0.0016,0.0049,0.0028,0.3693,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_299,0,0,True,True Negative,None,0.03497590448898481,0.035,Low,0.0071,0.0078,0.0108,0.4735,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_300,0,0,True,True Negative,None,0.04979607204933253,0.0498,Low,0.101,0.0936,0.0554,0.4284,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_301,0,0,True,True Negative,None,0.034697575861562364,0.0347,Low,0.0122,0.005,0.0086,0.3484,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_302,0,0,True,True Negative,None,0.03410048131673439,0.0341,Low,0.0021,0.0061,0.0064,0.5004,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_303,0,0,True,True Negative,None,0.04072486422590022,0.0407,Low,0.041,0.2284,0.0086,0.3959,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_304,0,0,True,True Negative,None,0.03329863365839577,0.0333,Low,0.0018,0.0053,0.0001,0.4913,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_305,0,0,True,True Negative,None,0.04057847597729897,0.0406,Low,0.0709,0.0651,0.0157,0.4233,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_306,0,0,True,True Negative,None,0.03729089167151178,0.0373,Low,0.0535,0.029,0.0106,0.4233,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_307,0,0,True,True Negative,None,0.04351382980240296,0.0435,Low,0.0262,0.1468,0.0448,0.5082,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_308,0,0,True,True Negative,None,0.03403467267957772,0.034,Low,0.0072,0.023,0.0012,0.3981,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_309,0,0,True,True Negative,None,0.03465305077034472,0.0347,Low,0.0079,0.0112,0.0074,0.4641,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_310,0,0,True,True Negative,None,0.09307450467151243,0.0931,Low,0.1062,0.1335,0.2257,0.3327,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_311,0,0,True,True Negative,None,0.035903263067062735,0.0359,Low,0.0168,0.0319,0.0103,0.3432,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_312,0,0,True,True Negative,None,0.05336777300800303,0.0534,Low,0.0552,0.243,0.0759,0.3523,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_313,0,0,True,True Negative,None,0.033794615965800884,0.0338,Low,0.003,0.0065,0.0034,0.3811,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_314,0,0,True,True Negative,None,0.04102483898654484,0.041,Low,0.0466,0.1983,0.0118,0.4056,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_315,0,0,True,True Negative,None,0.037223902844566545,0.0372,Low,0.0242,0.0549,0.0138,0.3986,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_316,1,1,True,True Positive,None,0.9643127757964978,0.9643,Critical,0.9907,0.9707,0.9767,0.3717,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_317,0,1,False,False Positive,FP,0.5504290555218797,0.5504,High,0.7287,0.3676,0.5294,0.3932,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_318,1,1,True,True Positive,None,0.9267859927747906,0.9268,Critical,0.7937,0.8357,0.9747,0.3276,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_319,0,0,True,True Negative,None,0.06421960313818713,0.0642,Low,0.0833,0.1901,0.1217,0.3445,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_320,0,0,True,True Negative,None,0.03667914563384484,0.0367,Low,0.0126,0.043,0.0169,0.4591,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_321,1,1,True,True Positive,None,0.9579949283911413,0.958,Critical,0.9753,0.8795,0.9667,0.3573,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_322,0,0,True,True Negative,None,0.03665369718682681,0.0367,Low,0.0108,0.0261,0.0197,0.3526,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_323,1,0,False,False Negative,FN,0.11180611620770242,0.1118,Low,0.0184,0.0524,0.3334,0.4287,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_324,0,0,True,True Negative,None,0.03335353265122823,0.0334,Low,0.0013,0.0073,0.0005,0.4072,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_325,1,1,True,True Positive,None,0.9177159764848042,0.9177,Critical,0.9286,0.7506,0.8448,0.3458,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_326,0,0,True,True Negative,None,0.04490557027087698,0.0449,Low,0.0105,0.0685,0.0712,0.4205,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_327,0,0,True,True Negative,None,0.03422594457477024,0.0342,Low,0.013,0.0123,0.0016,0.4939,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_328,0,0,True,True Negative,None,0.03379395275157631,0.0338,Low,0.0048,0.0163,0.0013,0.4899,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_329,0,0,True,True Negative,None,0.03517267985746249,0.0352,Low,0.0047,0.0555,0.0074,0.3989,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_330,0,0,True,True Negative,None,0.03352946959425403,0.0335,Low,0.0022,0.0012,0.0026,0.5007,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_331,0,0,True,True Negative,None,0.03476848171424599,0.0348,Low,0.0101,0.0193,0.0063,0.4794,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_332,0,0,True,True Negative,None,0.05053295290699924,0.0505,Low,0.0153,0.0523,0.1041,0.3474,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_333,1,1,True,True Positive,None,0.964493283547909,0.9645,Critical,0.98,0.9611,0.9889,0.3384,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_334,0,0,True,True Negative,None,0.04303161163490338,0.043,Low,0.0257,0.1025,0.0475,0.3509,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_335,0,0,True,True Negative,None,0.03396003331962832,0.034,Low,0.0004,0.0073,0.0059,0.4238,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_336,0,0,True,True Negative,None,0.03522227066001272,0.0352,Low,0.0179,0.0462,0.0026,0.4012,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_337,1,1,True,True Positive,None,0.6875416324959469,0.6875,Critical,0.4954,0.2255,0.9265,0.3373,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_338,1,1,True,True Positive,None,0.5067400217375788,0.5067,High,0.7834,0.5933,0.3596,0.3464,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_339,1,0,False,False Negative,FN,0.036776290337694355,0.0368,Low,0.023,0.1122,0.0037,0.486,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_340,1,1,True,True Positive,None,0.9349359730903327,0.9349,Critical,0.8961,0.8356,0.9162,0.4644,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_341,1,1,True,True Positive,None,0.9641696769297272,0.9642,Critical,0.975,0.9378,0.9963,0.3594,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_342,0,0,True,True Negative,None,0.03953173362466989,0.0395,Low,0.036,0.1775,0.0092,0.3443,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_343,0,0,True,True Negative,None,0.0333405470177993,0.0333,Low,0.0004,0.002,0.0015,0.4244,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_344,0,0,True,True Negative,None,0.034423381297499445,0.0344,Low,0.0046,0.0608,0.0008,0.3563,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_345,0,0,True,True Negative,None,0.03363602085999078,0.0336,Low,0.0024,0.0014,0.0033,0.3537,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_346,0,0,True,True Negative,None,0.04782996705352684,0.0478,Low,0.0466,0.1281,0.0638,0.3357,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_347,0,0,True,True Negative,None,0.03951857797128701,0.0395,Low,0.0221,0.0617,0.0307,0.3858,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_348,1,1,True,True Positive,None,0.951482675511469,0.9515,Critical,0.9747,0.7329,0.9645,0.3611,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_349,0,0,True,True Negative,None,0.03331288193033904,0.0333,Low,0.0003,0.0015,0.0014,0.3664,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_350,0,0,True,True Negative,None,0.03459182792762899,0.0346,Low,0.0053,0.0383,0.0047,0.4904,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_351,0,0,True,True Negative,None,0.034009965085652356,0.034,Low,0.0024,0.0307,0.0024,0.3844,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_352,1,1,True,True Positive,None,0.9502099996419049,0.9502,Critical,0.9305,0.891,0.9511,0.4741,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_353,0,0,True,True Negative,None,0.03460010113460467,0.0346,Low,0.015,0.0303,0.0011,0.5015,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_354,0,0,True,True Negative,None,0.03668132196725046,0.0367,Low,0.0297,0.0506,0.0076,0.4848,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_355,1,1,True,True Positive,None,0.7595190970495395,0.7595,Critical,0.6899,0.7525,0.7113,0.3393,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_356,0,0,True,True Negative,None,0.04172523114140052,0.0417,Low,0.0451,0.1082,0.0288,0.3377,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_357,0,0,True,True Negative,None,0.03397142827692638,0.034,Low,0.001,0.0162,0.0046,0.4862,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_358,0,0,True,True Negative,None,0.034378946336303694,0.0344,Low,0.0081,0.018,0.0043,0.4884,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_359,0,0,True,True Negative,None,0.05530880909655245,0.0553,Low,0.0132,0.0758,0.1277,0.3879,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_360,1,1,True,True Positive,None,0.9637226430768139,0.9637,Critical,0.9917,0.9689,0.9718,0.3675,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_361,0,0,True,True Negative,None,0.056627010505109834,0.0566,Low,0.06,0.1247,0.1055,0.3344,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_362,0,1,False,False Positive,FP,0.9000461784632079,0.9,Critical,0.9177,0.8792,0.7628,0.4978,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_363,0,0,True,True Negative,None,0.05859235967739174,0.0586,Low,0.0942,0.161,0.094,0.4635,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_364,0,0,True,True Negative,None,0.05827569447888216,0.0583,Low,0.114,0.2588,0.0703,0.3869,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_365,0,0,True,True Negative,None,0.04792685060254077,0.0479,Low,0.0456,0.1418,0.0631,0.3444,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_366,0,0,True,True Negative,None,0.03804489237852283,0.038,Low,0.016,0.109,0.017,0.4132,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_367,0,0,True,True Negative,None,0.035956309497286766,0.036,Low,0.0111,0.0353,0.013,0.4766,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_368,0,0,True,True Negative,None,0.033800856595436975,0.0338,Low,0.0079,0.0083,0.0009,0.5084,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_369,0,0,True,True Negative,None,0.12489160357518704,0.1249,Low,0.2147,0.1071,0.2966,0.3759,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_370,0,0,True,True Negative,None,0.035657175002078476,0.0357,Low,0.0185,0.0902,0.0001,0.4939,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_371,1,1,True,True Positive,None,0.9144738596742865,0.9145,Critical,0.8454,0.5825,0.9418,0.3998,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_372,0,0,True,True Negative,None,0.034442260722031263,0.0344,Low,0.0076,0.0136,0.0055,0.417,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_373,1,1,True,True Positive,None,0.5354054511491348,0.5354,High,0.0251,0.2094,0.9038,0.5023,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_374,0,0,True,True Negative,None,0.0332744042771352,0.0333,Low,0.0007,0.0058,0.0003,0.4783,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_375,0,0,True,True Negative,None,0.05389022963854076,0.0539,Low,0.0597,0.1135,0.093,0.4199,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_376,1,1,True,True Positive,None,0.9678014754946699,0.9678,Critical,0.9957,0.987,0.997,0.3616,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_377,0,0,True,True Negative,None,0.036727790589323336,0.0367,Low,0.0249,0.0549,0.0098,0.3495,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_378,0,0,True,True Negative,None,0.04270486296102612,0.0427,Low,0.0886,0.1859,0.0042,0.3394,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_379,0,0,True,True Negative,None,0.033254688996917636,0.0333,Low,0.0004,0.0031,0.0007,0.3789,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_380,0,0,True,True Negative,None,0.03796875318932702,0.038,Low,0.0167,0.044,0.0244,0.38,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_381,0,0,True,True Negative,None,0.033534977873268326,0.0335,Low,0.003,0.0091,0.0009,0.4461,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_382,0,0,True,True Negative,None,0.03805904781310803,0.0381,Low,0.0718,0.0396,0.0084,0.3419,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_383,0,0,True,True Negative,None,0.03387589516879037,0.0339,Low,0.0019,0.0224,0.0026,0.4861,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_384,0,0,True,True Negative,None,0.05022166327933792,0.0502,Low,0.0621,0.2003,0.0608,0.3318,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_385,0,0,True,True Negative,None,0.03475556296113667,0.0348,Low,0.0105,0.0097,0.0074,0.4133,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_386,0,0,True,True Negative,None,0.06275668256039321,0.0628,Low,0.1553,0.14,0.0911,0.336,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_387,0,0,True,True Negative,None,0.03422580210138124,0.0342,Low,0.0075,0.0347,0.0012,0.4437,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_388,0,0,True,True Negative,None,0.06516418809589118,0.0652,Low,0.1509,0.3055,0.0784,0.3483,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_389,0,0,True,True Negative,None,0.03676846236187292,0.0368,Low,0.0238,0.0504,0.0112,0.3959,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_390,0,0,True,True Negative,None,0.03550938638417618,0.0355,Low,0.0229,0.0072,0.0121,0.447,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_391,1,1,True,True Positive,None,0.8948269338418564,0.8948,Critical,0.8748,0.7313,0.8192,0.359,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_392,0,0,True,True Negative,None,0.04994180963116634,0.0499,Low,0.0909,0.2417,0.04,0.4429,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_393,1,1,True,True Positive,None,0.9226132447489527,0.9226,Critical,0.9203,0.9077,0.8286,0.4604,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_394,0,0,True,True Negative,None,0.050126896000471474,0.0501,Low,0.0721,0.3108,0.0414,0.3706,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_395,0,0,True,True Negative,None,0.03805250408595438,0.0381,Low,0.0139,0.1325,0.0151,0.393,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_396,0,0,True,True Negative,None,0.033883544306499536,0.0339,Low,0.0055,0.0252,0.0006,0.4927,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_397,0,0,True,True Negative,None,0.036520021307549284,0.0365,Low,0.0312,0.0539,0.0053,0.4252,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_398,0,0,True,True Negative,None,0.03335121706954345,0.0334,Low,0.0022,0.0048,0.0004,0.4259,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_399,0,0,True,True Negative,None,0.038560234896627694,0.0386,Low,0.0305,0.1575,0.0075,0.3883,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_400,0,0,True,True Negative,None,0.03537061685714927,0.0354,Low,0.0076,0.0295,0.0109,0.4269,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_401,0,0,True,True Negative,None,0.03350031395610548,0.0335,Low,0.0016,0.009,0.0014,0.5033,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_402,0,0,True,True Negative,None,0.038216490773522634,0.0382,Low,0.0361,0.0576,0.015,0.4311,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_403,0,0,True,True Negative,None,0.03714465820776223,0.0371,Low,0.0191,0.1736,0.0005,0.4212,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_404,0,0,True,True Negative,None,0.039029199741146055,0.039,Low,0.0155,0.0441,0.0326,0.3723,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_405,0,0,True,True Negative,None,0.034256225924835994,0.0343,Low,0.0061,0.0336,0.0022,0.5185,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_406,1,1,True,True Positive,None,0.9547986079624691,0.9548,Critical,0.9475,0.8543,0.9744,0.3538,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_407,1,1,True,True Positive,None,0.9420986329351964,0.9421,Critical,0.923,0.8697,0.9197,0.3731,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_408,0,0,True,True Negative,None,0.03548249126168688,0.0355,Low,0.0063,0.0876,0.005,0.3782,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_409,0,0,True,True Negative,None,0.049125509241041525,0.0491,Low,0.0822,0.0866,0.0594,0.3647,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_410,0,0,True,True Negative,None,0.03430184828443013,0.0343,Low,0.0024,0.0312,0.0047,0.3343,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_411,1,1,True,True Positive,None,0.6956204281193413,0.6956,Critical,0.448,0.1516,0.9768,0.3364,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_412,1,1,True,True Positive,None,0.9317383220492,0.9317,Critical,0.9102,0.8826,0.8793,0.4808,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_413,0,0,True,True Negative,None,0.033538813814577774,0.0335,Low,0.0035,0.013,0.0003,0.4916,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_414,0,0,True,True Negative,None,0.04004706662705649,0.04,Low,0.0635,0.1263,0.006,0.4364,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_415,0,0,True,True Negative,None,0.03405657372803231,0.0341,Low,0.0061,0.0091,0.0037,0.4795,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_416,0,0,True,True Negative,None,0.052425545654704295,0.0524,Low,0.0508,0.2134,0.0767,0.34,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_417,0,0,True,True Negative,None,0.03986457416458704,0.0399,Low,0.0419,0.0297,0.0312,0.3525,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_418,0,0,True,True Negative,None,0.03669140151982331,0.0367,Low,0.0219,0.0333,0.0137,0.3901,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_419,1,1,True,True Positive,None,0.9665211144676933,0.9665,Critical,0.9866,0.9873,0.9935,0.3483,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_420,0,0,True,True Negative,None,0.03482198067048386,0.0348,Low,0.0009,0.1,0.0008,0.4186,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_421,0,0,True,True Negative,None,0.036620927614627756,0.0366,Low,0.0257,0.0843,0.0048,0.476,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_422,0,0,True,True Negative,None,0.048790998159694045,0.0488,Low,0.098,0.0759,0.0576,0.3764,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_423,0,0,True,True Negative,None,0.052944710435044035,0.0529,Low,0.111,0.1827,0.0543,0.3397,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_424,0,0,True,True Negative,None,0.033322947051183896,0.0333,Low,0.001,0.0042,0.0008,0.4928,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_425,0,0,True,True Negative,None,0.03577160243889303,0.0358,Low,0.0027,0.0428,0.0147,0.3521,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_426,0,0,True,True Negative,None,0.2644367829043388,0.2644,Moderate,0.0574,0.4288,0.5478,0.3548,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_427,1,1,True,True Positive,None,0.9161039148390309,0.9161,Critical,0.849,0.7244,0.9082,0.4068,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_428,0,0,True,True Negative,None,0.03458814842002334,0.0346,Low,0.0046,0.02,0.0074,0.415,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_429,1,1,True,True Positive,None,0.21012498039495026,0.2101,Moderate,0.5066,0.295,0.3246,0.3448,Tier 2 Override: Severe FN Recovery Rule (Dual Model Consensus),High Risk — Retention Action Recommended
+EMP_HD_430,0,0,True,True Negative,None,0.038258546928716955,0.0383,Low,0.0278,0.1273,0.0105,0.4098,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_431,1,1,True,True Positive,None,0.9553288084937078,0.9553,Critical,0.9866,0.8691,0.9433,0.3593,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_432,0,0,True,True Negative,None,0.048813303791103164,0.0488,Low,0.0726,0.2108,0.0464,0.422,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_433,0,0,True,True Negative,None,0.0444164918191783,0.0444,Low,0.0536,0.1042,0.0427,0.4273,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_434,0,0,True,True Negative,None,0.037599718988969535,0.0376,Low,0.0282,0.0388,0.0167,0.5,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_435,0,0,True,True Negative,None,0.03689182668864308,0.0369,Low,0.0044,0.0182,0.0256,0.4208,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_436,0,0,True,True Negative,None,0.039390434608610685,0.0394,Low,0.0284,0.0922,0.0228,0.4306,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_437,0,0,True,True Negative,None,0.05438578728971328,0.0544,Low,0.3725,0.1442,0.0072,0.352,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_438,0,0,True,True Negative,None,0.04741066185611443,0.0474,Low,0.1278,0.2043,0.0122,0.3343,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_439,1,1,True,True Positive,None,0.9673506054341201,0.9674,Critical,0.9933,0.9865,0.9952,0.3413,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_440,0,0,True,True Negative,None,0.036021788998065435,0.036,Low,0.0122,0.058,0.0101,0.4078,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_441,0,0,True,True Negative,None,0.0349922937962801,0.035,Low,0.0044,0.0331,0.009,0.3649,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_442,0,0,True,True Negative,None,0.039244472641718,0.0392,Low,0.01,0.0225,0.0396,0.4984,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_443,0,0,True,True Negative,None,0.03682156056023558,0.0368,Low,0.0201,0.0131,0.0202,0.4491,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_444,0,0,True,True Negative,None,0.07409727666527545,0.0741,Low,0.1335,0.2559,0.1302,0.336,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_445,0,0,True,True Negative,None,0.03724970837515535,0.0372,Low,0.0235,0.0284,0.0177,0.3367,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_446,0,0,True,True Negative,None,0.0356569681796832,0.0357,Low,0.0015,0.0011,0.0199,0.4196,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_447,1,0,False,False Negative,FN,0.039577170194498495,0.0396,Low,0.0591,0.0887,0.0097,0.3642,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_448,0,0,True,True Negative,None,0.049284100947185515,0.0493,Low,0.0309,0.0923,0.0845,0.5081,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_449,0,0,True,True Negative,None,0.28753731227568147,0.2875,Moderate,0.4439,0.2202,0.4838,0.4018,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_450,1,0,False,False Negative,FN,0.0347667900849921,0.0348,Low,0.0101,0.0142,0.0069,0.4629,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_451,1,1,True,True Positive,None,0.5206079281360256,0.5206,High,0.3445,0.4789,0.6985,0.3686,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_452,0,0,True,True Negative,None,0.04843401868852932,0.0484,Low,0.0363,0.1018,0.0757,0.4152,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_453,0,0,True,True Negative,None,0.03368786165411601,0.0337,Low,0.0036,0.0148,0.0012,0.4403,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_454,0,0,True,True Negative,None,0.0332605503486344,0.0333,Low,0.0008,0.0047,0.0003,0.4022,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_455,0,0,True,True Negative,None,0.036358099235716014,0.0364,Low,0.0163,0.0402,0.013,0.3822,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_456,0,0,True,True Negative,None,0.04075152266746648,0.0408,Low,0.1047,0.0428,0.0198,0.3351,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_457,0,0,True,True Negative,None,0.03379708394057173,0.0338,Low,0.0058,0.0042,0.0028,0.4879,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_458,0,0,True,True Negative,None,0.04299400340520142,0.043,Low,0.0529,0.1412,0.0291,0.3703,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_459,0,0,True,True Negative,None,0.03768946068059914,0.0377,Low,0.0362,0.1109,0.0043,0.3814,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_460,0,0,True,True Negative,None,0.03376522328154601,0.0338,Low,0.0005,0.0012,0.0051,0.5189,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_461,0,0,True,True Negative,None,0.036031501734095195,0.036,Low,0.022,0.0342,0.0085,0.4196,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_462,1,0,False,False Negative,FN,0.03619618414318192,0.0362,Low,0.0245,0.0891,0.0015,0.486,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_463,0,0,True,True Negative,None,0.03369213793668925,0.0337,Low,0.0037,0.0079,0.0021,0.5033,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_464,0,0,True,True Negative,None,0.03423641113872403,0.0342,Low,0.0064,0.024,0.0031,0.5078,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_465,0,0,True,True Negative,None,0.04051230573068625,0.0405,Low,0.0373,0.113,0.0237,0.4484,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_466,0,0,True,True Negative,None,0.03390310636219739,0.0339,Low,0.0051,0.0229,0.0012,0.4892,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_467,1,1,True,True Positive,None,0.6338174322912229,0.6338,Critical,0.8942,0.8085,0.3573,0.5403,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_468,1,1,True,True Positive,None,0.9608233308519247,0.9608,Critical,0.9803,0.8975,0.9777,0.4045,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_469,0,0,True,True Negative,None,0.041263067863251825,0.0413,Low,0.0219,0.114,0.0362,0.3521,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_470,0,0,True,True Negative,None,0.08374086713295877,0.0837,Low,0.1116,0.2633,0.1755,0.3994,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_471,0,0,True,True Negative,None,0.03446077599383182,0.0345,Low,0.0036,0.0067,0.0085,0.4538,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_472,0,0,True,True Negative,None,0.03423830553435885,0.0342,Low,0.0017,0.0082,0.0074,0.4023,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_473,0,0,True,True Negative,None,0.03484065584069521,0.0348,Low,0.0169,0.0284,0.0023,0.4647,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_474,0,0,True,True Negative,None,0.03494899760143012,0.0349,Low,0.0054,0.0439,0.0068,0.3377,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_475,0,0,True,True Negative,None,0.03919800117929246,0.0392,Low,0.0412,0.1287,0.0106,0.3968,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_476,0,0,True,True Negative,None,0.034330311201496475,0.0343,Low,0.0126,0.0156,0.002,0.451,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_477,0,0,True,True Negative,None,0.06666748379026584,0.0667,Low,0.168,0.1508,0.1015,0.4189,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_478,0,0,True,True Negative,None,0.03760332477448122,0.0376,Low,0.0214,0.0352,0.0205,0.3493,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_479,1,1,True,True Positive,None,0.9432562035895827,0.9433,Critical,0.9225,0.7379,0.9598,0.3386,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_480,0,0,True,True Negative,None,0.04129539900367526,0.0413,Low,0.007,0.0552,0.0511,0.4011,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_481,0,0,True,True Negative,None,0.054189292262835934,0.0542,Low,0.0937,0.1792,0.0697,0.3973,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_482,1,1,True,True Positive,None,0.9320674458980378,0.9321,Critical,0.8881,0.6684,0.9532,0.35,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_483,0,0,True,True Negative,None,0.03687491801717987,0.0369,Low,0.0102,0.1643,0.004,0.4409,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_484,0,0,True,True Negative,None,0.03472462371183143,0.0347,Low,0.0017,0.0825,0.0019,0.4511,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_485,0,0,True,True Negative,None,0.039998379758966654,0.04,Low,0.0199,0.1388,0.0253,0.4139,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_486,0,0,True,True Negative,None,0.03887579963371664,0.0389,Low,0.0211,0.05,0.0281,0.4889,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_487,0,0,True,True Negative,None,0.03442395987837708,0.0344,Low,0.0117,0.0198,0.0026,0.4611,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_488,0,0,True,True Negative,None,0.042511348362331614,0.0425,Low,0.0678,0.0686,0.028,0.4098,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_489,0,0,True,True Negative,None,0.0724290548450132,0.0724,Low,0.1765,0.5344,0.0729,0.4013,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_490,0,0,True,True Negative,None,0.042340820814192104,0.0423,Low,0.1088,0.119,0.0006,0.5055,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_491,0,0,True,True Negative,None,0.06470417893315265,0.0647,Low,0.1139,0.1746,0.111,0.3402,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_492,1,1,True,True Positive,None,0.954999138518458,0.955,Critical,0.9683,0.9104,0.9449,0.3938,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_493,0,1,False,False Positive,FP,0.9309063089223897,0.9309,Critical,0.8026,0.8091,0.9809,0.334,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_494,0,0,True,True Negative,None,0.035616389284961136,0.0356,Low,0.0013,0.0074,0.0187,0.4124,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_495,0,0,True,True Negative,None,0.034875899856433475,0.0349,Low,0.0064,0.0437,0.0058,0.4606,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_496,0,0,True,True Negative,None,0.034678683031266255,0.0347,Low,0.011,0.0161,0.0055,0.4409,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_497,0,0,True,True Negative,None,0.12336736716407289,0.1234,Low,0.0795,0.4211,0.2866,0.3998,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_498,0,0,True,True Negative,None,0.033946524813649646,0.0339,Low,0.0057,0.0145,0.0024,0.44,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_499,0,0,True,True Negative,None,0.05017258951306852,0.0502,Low,0.1036,0.1399,0.0481,0.3807,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_500,0,0,True,True Negative,None,0.04368830704057026,0.0437,Low,0.0351,0.1036,0.047,0.4494,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_501,0,0,True,True Negative,None,0.034732280426140676,0.0347,Low,0.0086,0.0264,0.0058,0.4336,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_502,0,0,True,True Negative,None,0.0352093161979087,0.0352,Low,0.0165,0.0336,0.0048,0.387,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_503,0,0,True,True Negative,None,0.05168141624531707,0.0517,Low,0.1864,0.0943,0.0493,0.3517,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_504,0,0,True,True Negative,None,0.03350065789186201,0.0335,Low,0.0016,0.0028,0.0021,0.4745,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_505,1,1,True,True Positive,None,0.48415331979473364,0.4842,High,0.6899,0.7525,0.386,0.3393,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_506,0,0,True,True Negative,None,0.035631653984508245,0.0356,Low,0.0211,0.0244,0.0071,0.3443,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_507,0,0,True,True Negative,None,0.034946442492607845,0.0349,Low,0.0091,0.0227,0.0077,0.4028,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_508,1,1,True,True Positive,None,0.8803832171196587,0.8804,Critical,0.7904,0.7183,0.8498,0.4212,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_509,0,0,True,True Negative,None,0.03630201592209028,0.0363,Low,0.0043,0.0463,0.0176,0.407,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_510,0,0,True,True Negative,None,0.03332091621278464,0.0333,Low,0.0012,0.0065,0.0004,0.4174,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_511,0,0,True,True Negative,None,0.033721472538206135,0.0337,Low,0.005,0.0166,0.0006,0.3981,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_512,0,0,True,True Negative,None,0.03633147796448329,0.0363,Low,0.0189,0.0155,0.0157,0.5106,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_513,0,0,True,True Negative,None,0.037893974276900305,0.0379,Low,0.0263,0.0579,0.0174,0.4684,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_514,0,0,True,True Negative,None,0.03372820789676877,0.0337,Low,0.01,0.0059,0.0007,0.5095,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_515,0,0,True,True Negative,None,0.034509929118304444,0.0345,Low,0.0229,0.0151,0.0008,0.452,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_516,0,0,True,True Negative,None,0.034177258441196595,0.0342,Low,0.0063,0.0052,0.0054,0.4711,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_517,0,0,True,True Negative,None,0.07951590980503168,0.0795,Low,0.1535,0.1058,0.1742,0.336,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_518,0,0,True,True Negative,None,0.03440238237592604,0.0344,Low,0.0059,0.0188,0.0054,0.3603,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_519,0,0,True,True Negative,None,0.034357713440360683,0.0344,Low,0.0096,0.0349,0.0012,0.5015,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_520,0,0,True,True Negative,None,0.043729137481279136,0.0437,Low,0.0171,0.1677,0.0479,0.3727,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_521,0,0,True,True Negative,None,0.03639490741616092,0.0364,Low,0.0106,0.0512,0.0146,0.3393,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_522,0,0,True,True Negative,None,0.034724931187296214,0.0347,Low,0.0047,0.0107,0.0096,0.4795,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_523,0,1,False,False Positive,FP,0.9609896809477073,0.961,Critical,0.9834,0.9166,0.9715,0.3367,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_524,1,1,True,True Positive,None,0.9503683850332013,0.9504,Critical,0.9266,0.818,0.9738,0.4534,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_525,0,0,True,True Negative,None,0.11640418625597049,0.1164,Low,0.248,0.1508,0.2503,0.3957,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_526,0,0,True,True Negative,None,0.03334198512434987,0.0333,Low,0.0014,0.0085,0.0002,0.5227,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_527,1,1,True,True Positive,None,0.5350584061719804,0.5351,High,0.0669,0.2131,0.8827,0.492,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_528,0,0,True,True Negative,None,0.04045561573640845,0.0405,Low,0.0093,0.0364,0.0466,0.4325,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_529,0,0,True,True Negative,None,0.037395661559763385,0.0374,Low,0.001,0.0013,0.0332,0.4196,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_530,0,0,True,True Negative,None,0.037039513017237735,0.037,Low,0.0257,0.0842,0.008,0.3444,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_531,0,0,True,True Negative,None,0.03346382641867838,0.0335,Low,0.0004,0.0096,0.0015,0.3424,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_532,0,0,True,True Negative,None,0.09394560056598868,0.0939,Low,0.1876,0.3833,0.1571,0.3582,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_533,0,0,True,True Negative,None,0.038329110430470575,0.0383,Low,0.0214,0.0352,0.0258,0.3493,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_534,1,1,True,True Positive,None,0.7983836109309095,0.7984,Critical,0.8104,0.6556,0.6842,0.5137,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_535,0,0,True,True Negative,None,0.03340409336305859,0.0334,Low,0.0019,0.008,0.0005,0.3448,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_536,0,0,True,True Negative,None,0.035559305272659686,0.0356,Low,0.0128,0.0814,0.0033,0.4437,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_537,1,1,True,True Positive,None,0.9133986920130797,0.9134,Critical,0.974,0.9087,0.7535,0.3873,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_538,0,0,True,True Negative,None,0.033533123404912775,0.0335,Low,0.0013,0.0223,0.0001,0.4955,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_539,0,0,True,True Negative,None,0.10764271689740107,0.1076,Low,0.5151,0.7719,0.025,0.3357,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_540,0,0,True,True Negative,None,0.033519570645002654,0.0335,Low,0.002,0.0031,0.0021,0.4028,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_541,0,0,True,True Negative,None,0.07082105404545345,0.0708,Low,0.1191,0.2553,0.1242,0.4331,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_542,0,0,True,True Negative,None,0.03763506001104373,0.0376,Low,0.0433,0.0771,0.0048,0.3341,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_543,0,0,True,True Negative,None,0.03313376738593352,0.0331,Low,0.0001,0.0015,0.0,0.4458,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_544,0,0,True,True Negative,None,0.15954900111902573,0.1595,Low,0.5186,0.5134,0.1348,0.3841,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_545,0,0,True,True Negative,None,0.033527565522735774,0.0335,Low,0.0027,0.006,0.0014,0.4006,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_546,0,0,True,True Negative,None,0.03558433604463162,0.0356,Low,0.007,0.0402,0.0115,0.4119,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_547,0,0,True,True Negative,None,0.03398394307452167,0.034,Low,0.0031,0.0248,0.0026,0.3874,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_548,0,0,True,True Negative,None,0.04389765081931563,0.0439,Low,0.0113,0.025,0.07,0.4231,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_549,0,0,True,True Negative,None,0.03491493621307785,0.0349,Low,0.0053,0.0673,0.0036,0.5006,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_550,0,0,True,True Negative,None,0.03818697189372105,0.0382,Low,0.0157,0.073,0.0228,0.3564,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_551,0,0,True,True Negative,None,0.03423484120949773,0.0342,Low,0.0061,0.0199,0.0038,0.3467,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_552,0,0,True,True Negative,None,0.034032573770305614,0.034,Low,0.003,0.0098,0.0049,0.4033,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_553,0,0,True,True Negative,None,0.08208040945117415,0.0821,Low,0.2559,0.3649,0.0867,0.3328,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_554,0,0,True,True Negative,None,0.03345990447127343,0.0335,Low,0.0017,0.0078,0.0011,0.4936,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_555,1,1,True,True Positive,None,0.9642851213863115,0.9643,Critical,0.9865,0.9616,0.9821,0.3413,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_556,0,0,True,True Negative,None,0.034145908216499286,0.0341,Low,0.0078,0.0291,0.0011,0.4892,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_557,0,0,True,True Negative,None,0.03322931066141603,0.0332,Low,0.0006,0.0022,0.0005,0.4259,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_558,0,0,True,True Negative,None,0.039893694435612054,0.0399,Low,0.0482,0.0561,0.0214,0.4375,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_559,0,0,True,True Negative,None,0.045653963778095365,0.0457,Low,0.0115,0.0272,0.0806,0.4291,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_560,0,0,True,True Negative,None,0.03724857573906098,0.0372,Low,0.0471,0.0529,0.0032,0.3451,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_561,1,1,True,True Positive,None,0.9462016788801004,0.9462,Critical,0.9187,0.7447,0.9761,0.4365,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_562,0,0,True,True Negative,None,0.033972511762057386,0.034,Low,0.0041,0.0131,0.0035,0.476,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_563,0,0,True,True Negative,None,0.09362372546765368,0.0936,Low,0.3688,0.3763,0.0691,0.4242,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_564,1,1,True,True Positive,None,0.9432013423977802,0.9432,Critical,0.9217,0.9251,0.913,0.3454,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_565,0,0,True,True Negative,None,0.03432559961788757,0.0343,Low,0.0099,0.0063,0.0055,0.5145,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_566,0,0,True,True Negative,None,0.04867916655625611,0.0487,Low,0.0839,0.0448,0.0728,0.4041,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_567,1,1,True,True Positive,None,0.9416995843555147,0.9417,Critical,0.9049,0.7517,0.9623,0.4193,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_568,0,0,True,True Negative,None,0.04461927871839265,0.0446,Low,0.0588,0.1576,0.0346,0.407,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_569,0,0,True,True Negative,None,0.03339033549207696,0.0334,Low,0.0024,0.0038,0.0007,0.5036,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_570,0,0,True,True Negative,None,0.04642063939419037,0.0464,Low,0.0804,0.1925,0.0308,0.4498,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_571,0,0,True,True Negative,None,0.03676340447167455,0.0368,Low,0.0123,0.1177,0.0081,0.5274,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_572,0,0,True,True Negative,None,0.06037577373079137,0.0604,Low,0.0467,0.0547,0.1391,0.419,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_573,0,0,True,True Negative,None,0.037612844445182425,0.0376,Low,0.0405,0.051,0.0093,0.3545,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_574,0,0,True,True Negative,None,0.03941556237494211,0.0394,Low,0.009,0.0115,0.0427,0.4557,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_575,0,0,True,True Negative,None,0.03405761914584628,0.0341,Low,0.0052,0.0157,0.0033,0.3952,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_576,1,1,True,True Positive,None,0.714997861134091,0.715,Critical,0.8833,0.6935,0.4949,0.4554,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_577,0,0,True,True Negative,None,0.03592231177220665,0.0359,Low,0.0174,0.0411,0.009,0.4889,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_578,0,0,True,True Negative,None,0.09286406579084239,0.0929,Low,0.0401,0.095,0.262,0.4141,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_579,0,0,True,True Negative,None,0.03378563535456071,0.0338,Low,0.005,0.0204,0.0006,0.4611,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_580,0,0,True,True Negative,None,0.04814150505985696,0.0481,Low,0.0484,0.3491,0.0366,0.352,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_581,0,0,True,True Negative,None,0.036343184981529324,0.0363,Low,0.0239,0.0286,0.0107,0.3855,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_582,0,0,True,True Negative,None,0.035722910961407284,0.0357,Low,0.0069,0.1104,0.0037,0.391,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_583,0,0,True,True Negative,None,0.03340978984093784,0.0334,Low,0.0018,0.0064,0.0008,0.3803,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_584,0,0,True,True Negative,None,0.06392478738352637,0.0639,Low,0.1652,0.3066,0.0658,0.3401,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_585,0,1,False,False Positive,FP,0.9593336253791204,0.9593,Critical,0.9511,0.8805,0.9945,0.3367,Standard Tier 1 Meta-Learner Decision,High Risk — Retention Action Recommended
+EMP_HD_586,0,0,True,True Negative,None,0.037855172078736087,0.0379,Low,0.0555,0.051,0.0051,0.3451,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_587,0,0,True,True Negative,None,0.03449712651386065,0.0345,Low,0.0195,0.0136,0.0019,0.3396,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_588,0,0,True,True Negative,None,0.04902362355084198,0.049,Low,0.0968,0.3011,0.0243,0.347,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_589,0,0,True,True Negative,None,0.050664419788452486,0.0507,Low,0.1114,0.1766,0.0424,0.4285,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_590,0,0,True,True Negative,None,0.08426625623438508,0.0843,Low,0.1069,0.2779,0.1777,0.388,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_591,0,0,True,True Negative,None,0.03327089086759779,0.0333,Low,0.0013,0.0014,0.0006,0.4869,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_592,1,1,True,True Positive,None,0.34163397778108207,0.3416,Moderate,0.8572,0.3138,0.2213,0.4628,Tier 2 Override: Boundary Domain Specialist (Severe Dissatisfaction + High Specialist Score),High Risk — Retention Action Recommended
+EMP_HD_593,0,0,True,True Negative,None,0.046194813986485485,0.0462,Low,0.0559,0.1539,0.0462,0.4333,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention
+EMP_HD_594,0,0,True,True Negative,None,0.06446024696972309,0.0645,Low,0.2139,0.2096,0.0582,0.4575,Standard Tier 1 Meta-Learner Decision,Low Risk — Standard Retention

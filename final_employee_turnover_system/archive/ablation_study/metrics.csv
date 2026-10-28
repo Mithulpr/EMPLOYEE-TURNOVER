@@ -1,0 +1,7 @@
+Metric,Nested_CV_Arm_A,Nested_CV_Arm_C,Retrospective_Holdout
+Accuracy (%),89.32 ± 1.29,89.26 ± 1.02,88.38
+F1-Score (%),67.31 ± 4.22,64.24 ± 3.52,63.10
+Precision (%),66.61 ± 3.84,69.68 ± 4.03,64.84
+Recall (%),68.12 ± 5.30,59.79 ± 4.59,61.46
+ROC-AUC (%),90.28 ± 2.49,88.46 ± 2.00,89.00
+Total Errors,317,319,69

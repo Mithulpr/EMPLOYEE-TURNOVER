@@ -1,0 +1,50 @@
+[
+  {
+    "Variant": "A. Full Step 32 Architecture (Baseline)",
+    "Errors": 20,
+    "Accuracy": 0.9578947368421052,
+    "Precision": 0.88,
+    "Recall": 0.8571428571428571,
+    "F1": 0.868421052631579
+  },
+  {
+    "Variant": "B. CatBoost Standalone Only",
+    "Errors": 32,
+    "Accuracy": 0.9326315789473684,
+    "Precision": 0.8813559322033898,
+    "Recall": 0.6753246753246753,
+    "F1": 0.7647058823529411
+  },
+  {
+    "Variant": "C. LightGBM Standalone Only",
+    "Errors": 42,
+    "Accuracy": 0.911578947368421,
+    "Precision": 0.7333333333333333,
+    "Recall": 0.7142857142857143,
+    "F1": 0.7236842105263158
+  },
+  {
+    "Variant": "D. Hybrid without Meta-Learner (50/50 Blend)",
+    "Errors": 43,
+    "Accuracy": 0.9094736842105263,
+    "Precision": 0.7236842105263158,
+    "Recall": 0.7142857142857143,
+    "F1": 0.7189542483660131
+  },
+  {
+    "Variant": "E. Stacking without Decision Refinement",
+    "Errors": 23,
+    "Accuracy": 0.9515789473684211,
+    "Precision": 0.875,
+    "Recall": 0.8181818181818182,
+    "F1": 0.8456375838926175
+  },
+  {
+    "Variant": "F. Full Step 32 with SHAP Layer (Parity)",
+    "Errors": 20,
+    "Accuracy": 0.9578947368421052,
+    "Precision": 0.88,
+    "Recall": 0.8571428571428571,
+    "F1": 0.868421052631579
+  }
+]

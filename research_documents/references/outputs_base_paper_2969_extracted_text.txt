@@ -1,0 +1,2023 @@
+=== PAGE 1 ===
+Developing a hybrid machine learning model for employee turnover 
+prediction: Integrating LightGBM and genetic algorithms
+Hojat Talebia, Amid Khatibi Bardsirib,*, Vahid Khatibi Bardsirib
+aDepartment of Management, Ke.C., Islamic Azad University, Kerman, Iran
+bDepartment of Computer engineering, Ke.C., Islamic Azad University, Kerman, Iran
+ARTICLE INFO
+Keywords:
+Employee Turnover
+Machine Learning
+LightGBM
+Genetic Algorithms
+Feature SelectionABSTRACT
+Employee turnover poses a significant challenge to organizations, leading to increased costs and disruptions in 
+workforce stability. In this study, we propose a novel hybrid model for employee turnover prediction that in-
+tegrates Genetic Algorithms (GA) for feature selection with LightGBM for classification. The GA component 
+identifies the most relevant features, while LightGBM ensures high prediction accuracy and computational ef-
+ficiency. The model was evaluated on two datasets —a public HR Analytics dataset and a proprietary organi -
+zational dataset —using multiple performance metrics including Accuracy, Precision, Recall, F1-Score, and AUC. 
+The proposed GA LightGBM model achieved an AUC of 0.94 and F1-Score of 0.87 on the HR dataset, and an 
+AUC of 0.78 with F1-Score of 0.73 on the organizational dataset, outperforming conventional models such as 
+Random Forest, Logistic Regression, and even standalone LightGBM. The results demonstrate that the proposed 
+method offers a balanced and interpretable solution for turnover prediction, outperforming existing approaches 
+in both predictive power and practical applicability. This work contributes to HR analytics by offering a 
+transparent, scalable, and high-performing predictive framework that supports effective retention strategies.
+1.Introduction
+Employee turnover remains one of the most significant challenges in 
+human resource management, leading to increased costs related to 
+recruitment, training, and the loss of valuable expertise (PM and Balaji, 
+2019 ). High turnover rates can disrupt organizational stability, reduce 
+workforce morale, and negatively impact productivity. The ability to 
+predict turnover accurately is essential for organizations to mitigate 
+these costs and implement effective retention strategies. Traditional 
+methods for predicting employee attrition, such as simple surveys or 
+performance evaluations, often fail to capture the complexity of turn-
+over decisions, as they overlook the intricate interplay of various factors 
+affecting an employee ’s decision to leave the organization. (Marquez 
+et al., 2024; Strohmeier & Piazza, 2015; H. Zhang et al., 2018 ). These 
+conventional methods are too simplistic and cannot effectively account 
+for the multi-dimensional nature of turnover that arises from both in-
+ternal and external factors influencing employee decisions. In recent 
+years, machine learning (ML) has emerged as a promising solution to 
+improve turnover prediction (Al Akasheh et al., 2024; Atef et al., 2022; 
+Park et al., 2024 ). Various machine learning algorithms, including de-
+cision trees, random forests, and support vector machines (SVM), have been employed to predict employee attrition by analyzing historical 
+data, job satisfaction, performance metrics, and other relevant features 
+(Alaskar et al., 2019; Veglio et al., 2025 ). For instance, Shafie et al. 
+explored the integration of Artificial Neural Networks (ANN) with 
+clustering techniques to enhance turnover prediction accuracy (Shafie 
+et al., 2024 ), while Biswas et al. applied ensemble learning models to 
+identify key predictors of turnover intention, showing improved per-
+formance compared to traditional methods (Biswas et al., 2023 ). Despite 
+these advancements, many studies still struggle with handling 
+high-dimensional datasets and the challenge of selecting the most rele-
+vant features that significantly influence turnover. (de Oliveira et al., 
+2019; Jain and Nayyar, 2018 ). To address these limitations, this paper 
+proposes a novel approach that combines LightGBM, a state-of-the-art 
+gradient boosting algorithm, with genetic algorithms for feature selec-
+tion. LightGBM has gained popularity due to its ability to handle 
+large-scale datasets efficiently, while genetic algorithms are used to 
+optimize feature selection, ensuring that only the most impactful vari-
+ables are included in the model. This hybrid approach aims to improve 
+the accuracy and interpretability of employee turnover prediction 
+models by leveraging the strengths of both algorithms. The proposed 
+model is evaluated using two datasets: one publicly available, 
+*Corresponding author.
+E-mail address: khatibi_amid@yahoo.com (A.K. Bardsiri). 
+Contents lists available at ScienceDirect
+Journal of Open Innovation: Technology, Market,  
+and Complexity
+u{�~zkw! s{yo|kro>! ÐÐÐ1�mtoz mont~om�1m{ y2u{�~zkw2u{ �~zkw/{q/{|o z/tzz{�k�t{ z/�omsz{w{ rÞ/!
+yk~vo�/kzn /m{y|woðt�Þ
+https://doi.org/10.1016/j.joitmc.2025.100557
+Received 24 March 2025; Received in revised form 22 May 2025; Accepted 24 May 2025  Journal  of Open  Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+Available  online  27 May 2025  
+2199-8531/©  2025  The Author(s).  Published  by Elsevier  Ltd on behalf  of Prof JinHyo  Joseph  Yun. This is an open access  article  under  the CC BY license  
+( http://creativecommons.org/licenses/by/4.0/  ). 
+=== PAGE 2 ===
+HR_Analytics, and another collected by us through a questionnaire. The 
+publicly available HR_Analytics dataset is widely used in employee 
+attrition research, while the second dataset was specifically gathered for 
+this study to provide additional insights into employee turnover. By 
+including both publicly available and custom-collected data, this study 
+ensures a broad representation of different organizational contexts and 
+enhances the generalizability of the results. The results demonstrate 
+significant improvements in prediction accuracy, with better perfor -
+mance in key metrics compared to traditional machine learning models.
+This study offers three major contributions to the field of HR ana-
+lytics and turnover prediction. First, it introduces a novel hybrid model 
+that integrates Genetic Algorithms with LightGBM—a combination that 
+has been rarely applied in previous research but shows strong potential 
+for handling high-dimensional HR data. Second, it presents a unique 
+dataset collected directly from real-world industrial organizations using 
+a carefully designed questionnaire, thereby ensuring relevance and 
+authenticity. Third, through comprehensive experimentation, it dem-
+onstrates the superior performance of the proposed hybrid approach 
+over traditional models, validating its practical value for predicting 
+employee attrition. These contributions collectively strengthen the 
+foundation for data-driven HR decision-making and highlight the po-
+tential of intelligent algorithms in workforce analytics.
+The structure of this paper is as follows: Section 2provides a review 
+of the related works and methodologies used in previous turnover pre-
+diction studies. Section 3describes the proposed methodology, 
+including the integration of LightGBM and genetic algorithms, and de-
+fines the key terms. Section 4focuses on the selection and definition of 
+other prediction methods used for comparison. Section 5presents the 
+statistical analysis of the data. Section 6discusses the experimental re-
+sults, comparing the performance of the proposed model with existing 
+methods. Section 7analyzes feature selection methods, comparing the 
+computational complexity, training times, and performance of different 
+feature selection techniques. Finally, Section 8concludes the paper, 
+summarizes the key findings, and outlines directions for future research. 
+Figure 1illustrates the overall roadmap of this research.
+2.Literature review
+Employee turnover prediction has been extensively studied in recent 
+years, with various machine learning algorithms being applied to predict 
+employee attrition (Ikram et al., 2021; Ilyas et al., 2020 ). This section 
+reviews key works in the field, outlining the methodologies used and 
+their findings, starting with the earliest studies and progressing through 
+recent advancements.
+Zhang et al. conducted a study to predict employee turnover using 
+machine learning techniques (H. Zhang et al., 2018 ). They analyzed a 
+dataset from a telecommunications company, focusing on employee 
+characteristics such as job position, overtime, and work level. The study 
+compared various machine learning algorithms like logistic regression, 
+KNN, and decision trees to predict turnover. The results revealed that 
+machine learning models could effectively capture the complex dynamics of employee attrition, with decision trees proving to be the 
+most accurate in predicting turnover. The study emphasized the 
+importance of identifying the most significant turnover predictors for 
+targeted retention strategies.
+Alaskar et al. explored the use of machine learning models, including 
+decision trees, support vector machines, and logistic regression, for 
+predicting employee turnover (Alaskar et al., 2019 ). They applied 
+feature selection techniques, such as SelectKBest and Recursive Feature 
+Elimination (RFE), to identify the most important variables impacting 
+turnover decisions. The study showed that combining multiple machine 
+learning models, such as SVM and random forests, enhanced the pre-
+dictive accuracy of the model compared to traditional methods.
+Zhao et al. expanded the understanding of turnover prediction by 
+using a broader range of machine learning models to predict employee 
+attrition (Zhao et al., 2019 ). Their study involved algorithms such as 
+decision trees, random forests, logistic regression, and neural networks. 
+The researchers found that including a variety of features, including job 
+satisfaction and performance reviews, significantly improved the accu-
+racy of predictions. They concluded that machine learning models could 
+accurately predict employee turnover, especially when multiple rele-
+vant features are considered.
+Ali proposed a hybrid model combining Random Forest and Principal 
+Component Analysis (PCA) for employee turnover prediction (Wild Ali, 
+2021 ). PCA was used to reduce the dimensionality of the data and select 
+the most relevant features, while Random Forest was employed to 
+classify the employees at risk of leaving the organization. The results 
+showed that this approach outperformed traditional models, particu -
+larly in terms of classification accuracy, and suggested that feature 
+reduction combined with robust classification methods could yield su-
+perior performance.
+Kumar et al. introduced a systematic approach to predicting 
+employee turnover using machine learning algorithms (Kumar et al., 
+2023 ). They focused on the financial and operational implications of 
+turnover, emphasizing the importance of retaining skilled employees to 
+conserve organizational resources. The study tested various machine 
+learning algorithms, including random forests, neural networks, and 
+XGBoost, on a dataset from a multinational organization. The results 
+showed that XGBoost achieved the highest prediction accuracy of 
+78.5 %, demonstrating its effectiveness in identifying high-risk em-
+ployees. The study concluded that machine learning techniques can be 
+an essential tool for HR departments to proactively address turnover and 
+enhance workforce stability.
+Shafie et al. focused on artificial neural networks (ANN) and clus-
+tering techniques to predict employee turnover (Shafie et al., 2024 ). 
+They used a clustering approach to segment employees based on various 
+features, and then applied ANN to predict the likelihood of turnover 
+within each cluster. The findings indicated that segmenting employees 
+before applying machine learning models improved prediction accu-
+racy, especially when dealing with large datasets containing complex, 
+high-dimensional data.
+Biswas et al. employed ensemble learning models, specifically 
+Fig. 1.Research roadmap.H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+2 
+=== PAGE 3 ===
+combining Gradient Boosting, Random Forest, SVM, and Logistic 
+Regression, to predict employee turnover (Biswas et al., 2023 ). Their 
+results showed that ensemble models, which combine the outputs of 
+multiple algorithms, were more accurate than individual models. This 
+study highlighted the importance of using multiple models to account 
+for the various factors affecting turnover, as no single model could 
+capture all the nuances in the data.
+Shankar et al. explored the challenges organizations face with high 
+employee turnover and applied machine learning algorithms to predict 
+employee attrition (Shankar et al., 2024 ). They focused on overcoming 
+data noise in HRIS databases, which can lead to inaccurate predictions. 
+The study utilized six machine learning algorithms to classify turnover 
+risks, with an emphasis on decision trees, random forests, and XGBoost. 
+The results showed that these algorithms could accurately predict 
+voluntary turnover by analyzing historical employee data from a 
+multinational company. Their study concluded that machine learning 
+algorithms are effective in predicting turnover, but the issue of data 
+noise must be addressed to improve prediction accuracy.
+Chowdhury et al. focused on enhancing the transparency of AI-based 
+machine learning models used for predicting employee turnover 
+(Chowdhury et al., 2023 ). They highlighted the importance of under -
+standing how machine learning models generate predictions to build 
+trust among HR managers. By employing the LIME (Local Interpretable 
+Model-Agnostic Explanations) method, they showed how HR managers 
+could interpret the predictions generated by these models. Their find-
+ings revealed that transparency in AI models is crucial for better 
+decision-making in HR and ensuring fairness in turnover predictions. 
+The study suggested that transparent machine learning models can 
+improve employee retention strategies by providing HR professionals 
+with actionable insights.
+Nayem and Uddin addressed the issue of unbiased employee per-
+formance evaluation using machine learning techniques (Nayem and 
+Uddin, 2024 ). They considered various physical, social, and economic 
+factors affecting performance, including job satisfaction, work envi-
+ronment, and compensation. Their findings showed that machine 
+learning algorithms could predict employee performance and turnover 
+by integrating multiple external factors, and that using these factors 
+resulted in more accurate and fair performance assessments.
+Veglio et al. utilized supervised machine learning techniques, 
+particularly classification decision trees, to predict voluntary employee 
+turnover in a multinational corporation (MNC) (Veglio et al., 2025 ). 
+They applied the CHAID (Chi-square Automatic Interaction Detector) 
+algorithm to analyze a dataset of 2932 employees. Their results showed 
+that the decision tree model successfully identified key factors that 
+determine whether employees would voluntarily leave the organization. 
+Key predictors included job satisfaction, work-life balance, and organi -
+zational commitment. The study emphasized that machine learning, 
+specifically decision trees, can provide a strategic advantage for HR 
+departments in identifying at-risk employees and implementing targeted 
+retention strategies.
+Adeusi et al. focused on machine learning models for predicting 
+employee turnover in high-stress sectors (Adeusi et al., 2024 ). Their 
+study used a variety of machine learning algorithms, including logistic 
+regression, decision trees, random forests, and neural networks, to 
+predict turnover in sectors such as healthcare and finance. Their results 
+showed that job satisfaction, stress levels, and performance ratings were 
+the most significant predictors of turnover. They concluded that inte-
+grating machine learning models into human resource practices can help 
+reduce turnover rates, particularly in high-stress environments.
+Park et al. developed a machine learning-based model to predict 
+turnover intention among new employees, particularly college gradu -
+ates (Park et al., 2024 ). They used a combination of logistic regression, 
+k-nearest neighbor (KNN), and XGBoost classifiers to analyze the factors 
+influencing turnover, such as job security, work environment, and job 
+preference. Their model achieved an accuracy of 78.5 %, with job se-
+curity emerging as the most significant predictor of turnover. This study highlighted the importance of considering job security and organiza -
+tional satisfaction in predicting turnover, particularly for new 
+employees.
+Kumar et al. proposed a systematic machine learning approach to 
+predict employee turnover in high-stress sectors (Kumar et al., 2023 ). 
+They compared various machine learning models, including random 
+forests, neural networks, and XGBoost, to predict turnover based on job 
+satisfaction, stress levels, and performance metrics. Their results indi-
+cated that XGBoost outperformed other models, achieving a prediction 
+accuracy of 78.5 %. They also emphasized the need for integrating 
+predictive models into HR practices to enhance employee retention 
+strategies and ensure workforce stability.
+In summary, although many studies have applied various machine 
+learning techniques for employee turnover prediction, there are still 
+critical gaps to be addressed. First, limited attention has been given to 
+integrating powerful ensemble methods such as LightGBM with 
+metaheuristic-based feature selection techniques like Genetic Algo-
+rithms. Second, most existing works emphasize either accuracy or model 
+simplicity but rarely achieve both simultaneously. Finally, very few 
+models are evaluated using both public and real-world HR datasets, 
+reducing their generalizability. This research aims to fill these gaps by 
+proposing a hybrid GA-LightGBM framework that balances prediction 
+performance, model interpretability, and real-world applicability.
+Table 1provides a summary of the previous works in the field of 
+employee turnover prediction, and Figure 2illustrates the main chal-
+lenges in the field of employee turnover prediction.
+3.Proposed method
+In this study, we propose a novel machine learning-based framework 
+for predicting employee turnover by combining LightGBM with Genetic 
+Algorithms for feature selection. This hybrid approach leverages the 
+strengths of both techniques: LightGBM for its high predictive accuracy 
+and Genetic Algorithms for optimizing the selection of the most relevant 
+features for turnover prediction. Although various novel models such as 
+deep learning or ensemble-based hybrid techniques have been proposed 
+in recent works, we selected LightGBM due to its outstanding perfor -
+mance on tabular data and its computational efficiency. Furthermore, 
+Genetic Algorithms are employed to optimize feature selection, offering 
+enhanced model interpretability — an essential aspect in HR decision- 
+making environments. This hybrid approach aims to balance perfor -
+mance and transparency, providing a practical solution that can be more 
+readily adopted by organizations. The methodology involves the 
+following key steps: Data Collection and Preprocessing, Feature Selec -
+tion using Genetic Algorithms, Model Training using LightGBM, Model 
+Evaluation, and Interpretation of Results.
+3.1. Data collection and preprocessing
+For this study, two datasets were used, both of which play a crucial 
+role in understanding and predicting employee turnover, a critical issue 
+in Human Resource Management. The first dataset is the HR Analytics 
+Dataset, which is publicly available on Kaggle.1This dataset includes a 
+variety of employee attributes such as job satisfaction, employee per-
+formance evaluations, salary, department, and work-life balance, mak-
+ing it highly relevant for analyzing factors influencing turnover. Table 2
+presents the statistical characteristics of the HR dataset. The second 
+dataset, which was internally collected, consists of data from 100 em-
+ployees across different companies. It provides similar features 
+including job role, compensation, employee satisfaction, and turnover 
+status. The inclusion of this custom dataset adds diversity to the analysis, 
+as it reflects real-world organizational data that can help train machine 
+learning models for turnover prediction. Table 3presents the statistical 
+1https://www.kaggle.com/datasets/anshika2301/hr-analytics-datasetH. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+3 
+=== PAGE 4 ===
+Table 1 
+Summary of Previous Works on Employee Turnover Prediction.
+References Year Methodology Findings Limitations Conclusions
+Valle, M. A., Ruz, G. A., 
+& Masías, V. H. (
+Valle et al. 2017 )2017 Self-organizing maps for 
+modeling turnover in sales 
+agents.Identified key factors influencing 
+turnover in sales teams, enhancing 
+retention strategies.Study limited to sales agents 
+in call centers.Self-organizing maps can provide 
+valuable insights into employee 
+retention in specific sectors.
+Frierson, J. & Si, D. (
+Frierson and Si, 
+2018 )2018 Machine learning algorithms 
+for evaluating attrition.Found that machine learning 
+models effectively predicted 
+employee attrition using 
+performance metrics such as ROC, 
+recall, and precision.Limited to specific datasets in 
+particular industries.Machine learning models are highly 
+useful for attrition prediction in 
+various sectors.
+Zhao, Y., Hryniewicki, 
+M. K., Cheng, F., Fu, 
+B., & Zhu, X. (Zhao 
+et al., 2019 )2019 Machine learning for 
+employee turnover prediction.Found that machine learning 
+methods, such as classification 
+algorithms, are reliable for 
+predicting employee turnover.Requires large datasets and 
+continuous data refinement.Machine learning is a reliable 
+approach for predicting employee 
+turnover, especially with large 
+datasets.
+de Oliveira et al. (de 
+Oliveira et al., 2019 )2019 Gated recurrent neural 
+networks for turnover 
+prediction from email data.Successfully predicted turnover 
+using email communication 
+patterns.Limited generalizability due 
+to diverse communication 
+practices across 
+organizations.GRU RNNs effectively predict 
+turnover behavior based on email 
+data patterns.
+Kodden, B., & Roelofs, 
+J. (Kodden and 
+Roelofs, 2019 )2019 Psychological contract as a 
+mediator of turnover 
+intention.Investigated how the psychological 
+contract influences employee 
+turnover intention.Limited to legal and 
+organizational contexts.Psychological contract is an 
+important factor in understanding 
+turnover intentions.
+Teng et al. (Teng et al. 
+2019 )2019 CEHNN model integrating 
+employee profiles and co- 
+worker influences.Demonstrated that turnover can be 
+predicted by considering co- 
+worker turnover influences 
+(contagious effect).Study limited to a single 
+Chinese company.Including contagious effects improves 
+turnover prediction accuracy and 
+helps retention strategies.
+El-rayes, N., Smith, M., 
+& Taylor, S. M. (
+El-Rayes et al. 2019 )2019 Tree-based models for 
+employee attrition prediction.Proposed tree-based models to 
+predict employee attrition, 
+showing strong predictive 
+capabilities.Potential bias in data used by 
+anonymous sources.Tree-based models are effective for 
+turnover prediction and can be 
+validated using ROC curves.
+PM & Balaji (PM and 
+Balaji, 2019 )2019 Weka software with various 
+ML algorithms on a fictional 
+IBM dataset.Decision trees, especially J48, 
+performed well in attrition 
+analysis.Naive Bayes oversimplified 
+assumptions about feature 
+independence.Machine learning algorithms, 
+including decision trees, are effective 
+for attrition prediction, emphasizing 
+further research.
+Judrups et al. (Judrups 
+et al. 2021 )2021 Machine learning model for 
+predicting turnover across 67 
+factors.Identified key predictors like 
+education and business travel 
+frequency, with 89% precision in 
+turnover prediction.Limited accuracy with K- 
+means clustering, 
+necessitating reliance on the 
+CART algorithm.Machine learning models 
+significantly aid managerial decision- 
+making for turnover prediction.
+Masoud et al. (Masoud 
+et al. 2021 )2021 Soft-clustering unsupervised 
+learning on employee 
+questionnaire responses.Identified career opportunities and 
+working abroad as key turnover 
+influencers.Limited by the single 
+organizational data source.HR departments can reduce turnover 
+by improving work environments and 
+offering better incentives.
+Mohamed Ahmed (
+Ahmed, 2021 )2021 Neural networks for turnover 
+prediction with various 
+classification algorithms.Neural network showed 84% 
+accuracy and 74% AUC in 
+turnover classification.Data limitations; additional 
+social factors may improve 
+model efficiency.Neural network models effectively 
+aid HR managers in turnover 
+prediction, especially with factors 
+like overtime and salary.
+Kovvuri & Dommeti (
+Kovvuri and 
+Dommeti, 2022 )2022 Kaggle dataset analysis with 
+machine learning algorithms.XGBoost outperformed other 
+classifiers with 85.3 % accuracy.Difficulty in identifying the 
+most significant turnover 
+factors.XGBoost is the most effective 
+algorithm for predicting employee 
+turnover.
+Atef et al. (Atef et al., 
+2022 )2022 KNN and RF algorithms on an 
+IBM dataset for predicting 
+employee turnover.Identified higher turnover rates 
+among employees aged 18–24.Limited number of features; 
+may affect model 
+performance.KNN outperforms RF in accuracy, 
+precision, F-score, and specificity for 
+turnover prediction.
+Huang et al. (Huang 
+et al. 2023 )2023 Conceptualizing personalized 
+HRM using advanced HR 
+analytics and AI.Optimizing performance by 
+analyzing key HR data in 
+personalized HRM.Requires advanced 
+technology and additional 
+administrative work.Personalized HRM enhances HR 
+functions and adds value beyond 
+traditional practices.
+Marquez et al. (
+Marquez et al., 
+2024 )2024 Linear regression and AI 
+models (TensorFlow and 
+Keras) on survey data.Identified employee turnover 
+factors influenced by personal and 
+economic variables.Complex data patterns 
+influencing turnover.Enhancing prediction efficiency with 
+AI and regression for comprehensive 
+HR management.
+Khan (Rashed Khan, 
+2024 )2024 Systematic literature review 
+on AI’s impact in Talent 
+Management.Enhancing recruitment, decision- 
+making, and employee 
+development through AI 
+applications.Potential publication bias and 
+challenges with rapid 
+technological evolution.Advocates for ethical and careful AI 
+implementation in talent 
+management.
+Hasan et al. (2024) ) 2024 Integrated approach of 
+business analytics and 
+machine learning for 
+employee performance 
+prediction.Demonstrated the effectiveness of 
+this method for improving 
+employee performance prediction.Necessity for periodic model 
+updates to adapt to changing 
+business environments.This method improves organizational 
+decision-making and performance 
+management.
+Taqatqa, et al. (
+Taqatqa, Taqatqa, 
+Sara, Samhan, and 
+Kanan, 2025 )2025 CRISP methodology with 
+machine learning 
+classification models (Random 
+Forest, Logistic Regression, 
+SVM)Random Forest emerges as the 
+most effective model for employee 
+turnover prediction.Study focused on a specific 
+university dataset, limiting 
+generalizationMachine learning, especially Random 
+Forest, can enhance the effectiveness 
+of turnover predictions.
+Bustillo, J. C. M. (
+Bustillo, 2025 )2025 Optimization-based prediction 
+model with Genetic 
+Algorithms and KNN/Naive 
+Bayes.The FMSAX operator paired with 
+KNN achieves the highest 
+predictive accuracy, precision, F- 
+measure, and recall.Focuses only on specific 
+operators and features, not a 
+broad range of machine 
+learning techniques.GA-optimized models significantly 
+improve turnover prediction and 
+offer actionable retention insights.
+(continued on next page)H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+4 
+=== PAGE 5 ===
+characteristics of the Organization dataset. The datasets contain both 
+categorical (e.g., job role, department) and continuous variables (e.g., 
+salary, satisfaction level), and are preprocessed as follows:
+Handling Missing Data: Missing values are addressed by using 
+imputation techniques such as filling with the mean or mode of the 
+respective column.
+Feature Encoding: Categorical variables (e.g., department, education Table 1 (continued )
+References Year Methodology Findings Limitations Conclusions
+Veglio, et at. (Veglio 
+et al., 2025 )2025 Supervised machine learning 
+with classification decision 
+trees.Identified determinants of 
+voluntary employee turnover in a 
+multinational telco corporation, 
+highlighting the potential of 
+classification trees.The study focuses on a single 
+multinational corporation, 
+which may limit 
+generalizability to other 
+industries.Classification decision trees offer a 
+strategic approach to identifying 
+employee turnover risks, enabling 
+organizations to develop targeted 
+retention strategies.
+Fig. 2.Key Challenges in Employee Turnover Prediction.
+Table 2 
+Statistical Characteristics of the HR Analytics Dataset.
+Variable Min Max Mean Std Deviation
+Age 18 60 36.92 9.13
+DailyRate 102 1499 801.38 403.13
+DistanceFromHome 1 29 9.22 8.13
+Education 1 5 2.91 1.02
+EmployeeCount 1 1 1 0
+EmployeeNumber 1 2068 1031.86 605.96
+EnvironmentSatisfaction 1 4 2.72 1.09
+HourlyRate 30 100 65.85 20.33
+JobInvolvement 1 4 2.73 0.71
+JobLevel 1 5 2.06 1.11
+JobSatisfaction 1 4 2.72 1.1
+MonthlyIncome 1009 19999 6504.99 4700.26
+MonthlyRate 2094 26999 14298.46 7112.06
+NumCompaniesWorked 0 9 2.69 2.49
+PercentSalaryHike 11 25 15.21 3.66
+PerformanceRating 3 4 3.15 0.36
+RelationshipSatisfaction 1 4 2.71 1.08
+StandardHours 80 80 80 0
+StockOptionLevel 0 3 0.79 0.85
+TotalWorkingYears 0 40 11.28 7.77
+TrainingTimesLastYear 0 6 2.8 1.29
+WorkLifeBalance 1 4 2.76 0.71
+YearsAtCompany 0 40 7.01 6.12
+YearsInCurrentRole 0 18 4.23 3.62
+YearsSinceLastPromotion 0 15 2.18 3.22
+YearsWithCurrManager 0 17 4.12 3.56Table 3 
+Statistical Characteristics of the Organizaiton Dataset.
+Variable Min Max Mean Standard 
+Deviation
+Age 22 58 39.53 10.13
+YearsAtCompany 0 40 18.22 11.52
+Salary 25452 119796 78271.99 28861.34
+JobSatisfaction 1 4 2.38 1.11
+WorkLifeBalance 1 4 2.47 1.16
+EnvironmentSatisfaction 1 4 2.5 1.1
+JobInvolvement 1 4 2.65 1.09
+EducationLevel 1 5 3.1 1.27
+PerformanceRating 1 4 2.47 1.18
+NumberOfCompaniesWorked 0 9 4.54 2.82
+YearsInCurrentRole 0 15 7.94 4.67
+YearsSinceLastPromotion 0 10 5.39 2.97
+StockOptionLevel 0 3 1.39 1.1
+TotalWorkingYears 1 40 19.57 11.86
+DistanceFromHome 1 39 20.63 12.07
+EmployeeID 1 5000 2500 1444
+Gender Male Female Female -
+JobRole Sales Engineer Engineer -
+OverTime No Yes Yes -H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+5 
+=== PAGE 6 ===
+level) are encoded using One-Hot Encoding.
+Feature Scaling: Continuous variables like salary and satisfaction are 
+scaled using Min-Max scaling to normalize the values and ensure uni-
+formity in input ranges.
+Outlier Detection: Z-score and IQR-based methods are used to detect 
+and handle outliers that may distort the model ’s performance.
+To assess multicollinearity among independent variables, we 
+computed Pearson correlation coefficients and visualized the relation -
+ships using heatmaps for both datasets (Figure 7). Features with high 
+correlation (F0.8) were flagged and considered for removal or combi -
+nation. Additionally, we ensured that the same preprocessing pipeline 
+was applied consistently to both datasets, covering missing data 
+handling, encoding, scaling, and outlier detection.
+3.2. Genetic algorithm
+Feature selection is a critical step for improving the efficiency of 
+machine learning models (Xia et al., 2015 ). To optimize the selection of 
+the most relevant features for employee turnover prediction, Genetic 
+Algorithms are employed. The Genetic Algorithm is a popular optimi -
+zation technique inspired by the process of natural selection. It is widely 
+used for feature selection in machine learning models due to its ability to 
+effectively search large, high-dimensional feature spaces. In the initial -
+ization phase, the GA generates an initial population of potential solu-
+tions, which are feature subsets. These subsets are created randomly, 
+where each individual in the population represents a set of features 
+selected from the original dataset. 
+PopulationX1CX2C…CXN (1) 
+Where each Xi represents a feature subset, and N is the total popu -
+lation size. Each individual (feature subset) in the population is evalu -
+ated for its fitness based on the performance of a machine learning 
+model (e.g., LightGBM) trained using that subset. The fitness of an in-
+dividual is typically measured by the prediction accuracy or other 
+relevant performance metrics (such as F1-score, precision, recall, etc.). 
+FitnessXiAccuracyXi (2) 
+Where AccuracyXiis the performance of the machine learning model 
+trained on feature subset Xi. In the selection step, feature subsets with 
+better performance (higher fitness) are selected to create the next gen-
+eration. The probability of selection for each individual is proportional 
+to its fitness. 
+PXiFitnessXi
+⋃N
+i1FitnessXi(3) 
+Where PXiis the probability of selecting feature subset Xi, and the sum 
+of all fitness values normalizes the probabilities. During crossover, two 
+parent feature subsets are combined to produce offspring. This mimics 
+the biological crossover process, where parts of two parent genomes are 
+exchanged to create a new individual. In the case of feature selection, 
+this step involves combining feature subsets from two parent individuals 
+to form a new subset. The crossover mechanism ensures diversity in the 
+population by mixing features from different solutions. Mutation in-
+troduces small random changes to an offspring ’s feature subset to 
+explore new parts of the solution space. This is akin to genetic mutations 
+in biological organisms and helps maintain diversity within the popu -
+lation. Mutation can either add a new feature to the subset or remove an 
+existing feature. The GA algorithm continues to evolve the population 
+through selection, crossover, and mutation for several generations. The 
+process terminates when a specified number of generations have been 
+completed or when the fitness of the population reaches a predefined 
+threshold (indicating convergence).
+In our implementation, the initial population of feature subsets 
+(Equation (1)) was generated using all available features (30 for HR dataset, 25 for Organization). The fitness function in Equation (2)was 
+evaluated using LightGBM performance on selected feature subsets, and 
+Equation (3)governed selection probability based on classification ac-
+curacy using 10-fold cross-validation.
+By iteratively evolving the population of feature subsets, the genetic 
+algorithm seeks to retain the most important features for predicting 
+employee turnover, while discarding less informative or redundant 
+features. This process ensures that the resulting feature set is optimized 
+for the machine learning model, leading to improved prediction accu-
+racy and reduced overfitting. Figure 3illustrates the structure of the 
+genetic algorithm, highlighting the key stages of initialization, selection, 
+crossover, mutation, and termination.
+In this study, the Genetic Algorithm was applied separately to the HR 
+Analytics and Organization datasets. Initially, the HR dataset included 
+30 features, from which the GA selected 14 optimal features. For the 
+Organization dataset, 25 initial features were reduced to 11 after GA- 
+based selection. These include demographic (e.g., age, education), job- 
+related (e.g., role, department, salary), and performance-based (e.g., 
+evaluation scores, overtime, satisfaction levels) variables. A full list of 
+features used for each dataset is presented in Table 4. The GA was 
+configured with a population size of 50, a maximum of 100 generations, 
+a crossover rate of 0.8, and a mutation rate of 0.1. The fitness function 
+was based on 10-fold cross-validated F1-score using LightGBM. This 
+feature reduction led to more interpretable models and reduced over-
+fitting risk.
+In the Roulette Wheel selection process, each feature subset is 
+assigned a selection probability proportional to its fitness value. The 
+fitness of each subset is evaluated based on the performance of a 
+LightGBM model trained with the subset of features. The selection 
+probability for each individual is calculated as: 
+Pifitnessi⋃fitnessi(4) 
+where P(i) is the probability of selecting individual i. A random number 
+is then generated, and the individual whose probability corresponds to 
+that number is selected for crossover in the next generation.
+3.2.1. Genetic algorithm parameters and operators
+To enhance the predictive power and reduce feature redundancy, a 
+Genetic Algorithm was employed for feature selection. The algorithm 
+was configured with the following settings and operators:
+The initial population consists of 50 individuals, each represented by 
+a binary chromosome. The length of each chromosome corresponds to 
+the total number of input features (30 for the HR dataset, 25 for the 
+Organization dataset). Each gene is initialized randomly, where a value 
+Fig. 3.Structure of the Genetic Algorithm (Mirjalili and Mirjalili, 2019 ).H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+6 
+=== PAGE 7 ===
+of ’1’ denotes that the feature is selected, and ’0’ denotes exclusion.
+The fitness of each individual is evaluated using the F1-score of a 
+LightGBM classifier trained on the selected features. A 10-fold cross- 
+validation scheme is used to ensure reliable evaluation and avoid 
+overfitting.
+Roulette Wheel Selection is used to choose parent chromosomes for 
+reproduction. The probability of selection is proportional to each in-
+dividual ’s fitness score, thus favoring better-performing solutions while 
+maintaining diversity.
+Uniform crossover is applied with a crossover rate of 0.8. In this 
+operator, genes from two parent chromosomes are combined such that 
+each gene in the offspring is independently selected from one of the two 
+parents with equal probability.
+A bit-flip mutation is used to introduce variation into the population. 
+Each gene in the chromosome has a 10% probability of being flipped from 0 to 1 or vice versa. This helps the algorithm avoid local optima and 
+explore new feature subsets.
+The top 5 individuals (10% of the population) with the highest 
+fitness scores are directly carried over to the next generation. This en-
+sures that the best solutions are preserved and not lost due to crossover 
+or mutation.
+The algorithm runs for a maximum of 100 generations or stops early 
+if no improvement in the best fitness score is observed for 10 consecutive 
+generations.
+These settings allow the GA to effectively search the high- 
+dimensional feature space and retain only the most informative attri-
+butes for turnover prediction.
+3.3. LightGBM
+After feature selection, LightGBM is used to train the turnover pre-
+diction model. LightGBM is an advanced, efficient, and scalable imple -
+mentation of gradient boosting, designed to handle large datasets and 
+high-dimensional data efficiently (X. Sun et al., 2020 ). It leverages 
+histogram-based learning, where continuous feature values are dis-
+cretized into bins, reducing computational costs by simplifying the 
+search for optimal split points. Unlike traditional gradient boosting 
+methods, which grow trees level-wise, LightGBM uses a leaf-wise growth 
+strategy, selecting the leaf that maximizes the reduction in the loss 
+function at each step (Ke et al., 2017 ). This often results in deeper trees 
+and better predictive accuracy. The framework can natively handle 
+categorical features without the need for explicit encoding, making it 
+more efficient than other models that require pre-processing like 
+one-hot encoding. LightGBM is optimized for speed, memory efficiency, 
+and scalability, making it capable of handling massive datasets with 
+millions of samples and features. It also supports parallel and distributed 
+training, which accelerates the model-building process on large-scale 
+data. Key hyperparameters in LightGBM include `num_leaves` (the 
+maximum number of leaves in a tree), `max_depth` (the depth limit of 
+the tree to avoid overfitting), and `learning_rate` (to control the speed of 
+learning). The framework also includes features such as `subsample` for 
+row sampling and `colsample_bytree` for feature sampling, both of 
+which help prevent overfitting (D. Zhang and Gong, 2020 ). LightGBM ’s 
+ability to handle large datasets and its focus on speed and memory ef-
+ficiency make it one of the most popular choices for machine learning 
+tasks like classification, regression, and ranking. It has been widely 
+adopted across industries such as finance, healthcare, e-commerce, and 
+natural language processing (NLP), where it has been used for tasks 
+ranging from fraud detection and credit scoring to customer churn 
+prediction and text classification. The primary goal in LightGBM is to 
+optimize an objective function, which typically consists of two main 
+components: the loss function and the regularization term. For a deci-
+sion tree model, the objective function can be written as (Liao et al., 
+2022 ): 
+Lθ̂n
+i1lyiCfxiΩf (5) 
+Where l 
+yiCfxi)
+is the loss function that measures the difference be-
+tween the true value yi and the prediction fxi.
+Ωfis the regularization term that penalizes the complexity of the 
+model (to avoid overfitting). At each stage of training, LightGBM uses 
+gradient descent to update the model. The model is iteratively optimized 
+by minimizing the loss function using gradient updates. Specifically, the 
+new model at each step is: 
+ft1ftηBht (6) 
+Where: 
+≡ft is the current model.
+≡ht is the new tree that reduces the error of the model.Table 4 
+Input Features Considered for Genetic Algorithm from Both Datasets.
+Feature Name Description Dataset Source Type
+Age Employee ’s age Both Continuous
+MonthlyIncome / Salary Monthly salary 
+(HR) or annual 
+salary (Org)Both Continuous
+JobSatisfaction Job satisfaction 
+ratingBoth Categorical
+WorkLifeBalance Work-life balance 
+scoreBoth Categorical
+EnvironmentSatisfaction Satisfaction with 
+work environmentBoth Categorical
+JobInvolvement Employee ’s job 
+involvement levelBoth Categorical
+EducationLevel / 
+EducationEducation level Both Categorical
+PerformanceRating Performance 
+evaluationBoth Categorical
+YearsAtCompany Years of service in 
+the companyBoth Continuous
+YearsInCurrentRole Time spent in 
+current roleBoth Continuous
+YearsSinceLastPromotion Time since last 
+promotionBoth Continuous
+TotalWorkingYears Total work 
+experienceBoth Continuous
+DistanceFromHome Distance between 
+home and 
+workplaceBoth Continuous
+StockOptionLevel Stock options level Both Categorical
+NumCompaniesWorked Number of 
+companies 
+previously worked 
+atBoth Continuous
+Gender Gender of the 
+employeeOrganization 
+DatasetCategorical
+OverTime Whether the 
+employee works 
+overtimeOrganization 
+DatasetCategorical
+JobRole Role/position in the 
+organizationOrganization 
+DatasetCategorical
+Department Employee ’s 
+departmentHR Analytics 
+DatasetCategorical
+DailyRate Daily salary rate HR Analytics 
+DatasetContinuous
+HourlyRate Hourly pay HR Analytics 
+DatasetContinuous
+MonthlyRate Monthly rate before 
+taxHR Analytics 
+DatasetContinuous
+TrainingTimesLastYear Trainings attended 
+last yearHR Analytics 
+DatasetContinuous
+StandardHours Standard working 
+hoursHR Analytics 
+DatasetConstant 
+(80)
+EmployeeNumber / ID Unique ID for 
+employeeBoth Identifier
+EmployeeCount Constant count (not 
+informative)HR Analytics 
+DatasetConstant 
+(1)H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+7 
+=== PAGE 8 ===
+≡η is the learning rate, controlling the speed of updates.
+LightGBM grows trees in a leaf-wise manner, which means instead of 
+growing the tree level-wise, it grows the tree leaf-wise by choosing the 
+leaf with the maximum reduction in the loss function at each step. This 
+strategy generally results in deeper trees and thus better predictive 
+performance. The tree grows by finding the best split using criteria such 
+as Information Gain or Gini Impurity. LightGBM can directly handle 
+categorical features. These features are represented as integers, and the 
+algorithm automatically finds the best splits for these features. This 
+eliminates the need for explicit preprocessing like one-hot encoding, 
+reducing data transformation time. For updating the model, LightGBM 
+directly uses the gradient of the loss function. Specifically, for each step 
+ttt, the gradient for the samples is calculated as (Wang et al., 2022 ): 
+gt
+i∂LyiCfxi
+∂fxi(7) 
+Where: 
+≡gt
+i is the gradient of the loss function for sample i at step t.
+≡LyiCfxiis the loss function.
+These gradients are used to construct the new decision tree, which 
+minimizes the model ’s error. Figure 4shows the schematic diagram of 
+the LightGBM method.
+These equations were applied during LightGBM model training using 
+the selected features from GA. For the HR dataset, 14 features were used; 
+for the Organization dataset, 11 features were selected. Loss gradients 
+(Equation (7)) and split gains were computed accordingly.
+Key Parameters of LightGBM:
+num_leaves: The maximum number of leaves in each tree. This 
+parameter directly influences model accuracy and the complexity of the 
+trees.
+max_depth: The maximum depth of the trees, used to avoid over-
+fitting by limiting the tree’s growth.
+learning_rate: Controls the speed of learning, determining how 
+quickly the model adapts during training.
+subsample and colsample_bytree: These parameters randomly sam-
+ple data points and features for each tree, helping to prevent overfitting.LightGBM uses a histogram-based learning approach, which dis-
+cretizes continuous feature values into bins, reducing computational 
+cost by simplifying the search for optimal split points. Unlike traditional 
+gradient boosting methods that grow trees level-wise, LightGBM em-
+ploys a leaf-wise growth strategy, where the algorithm selects the leaf 
+that maximizes the reduction in the loss function at each step. This 
+approach often results in deeper trees and better predictive perfor -
+mance. After feature selection by the GA, the selected features are used 
+to train the turnover prediction model using LightGBM. The model is 
+fine-tuned using hyperparameters optimized through grid search, 
+ensuring the best possible performance on the data.
+The LightGBM classifier was trained separately on the feature subsets 
+selected by GA from each dataset. We used the selected 14 features from 
+the HR dataset and 11 features from the Organization dataset to train 
+and validate the LightGBM model using 10-fold cross-validation. The 
+key hyperparameters (e.g., num_leaves 31, max_depth 10, lear-
+ning_rate 0.1) were optimized using grid search. The results showed 
+that reducing input features not only improved model generalization but 
+also significantly decreased training time.
+3.4. Machine learning-based framework
+The integration of Genetic Algorithms and LightGBM for feature 
+selection combines the global search capabilities of GA with the 
+powerful predictive performance of LightGBM. This hybrid approach 
+aims to select the optimal feature subset that maximizes model perfor -
+mance while minimizing computational complexity. The process starts 
+by encoding feature subsets as chromosomes. In the context of genetic 
+algorithms for feature selection, each potential solution is represented as 
+a chromosome. A chromosome is a binary string where each bit corre -
+sponds to a feature in the dataset. The bit value of ’1’ indicates that the 
+feature is selected for the model, while ’0’ means the feature is excluded. 
+This binary encoding allows the GA to explore different subsets of fea-
+tures efficiently. Mathematically, a chromosome C representing a 
+feature subset for n features is defined as: 
+Cfii1C2C…Cn (8) 
+Where: 
+Fig. 4.Schematic Diagram of the LightGBM Method (Wang et al., 2022 ).H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+8 
+=== PAGE 9 ===
+≡fiϵ0C1, representing whether feature i is included in the model fi 
+1or excluded fi0.
+≡n is the total number of features in the dataset.
+This encoding allows the GA to search through the feature space by 
+selecting and rejecting features through genetic operations. The fitness 
+function in a genetic algorithm is used to evaluate the quality of each 
+solution (chromosome). In the case of feature selection, the fitness of 
+each chromosome is determined by training a LightGBM on the selected 
+features (i.e., the features corresponding to the 1-bits in the chromo -
+some). The performance of the LightGBM, which could be measured in 
+terms of accuracy, precision, recall, or AUC, serves as the fitness score 
+for the chromosome. Given a chromosome C, the fitness F(C) can be 
+expressed as: 
+FCPerformance MetricModel trained onfeatures selected byC(9) 
+Where the LightGBM is trained only on the features selected by the 
+binary representation of the chromosome. The goal is to maximize the 
+fitness function, i.e., to maximize the LightGBM ’s predictive perfor -
+mance while minimizing the number of selected features.
+The process of selection, crossover, and mutation continues for 
+several generations, evolving the population toward the optimal feature 
+set. The chromosome with the highest fitness represents the optimal 
+subset of features. These selected features are then used to train the final 
+LightGBM. The objective of combining Genetic Algorithms with 
+LightGBM for feature selection is to optimize the set of features that will 
+maximize the model ’s performance while minimizing complexity. The 
+optimization process is formulated as a maximization of the objective 
+function, which combines the model ’s performance (as evaluated by 
+LightGBM) with a regularization term to prevent overfitting. The 
+objective function L(C) can be expressed as: 
+Maximize FC1
+n×̂n
+i1lyiCfxiCCλ×ΩC (10) Where: 
+≡l 
+yiCfxiCC)
+is the loss function that measures the error between the 
+true value yi and the predicted value fxiCCusing the selected 
+features.
+≡ΩCis the regularization term that penalizes the model for selecting 
+too many features, ensuring that the feature set remains minimal.
+≡λ is the regularization parameter that controls the trade-off between 
+model performance and complexity.
+By optimizing this objective function, the GA selects the feature 
+subset that maximizes the predictive accuracy of the LightGBM while 
+minimizing the complexity of the selected feature set, thus preventing 
+overfitting and ensuring better generalization. This combination lever-
+ages the strengths of both GA and LightGBM, enabling the selection of a 
+reduced set of highly informative features while avoiding overfitting and 
+improving model accuracy. Figure 5summarizes the diagram of the 
+proposed method. Initially, a binary chromosome was generated for 
+each individual in the population, where each gene represented the in-
+clusion (1) or exclusion (0) of a feature from the dataset. The initial 
+population was created using all features (30 for HR dataset, 25 for 
+Organization). Each chromosome ’s fitness was evaluated by training a 
+LightGBM model using only the selected features and computing its F1- 
+score with 10-fold cross-validation. Based on fitness values, the top- 
+performing chromosomes were selected using roulette wheel selection. 
+These were then used in crossover (one-point) and mutation operations 
+to generate the next generation. The process repeated for 100 genera -
+tions or until convergence.
+The proposed hybrid model was implemented using MATLAB 2020 
+on a system with an Intel 2.7GHz processor and 12GB RAM. The 
+implementation consisted of two main components: the Genetic Algo-
+rithm for feature selection and LightGBM for classification. 
+ Initialization: The Genetic Algorithm begins by generating a random 
+initial population. Each individual in the population is represented as 
+Fig. 5.The diagram of the proposed method for predicting employee turnover.H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+9 
+=== PAGE 10 ===
+a binary chromosome of length n, where n is the number of features. 
+A bit value of 1 indicates that the feature is selected; 0 means it is 
+excluded.
+ Fitness Evaluation: Each individual (feature subset) is evaluated by 
+training a LightGBM classifier using only the selected features. The 
+fitness function is defined as the model ’s F1-Score on 10-fold cross- 
+validation, ensuring stability and robustness in evaluation.
+ Selection: We used roulette wheel selection to choose parents based 
+on their relative fitness. Individuals with higher F1-scores had a 
+higher probability of being selected for crossover.
+ Crossover: Crossover was performed using uniform crossover, where 
+a new child is generated by randomly mixing bits from two parents. 
+This maintains genetic diversity and allows exploration of new 
+feature combinations.
+ Mutation: To avoid premature convergence, mutation was applied by 
+flipping a small percentage (typically 5%) of the bits in selected 
+individuals. This helps the algorithm explore new areas of the feature 
+space.
+ Replacement & Iteration: The next generation is formed by selecting 
+the best individuals from both parents and offspring, ensuring 
+elitism. This process repeats for a predefined number of generations 
+(e.g., 50 iterations) or until convergence (i.e., no improvement in 
+fitness for 10 consecutive generations).
+ Final Model Training: Once the optimal feature subset is found, a 
+LightGBM model is trained using the selected features on the full 
+training set. The hyperparameters of LightGBM (e.g., num_leaves , 
+learning_rate , max_depth ) were set based on grid search and prior 
+research (as listed in Table 12).
+This implementation pipeline ensures that only the most informative 
+features are passed to the classifier, resulting in improved accuracy, 
+reduced overfitting, and better interpretability.
+The fitness function evaluates the performance of each feature subset 
+by training a LightGBM model using the selected features. The evalua -
+tion uses standard classification metrics such as accuracy, precision, 
+recall, and F1-score, computed through 10-fold cross-validation."
+The hyperparameters of LightGBM, including num_leaves, max_ -
+depth, and learning_rate, are evaluated using the features selected by the 
+GA. The performance is assessed based on accuracy and AUC, ensuring 
+that the model does not overfit the selected features but instead gener -
+alizes well across the dataset.
+4.Model evaluation
+In machine learning, performance metrics are crucial for evaluating 
+the effectiveness of a model. To evaluate the performance of the model, 
+we use several common metrics to assess its predictive power.
+4.1. Performance criteria
+A confusion matrix is a crucial tool in data mining for evaluating the 
+performance of models and machine learning algorithms (Muntean and 
+Militaru, 2023 ). It displays the count of correct and incorrect predictions 
+for each class by comparing the actual values (labeled samples) with the 
+predictions made by the model. A confusion matrix is structured as an 
+n*n table, where n represents the number of classes in the problem. The 
+actual classes are placed along the vertical axis, and the predicted classes 
+are placed along the horizontal axis of the table. Typically, a confusion 
+matrix is presented as shown in Figure 6.
+The values that are placed in the cells of the confusion matrix are as 
+follows: 
+≡True Positive (TP): The number of samples that are correctly iden-
+tified and belong to the positive class.
+≡True Negative (TN): The number of samples that are correctly 
+identified and belong to the negative class.≡False Positive (FP): The number of samples that are incorrectly 
+identified and actually belong to the negative class.
+≡False Negative (FN): The number of samples that are incorrectly 
+assigned to the negative class and actually belong to the positive 
+class.
+Using the confusion matrix, we can calculate metrics such as Accu-
+racy, Precision , Recall (Sensitivity), and F1 score of the model as follows 
+(Juvitayapun, 2021 ): 
+AccuracyTPTN
+TPTNFPFN(11) 
+PrecisionTP
+TPFP(12) 
+RecallTP
+TPFN(13) 
+F1PrecisionBRecall
+PrecisionRecallB2 (14) 
+AUC̃1
+0TPRdFPR (15) 
+These metrics provide insights into different aspects of the model ’s 
+performance and help evaluate its effectiveness in classification tasks. 
+Accuracy is not always the best metric for imbalanced datasets so we use 
+metrics such as sensitivity, specificity to better evaluate the model 
+performance. The F1 Score is the harmonic mean of Precision and 
+Recall. It is useful when we need to balance both precision and recall. 
+The ROC curve is a graphical representation of the trade-off between 
+true positive rate (Recall) and false positive rate (FPR) for different 
+threshold values. The area under the ROC curve (AUC) is used to mea-
+sure the model ’s ability to distinguish between classes. The closer the 
+AUC is to 1, the better the model is at distinguishing between the classes. 
+Additionally, we used the 10-fold cross-validation method for model 
+evaluation, which prevents biased results (Z. Sun et al., 2024 ).
+4.2. Algorithms
+4.2.1. Support vector machine
+SVM is a supervised learning algorithm used for classification and 
+regression. It finds the hyperplane that best separates the classes by 
+maximizing the margin between data points of different classes. It works 
+well for both linear and non-linear data with the help of kernel functions 
+(Tanveer et al., 2024 ). Table 5shows the SVM algorithm step by step.
+Fig. 6.Confusion matrix (S. Zhang et al., 2003 ).
+Table 5 
+SVM Algorithm.
+Step Description
+1. Initialization  Input: (x, y), x ∃ℝⁿ, y ∃ 1, 1.
+ Initialize w, b.
+2. Calculate Margin - Maximize margin 1/2*||w||² subject to yᵢ(w ≡xᵢ b) ≽1.
+3. Optimization - Solve min 1/2*||w||² subject to yᵢ(w ≡xᵢ b) ≽1.
+4. Prediction  Predict: f(x) w ≡xb.
+ Classify: ysign(f(x)).H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+10 
+=== PAGE 11 ===
+4.2.2. Logistic regression
+Logistic Regression is a statistical model used for binary classification 
+problems. It predicts the probability of a binary outcome by applying the 
+logistic (sigmoid) function to a linear combination of input features. The 
+output is a value between 0 and 1 (Zabor et al., 2022 ). Table 6shows the 
+LR algorithm step by step.
+4.2.3. Random forest
+Random Forest is an ensemble learning method that creates a 
+collection of decision trees during training and outputs the class that is 
+the majority vote of the individual trees. It reduces overfitting and im-
+proves the accuracy of predictions (Z. Sun et al., 2024 ). Table 7shows 
+the Random Forest algorithm step by step.
+4.2.4. K-nearest neighbour
+KNN is a non-parametric algorithm used for classification and 
+regression. In this algorithm, the class of a new sample is predicted based 
+on the k nearest neighbors from the training data. Distances are typically 
+calculated using metrics like Euclidean distance (Cerulli, 2023 ). Table 8
+shows the KNN algorithm step by step.
+4.2.5. Decision tree
+Decision Tree is a supervised learning algorithm used for classifica -
+tion and regression. It splits the data into subsets based on feature 
+values, creating a tree-like structure where each node represents a de-
+cision rule. The tree is constructed by recursively partitioning the data 
+(Costa and Pedreira, 2023 ). Table 9shows the Decision algorithm step 
+by step.
+4.2.6. Naive bayes
+Naive Bayes is a probabilistic classifier based on Bayes ’ Theorem. It 
+assumes that the features are conditionally independent given the class. 
+Despite the simplicity, it performs well on large datasets, especially in 
+text classification tasks (Wickramasinghe and Kalutarage, 2021 ). 
+Table 10shows the Naive Bayes algorithm step by step.
+4.2.7. Extreme gradient boosting
+XGBoost is an optimized version of the gradient boosting algorithm. 
+It uses decision trees as base learners and applies boosting techniques to 
+improve performance by combining weak learners sequentially. It is 
+efficient, scalable, and often used for structured/tabular data (Jain and 
+Nayyar, 2018 ). Table 11shows the XGBoost algorithm step by step.
+4.3. Experimental design
+In this section, the initial settings for the machine learning algo-
+rithms used in this study are outlined. These settings were carefully 
+selected through a process of trial and error, taking into account pre-
+vious research and best practices from similar studies (Al Akasheh et al., 
+2024; Chakraborty et al., 2021; Juvitayapun, 2021; Kumar et al., 2023 ). 
+By experimenting with different configurations, we aimed to identify the 
+optimal parameters for each algorithm to ensure accurate and reliable 
+predictions. Table 12displays the selected settings for seven different 
+machine learning methods, including KNN, SVM, Random Forest, 
+XGBoost, Decision Tree, Logistic Regression, and Naive Bayes. The Table 6 
+Logistic Regression Algorithm.
+Step Description
+1. Initialization  Input: (x, y), x ∃ℝⁿ, y ∃0, 1.
+ Initialize weights w and bias b.
+2. Sigmoid Function - Compute sigmoid function: σ(z) 1 / (1exp(-z)), where 
+zw ≡xb.
+3. Compute Cost 
+Function- Compute the cost: J(w, b) -(1/m) Σ [yᵢ log(σ(zᵢ)) (1 - yᵢ) 
+log(1 - σ(zᵢ))].
+4. Gradient Descent - Update weights and bias: w w - α *⋈J(w), b b - α *⋈J 
+(b), where α is the learning rate.
+5. Prediction  Predict: yσ(w ≡xb).
+ Classify: y1 if σ(w ≡xb) F0.5, else y0.Table 7 
+Random Forest Algorithm.
+Step Description
+1. Initialization  Input: (x, y), x ∃ℝⁿ, y ∃0, 1 or continuous values.
+ Define the number of trees (T) and the number of features 
+(m) to use for each split.
+2. Bootstrap 
+Sampling- For each tree, create a bootstrap sample by randomly 
+sampling with replacement from the training data.
+3. Build Decision 
+Trees- For each bootstrap sample, build a decision tree using 
+random subsets of features at each split. Split using the best 
+feature to minimize impurity (e.g., Gini or Entropy).
+4. Tree Growth - Continue splitting the data until a stopping criterion is met (e. 
+g., max depth, minimum samples per leaf).
+5. Prediction  For classification: Each tree votes on the class, and the 
+majority vote is taken as the final prediction.
+ For regression: The average prediction of all trees is used.
+Table 8 
+K-Nearest Neighbour Algorithm.
+Step Description
+1. Initialization  Input: (x, y), x ∃ℝⁿ, y ∃0, 1 or continuous values.
+ Define number of nearest neighbors k (typically an odd 
+number to avoid ties).
+2. Compute Distance - For each test sample, compute the distance between the test 
+sample x and all training samples xi using a distance metric 
+(e.g., Euclidean distance).
+3. Find Nearest 
+Neighbors- Select the k nearest neighbors based on the smallest 
+distance values.
+4. Majority Voting - For classification: The class label is determined by the 
+majority vote of the k nearest neighbors.
+5. Prediction - For regression: The output is the average value of the k 
+nearest neighbors. For classification: The output is the 
+majority class among the k neighbors.
+Table 9 
+Decision Tree Algorithm.
+Step Description
+1. Initialization  Input: (x, y), x ∃ℝⁿ, y ∃0, 1 or continuous values.
+ Define parameters: max depth, min samples per split, etc.
+2. Compute Best 
+Split- For each feature, calculate the best split based on a splitting 
+criterion (e.g., Gini index, Information Gain).
+3. Split the Data - Partition the dataset into subsets based on the best split 
+found in the previous step.
+4. Recursive Tree 
+Growth- Repeat the splitting process recursively for each subset until 
+a stopping criterion is met (e.g., max depth, min samples per 
+leaf).
+5. Prediction - For classification: Assign the class that appears most often in 
+the leaf node.- For regression: Take the average of the target 
+values in the leaf node.
+Table 10 
+Naive Bayes Algorithm.
+Step Description
+1. Initialization  Input: (x, y), x ∃ℝⁿ, y ∃0, 1 or categorical classes.
+ Define the probability distributions for each feature.
+2. Compute Prior 
+Probabilities- Calculate the prior probability for each class: P(y) 
+count(y) / total_samples.
+3. Compute Conditional 
+Probabilities- For each feature, compute the conditional probability 
+P(xi | y), the probability of feature xi given class y.
+4. Apply Bayes ’ Theorem - For a test sample, apply Bayes ’ theorem to compute 
+the posterior probability for each class: P(y|x) ∝ P(y) 
+*⋂P(xi | y).
+5. Prediction - For classification: Assign the class with the highest 
+posterior probability as the predicted class.H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+11 
+=== PAGE 12 ===
+importance of this section lies in the fact that proper configuration of the 
+algorithms directly impacts the model ’s performance. It is essential to 
+fine-tune the parameters to achieve the best results, as even minor ad-
+justments can significantly affect accuracy and efficiency. The careful 
+selection of these parameters sets the foundation for the Experimental 
+Results section, where the performance of the algorithms will be eval-
+uated based on the chosen configurations.
+5.Data analysis
+The correlation matrix displayed in the heatmap provides an over-
+view of the relationships between various features in the dataset, 
+including employee characteristics and performance factors. The values 
+range from  1–1, where a value of 1 indicates a perfect positive cor-
+relation,  1 represents a perfect negative correlation, and 0 indicates no 
+correlation between the variables. This correlation matrix is a useful tool 
+for understanding how different features interact with each other and 
+can provide insights into which variables are more strongly related to 
+employee performance and attrition. Figure 7presents the correlation 
+matrix of the organizational dataset, highlighting the relationships be-
+tween key features such as salary, job satisfaction, and overtime. From 
+the heatmap, we observe several key points: 
+ Age shows a small positive correlation with YearsAtCompany (0.10), 
+indicating that older employees tend to stay longer in the company, 
+though the relationship is weak.
+ Salary has a weak negative correlation with Attrition (-0.17), sug-
+gesting that employees with lower salaries might be slightly more 
+likely to leave the company.
+ JobSatisfaction has a weak positive correlation with Attrition (0.06), 
+which implies that employees who are more satisfied with their job 
+are slightly less likely to leave. WorkLifeBalance exhibits a small negative correlation with Attrition 
+(-0.08), showing that better work-life balance is slightly associated 
+with lower turnover, although this relationship is weak.
+The boxplots provide a visual representation of the distribution of 
+key employee features by their attrition status. Figure 8illustrates the 
+boxplot of the organizational dataset features, showing the distribution 
+and variability of key attributes. These visualizations are essential for 
+understanding how different factors such as Salary, Job Satisfaction, 
+Performance Rating, Work-Life Balance, Years at Company, and Age 
+vary between employees who stay with the company (Attrition: No) and 
+those who leave the company (Attrition: Yes). Boxplots are particularly 
+useful because they provide insights into the central tendency (median), 
+spread (interquartile range), and potential outliers in the data.
+The blue boxes represent employees who stayed with the company, 
+while the red boxes correspond to those who left. By visually comparing 
+these groups, HR professionals can identify which features may have a 
+significant impact on employee retention or turnover. The idea behind 
+using boxplots is to highlight the differences in the distribution of these 
+key features across two distinct groups —those who remain and those 
+who depart.
+For example, in the Salary boxplot, we can observe that employees 
+who left the company tend to have a wider range of salaries, with some 
+outliers at both the lower and upper ends. This could suggest that em-
+ployees leaving the company have varying salary expectations and may 
+be influenced by financial factors, whether they are dissatisfied with 
+their current pay or find better opportunities elsewhere. On the other 
+hand, employees who stay seem to have salaries that are more concen -
+trated around a particular range, indicating that salary might not be the 
+primary driver of retention for this group.
+The Job Satisfaction plot shows that employees who left the com-
+pany tend to have lower job satisfaction scores on average, with a wider 
+spread. This is consistent with the understanding that dissatisfaction 
+with the work environment, role, or management could lead to higher 
+turnover. The median job satisfaction for employees who remain, 
+however, is higher, and the interquartile range is more compressed, 
+suggesting that job satisfaction plays a crucial role in determining 
+whether employees stay or leave.
+The Work-Life Balance plot reveals that employees who stay tend to 
+have better work-life balance ratings, as shown by the narrower range of 
+values and a higher median. For those who leave, the range is much 
+wider, indicating that some employees may have left due to poor work- 
+life balance, while others might have had more flexible arrangements 
+but still decided to leave.
+Looking at Performance Rating, employees who stayed have higher 
+and more consistent ratings, with fewer outliers. Employees who left, 
+however, show a wider spread in performance scores, suggesting that 
+even high-performing employees might leave for reasons unrelated to 
+their work performance, such as personal circumstances or dissatisfac -
+tion with career development opportunities.
+The Years at Company plot shows that employees who have been 
+with the company longer tend to stay, with their data points concen -
+trated towards the higher end of the scale. Employees who left the 
+company have a more varied tenure, which could suggest that early- 
+stage employees (those with fewer years at the company) are more 
+likely to leave, possibly due to unmet expectations or career 
+dissatisfaction.
+Lastly, the Age plot indicates that employees aged between 30 and 45 
+tend to have a better performance rating and are more likely to stay in 
+the company, while employees outside this age group seem to have a 
+wider spread and may be more prone to leaving the organization.
+In conclusion, these boxplots reveal critical insights into employee 
+behavior and the factors influencing retention and attrition. By 
+analyzing these features, HR managers can develop more targeted 
+strategies to improve employee satisfaction, address potential issues 
+leading to turnover, and take preventive measures to retain top talent.Table 11 
+XGBoost Algorithm.
+Step Description
+1. Initialization  Input: (x, y), x ∃ℝⁿ, y ∃0, 1 or continuous values.
+ Initialize the base model and set the number of boosting 
+rounds (iterations).
+2. Compute Gradient - For each iteration, compute the gradient (negative 
+gradient) of the loss function with respect to the current 
+model ’s prediction.
+3. Fit a Base Learner - Fit a new weak learner (typically a decision tree) to the 
+residual errors from the previous iteration.
+4. Update the Model - Update the model by adding the newly fitted base learner 
+with a learning rate to improve predictions.
+5. Repeat for All 
+Iterations- Repeat steps 2–4 for a defined number of iterations or until 
+convergence.- The final model is a weighted sum of all base 
+learners.
+6. Prediction  For classification: Apply a decision threshold on the final 
+model to make class predictions.
+ For regression: Use the output of the final model as the 
+predicted value.
+Table 12 
+Selected Settings for Machine Learning Algorithms.
+Algorithm Initial Settings
+K-Nearest 
+Neighbourk: 5Distance Metric : Euclidean Weighting : Distance-based
+Support Vector 
+MachineKernel : RBFC: 1γ: 0.01
+Logistic Regression C: 1.0Solver : ’liblinear ’Penalty : ’l2’
+Random Forest nestimators :100max_depth : 10min_samples_split : 2
+Decision Tree max_depth : 10min_samples_split : 2.criterion: ’gini’.
+Naive Bayes Alpha : 1.0fit_prior : True.
+XGBoost nestimators : 100learning_rate : 0.1Normalizaion P.: 0.01max_depth : 
+6subsample: 0.8H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+12 
+=== PAGE 13 ===
+6.Experimental results
+All simulations and experiments were performed on a system with an 
+Intel 2.7GHz 7-core processor, 12GB RAM, and Windows 10 operating 
+system. The algorithms and methods were implemented using MATLAB 
+software version 2020. Table 13presents the simulation results of 
+various methods applied to the HR Analytics Dataset, showcasing their 
+performance across multiple evaluation metrics. Also, Figure 9displays 
+the ROC curve for various methods applied to the HR Analytics Dataset, 
+highlighting their performance in distinguishing between employee 
+attrition and non-attrition. The ROC (Receiver Operating Characteristic) 
+curve is an essential tool used to evaluate the performance of binary 
+classification models. It visualizes the trade-off between True Positive 
+Rate (TPR), also known as recall, and False Positive Rate (FPR) for 
+different threshold values. The TPR represents the proportion of actual 
+positive cases correctly identified by the model, while the FPR measures 
+the proportion of negative cases that are incorrectly identified as posi-
+tive. A higher TPR and a lower FPR indicate a better model performance. 
+In Figure 9, the ROC curve for the Proposed Method (GA LightGBM) 
+shows a sharp rise, indicating its superior ability to correctly classify 
+employee attrition. This curve demonstrates minimal trade-offs between 
+True Positive Rate (TPR) and False Positive Rate (FPR). The proposed 
+method achieves an AUC of 0.94, significantly outperforming other 
+classifiers such as Logistic Regression and Random Forest, which show 
+more gradual increases in their curves. This confirms the proposed 
+method ’s effectiveness in distinguishing between employee turnover 
+and non-turnover classes.In the provided chart, we can compare multiple classification 
+methods based on their ROC curves. The method represented by the blue 
+line, Proposed Method, has the highest TPR and the best curve. This 
+suggests that the proposed method effectively differentiates between 
+positive and negative classes, achieving a high proportion of true posi-
+tives while minimizing false positives. The ROC curve for this method 
+shows a sharp rise, indicating excellent performance with minimal 
+trade-offs. With an AUC of 0.94, this method stands out, as it closely 
+approaches the ideal curve (top-left corner), where both TPR is high and 
+FPR is low.
+Comparing the other methods, such as Logistic Regression, Random 
+Forest, and K-Nearest Neighbours, we notice that they all exhibit rela-
+tively more gradual increases in their ROC curves. While these methods 
+show decent performance, their AUC scores (e.g., 0.80 for Logistic 
+Regression and 0.82 for Random Forest) are lower than that of the 
+proposed method, meaning they are less effective at distinguishing be-
+tween classes. These methods have more noticeable trade-offs, with 
+higher FPR and lower TPR than the proposed method.
+Support Vector Machine and Naive Bayes also display moderate 
+performances, with AUC scores of 0.77 and 0.93, respectively. These 
+methods are closer to the diagonal line, indicating a performance closer 
+to random guessing, especially for SVM, which struggles with TPR 
+compared to FPR.
+Finally, LightGBM, with an AUC of 0.89, is very close to the proposed 
+method in terms of performance. However, the proposed method still 
+outperforms it with a clearer distinction between true positive and false 
+positive rates, confirming its superior ability to classify correctly while 
+Fig. 7.Correlation Matrix of the Organizational Dataset.H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+13 
+=== PAGE 14 ===
+minimizing errors.
+In summary, the Proposed Method (GA LGBM) consistently out-
+performs all other methods in terms of AUC, TPR, and FPR. The ROC 
+curves reflect this performance, with LightGBM being a close competitor 
+but not quite achieving the same level of accuracy and efficiency as the 
+proposed method. This comparison clearly highlights the superiority of 
+the proposed method in distinguishing positive and negative classes. 
+Figure 10presents a bar chart comparing the performance of different 
+models based on key metrics such as Accuracy, Precision, Recall, and F1 
+Score, evaluated on the HR Analytics Dataset. The Proposed Method 
+stands out with an Accuracy of 0.92 and AUC of 0.94, demonstrating its 
+superiority over other methods, including LightGBM (AUC of 0.89). 
+Although LightGBM performs well, the proposed method ’s combination of Genetic Algorithm or feature selection and LightGBM outperforms it 
+by maintaining a higher TPR and lower FPR.
+The GA LightGBM combination improves feature selection by 
+eliminating redundant or irrelevant features, thus reducing overfitting 
+and enhancing model performance. LightGBM excels due to its ability to 
+handle large datasets efficiently using Gradient Boosting. The Genetic 
+Algorithm, by selecting the most important features, optimizes the 
+model ’s predictive capabilities.
+The HR Analytics Dataset, which includes over 205 variables and 
+2932 observations, is critical for training the models in this study. The 
+combination of GA for feature selection and LightGBM for classification 
+enables better handling of high-dimensional HR data, improving the 
+model ’s ability to predict employee turnover accurately.
+Table 14presents the simulation results of various methods applied 
+to the Organization Dataset. Also, Figure 11displays the ROC curve for 
+various methods applied to the Organization Dataset, highlighting their 
+performance. The AUC score is a critical metric here, as it summarizes 
+the overall performance of a model.
+The Proposed Method shows the best performance across all metrics, 
+with an AUC of 0.78, which indicates a high ability to distinguish be-
+tween the two classes. The True Positive Rate (TPR) and False Positive 
+Rate (FPR) curves for this model show a sharp increase, reflecting its 
+superior ability to identify the positive class (attrition) with fewer false 
+positives. Its high Precision (0.75) and Recall (0.72) suggest that the 
+model is both accurate in its predictions and good at detecting most of 
+the positive cases, resulting in a relatively high F1 Score of 0.73.
+Logistic Regression follows with an AUC of 0.68, a somewhat weaker 
+Fig. 8.Boxplot of the Organizational Dataset Features.
+Table 13 
+Simulation Results of Methods on the HR Analytics Dataset.
+Method Accuracy Precision Recall F1 Score AUC
+Proposed Method 0.92 0.89 0.85 0.87 0.94
+Logistic Regression 0.75 0.72 0.65 0.68 0.8
+Random Forest 0.78 0.74 0.68 0.71 0.82
+K-Nearest Neighbour 0.74 0.71 0.66 0.69 0.79
+Support Vector Machine 0.72 0.7 0.64 0.67 0.77
+Decision Tree 0.76 0.75 0.7 0.73 0.81
+Naive Bayes 0.77 0.74 0.73 0.74 0.83
+XGBoost 0.81 0.78 0.76 0.77 0.86
+LightGBM 0.86 0.81 0.8 0.8 0.89H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+14 
+=== PAGE 15 ===
+performance. The FPR is higher in comparison to the Proposed Method, 
+and while it still performs decently, its Precision (0.67) and Recall (0.65) 
+are lower, indicating that the model struggles more with identifying true 
+positives and managing false positives. Its F1 Score (0.66) confirms that 
+there is a balance between precision and recall, but it falls short 
+compared to the proposed method.
+Random Forest performs slightly better than Logistic Regression, 
+with an AUC of 0.72, indicating improved discriminatory power. Its 
+Precision (0.69) and Recall (0.68) are higher than Logistic Regression, 
+which means it is better at detecting positive cases while maintaining a 
+reasonable number of false positives. The F1 Score (0.68) also reflects a 
+balanced performance.
+K-Nearest Neighbour and Support Vector Machine (SVM) show 
+relatively similar performance, with AUC values of 0.69 and 0.66, 
+Fig. 9.ROC Curve for different Methods on the HR Analytics Dataset.
+Fig. 10.Comparison of Models Across Different Metrics on the HR Analytics Dataset.
+Table 14 
+Simulation Results of Methods on the Organization Dataset.
+Method Accuracy Precision Recall F1 Score AUC
+Proposed Method 0.78 0.75 0.72 0.73 0.78
+Logistic Regression 0.7 0.67 0.65 0.66 0.68
+Random Forest 0.72 0.69 0.68 0.68 0.72
+K-Nearest Neighbour 0.69 0.66 0.64 0.65 0.69
+Support Vector Machine 0.67 0.65 0.62 0.63 0.66
+Decision Tree 0.73 0.72 0.7 0.71 0.73
+Naive Bayes 0.68 0.66 0.63 0.64 0.74
+XGBoost 0.74 0.74 0.71 0.73 0.75
+LightGBM 0.75 0.73 0.72 0.73 0.75H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+15 
+=== PAGE 16 ===
+respectively. Both models have moderate Precision and Recall values, 
+but they underperform compared to Random Forest and Logistic 
+Regression. The F1 Scores of 0.65 and 0.63 indicate that these models 
+struggle more with balancing precision and recall.
+Finally, Naive Bayes and XGBoost perform reasonably well, with 
+AUC scores of 0.74 and 0.75, respectively. Both have high Precision 
+values (0.74 for XGBoost), but their Recall values are slightly lower, 
+making them less sensitive to detecting positive cases compared to the 
+other models.
+In conclusion, the Proposed Method consistently outperforms all 
+other models across the board in terms of AUC, Precision, Recall, F1 
+Score, and Accuracy. The ROC curves clearly demonstrate this, with the 
+Proposed Method (GA LGBM) curve being the highest, showing its 
+superior ability to identify attrition while minimizing false positives.
+Figure 12presents a bar chart comparing the performance of different models based on key metrics, evaluated on the organization 
+dataset.
+In Table 15, the performance of the proposed method is compared 
+with that of recent studies on employee turnover prediction. The Pro-
+posed Method demonstrates the highest performance across all metrics, 
+Fig. 11.ROC Curve for different Methods on the Organization Dataset.
+Fig. 12.Comparison of Models Across Different Metrics on the Organization Dataset.Table 15 
+Comparison of Proposed Method with Recent Approaches on the Organization 
+Dataset.
+Method Accuracy Precision Recall F1 Score
+Proposed Method 0.78 0.75 0.72 0.73
+(Veglio et al., 2025 ) 0.74 0.76 0.69 0.68
+(Taqatqa et al., 2025 ) 0.78 0.74 0.70 0.67
+(Bustillo, 2025 ) 0.69 0.68 0.64 0.61H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+16 
+=== PAGE 17 ===
+with Accuracy of 0.78, Precision of 0.75, Recall of 0.72, and an F1 Score 
+of 0.73.
+The approach by Veglio et al. (2025) achieves slightly lower per-
+formance, with an Accuracy of 0.74 and an F1 Score of 0.68, despite a 
+higher Precision (0.76), indicating a better ability to avoid false posi-
+tives but lower recall.
+Taqatqa et al. (2025) show moderate performance with Accuracy of 
+0.78, but the Precision (0.74) and Recall (0.70) are both lower than the 
+proposed method, resulting in an F1 Score of 0.67, reflecting a trade-off 
+between identifying positive cases and minimizing errors.
+Bustillo (2025) performs the least effectively, with Accuracy (0.69) 
+and F1 Score (0.61) being significantly lower than the other methods, 
+indicating challenges in distinguishing between turnover and 
+non-turnover cases.
+This comparison highlights the Proposed Method as the most 
+balanced and efficient approach, excelling in both accuracy and recall, 
+making it a more robust solution for employee turnover prediction 
+compared to recent methods.
+6.1. Discussion
+The experimental results presented in Tables 12 through 14
+demonstrate the consistent superiority of the proposed GA LightGBM 
+model across two datasets. This section contextualizes those results by 
+comparing them with recent works in employee turnover prediction and 
+highlights the contributions of our method in light of contemporary 
+research.
+Recent studies have explored various machine learning strategies to 
+improve turnover prediction. For instance, (Veglio et al., 2025 ) applied 
+classification decision trees and reported an F1-score of 0.68, empha -
+sizing interpretability but falling short in predictive performance. 
+(Taqatqa et al., 2025 ) employed Random Forests with moderate results 
+(F10.67), suggesting robustness but limited sensitivity to minority 
+classes (i.e., turnover cases). (Bustillo, 2025 ) used a GA-based hybrid 
+approach but with simpler classifiers such as KNN and Naive Bayes, 
+achieving lower overall performance (F10.61).
+In contrast, our proposed model combines the global optimization 
+capacity of Genetic Algorithms with the state-of-the-art predictive per-
+formance of LightGBM, producing higher precision (0.75), recall (0.72), 
+and F1-score (0.73) on the organization dataset. This result outperforms 
+the above-mentioned studies by a noticeable margin. Moreover, our 
+model achieves this without compromising interpretability —a critical 
+factor in HR decision-making —unlike deep learning-based hybrids such 
+as the one used by (Shafie et al., 2024 ), which, while accurate, suffer 
+from opacity and limited practical deployment.
+These comparisons, summarized in Table 14, provide strong evi-
+dence that our model achieves the best trade-off between performance, 
+feature selection efficiency, scalability, and transparency, making it 
+more suitable for deployment in real organizational settings.
+Furthermore, our use of recent datasets (2023 –2024) and inclusion 
+of both public and proprietary data add to the generalizability and 
+relevance of the proposed method. The hybrid framework also aligns 
+with recent research directions in explainable AI (XAI) and interpretable 
+machine learning in HR analytics, as emphasized by (Chowdhury et al., 
+2023 ).
+In conclusion, the results and comparisons establish the proposed GA 
+LightGBM model as a competitive and balanced solution, exceeding 
+existing methods in prediction quality while remaining feasible for 
+practical implementation in HR environments.
+7.Analysis of feature selection methods
+Feature selection is a critical step in the process of building machine 
+learning models, as it helps identify the most relevant features, 
+improving model performance and reducing computational complexity. 
+In this section, we compare the performance and characteristics of Genetic Algorithm, Random Forest (RF), Neural Networks (NN), Support 
+Vector Machine (SVM), Logistic Regression (LR), and K-Nearest Neigh -
+bors (K-NN) for feature selection. Each method has its own strengths and 
+weaknesses depending on the nature of the dataset, the problem at hand, 
+and the computational resources available. Table 16summarizes the 
+applications, advantages, and limitations of each feature selection.
+Genetic Algorithms are particularly effective for selecting features in 
+datasets with complex, non-linear relationships. GA works by evaluating 
+multiple combinations of features through an iterative process, allowing 
+it to capture intricate interactions between features that simpler 
+methods may miss. The advantage of GA is its flexibility in handling 
+diverse feature spaces, making it ideal for datasets where feature re-
+lationships are non-linear. However, this flexibility comes at a cost: the 
+computational complexity is high, and the training time is longer, 
+especially with large datasets. Despite this, GA remains one of the most 
+powerful methods for feature selection when model accuracy is the top 
+priority, as it can improve the predictive power of the model signifi -
+cantly by selecting the most relevant features.
+On the other hand, Random Forest is widely used for feature selec-
+tion due to its ability to evaluate the importance of each feature auto-
+matically. RF builds multiple decision trees and assesses feature 
+importance based on how much each feature contributes to improving 
+the model ’s performance. This method is computationally less expensive 
+than GA, but still requires substantial resources when dealing with a 
+large number of trees and features. The training time for RF is longer 
+compared to simpler methods like Logistic Regression, but it is more 
+efficient than GA in terms of computational cost. While RF can handle 
+high-dimensional data well, it may not perform as effectively as GA in 
+cases where there are complex feature interactions or non-linear 
+relationships.
+Neural Networks excel at handling complex data with non-linear 
+relationships between features. Their ability to model complex 
+Table 16 
+Comparison of Feature Selection Methods.
+Method Application in Feature 
+SelectionAdvantages Limitations
+GA Effective for complex 
+data with non-linear 
+feature relationships. 
+Identifies optimal 
+feature combinations.Can simulate 
+complex features 
+and improve model 
+accuracy.High computational 
+complexity and long 
+training time.
+RF Evaluates feature 
+importance through 
+decision trees, suitable 
+for structured data 
+with many effective 
+features.Automatically 
+evaluates feature 
+importance.High computational 
+cost, especially with 
+many trees.
+NN Useful for selecting 
+features in data with 
+complex, non-linear 
+relationships. Models 
+complex feature 
+interactions.Learns complex non- 
+linear relationships.Requires long 
+training time and 
+high computational 
+resources.
+SVM Works well for 
+selecting features in 
+classification problems 
+with high-dimensional 
+data and complex 
+relationships.Selects useful 
+features in complex 
+data and models 
+relationships.Medium training time 
+and high 
+computational 
+complexity.
+LR Best for feature 
+selection in linear 
+classification 
+problems, with 
+independent features.Fast and simple for 
+linear problems.Suitable only for 
+linear problems; 
+cannot model non- 
+linear relationships.
+K-NN Useful for selecting 
+features in 
+classification problems 
+where feature 
+interactions are 
+crucial.Simple and direct for 
+feature selection.High training time 
+and computational 
+cost for large 
+datasets.H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+17 
+=== PAGE 18 ===
+interactions makes them powerful for feature selection in situations 
+where feature relationships are intricate. However, the computational 
+resources required for training and the long training times are signifi -
+cant drawbacks, especially when dealing with large datasets. Neural 
+networks also require fine-tuning of hyperparameters, which adds to the 
+complexity of model training. Despite their high accuracy in certain 
+cases, their high computational cost makes them less suitable for situ-
+ations where training speed and efficiency are critical.
+Support Vector Machines offer another effective method for selecting 
+features in high-dimensional and complex datasets. SVM works well 
+when the dataset contains both linear and non-linear relationships be-
+tween features. However, the computational complexity of SVM can be 
+significant, and its training time is higher compared to methods like 
+Logistic Regression or K-Nearest Neighbors. While SVM is highly effec-
+tive in classification problems, the training time and complexity can 
+become problematic when dealing with very large datasets, making it 
+less efficient than GA for large-scale feature selection.
+Logistic Regression is a fast and simple method for feature selection, 
+particularly in problems where the relationships between features are 
+linear. It works well when the features are independent and the dataset 
+is not too large. The computational complexity is low, and it provides 
+fast results, making it suitable for quick feature selection in simpler 
+models. However, Logistic Regression is limited to linear problems and 
+cannot effectively capture non-linear relationships between features, 
+making it unsuitable for more complex datasets with intricate feature 
+interactions.
+K-Nearest Neighbors is another intuitive method for selecting fea-
+tures, particularly when the feature interactions are important for 
+classification. It works by evaluating the proximity between data points 
+and can select features based on their ability to influence the similarity 
+measure. While K-NN is simple to implement, it has high computational 
+costs for large datasets, particularly when the number of features is high. 
+Training time can also become an issue as the model needs to compute 
+distances between all data points, especially with large datasets, which 
+reduces its efficiency.
+The comparison above demonstrates that while Genetic Algorithm 
+offers the best performance in terms of feature selection, particularly 
+when the relationships between features are complex and non-linear, it 
+comes with higher computational costs and longer training times. 
+However, its ability to model complex feature interactions and improve 
+model performance makes it a preferred choice for problems where 
+accuracy is paramount.
+7.1. Comparative analysis of hybrid models in related studies
+To better contextualize our proposed approach, we present a 
+comparative summary of recent hybrid models used for employee 
+turnover prediction. Table 17highlights the key characteristics of these 
+models, including their algorithmic components, complexity, inter-
+pretability, and performance trade-offs. Several recent studies have 
+investigated hybrid machine learning architectures to improve 
+employee turnover prediction. These models combine various algo-
+rithms in pursuit of higher accuracy and more effective feature handling. However, a deeper analysis of these approaches reveals a spectrum of 
+trade-offs that should be carefully evaluated, particularly in domains 
+such as Human Resource Management, where both interpretability and 
+practicality are critical.
+Ensemble-based hybrids such as the one proposed by (Biswas et al., 
+2023 ), which incorporate Random Forests, SVM, Logistic Regression, 
+and Gradient Boosting, demonstrate the strength of algorithmic di-
+versity in improving predictive performance. The advantage of such 
+models lies in their robustness across datasets and their ability to reduce 
+the bias and variance associated with single learners. However, this 
+increase in accuracy often comes at the expense of increased complexity. 
+These models typically require extensive parameter tuning, longer 
+training times, and lack intuitive interpretability —factors that hinder 
+their deployment in organizational settings where transparency and 
+explainability are essential. In many HR systems, decision-makers must 
+not only know what the prediction is, but why an employee is likely to 
+leave, and such ensemble methods make it difficult to provide that level 
+of clarity.
+Similarly, the work by (Shafie et al., 2024 ), which uses Artificial 
+Neural Networks combined with clustering, emphasizes the detection of 
+non-linear relationships within subgroups of employees. While such 
+techniques can uncover hidden patterns and segment populations more 
+effectively, they demand large volumes of training data and are typically 
+treated as black-box models. This lack of interpretability again poses 
+challenges when trying to translate predictions into actionable HR 
+strategies, where understanding the contributing factors behind attrition 
+is often more valuable than achieving marginal gains in accuracy.
+Ali’s hybrid approach (Wild Ali, 2021 ) combines Principal Compo -
+nent Analysis (PCA) with Random Forests, offering a promising strategy 
+for handling high-dimensional data by reducing feature space before 
+classification. While PCA effectively simplifies the dataset and enhances 
+processing speed, it transforms original features into orthogonal com-
+ponents, thereby obscuring their real-world meaning. This abstraction 
+limits the ability of HR managers to trace predictions back to specific 
+attributes such as job satisfaction, salary, or performance rat-
+ings—variables that are essential for formulating retention policies.
+A closer comparison with the method proposed by (Bustillo, 2025 ), 
+which also employs Genetic Algorithms, highlights the importance of 
+the classification algorithm in the hybrid structure. While Bustillo in-
+tegrates GA with relatively simple classifiers such as KNN and Naive 
+Bayes, our approach leverages the superior classification capabilities of 
+LightGBM. KNN, for instance, is known for its sensitivity to noisy data 
+and difficulty in handling large datasets, while Naive Bayes relies on 
+strong independence assumptions that are often violated in real-world 
+HR data. In contrast, LightGBM not only accommodates 
+high-dimensional input efficiently but also supports complex feature 
+interactions without compromising computational performance.
+Against this backdrop, the proposed GA LightGBM model emerges 
+as a well-balanced alternative. Genetic Algorithms provide an effective 
+mechanism for identifying optimal feature subsets by navigating large 
+search spaces and uncovering non-linear dependencies among features. 
+When paired with LightGBM —a state-of-the-art gradient boosting 
+method optimized for speed, memory usage, and accuracy —the result is 
+Table 17 
+Comparison of Existing Hybrid Models for Turnover Prediction.
+Study Hybrid Model Advantages Limitations Interpretability Data Size 
+Required
+(Biswas et al., 
+2023 )Ensemble (RF SVM LR 
+GB)High accuracy due to ensemble 
+votingComplex training, harder to interpret Low Large
+(Shafie et al., 2024 )ANN Clustering Captures complex nonlinear 
+patternsRequires large data, low transparency Very Low Very Large
+(Wild Ali, 2021 ) PCA Random Forest Dimensionality reduction, stable PCA loses some feature semantics Medium Moderate
+(Bustillo, 2025 ) GA KNN/Naive Bayes Optimization-based selection KNN sensitivity to noise, NB assumptions Medium Moderate
+Proposed Method GA LightGBM High accuracy, efficient, 
+interpretableTraining time (due to GA), moderate 
+tuningHigh MediumH. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+18 
+=== PAGE 19 ===
+a model that retains the predictive power of advanced hybrids while 
+remaining interpretable and scalable for real-world applications. 
+Importantly, unlike deep learning or ensemble hybrids, our method 
+maintains transparency, allowing organizations to trace model decisions 
+to specific employee attributes.
+Moreover, our model is particularly suitable for medium-sized 
+datasets, such as those commonly encountered in organizational set-
+tings. Many of the previously proposed methods, especially those 
+involving neural networks or ensemble strategies, require substantial 
+data volumes to generalize effectively. In contrast, our approach per-
+forms well on both public and proprietary datasets, as demonstrated in 
+the experimental sections, without the need for excessive preprocessing, 
+feature transformation, or hardware resources.
+In conclusion, while the landscape of hybrid models in employee 
+turnover prediction is rich and diverse, not all methods are equally 
+practical or interpretable. Our proposed method is carefully designed to 
+bridge the gap between theoretical performance and practical usability, 
+ensuring that the model is not only accurate but also comprehensible 
+and applicable in HR decision-making environments. This makes it a 
+compelling choice for organizations seeking to leverage machine 
+learning in talent management and retention.
+8.Conclusion and future work
+The primary objective of this study was to propose a hybrid machine 
+learning model integrating Genetic Algorithms for feature selection and 
+LightGBM for employee turnover prediction, aiming to improve pre-
+diction accuracy while maintaining model interpretability. Our GA 
+LightGBM model successfully achieved this objective, outperforming 
+traditional methods such as Random Forest, Logistic Regression, and 
+standalone LightGBM. The model achieved an AUC of 0.94 and an F1- 
+score of 0.87 on the HR dataset, demonstrating a significant improve -
+ment in prediction accuracy. This hybrid approach efficiently selects key 
+features and ensures the model is both scalable and interpretable, 
+making it a valuable tool for HR professionals in predicting employee 
+turnover. By optimizing feature selection and providing transparency in 
+decision-making, the model can support effective retention strategies 
+and improve workforce stability. Future work will focus on exploring 
+alternative feature selection methods, incorporating more diverse 
+datasets from different industries to enhance generalizability, and 
+integrating advanced feature engineering techniques. Additionally, 
+improving the interpretability of the model using methods like SHAP or 
+LIME could further support HR decision-making by offering deeper in-
+sights into the prediction process.
+Funding Source
+This study did not receive any financial support from funding orga-
+nizations, whether in the public, commercial, or non-profit sectors.
+Ethical Statement
+Data for this research was gathered through questionnaires filled out 
+by employees, as well as employee records provided by the employer, all 
+with the full consent of both the employees and the employer of the 
+organization involved. The data used does not contain any sensitive or 
+confidential information, and as a result, ethical approval was not 
+required for this study.
+CRediT authorship contribution statement
+Vahid Khatibi Bardsiri: Methodology, Investigation, Conceptuali -
+zation. khatibi Bardsiri Amid: Writing – review & editing, Writing – 
+original draft. Hojat Talebi: Data curation, Conceptualization.Declaration of Competing Interest
+The authors declare that there is no conflict of interest regarding the 
+publication of this paper. The research was conducted independently, 
+and no financial or personal relationships influenced the results or 
+conclusions presented in this study.
+Funding Acknowledgement
+The authors declare that this research, titled "Developing a Hybrid 
+Machine Learning Model for Employee Turnover Prediction: Integrating 
+LightGBM and Genetic Algorithms", did not receive any financial sup-
+port from funding agencies in the public, commercial, or non-profit 
+sectors.
+References
+Adeusi, K.B., Amajuoyi, P., Benjami, L.B., 2024. Utilizing machine learning to predict 
+employee turnover in high-stress sectors. Int. J. Manag. Entrep. Res. 6 (5), 
+1702 –1732 .
+Ahmed, T., 2021. A Novel Classification Model for Employees Turnover Using Neural 
+Network to Enhance Job Satisfaction in Organizations. J. Inf. Organ. Sci. 45, 
+361–374. https://doi.org/10.31341/jios.45.2.1 .
+Al Akasheh, M., Malik, E.F., Hujran, O., Zaki, N., 2024. A decade of research on machine 
+learning techniques for predicting employee turnover: A systematic literature 
+review. Expert Syst. Appl. 238, 121794 .
+Alaskar, L., Crane, M., & Alduailij, M. (2019). Employee turnover prediction using machine 
+learning. Paper presented at the Advances in Data Science, Cyber Security and IT 
+Applications: First International Conference on Computing, ICC 2019, Riyadh, Saudi 
+Arabia, December 10–12, 2019, Proceedings, Part I 1.
+Atef, M., S Elzanfaly, D., Ouf, S., 2022. Early prediction of employee turnover using 
+machine learning algorithms. Int. J. Electr. Comput. Eng. Syst. 13 (2), 135–144.
+Biswas, A.K., Seethalakshmi, R., Mariappan, P., Bhattacharjee, D., 2023. An ensemble 
+learning model for predicting the intention to quit among employees using 
+classification algorithms. Decis. Anal. J. 9, 100335 .
+Bustillo, J.C.M., 2025. Optimization-based Techniques Prediction Model in Determining 
+Employee Turnover. Procedia Comput. Sci. 252, 440–449.
+Cerulli, G., 2023. Discriminant analysis, nearest neighbor, and support vector machine. 
+In Fundamentals of Supervised Machine Learning: With Applications in Python, R, and 
+Stata. Springer, pp. 147–200.
+Chakraborty, R., Mridha, K., Shaw, R.N., & Ghosh, A. (2021). Study and prediction 
+analysis of the employee turnover using machine learning approaches . Paper presented at 
+the 2021 IEEE 4th International Conference on Computing, Power and 
+Communication Technologies (GUCON).
+Chowdhury, S., Joel-Edgar, S., Dey, P.K., Bhattacharya, S., Kharlamov, A., 2023. 
+Embedding transparency in artificial intelligence machine learning models: 
+managerial implications on predicting and explaining employee turnover. Int. J. 
+Hum. Resour. Manag. 34 (14), 2732 –2764 .
+Costa, V.G., Pedreira, C.E., 2023. Recent advances in decision trees: An updated survey. 
+Artif. Intell. Rev. 56 (5), 4765 –4800 .
+El-Rayes, N., Smith, M., & Taylor, S.M. (2019). An explicative and predictive study of 
+employee attrition using tree-based models. Available at SSRN 3397445.
+Frierson, J., & Si, D. (2018). Who ’s next: Evaluating attrition with machine learning 
+algorithms and survival analysis. Paper presented at the Big Data –BigData 2018: 7th 
+International Congress, Held as Part of the Services Conference Federation, SCF 
+2018, Seattle, WA, USA, June 25–30, 2018, Proceedings.
+Hasan, M.R., Ray, R.K., Chowdhury, F.R., 2024. Employee Performance Prediction: An 
+Integrated Approach of Business Analytics and Machine Learning. J. Bus. Manag. 
+Stud. 6, 215–219. https://doi.org/10.32996/jbms.2024.6.1.14 .
+Huang, X., Yang, F., Zheng, J., Feng, C., Zhang, L., 2023. Personalized human resource 
+management via HR analytics and artificial intelligence: Theory and implications. 
+Asia Pac. Manag. Rev. 28 (4), 598–610.
+Ikram, A., Fiaz, M., Mahmood, A., Ahmad, A., Ashfaq, R., 2021. Internal Corporate 
+Responsibility as a Legitimacy Strategy for Branding and Employee Retention: A 
+Perspective of Higher Education Institutions. J. Open Innov.: Technol., Mark., 
+Complex. 7 (1), 52. https://doi.org/10.3390/joitmc7010052 .
+Ilyas, A., Khan, A.H., Zaid, F., Ali, M., Razzaq, A., Khan, W.A., 2020. Turnover Intention 
+of Employees, Supervisor Support, and Open Innovation: The Role of Illegitimate 
+Tasks. J. Open Innov.: Technol., Mark., Complex. 6 (4), 128. https://doi.org/ 
+10.3390/joitmc6040128 .
+Jain, R., & Nayyar, A. (2018). Predicting employee attrition using xgboost machine learning 
+approach. Paper presented at the 2018 international conference on system modeling 
+& advancement in research trends (smart).
+Judrups, J., Cinks, R., Birzniece, I., Andersone, I., 2021. Machine learning based solution 
+for predicting voluntary employee turnover in organization. Eng. Rural Dev. 
+1359 –1366 .
+Juvitayapun, T. (2021). Employee Turnover Prediction: The impact of employee event 
+features on interpretable machine learning methods . Paper presented at the 2021 13th 
+International conference on knowledge and smart technology (KST).H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+19 
+=== PAGE 20 ===
+Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., … Liu, T.-Y. (2017). Lightgbm: 
+A highly efficient gradient boosting decision tree. Advances in neural information 
+processing systems, 30.
+Kodden, B., Roelofs, J., 2019. Psychological Contract as a Mediator of the Leadership- 
+Turnover Intentions Relationship. J. Organ. Psychol. 19 (2).
+Kovvuri, S.R., Dommeti, L.S.D., 2022. Empl. Turnover Predict. -A Comp. Study 
+Supervised Mach. Learn. Models .
+Kumar, P., Gaikwad, S.B., Ramya, S.T., Tiwari, T., Tiwari, M., & Kumar, B. (2023). 
+Predicting employee turnover: A systematic machine learning approach for resource 
+conservation and workforce stability. Engineering Proceedings, 59(1), 117.
+Liao, H., Zhang, X., Zhao, C., Chen, Y., Zeng, X., Li, H., 2022. LightGBM: an efficient and 
+accurate method for predicting pregnancy diseases. J. Obstet. Gynaecol. 42 (4), 
+620–629.
+Marquez, B.Y., Realyv ˘asquez-Vargas, A., Lopez-Esparza, N., Ramos, C.E., 2024. 
+Application of ordinary least squares regression and neural networks in predicting 
+employee turnover in the industry. Arch. Adv. Eng. Sci. 2 (1), 30–36.
+Masoud, M., Jaradat, Y., Rababa, E., Manasrah, A., 2021. Turnover Prediction using 
+Machine Learning: Empirical Study. Int. J. Adv. Soft Comput. Appl. 13 (1).
+Mirjalili, S., Mirjalili, S., 2019. Genetic algorithm. Evolut. Algorithms Neural Netw.: 
+Theory Appl. 43–55.
+Muntean, M., & Militaru, F.-D. (2023). Metrics for evaluating classification algorithms . 
+Paper presented at the Education, Research and Business Technologies: Proceedings 
+of 21st International Conference on Informatics in Economy (IE 2022).
+Nayem, Z., Uddin, M.A., 2024. Unbiased employee performance evaluation using 
+machine learning. J. Open Innov.: Technol., Mark., Complex. 10 (1), 100243. 
+https://doi.org/10.1016/j.joitmc.2024.100243 .
+de Oliveira, J.M., Zylka, M.P., Gloor, P.A., Joshi, T., 2019. Mirror, mirror on the wall, 
+who is leaving of them all: predictions for employee turnover with gated recurrent 
+neural networks. Collab. Innov. Netw.: Latest Insights Soc. Innov., Educ., Emerg. 
+Technol. Res. 43–59.
+Park, J., Feng, Y., & Jeong, S.-P. (2024). Developing an advanced prediction model for 
+new employee turnover intention utilizing machine learning techniques. Scientific 
+Reports , 14(1), 1221. Retrieved from ⊑https://www.nature.com/articles/s41598-023 
+-50593-4.pdf⊒.
+PM, U., Balaji, N., 2019. Analysing Employee attrition using machine learning. 
+Karpagam J. Comput. Sci. 13, 277–282.
+Rashed Khan, M. (2024). Application of artificial intelligence for talent management: 
+Challenges and opportunities.
+Shafie, M.R., Khosravi, H., Farhadpour, S., Das, S., Ahmed, I., 2024. A cluster-based 
+human resources analytics for predicting employee turnover using optimized 
+Artificial Neural Networks and data augmentation. Decis. Anal. J. 11, 1–17.
+Shankar, S., Vyas, R., Tewari, V., 2024. Applying machine learning algorithms to 
+determine and predict the reasons and models for employee turnover. Int. J. Inf. 
+Technol. Manag. 23 (1), 48–63.Strohmeier, S., Piazza, F., 2015. Artificial intelligence techniques in human resource 
+management —a conceptual exploration. Intelligent techniques in engineering 
+management: Theory and applications . pp. 149–172.
+Sun, X., Liu, M., Sima, Z., 2020. A novel cryptocurrency price trend forecasting model 
+based on LightGBM. Financ. Res. Lett. 32, 101084 .
+Sun, Z., Wang, G., Li, P., Wang, H., Zhang, M., Liang, X., 2024. An improved random 
+forest based on the classification accuracy and correlation measurement of decision 
+trees. Expert Syst. Appl. 237, 121549 .
+Tanveer, M., Rajani, T., Rastogi, R., Shao, Y.-H., Ganaie, M., 2024. Comprehensive 
+review on twin support vector machines. Ann. Oper. Res. 339 (3), 1223 –1268 .
+Taqatqa, S., Taqatqa, R., Sara, M.R.A., Samhan, A.A.A., Kanan, M., 2025. A Predictive 
+Approach and Recommendation System for Employee Turnover Using Machine 
+Learning Algorithms. In: In Intelligence-Driven Circular Economy: Regeneration 
+Towards Sustainability and Social Responsibility, 2. Springer, pp. 429–441.
+Teng, M., Zhu, H., Liu, C., Zhu, C., & Xiong, H. (2019). Exploiting the contagious effect for 
+employee turnover prediction. Paper presented at the Proceedings of the AAAI 
+conference on artificial intelligence.
+Valle, M.A., Ruz, G.A., Masías, V.H., 2017. Using self-organizing maps to model turnover 
+of sales agents in a call center. Appl. Soft Comput. 60, 763–774.
+Veglio, V., Romanello, R., Pedersen, T., 2025. Employee turnover in multinational 
+corporations: a supervised machine learning approach. Rev. Manag. Sci. 19 (3), 
+687–728.
+Wang, D.-n, Li, L., Zhao, D., 2022. Corporate finance risk prediction based on LightGBM. 
+Inf. Sci. 602, 259–268.
+Wickramasinghe, I., Kalutarage, H., 2021. Naive Bayes: applications, variations and 
+vulnerabilities: a review of literature with code snippets for implementation. Soft 
+Comput. 25 (3), 2277 –2293 .
+Wild Ali, A.B., 2021. Prediction of employee turn over using random forest classifier with 
+intensive optimized PCA algorithm. Wirel. Pers. Commun. 119 (4), 3365 –3382 .
+Xia, J., Liao, W., Chanussot, J., Du, P., Song, G., Philips, W., 2015. Improving random 
+forest with ensemble of features and semisupervised feature extraction. IEEE Geosci. 
+Remote Sens. Lett. 12 (7), 1471 –1475 .
+Zabor, E.C., Reddy, C.A., Tendulkar, R.D., Patil, S., 2022. Logistic regression in clinical 
+studies. Int. J. Radiat. Oncol. *Biol. *Phys. 112 (2), 271–277.
+Zhang, D., Gong, Y., 2020. The comparison of LightGBM and XGBoost coupling factor 
+analysis and prediagnosis of acute liver failure. Ieee Access 8, 220990 –221003 .
+Zhang, H., Xu, L., Cheng, X., Chao, K., & Zhao, X. (2018). Analysis and prediction of 
+employee turnover characteristics based on machine learning. Paper presented at the 
+2018 18th International symposium on communications and information 
+technologies (ISCIT).
+Zhang, S., Zhang, C., Yang, Q., 2003. Data preparation for data mining. Appl. Artif. Intell. 
+17 (5-6), 375–381.
+Zhao, Y., Hryniewicki, M.K., Cheng, F., Fu, B., & Zhu, X. (2019). Employee turnover 
+prediction with machine learning: A reliable approach. Paper presented at the Intelligent 
+Systems and Applications: Proceedings of the 2018 Intelligent Systems Conference 
+(IntelliSys) Volume 2.H. Talebi et al.                                                                                                                                                                                                                                  Journal  of Open Innovation:  Technology,  Market,  and Complexity  11 (2025)  100557  
+20 

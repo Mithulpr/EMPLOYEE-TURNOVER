@@ -1,0 +1,75 @@
+{
+  "mission": "Track 1 Step 37: Explainable, Limitation-Aware Extension of the Step32 Champion",
+  "official_status": "Step 32 Retained as Official 5th Champion; Step 37 Deployed as Explainability & Monitoring Extension",
+  "step32_benchmark_holdout": {
+    "errors": 23,
+    "accuracy": 0.9612794612794613,
+    "precision": 0.8842105263157894,
+    "recall": 0.875,
+    "f1_score": 0.8795811518324608,
+    "roc_auc": 0.9454693775100402,
+    "confusion_matrix": {
+      "TN": 487,
+      "FP": 11,
+      "FN": 12,
+      "TP": 84
+    }
+  },
+  "reconstruction_parity_status": "BIT_EXACT_ZERO_DIFFERENCES",
+  "shap_explainability_status": "COMPLETED_GLOBAL_AND_LOCAL",
+  "input_validation_status": "COMPLETED",
+  "drift_monitoring_status": "COMPLETED",
+  "intervention_module_status": "COMPLETED",
+  "web_dashboard_status": "COMPLETED",
+  "ablation_summary": [
+    {
+      "Variant": "A. Full Step 32 Architecture (Baseline)",
+      "Errors": 20,
+      "Accuracy": 0.9578947368421052,
+      "Precision": 0.88,
+      "Recall": 0.8571428571428571,
+      "F1": 0.868421052631579
+    },
+    {
+      "Variant": "B. CatBoost Standalone Only",
+      "Errors": 32,
+      "Accuracy": 0.9326315789473684,
+      "Precision": 0.8813559322033898,
+      "Recall": 0.6753246753246753,
+      "F1": 0.7647058823529411
+    },
+    {
+      "Variant": "C. LightGBM Standalone Only",
+      "Errors": 42,
+      "Accuracy": 0.911578947368421,
+      "Precision": 0.7333333333333333,
+      "Recall": 0.7142857142857143,
+      "F1": 0.7236842105263158
+    },
+    {
+      "Variant": "D. Hybrid without Meta-Learner (50/50 Blend)",
+      "Errors": 43,
+      "Accuracy": 0.9094736842105263,
+      "Precision": 0.7236842105263158,
+      "Recall": 0.7142857142857143,
+      "F1": 0.7189542483660131
+    },
+    {
+      "Variant": "E. Stacking without Decision Refinement",
+      "Errors": 23,
+      "Accuracy": 0.9515789473684211,
+      "Precision": 0.875,
+      "Recall": 0.8181818181818182,
+      "F1": 0.8456375838926175
+    },
+    {
+      "Variant": "F. Full Step 32 with SHAP Layer (Parity)",
+      "Errors": 20,
+      "Accuracy": 0.9578947368421052,
+      "Precision": 0.88,
+      "Recall": 0.8571428571428571,
+      "F1": 0.868421052631579
+    }
+  ],
+  "timestamp": "2026-09-27 16:46:57"
+}

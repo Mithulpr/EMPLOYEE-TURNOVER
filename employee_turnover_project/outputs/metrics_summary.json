@@ -1,0 +1,19 @@
+{
+  "evaluation_cohort": "Retrospective Legacy Holdout (N = 594)",
+  "operating_threshold": 0.361,
+  "total_records": 594,
+  "accuracy_pct": 96.13,
+  "precision_pct": 88.42,
+  "recall_pct": 87.5,
+  "f1_score_pct": 87.96,
+  "roc_auc_pct": 94.56,
+  "pr_auc_pct": 86.89,
+  "confusion_matrix": {
+    "TN": 487,
+    "FP": 11,
+    "FN": 12,
+    "TP": 84
+  },
+  "total_correct": 571,
+  "total_errors": 23
+}

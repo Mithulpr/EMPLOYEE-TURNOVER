@@ -1,0 +1,175 @@
+{
+  "audit_metadata": {
+    "timestamp": "2026-09-27 18:22:27",
+    "auditor_role": "Senior ML Research Engineer & Data Leakage Auditor",
+    "conclusion": "The reported 95.10% CV F1 in Step 37 was caused by in-sample resubstitution leakage (evaluating pre-fitted models without retraining in the CV loop). Genuine out-of-fold F1 on the Training Pool is 80.86% (official Step 32 OOF) and 78.43% (end-to-end retrained CV). The holdout F1 of 87.96% and confirmation F1 of 86.84% are valid evaluations on frozen models trained on the full pool.",
+    "status": "AUDIT_COMPLETE_CORRECTION_VERIFIED"
+  },
+  "data_partitions_verified": {
+    "total_records": 2969,
+    "legacy_holdout": {
+      "count": 594,
+      "positives": 96,
+      "negatives": 498,
+      "attrition_rate": 0.16161616161616163
+    },
+    "total_development": {
+      "count": 2375,
+      "positives": 384,
+      "negatives": 1991,
+      "attrition_rate": 0.1616842105263158
+    },
+    "training_pool": {
+      "count": 1900,
+      "positives": 307,
+      "negatives": 1593,
+      "attrition_rate": 0.16157894736842104
+    },
+    "confirmation_set": {
+      "count": 475,
+      "positives": 77,
+      "negatives": 398,
+      "attrition_rate": 0.16210526315789472
+    }
+  },
+  "benchmarks_comparison": {
+    "step37_original_superseded": {
+      "status": "SUPERSEDED_INVALID_LEAKAGE",
+      "reason": "Evaluated globally pre-fitted models on training fold slices (in-sample resubstitution error)",
+      "pool_accuracy_mean": 0.9836842105263159,
+      "pool_precision_mean": 0.9239829952621186,
+      "pool_recall_mean": 0.9803807509254362,
+      "pool_f1_mean": 0.9510090495374669,
+      "pool_roc_auc_mean": 0.996640331142013,
+      "pool_errors_mean": 6.2
+    },
+    "step32_official_oof_pool_1900": {
+      "status": "OFFICIAL_GENUINE_BENCHMARK",
+      "description": "Historical genuine out-of-fold predictions on Pool from Step 32 candidate freeze",
+      "pooled_metrics": {
+        "Accuracy": 0.9389473684210526,
+        "Precision": 0.8193979933110368,
+        "Recall": 0.7980456026058632,
+        "F1_Score": 0.8085808580858086,
+        "ROC_AUC": 0.9075024895154085,
+        "PR_AUC": 0.8153672168807788,
+        "Specificity": 0.9661016949152542,
+        "Balanced_Accuracy": 0.8820736487605587,
+        "TN": 1539,
+        "FP": 54,
+        "FN": 62,
+        "TP": 245,
+        "Errors": 116,
+        "Total": 1900
+      },
+      "fold_mean": {
+        "Accuracy": 0.9389473684210528,
+        "Accuracy_std": 0.019373855072953618,
+        "Precision": 0.8206366598241889,
+        "Precision_std": 0.0635064553108083,
+        "Recall": 0.7980433632998414,
+        "Recall_std": 0.07325512899283931,
+        "F1_Score": 0.808166284338444,
+        "F1_Score_std": 0.0611392254695039,
+        "Errors_mean": 23.2,
+        "Errors_std": 7.362064927722384
+      }
+    },
+    "step32_confirmation_475": {
+      "status": "VERIFIED_CHAMPION_EVALUATION",
+      "count": 475,
+      "accuracy": 0.9579,
+      "precision": 0.88,
+      "recall": 0.8571,
+      "f1_score": 0.8684,
+      "roc_auc": 0.942,
+      "errors": 20,
+      "confusion_matrix": {
+        "TN": 389,
+        "FP": 9,
+        "FN": 11,
+        "TP": 66
+      }
+    },
+    "step32_official_holdout_594": {
+      "status": "VERIFIED_CHAMPION_BENCHMARK",
+      "count": 594,
+      "accuracy": 0.9613,
+      "precision": 0.8842,
+      "recall": 0.875,
+      "f1_score": 0.8796,
+      "roc_auc": 0.9455,
+      "errors": 23,
+      "confusion_matrix": {
+        "TN": 487,
+        "FP": 11,
+        "FN": 12,
+        "TP": 84
+      }
+    },
+    "end_to_end_leakage_safe_cv_pool_1900": {
+      "status": "VERIFIED_CORRECTED_CV",
+      "description": "Strictly isolated 5-fold CV with fold-level preprocessing, inner OOF meta-learner, and boundary specialist",
+      "pooled_metrics": {
+        "Accuracy": 0.9147368421052632,
+        "Precision": 0.7655677655677655,
+        "Recall": 0.6807817589576547,
+        "F1_Score": 0.7206896551724138,
+        "ROC_AUC": 0.8788633496302023,
+        "PR_AUC": 0.7375190528564458,
+        "Specificity": 0.9598242310106717,
+        "Balanced_Accuracy": 0.8203029949841631,
+        "TN": 1529,
+        "FP": 64,
+        "FN": 98,
+        "TP": 209,
+        "Errors": 162,
+        "Total": 1900
+      },
+      "fold_mean": {
+        "Accuracy": 0.9147368421052631,
+        "Accuracy_std": 0.012972376361964444,
+        "Precision": 0.7665032738328683,
+        "Precision_std": 0.04008758751279207,
+        "Recall": 0.6808566895822317,
+        "Recall_std": 0.08091000369713523,
+        "F1_Score": 0.7189347704489031,
+        "F1_Score_std": 0.05285167222382393,
+        "Errors_mean": 32.4,
+        "Errors_std": 4.929503017546495
+      }
+    },
+    "end_to_end_leakage_safe_cv_fulldev_2375": {
+      "status": "VERIFIED_CORRECTED_FULLDEV_CV",
+      "description": "Strictly isolated 5-fold CV on the full 2,375 development records",
+      "pooled_metrics": {
+        "Accuracy": 0.9254736842105263,
+        "Precision": 0.8053097345132744,
+        "Recall": 0.7109375,
+        "F1_Score": 0.7551867219917012,
+        "ROC_AUC": 0.9086788987945755,
+        "PR_AUC": 0.8064075746824884,
+        "Specificity": 0.9668508287292817,
+        "Balanced_Accuracy": 0.8388941643646408,
+        "TN": 1925,
+        "FP": 66,
+        "FN": 111,
+        "TP": 273,
+        "Errors": 177,
+        "Total": 2375
+      },
+      "fold_mean": {
+        "Accuracy": 0.9254736842105263,
+        "Accuracy_std": 0.01037790108957158,
+        "Precision": 0.8062865622076417,
+        "Precision_std": 0.029530554856903878,
+        "Recall": 0.710663021189337,
+        "Recall_std": 0.07262357765136881,
+        "F1_Score": 0.7536093948346625,
+        "F1_Score_std": 0.04418772136157597,
+        "Errors_mean": 35.4,
+        "Errors_std": 4.9295030175464944
+      }
+    }
+  }
+}

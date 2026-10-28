@@ -1,0 +1,14 @@
+Age
+BusinessTravel
+EnvironmentSatisfaction
+JobRole
+JobSatisfaction
+MaritalStatus
+NumCompaniesWorked
+OverTime
+TotalWorkingYears
+TrainingTimesLastYear
+WorkLifeBalance
+YearsAtCompany
+YearsInCurrentRole
+YearsSinceLastPromotion

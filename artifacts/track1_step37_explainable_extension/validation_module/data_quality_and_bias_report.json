@@ -1,0 +1,81 @@
+{
+  "schema_audit_raw": {
+    "status": "PASSED",
+    "expected_type": "raw_columns",
+    "total_columns": 45,
+    "missing_columns_count": 0,
+    "missing_columns": [],
+    "extra_columns_count": 9,
+    "extra_columns": [
+      "AgeGroup",
+      "Education_Label",
+      "EmpID",
+      "EnvironmentSatisfaction_Label",
+      "JobSatisfaction_Label",
+      "PerformanceRating_Label",
+      "SalarySlab",
+      "WorkLifeBalance_Label",
+      "_dataset_source"
+    ]
+  },
+  "schema_audit_30_features": {
+    "status": "PASSED",
+    "expected_type": "30_features",
+    "total_columns": 30,
+    "missing_columns_count": 0,
+    "missing_columns": [],
+    "extra_columns_count": 0,
+    "extra_columns": []
+  },
+  "data_quality": {
+    "status": "WARNINGS_DETECTED",
+    "total_records": 2969,
+    "issues_count": 1,
+    "issues": [
+      "Missing values detected in 7 columns: {'DailyRate': 1496, 'HourlyRate': 1496, 'MonthlyRate': 1496, 'OverTime': 1496, 'RelationshipSatisfaction': 1496, 'YearsInCurrentRole': 1496, 'YearsWithCurrManager': 57}"
+    ],
+    "missing_values_by_column": {
+      "DailyRate": 1496,
+      "HourlyRate": 1496,
+      "MonthlyRate": 1496,
+      "OverTime": 1496,
+      "RelationshipSatisfaction": 1496,
+      "YearsInCurrentRole": 1496,
+      "YearsWithCurrManager": 57
+    },
+    "duplicate_records": 0,
+    "range_violations": {}
+  },
+  "survey_bias": {
+    "survey_audit_status": "COMPLETED",
+    "records_audited": 2969,
+    "anomaly_flags_identified": 3,
+    "flags": [
+      {
+        "flag_id": "SATISFACTION_STAGNATION_DIVERGENCE",
+        "severity": "INFORMATIONAL",
+        "description": "High stated satisfaction despite prolonged stagnation (>=7 years without promotion in >=10 year tenure).",
+        "affected_count": 32,
+        "percentage": 1.08,
+        "hr_recommendation": "Conduct exploratory 1-on-1 check-in; do not assume retention based solely on survey score."
+      },
+      {
+        "flag_id": "NEW_ROLE_TRANSITION_DISSATISFACTION",
+        "severity": "REVIEW_RECOMMENDED",
+        "description": "Low job satisfaction reported immediately following a recent promotion or manager change (<=1 year).",
+        "affected_count": 108,
+        "percentage": 3.64,
+        "hr_recommendation": "Review role adjustment and onboarding support; dissatisfaction may reflect temporary transition stress."
+      },
+      {
+        "flag_id": "UNIFORM_RESPONSE_STRAIGHTLINING",
+        "severity": "DATA_QUALITY_NOTE",
+        "description": "Identical rating submitted across all satisfaction and involvement questions (potential survey fatigue).",
+        "affected_count": 21,
+        "percentage": 0.71,
+        "hr_recommendation": "Flag for qualitative verification. Use multi-signal HR metrics rather than survey scores alone."
+      }
+    ],
+    "scientific_disclaimer": "Data quality flags identify divergence between self-reported survey indicators and administrative records. They reflect survey response patterns or role transition effects, NOT evidence of employee dishonesty. Because historical benchmark data is cross-sectional (single-observation per employee), temporal response consistency cannot be tested without longitudinal survey panels."
+  }
+}

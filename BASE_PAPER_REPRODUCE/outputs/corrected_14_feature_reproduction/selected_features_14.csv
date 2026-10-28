@@ -1,0 +1,15 @@
+Rank,Feature
+1,Age
+2,BusinessTravel
+3,Department
+4,Education
+5,EducationField
+6,EnvironmentSatisfaction
+7,JobSatisfaction
+8,MaritalStatus
+9,NumCompaniesWorked
+10,PerformanceRating
+11,TotalWorkingYears
+12,WorkLifeBalance
+13,YearsAtCompany
+14,YearsSinceLastPromotion

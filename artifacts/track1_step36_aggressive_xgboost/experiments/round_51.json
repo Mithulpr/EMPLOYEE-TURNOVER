@@ -1,0 +1,59 @@
+{
+  "round": 51,
+  "phase": "F",
+  "name": "Ablation_CatBoost_Removed",
+  "config": {
+    "round": 51,
+    "phase": "F",
+    "name": "Ablation_CatBoost_Removed",
+    "cb_key": null,
+    "xgb": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta": {
+      "type": "passthrough_xgb"
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.0
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.8515492249274615,
+    "PR_AUC": 0.6112883854769308,
+    "Precision": 0.5668604651162791,
+    "Recall": 0.6351791530944625,
+    "F1_Score": 0.5990783410138248,
+    "Accuracy": 0.8626315789473684,
+    "Errors": 261,
+    "Threshold": 0.361,
+    "TN": 1444,
+    "FP": 149,
+    "FN": 112,
+    "TP": 195
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.8664099719376102,
+    "PR_AUC": 0.5874355831298387,
+    "Precision": 0.5913978494623656,
+    "Recall": 0.7142857142857143,
+    "F1_Score": 0.6470588235294118,
+    "Accuracy": 0.8736842105263158,
+    "Errors": 60,
+    "Threshold": 0.361,
+    "TN": 360,
+    "FP": 38,
+    "FN": 22,
+    "TP": 55
+  },
+  "multiseed_mean": 60.0,
+  "multiseed_std": 0.0,
+  "timestamp": "2026-09-27 16:24:08"
+}

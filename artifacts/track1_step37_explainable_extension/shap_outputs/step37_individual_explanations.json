@@ -1,0 +1,54 @@
+[
+  {
+    "case_type": "HIGH_RISK_ATTRITION",
+    "anonymized_id": "EMP_CONF_0227",
+    "predicted_probability": 0.9675,
+    "predicted_class": 1,
+    "dominant_push_factors": [
+      "JobHoppingRate",
+      "PromotionPaceStrain",
+      "YearsWithCurrManager"
+    ],
+    "dominant_pull_factors": [
+      "MaritalStatus_Single",
+      "BusinessTravel_Travel_Frequently",
+      "JobSatisfaction"
+    ],
+    "feature_contributions": {
+      "JobHoppingRate": 1.0425,
+      "PromotionPaceStrain": 0.8618,
+      "YearsWithCurrManager": 0.807,
+      "Age": 0.7391,
+      "WorkLifeBalance": 0.5553,
+      "MaritalStatus_Single": -0.4921,
+      "SevereDissatisfactionFlag": 0.4404,
+      "TotalExpToAgeRatio": 0.4273
+    }
+  },
+  {
+    "case_type": "LOW_RISK_RETENTION",
+    "anonymized_id": "EMP_CONF_0196",
+    "predicted_probability": 0.0331,
+    "predicted_class": 0,
+    "dominant_push_factors": [
+      "MaritalStatus_Single",
+      "PriorCompanyExperience",
+      "BusinessTravel_Non-Travel"
+    ],
+    "dominant_pull_factors": [
+      "WorkLifeDeficit",
+      "JobHoppingRate",
+      "Age"
+    ],
+    "feature_contributions": {
+      "WorkLifeDeficit": -0.9908,
+      "JobHoppingRate": -0.8611,
+      "Age": -0.8493,
+      "YearsWithCurrManager": -0.7319,
+      "TrainingTimesLastYear": -0.6784,
+      "PromotionLagScore": -0.5733,
+      "JobSatisfaction": -0.4103,
+      "CompanyLoyaltyRatio": -0.3904
+    }
+  }
+]

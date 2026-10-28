@@ -1,0 +1,25 @@
+{
+  "experiment": "Step 31 Second Aggressive Fine-Tuning Campaign",
+  "decision": "STEP 31 CANDIDATE V2 PROMOTED AS NEW CHAMPION (24 ERRORS)",
+  "promoted_new_champion": true,
+  "frozen_third_champion_holdout_errors": 25,
+  "step31_candidate_v2_holdout_errors": 24,
+  "step31_candidate_v2_holdout_metrics": {
+    "ROC_AUC": 0.9454693775100401,
+    "PR_AUC": 0.8688930037030765,
+    "Precision": 0.875,
+    "Recall": 0.875,
+    "F1_Score": 0.875,
+    "Accuracy": 0.9595959595959596,
+    "Errors": 24,
+    "Threshold": 0.361,
+    "TN": 486,
+    "FP": 12,
+    "FN": 12,
+    "TP": 84
+  },
+  "step31_candidate_v2_pool_errors": 116,
+  "step31_candidate_v2_conf_errors": 20,
+  "winner_details": "Domain Boundary Rule (SevereDissat, ManagerTenure, JobHopping<=1.0, ExpRatio > -0.50)",
+  "timestamp": "2026-09-25 22:00:38"
+}

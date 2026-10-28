@@ -1,0 +1,22 @@
+{
+  "target_k": 14,
+  "selected_features_count": 14,
+  "selected_features": [
+    "Age",
+    "BusinessTravel",
+    "Department",
+    "Education",
+    "EducationField",
+    "EnvironmentSatisfaction",
+    "JobSatisfaction",
+    "MaritalStatus",
+    "NumCompaniesWorked",
+    "PerformanceRating",
+    "TotalWorkingYears",
+    "WorkLifeBalance",
+    "YearsAtCompany",
+    "YearsSinceLastPromotion"
+  ],
+  "best_cv_f1": 0.656989,
+  "convergence_generation": 24
+}

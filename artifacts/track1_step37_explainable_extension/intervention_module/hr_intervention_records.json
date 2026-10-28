@@ -1,0 +1,144 @@
+[
+  {
+    "record_id": "REC_1790507816721_1",
+    "anonymized_id": "EMP_CONF_0738",
+    "prediction_timestamp": "2026-09-27 16:46:56",
+    "predicted_attrition_probability": 0.82,
+    "predicted_attrition_class": 1,
+    "dominant_risk_factors": [
+      "SevereDissatisfactionFlag",
+      "JobHoppingRate",
+      "PromotionPaceStrain"
+    ],
+    "decision_override_note": "STANDARD_STEP32_DECISION",
+    "hr_review_status": "ACTION_IN_PROGRESS",
+    "action_category": "SALARY_COMPENSATION_REVIEW",
+    "action_date": "2026-10-01",
+    "follow_up_date": "2026-11-01",
+    "follow_up_satisfaction_score": null,
+    "actual_attrition_outcome": null,
+    "outcome_verification_date": null,
+    "audit_history": [
+      {
+        "timestamp": "2026-09-27 16:46:56",
+        "action": "RECORD_INITIALIZED",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "timestamp": "2026-09-27 16:46:56",
+        "action": "INTERVENTION_UPDATED",
+        "status": "ACTION_IN_PROGRESS",
+        "action_category": "SALARY_COMPENSATION_REVIEW",
+        "notes": "Initiated off-cycle equity adjustment review with Department Head."
+      }
+    ]
+  },
+  {
+    "record_id": "REC_1790507816721_2",
+    "anonymized_id": "EMP_CONF_0409",
+    "prediction_timestamp": "2026-09-27 16:46:56",
+    "predicted_attrition_probability": 0.82,
+    "predicted_attrition_class": 1,
+    "dominant_risk_factors": [
+      "SevereDissatisfactionFlag",
+      "JobHoppingRate",
+      "PromotionPaceStrain"
+    ],
+    "decision_override_note": "STANDARD_STEP32_DECISION",
+    "hr_review_status": "PENDING_REVIEW",
+    "action_category": null,
+    "action_date": null,
+    "follow_up_date": null,
+    "follow_up_satisfaction_score": null,
+    "actual_attrition_outcome": null,
+    "outcome_verification_date": null,
+    "audit_history": [
+      {
+        "timestamp": "2026-09-27 16:46:56",
+        "action": "RECORD_INITIALIZED",
+        "status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  {
+    "record_id": "REC_1790507816721_3",
+    "anonymized_id": "EMP_CONF_1894",
+    "prediction_timestamp": "2026-09-27 16:46:56",
+    "predicted_attrition_probability": 0.82,
+    "predicted_attrition_class": 1,
+    "dominant_risk_factors": [
+      "SevereDissatisfactionFlag",
+      "JobHoppingRate",
+      "PromotionPaceStrain"
+    ],
+    "decision_override_note": "STANDARD_STEP32_DECISION",
+    "hr_review_status": "PENDING_REVIEW",
+    "action_category": null,
+    "action_date": null,
+    "follow_up_date": null,
+    "follow_up_satisfaction_score": null,
+    "actual_attrition_outcome": null,
+    "outcome_verification_date": null,
+    "audit_history": [
+      {
+        "timestamp": "2026-09-27 16:46:56",
+        "action": "RECORD_INITIALIZED",
+        "status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  {
+    "record_id": "REC_1790507816728_4",
+    "anonymized_id": "EMP_CONF_0744",
+    "prediction_timestamp": "2026-09-27 16:46:56",
+    "predicted_attrition_probability": 0.82,
+    "predicted_attrition_class": 1,
+    "dominant_risk_factors": [
+      "SevereDissatisfactionFlag",
+      "JobHoppingRate",
+      "PromotionPaceStrain"
+    ],
+    "decision_override_note": "STANDARD_STEP32_DECISION",
+    "hr_review_status": "PENDING_REVIEW",
+    "action_category": null,
+    "action_date": null,
+    "follow_up_date": null,
+    "follow_up_satisfaction_score": null,
+    "actual_attrition_outcome": null,
+    "outcome_verification_date": null,
+    "audit_history": [
+      {
+        "timestamp": "2026-09-27 16:46:56",
+        "action": "RECORD_INITIALIZED",
+        "status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  {
+    "record_id": "REC_1790507816728_5",
+    "anonymized_id": "EMP_CONF_1559",
+    "prediction_timestamp": "2026-09-27 16:46:56",
+    "predicted_attrition_probability": 0.82,
+    "predicted_attrition_class": 1,
+    "dominant_risk_factors": [
+      "SevereDissatisfactionFlag",
+      "JobHoppingRate",
+      "PromotionPaceStrain"
+    ],
+    "decision_override_note": "STANDARD_STEP32_DECISION",
+    "hr_review_status": "PENDING_REVIEW",
+    "action_category": null,
+    "action_date": null,
+    "follow_up_date": null,
+    "follow_up_satisfaction_score": null,
+    "actual_attrition_outcome": null,
+    "outcome_verification_date": null,
+    "audit_history": [
+      {
+        "timestamp": "2026-09-27 16:46:56",
+        "action": "RECORD_INITIALIZED",
+        "status": "PENDING_REVIEW"
+      }
+    ]
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "round": 10,
+  "phase": "B",
+  "name": "CatBoost_Slow_Shrinkage_lr003",
+  "config": {
+    "round": 10,
+    "phase": "B",
+    "name": "CatBoost_Slow_Shrinkage_lr003",
+    "cb_key": "cb_d6_i800_lr003_l2_20",
+    "xgb": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta": {
+      "type": "logreg",
+      "C": 1.0
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.4
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.9134241623061807,
+    "PR_AUC": 0.8134231055029695,
+    "Precision": 0.8206896551724138,
+    "Recall": 0.7752442996742671,
+    "F1_Score": 0.7973199329983249,
+    "Accuracy": 0.9363157894736842,
+    "Errors": 121,
+    "Threshold": 0.361,
+    "TN": 1541,
+    "FP": 52,
+    "FN": 69,
+    "TP": 238
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.9576453697056712,
+    "PR_AUC": 0.8942256230871998,
+    "Precision": 0.8571428571428571,
+    "Recall": 0.8571428571428571,
+    "F1_Score": 0.8571428571428571,
+    "Accuracy": 0.9536842105263158,
+    "Errors": 22,
+    "Threshold": 0.361,
+    "TN": 387,
+    "FP": 11,
+    "FN": 11,
+    "TP": 66
+  },
+  "multiseed_mean": 22.0,
+  "multiseed_std": 0.0,
+  "timestamp": "2026-09-27 16:13:17"
+}

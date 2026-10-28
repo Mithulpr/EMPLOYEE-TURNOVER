@@ -1,0 +1,30 @@
+{
+  "manifest_name": "research_gap_extension_experiment_manifest",
+  "timestamp": "2026-09-28 12:09:33",
+  "dataset_hash": "92027AF0EF8E882A19643479329252BC865B931346594893A520CFF2DBEA2C7C",
+  "software_environment": {
+    "python": "3.11.9",
+    "sklearn": "1.9.0",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "shap": "0.51.0",
+    "pandas": "2.3.3",
+    "numpy": "2.4.6"
+  },
+  "model_artifacts": {
+    "anchor_catboost.joblib": "AC9465D75918DD2F0892DBF38EDC043DCC566B3BA15F88AE603FFCA2149F58DA",
+    "boundary_specialist.joblib": "645367E72505062D0780C8F893C9E21C094F22B5E2C7A32A8ABE45452BAEC414",
+    "catboost_base.joblib": "9D237A7D60FFE4CEB84568B83FF9B003BCEB1D67E50295443028F832D2207177",
+    "hr_feature_engineer.joblib": "153E5C2F0C72E6D5F2282446B455884025264EE5C295B0EBEDA2DBC69D0BDFBE",
+    "lightgbm_base.joblib": "C5570C7D61032FADF29D0BFB716996292634C190445F5D40B47BA144FDF178F7",
+    "meta_logistic_regression.joblib": "F4264C1B52B0C1B70CC716CAA95A1875F34A41055ED206611F7F342C237309B2",
+    "pipeline_schema.json": "A4B3EC0AAB8888EACB3CF0AF4BF1E7F6656D28CBC0E19982639ECE2D29E6CD44",
+    "scaler.joblib": "1E3B34F59B276E291A32CC672C088D722578DCBC75976A0B0A053785F08D2D4F"
+  },
+  "reproduction_commands": {
+    "train_and_cross_validate": "python research_gap_extension/train.py",
+    "retrospective_evaluate": "python research_gap_extension/evaluate.py",
+    "generate_shap": "python research_gap_extension/explain.py",
+    "run_tests": "python -m unittest discover -s research_gap_extension/tests"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "max_tree_additivity_residual": 5.773159728050814e-15,
+  "tree_additivity_status": "PASSED",
+  "expected_value_log_odds": -2.404656157655656,
+  "complete_pipeline_expected_prob": 0.18221024341287972,
+  "high_risk_sample_actual_prob": 0.9467136350218979,
+  "top_5_global_features": [
+    "MaritalStatus_Single",
+    "Age",
+    "JobHoppingRate",
+    "ManagerTenureRatio",
+    "TotalWorkingYears"
+  ],
+  "plots_generated": [
+    "shap_global_bar.png",
+    "shap_beeswarm.png",
+    "shap_dependence_overtime_satisfaction.png",
+    "shap_dependence_manager_tenure.png",
+    "shap_waterfall_high_risk.png",
+    "shap_waterfall_low_risk.png",
+    "shap_complete_pipeline_waterfall.png"
+  ],
+  "causal_disclaimer": "SHAP feature attributions describe mathematical predictive importance within the model architecture and do NOT establish real-world causal mechanisms for employee attrition."
+}

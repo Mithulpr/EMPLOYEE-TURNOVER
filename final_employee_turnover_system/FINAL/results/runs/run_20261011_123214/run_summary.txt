@@ -1,0 +1,11 @@
+Employee Turnover Prediction Run Summary
+Timestamp: 20261011_123214
+Dataset: holdout_594.csv
+Records: 594
+Elapsed: 2.39s
+Accuracy: 96.13%
+Precision: 88.42%
+Recall: 87.5%
+F1-Score: 87.96%
+ROC-AUC: 94.5469%
+Confusion Matrix: TN=487, FP=11, FN=12, TP=84

@@ -1,0 +1,60 @@
+{
+  "round": 34,
+  "phase": "D",
+  "name": "Ridge_Logistic_Stacking_C20",
+  "config": {
+    "round": 34,
+    "phase": "D",
+    "name": "Ridge_Logistic_Stacking_C20",
+    "cb_key": "default_d6_i600_lr006_l2_15",
+    "xgb": {
+      "depth": 5,
+      "n_est": 200,
+      "lr": 0.03,
+      "sub": 0.7,
+      "col": 0.85,
+      "mcw": 5,
+      "reg_lambda": 10,
+      "gamma": 1.0,
+      "spw": 1.0
+    },
+    "meta": {
+      "type": "logreg",
+      "C": 2.0
+    },
+    "tau": 0.361,
+    "r_th": -0.2,
+    "cb_th": 0.4
+  },
+  "pool_metrics": {
+    "ROC_AUC": 0.9139374012117345,
+    "PR_AUC": 0.8265925625337515,
+    "Precision": 0.815068493150685,
+    "Recall": 0.7752442996742671,
+    "F1_Score": 0.7946577629382304,
+    "Accuracy": 0.9352631578947368,
+    "Errors": 123,
+    "Threshold": 0.361,
+    "TN": 1539,
+    "FP": 54,
+    "FN": 69,
+    "TP": 238
+  },
+  "conf_metrics": {
+    "ROC_AUC": 0.9597337336030803,
+    "PR_AUC": 0.9110296934516738,
+    "Precision": 0.8933333333333333,
+    "Recall": 0.8701298701298701,
+    "F1_Score": 0.881578947368421,
+    "Accuracy": 0.9621052631578947,
+    "Errors": 18,
+    "Threshold": 0.361,
+    "TN": 390,
+    "FP": 8,
+    "FN": 10,
+    "TP": 67
+  },
+  "multiseed_mean": 18.0,
+  "multiseed_std": 0.0,
+  "timestamp": "2026-09-27 16:20:12"
+}

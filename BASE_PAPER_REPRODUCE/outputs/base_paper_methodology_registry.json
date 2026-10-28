@@ -1,0 +1,52 @@
+{
+  "paper_metadata": {
+    "title": "A hybrid machine learning framework with genetic algorithm-based feature selection for employee turnover prediction",
+    "authors": [
+      "H. Talebi",
+      "S. Taghvaee",
+      "M. Zolfaghari",
+      "S. Shokouhyar"
+    ],
+    "year": 2025,
+    "journal": "Journal of Open Innovation: Technology, Market, and Complexity",
+    "volume": "11",
+    "issue": "1",
+    "article_number": "100557",
+    "doi_or_issn": "ISSN: 2199-8531 / 100557",
+    "pdf_relative_path": "base_paper/1-s2.0-S2199853125000927-main.pdf"
+  },
+  "target_dataset": {
+    "name": "Unified Harmonized Employee Turnover Dataset",
+    "sample_size": 2969,
+    "raw_feature_count": 30,
+    "target": "Attrition (0 = Retained, 1 = Turnover)",
+    "relative_path": "data/merged_unique_profiles_2969.csv"
+  },
+  "audited_paper_specifications": {
+    "missing_data_imputation": "Mean for numeric, Mode for categorical (Page 5, Section 3.1)",
+    "categorical_encoding": "Integer encoding (Page 8, Section 3.3)",
+    "continuous_scaling": "Min-Max scaling to [0, 1] (Page 6, Section 3.1)",
+    "resampling": "None / Native class distribution (Page 10, Section 4.1)",
+    "feature_engineering": "None / Original 30 raw survey features only (Table 4)",
+    "genetic_algorithm": {
+      "population_size": 50,
+      "selection": "Roulette Wheel Selection",
+      "crossover": "Uniform Crossover (p_c = 0.80)",
+      "mutation": "Bit-flip Mutation (p_m = 0.10 per gene)",
+      "elitism": 5,
+      "fitness_metric": "10-Fold Stratified CV LightGBM F1-Score",
+      "max_generations": 100,
+      "early_stopping_patience": 10
+    },
+    "classifier": {
+      "algorithm": "LightGBM (gbdt, leaf-wise growth)",
+      "learning_rate": 0.1,
+      "num_leaves": 31,
+      "max_depth": 10,
+      "subsample": 0.8,
+      "n_estimators": 100,
+      "decision_threshold": 0.5
+    },
+    "evaluation_protocol": "10-Fold Stratified Cross-Validation on all 2,969 samples (Pages 8, 10, 13)"
+  }
+}
